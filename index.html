@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REMLAB Web Mech Designer</title>
+<meta name="title" content="REMLAB Web Mech Designer">
+<meta name="description" content="A web app that allows for the creation of BattleTech Mechs.">
+<meta name="author" content="Ted Balmer | MarchTwenty.com">
+<meta name="rating" content="General">
+<link rel="stylesheet" href="assets/css/tedillize2.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<meta name="apple-mobile-web-app-title" content="REMLAB">
+<meta name="application-name" content="REMLAB">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="shortcut icon" href="/assets/favicon.ico">
+</head>
+
+<body class="body">
+    
+<!-- Header -->
+<header class="page-header" id="Header">
+    <h1>REMLAB Web Mech Designer</h1>
+    <!--img src="resources/images/logo.svg" alt="REMLAB Web Mech Designer"-->
+    <menu class="page-header-menu">
+        <ul>
+            <li><button id="btnAbout">About</button></li>
+            <li><button id="btnHelp">Help</button></li>
+        </ul>
+    </menu>
+</header>
+
+<!-- SideBar -->
+<aside class="page-sidebar" id="SideBar">
+    <p>
+        <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
+    </p>
+    <p>
+        <label>Chassis</label> <select id="selChassis" class="select" data-list="arrChassisType"></select>
+    </p>
+    <p>
+        <label>Tonnage</label> <span class="stepper-container"><input type="number" id="txtMass" value="25" min="10" max="100" step="5" class="stepper" readonly></span> <span id="spnWeightClass">Light</span>
+    </p> 
+    <hr>
+    <p>
+        <label>Tonnage</label> <span id="spnCurrentMass"></span> / <span id="spnTotalMass"></span>
+    </p>
+    <p>
+        <label>Crit Slots</label> <span id="spnCurrentCrits">37</span> / <span id="spnTotalCrits">47</span>
+    </p>
+    <p>
+        <label>Total Cost</label> <span id="spnTotalCost" class="cbill"></span>
+    </p>
+    <p>
+        <label>Battle Value</label> <span id="spnTotalBV"></span>
+    </p>
+    <p>
+        <label>Alpha Strike</label> <span id="spnAlphaStrike"></span> (<span id="spnDamagePerTon">0.0</span> per ton)
+    </p>
+    <p>
+        <label>Heat Management</label> <span id="spnTotalHeat"></span> / <span id="spnHeatSinks"></span>
+    </p>
+    <hr>
+    <button id="btnCreateRS">Create Record Sheet</button>
+    <button id="btnCreateTR">Create Technical Readout</button>
+</aside>
+
+<!-- Page Content -->
+<main class="page-main">    
+    
+    <!-- Section -->
+    <section class="section-box size-half">
+        <header class="section-header">
+            <h2>Technology Base</h2>
+        </header>
+        <div class="section-body">
+            <p>
+                <label>Ruleset</label> <select id="selRuleset" class="select" data-list="arrRuleSet" disabled></select>
+                <label>Edition</label> <select id="selEdition" class="select" data-list="arrEdition" disabled></select>
+            </p>
+            <p>
+                <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
+            </p>
+            <p>
+                <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
+                <label>Year</label> <input id="txtYear" type="number" value="3025" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
+            </p>
+        </div>
+        <footer class="section-footer">
+            <p>Rules limited to Inner Sphere (3025)</p>
+        </footer>
+    </section>
+
+    <!-- Section -->
+    <section class="section-box size-half">
+        <header class="section-header">
+            <h2>Engine &amp; Movement</h2>
+        </header>
+        <div class="section-body">
+            <p>
+                <label>Walking <abbr>MP</abbr></label> 
+                <span class="stepper-container"><input type="number" id="txtWalking" class="stepper" value="1" min="1" max="20" step="1" readonly></span> Running <abbr>MP</abbr> <b><span id="spnRunning">2</span></b>
+            </p>
+            <p>
+                <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <span id="spnEngineRating">20 Pitban</span>
+            </p>
+            <p>
+                <label>Legs</label> <input id="radioL1" name="selLegs" type="radio" class="radio-button" checked><label for="radioL1" role="button">2</label><input id="radioL2" name="selLegs" type="radio" class="radio-button"><label for="radioL2" role="button">4</label> <input type="checkbox" id="chkMasc" disabled><label for="chkMasc"><abbr title="Myomer Accelerator Signal Circuitry">MASC</abbr></label>
+            </p>
+        </div>
+        <footer class="section-footer">
+            <span><label>Mass</label> <span id="spnEngineMass"></span> tons</span>
+            <span><label>Crits</label> <span id="spnEngineCrits"></span></span>
+            <span><label>Cost</label> <span id="spnEngineCost" class="cbill"></span></span>
+        </footer>
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="social-links"><a href="https://github.com/midkiffaries/remlab" title="Check out Remlab on Github" target="_blank">GitHub Project</a></p>
+        <p>Developed by <a href="http://www.marchtwenty.com/" target="_blank">MarchTwenty</a></p>
+        <p><small>Version <span id="AppVersion">4.0</span></small></p>
+        <blockquote class="footer-quote"><q>Life is cheap. BattleMechs are expensive.</q> <cite>Irain BattleMechs Ltd.</cite></blockquote>
+    </footer>
+
+</main>
+
+<!-- Scripts -->        
+<noscript>REMLAB requires JavaScript to be enabled in your browser to function.</noscript>
+<script src="assets/js/pages.js" async></script>
+<script src="assets/js/arsenal.js" async></script>
+<script src="assets/js/tables.js"></script>
+<script src="assets/js/base.js"></script>
+<script src="assets/js/mech.js" async></script>
+    
+</body>
+</html>

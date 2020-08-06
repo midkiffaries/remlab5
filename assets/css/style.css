@@ -1,0 +1,411 @@
+/*********************
+Base REMLAB Theme
+*********************/
+
+/* Header */
+
+.page-header-menu {
+    /* float: right; */
+}
+
+/* Side bar */
+
+.page-sidebar {
+    width: 25vw;
+    float: left;
+}
+
+/* Main  content */
+
+.page-main {
+    width: 75vw;
+    float: right;
+}
+
+/* Sections */
+
+.section-box {
+    position: relative;
+}
+
+.section-button-info {
+
+}
+
+.section-info {
+
+}
+
+
+
+
+/*********************
+Custom Elements
+*********************/
+
+/* Dialog Alert */    
+
+.dialog-alert {
+    border: none;
+    width: 100%;
+    height: 2.8em;
+    padding: 0.8em;
+    text-align: center;
+    font-size: 1.4em;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out 0s;
+    background-color: #ff3333;
+}
+
+/* Dialog Confirm */    
+
+.dialog-confirm {
+    border: none;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(255,255,255,0.6);
+    opacity: 0;
+    transition: opacity 0.16s ease-in-out 0s;
+}
+    
+.dialog-confirm div {
+    max-width: 50vw;
+    margin: 30vh auto 0 auto;
+    padding: 1em;    
+    transform: translate(0, -100%);
+    background-color: #fff;
+    box-shadow: 0px 10px 14px -7px rgba(0,0,0,0.8), 5px 5px 16px 5px rgba(0,0,0,0);
+}
+    
+.dialog-confirm p {
+    margin-top: 2px;
+    font-size: 1.2em;
+}
+    
+.dialog-confirm button {
+    margin-right: 0.9em;
+    min-width: 5em;
+}
+
+/* Dialog HTML */
+    
+.dialog-html {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(240,240,240,0.8);
+    border: none;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out 0s;
+}
+    
+.dialog-html div {
+    max-width: 70vw;
+    min-height: 16em;
+	max-height: calc(85vh - 15vh);
+    margin: 14vh auto 0 auto;
+    padding: 1em;
+    background-color: #fdfdfd;
+    box-shadow: 0px 10px 14px -7px rgba(0,0,0,0.7), 5px 5px 16px 5px rgba(0,0,0,0);
+	transform: scale(0.8);
+    transition: transform 0.15s ease-in-out 0s;
+	overflow-y: scroll;
+}
+    
+#AjaxHTMLWindow {
+    margin-top: -2em;
+}
+
+.dialog-html-close {
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    padding: 1.4em;
+    right: 0;
+    top: 0;
+    border: none;
+    background: no-repeat center center / 1.4em;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 24l-9-9 9-9-6-6-9 9-9-9-6 6 9 9-9 9 6 6 9-9 9 9z'/%3E%3C/svg%3E");
+}
+
+/* Dialog global classes */
+    
+.dialog-open {
+    opacity: 1;
+}
+
+.dialog-open div {
+	transform: scale(1);
+}	
+	
+.dialog-close {
+    transition: opacity 0.15s ease-out 0s;
+    opacity: 0;
+}
+    
+.disable-scroll {
+    overflow: hidden;
+    height: auto;
+}
+
+/* Supports backdrop-filter */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+	.dialog-confirm, 
+	.dialog-html {
+        -webkit-backdrop-filter: grayscale(40%);
+        backdrop-filter: grayscale(40%);
+	}
+}
+    
+/* Phone (Portrait) and narrow screen */
+@media only screen and (min-width: 320px) and (max-width: 812px) {
+    .dialog-confirm div {
+        max-width: 99%;
+    }
+    .dialog-html div {
+        max-width: 99%;
+		margin: 3vh auto;
+		max-height: 85vh
+    }
+}
+
+
+/* Custom Radio and Checkbox input */
+
+:focus + label[for]:before, 
+.check-button:focus + label, 
+.radio-button:focus + label,
+[type="checkbox"]:focus + label.switch {
+	outline: 1px dotted #222;
+}	
+
+[type="radio"], 
+[type="checkbox"] {
+    opacity: 0 !important;
+    width: 0 !important;
+	overflow: hidden;
+    z-index: -1;
+}
+
+[type="radio"] + label, 
+[type="checkbox"] + label {
+    cursor: pointer;
+    margin-right: 20px;
+    display: inline-block;
+    line-height: 1.3em;
+}
+    
+[type="radio"] + label::before,
+[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin: -1px 7px 0 0;
+    background-color: #fff;
+	border: 2px solid #666;
+    vertical-align: -0.2rem;
+}
+	
+[type="radio"] + label:hover::before,
+[type="checkbox"] + label:hover::before {
+	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+	transition: box-shadow 0.2s ease-in-out;
+}
+    
+[type="radio"] + label::before {
+    border-radius: 50%;
+    transition: background 0.2s ease-in-out;
+	background: no-repeat center center / 0.5em; 
+}
+    
+[type="radio"]:checked + label::before {    
+    background: no-repeat center center / 0.8em; 
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='dimgrey'/%3e%3c/svg%3e");
+}
+    
+[type="checkbox"] + label::before {
+	border-radius: 0.1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+[type="checkbox"]:checked + label::before {
+    background: no-repeat 50% 50% / 1em;   
+    background-color: #666;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15'%3E%3Cpath d='M12 2L5 8 2 5 0 7l5 6 9-9z' fill='white'/%3E%3C/svg%3E");
+}
+    
+    
+/* Checkbox that works like a switch */
+    
+[type="checkbox"] + label.switch {
+    background: #999;
+    width: 2.5em;
+	height: 1.4rem;
+    margin: 0 0.5rem;
+    padding: 0;
+    border-radius: 0.35rem;
+	overflow: hidden;
+}
+
+[type="checkbox"] + label.switch::before {
+    background-color: #ddd;
+    width: 1.3rem;
+    transition: 0.2s;
+    border-radius: 0.35rem;
+    vertical-align: bottom;	
+	height: 1.5rem;
+	border: none;
+}
+
+[type="checkbox"]:checked + label.switch {
+    background: #090;
+}
+
+[type="checkbox"]:checked + label.switch::before {
+    margin-left: 20px;
+    background: #ddd;
+    transition: 0.2s;
+}
+	
+
+/* Checkbox and Radio Buttons */
+
+.check-button:checked + label, .radio-button:checked + label {
+    background: #aaa;
+}
+    
+.check-button + label::before, .radio-button + label::before {
+    display: none;
+}
+    
+.radio-button + label {
+    margin: 0;
+    text-align: center;
+    min-width: 5rem;
+}
+
+
+/* Phone (Portrait) and narrow screen */
+@media only screen and (min-width: 320px) and (max-width: 812px)  {
+    [type="radio"] + label::before, 
+    [type="checkbox"] + label::before {
+        margin-bottom: 0.2em;
+    }
+    
+    [type="checkbox"] + label.switch::before {
+        margin-top: -0.2em;
+    }
+}
+    
+/* Printing */
+@media only print {
+    [type="radio"] + label::before, 
+    [type="checkbox"] + label::before {
+        border: 2px solid #999;
+    }
+
+    [type="radio"]:checked + label::before, 
+    [type="checkbox"]:checked + label::before {
+        content: "✖";
+        line-height: 0.8em;
+    }
+}
+
+
+/* Accordion element */
+
+.accordion > button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid #eee;
+    font-size: 1.2em;
+    line-height: 1em;
+    outline: none;
+    padding: 0.55em;
+    text-align: right;
+}
+
+.accordion > button::after {
+    content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M16 9H9v7H7V9H0V7h7V0h2v7h7z'/%3E%3C/svg%3E");
+    margin: 0 0 0 0.5em;
+    display: inline-block;
+    transition: transform 0.4s ease-in-out 0s;
+    transform-origin: 50% 50%;
+    will-change: transform;
+}
+
+.accordion > button.active::after {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.accordion > section {
+    padding: 0 1em;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-bottom: 1px solid #eee;
+    will-change: auto;
+}
+
+/* Stepper Increment Component */
+
+.stepper-container {
+    height: 2em;
+    display: inline-block;
+    border: 1px solid #999;
+}
+    
+.stepper {
+    vertical-align: top;
+    width: 3em;
+    height: 100%;
+    font-size: 1.1em;
+    text-align: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+    
+.stepper-button {
+    width: 1.3em;
+    height: 1.2em;
+    line-height: 0.2em;
+    font-size: 1.5em;
+    padding: 0.2em;
+    background: transparent;
+    border: none;
+}
+
+
+/*********************
+Responsive elements
+*********************/
+
+/* Mobile Devices */
+@media only screen and (min-device-width: 320px) and (max-device-height: 1080px) and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Phone (Portrait) and narrow screen */
+@media only screen and (min-width: 320px) and (max-width: 920px) {
+    .page-sidebar, 
+    .page-main {
+        float: none;
+        width: auto;
+    }
+}
+
+/* Phone (Portrait) and narrow screen */
+/*
+@media only screen and (min-width: 320px) and (max-width: 812px) {
+
+}
+*/
+/* Printing */
+@media print {
+
+}
