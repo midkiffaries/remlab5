@@ -4,14 +4,19 @@ Base JavaScript
 "use strict";    
 
 // Declare Global Variables and settings
-const RemlabVersion = "4.0 GAMMA", 
+const RemlabVersion = "4.0 - Development", 
     HostName = window.location.host,
     OriginURL = window.location.protocol + "//" + HostName + "/",        
     PathName = window.location.pathname,
     HrefURL = PathName + window.location.search,
     Locale = "en-US";
 
+const App = {
+    version: () => { return RemlabVersion }
+}
+
 document.getElementById("AppVersion").textContent = RemlabVersion; 
+//document.getElementById("AppVersion").textContent = App.version(); 
 
 // Improve the behavior of input types
 (function(){
