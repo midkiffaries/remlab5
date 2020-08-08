@@ -535,19 +535,16 @@ input,
 optgroup,
 select,
 label,
-textarea {
+textarea,
+[list] {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
 	margin: 0;
 	border-radius: 0;
 	box-shadow: none;
-}
+	background-color: inherit;
 
-textarea,
-input,
-select {
-	background-color: #fff;
 }
 
 [role='button'],
@@ -569,7 +566,6 @@ textarea {
 select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	border-radius: 0;
 	text-overflow: ellipsis;
 	cursor: pointer;
 	overflow: hidden;
@@ -578,7 +574,7 @@ select {
 
 select:not([multiple]):not([size]) {
 	padding-right: 1.4em;
-	background: no-repeat right center / 1em;
+	background: no-repeat 100% 50% / 1em;
 	background-color: #fff;
 	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
 }
@@ -649,29 +645,23 @@ legend {
 	font-size: 1.1rem;
 }
 
+/* Special Fields */
+
+/*
 [type='date'],
 [type='time'],
 [type='datetime-local'],
 [type='month'] {
 	-webkit-appearance: listbox;
 }
-
+*/
 ::-webkit-datetime-edit-fields-wrapper,
 ::-webkit-datetime-edit-text,
 ::-webkit-datetime-edit-minute,
 ::-webkit-datetime-edit-hour-field,
 ::-webkit-datetime-edit-day-field,
 ::-webkit-datetime-edit-month-field,
-::-webkit-datetime-edit-year-field {
-	padding: 0;
-}
-
-/* Input Color */
-
-[type='color'] {
-	height: 1.6rem;
-}
-
+::-webkit-datetime-edit-year-field,
 ::-webkit-color-swatch-wrapper {
 	padding: 0;
 }
@@ -934,6 +924,7 @@ Responsive elements
 		font-size: 0.96em;
 	}
 
+	nav,
 	header,
 	main,
 	footer,

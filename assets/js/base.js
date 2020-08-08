@@ -41,7 +41,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
         
         // Change the value of the output[for] element based on the range element
         if (inputAttrib === "range") {
-            inputNum[i].oninput = () => {
+            inputNum[i].oninput = function() {
                 var out = this.nextElementSibling;
                 if (out.getElementsByTagName("output") && out.getAttribute("for") == this.getAttribute("id")) {
                     out.value = this.value;                   
@@ -143,6 +143,19 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
             opt.textContent = eval(list + "[" + j + "]");
             el.appendChild(opt);
         }
+    }
+}());
+
+// Panel Switch Element block, use class="panelswitch"
+(function(){
+    var panelswitch = document.getElementsByClassName("panelswitch"), 
+		l = panelswitch.length;
+	
+    for (let i = 0; i < l; i++) {
+		panelswitch[i].firstChild.nextElementSibling.addEventListener("click", () => {
+			panelswitch[i].firstChild.nextElementSibling.classList.toggle("panel-button-active");
+			panelswitch[i].lastChild.previousSibling.classList.toggle("panel-active");
+		},true);
     }
 }());
 
@@ -287,15 +300,15 @@ function closeModals(c) {
 }
 
 /**************************
-REMLAB Functions
+Global REMLAB Functions
 **************************/
 
 // The record sheet circle hash &#9675; or ○
 const thecircle = "○";
 
 // Header Navigation
-document.getElementById('btnHelp').onclick = () => {HtmlModal(HelpPage)};
-document.getElementById('btnAbout').onclick = () => {HtmlModal(AboutPage)};
+document.getElementById('btnHelp').onclick = () => { HtmlModal(HelpPage) };
+document.getElementById('btnAbout').onclick = () => { HtmlModal(AboutPage) };
 
 // Change a zero into a dash
 function zeroToDash(v) {

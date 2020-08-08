@@ -36,6 +36,45 @@ Base REMLAB Theme
 
 }
 
+/* Panel Switch Component */
+
+.panelswitch {
+    position: relative;
+    height: 12em;
+}	
+	
+.panelswitch_button {
+    
+}
+	
+.section-body {
+	position: absolute;
+	top: 2.4em;
+}	
+	
+.section-help {
+	position: absolute;
+	top: 2.4em;
+	background: #fff;
+	overflow-y: scroll;
+	opacity: 0;
+	transform: scale(0,1);
+    transform-origin: left center;
+    width: 100%;
+    height: 100%;
+}
+	
+.panel-active {
+    transition: all 0.3s ease-in-out;
+	opacity: 1;
+	transform: scale(1,1);
+	transform-origin: left center;
+}
+
+.panel-button-active {
+	background: #aaa;
+}
+
 
 
 
@@ -186,7 +225,7 @@ Custom Elements
 	overflow: hidden;
     z-index: -1;
 }
-
+ 
 [type="radio"] + label, 
 [type="checkbox"] + label {
     cursor: pointer;
@@ -221,7 +260,7 @@ Custom Elements
     
 [type="radio"]:checked + label::before {    
     background: no-repeat center center / 0.8em; 
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='dimgrey'/%3e%3c/svg%3e");
+  	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='dimgrey'/%3e%3c/svg%3e");
 }
     
 [type="checkbox"] + label::before {
@@ -269,20 +308,22 @@ Custom Elements
 }
 	
 
+
+
 /* Checkbox and Radio Buttons */
 
+.check-button + label, .radio-button + label {
+    margin: 0;
+	text-align: center;
+	background: #fafafa;
+}	
+	
 .check-button:checked + label, .radio-button:checked + label {
     background: #aaa;
 }
     
 .check-button + label::before, .radio-button + label::before {
     display: none;
-}
-    
-.radio-button + label {
-    margin: 0;
-    text-align: center;
-    min-width: 5rem;
 }
 
 
