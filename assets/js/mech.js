@@ -103,3 +103,4 @@ const TotalMass = {
 	theTotal: () => (parseFloat(this.engine() + this.is() + this.gyro() + this.cockpit() + this.jumpjets() + this.heatsinks() + this.lam() + this.poweramp() + this.armor() + this.weapons()))
 };
 
+
