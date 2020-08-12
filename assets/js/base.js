@@ -27,14 +27,14 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
         // Custom charset for input[type="number"] and input[type="tel"]        
         if (inputAttrib === "number" || inputAttrib === "tel") {
             // Accept only numbers and relative chars
-            inputNum[i].onkeypress = () => {
+            inputNum[i].onkeypress = function() {
                 return event.charCode >= 40 && event.charCode <= 57;
             }
         }
         // Custom charset for input[type="email"] and input[type="url"]
         if (inputAttrib === "email" || inputAttrib === "url") {
             // Accept everything but spaces
-            inputNum[i].onkeypress = () => {
+            inputNum[i].onkeypress = function() {
                 return event.charCode >= 33 && event.charCode <= 122;
             }    
         }
@@ -50,7 +50,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
         }
         
         // Enforce a "maxlength" on all input elements
-        inputNum[i].onkeyup = () => {
+        inputNum[i].onkeyup = function() {
             if (this.value.length > this.maxLength && this.maxLength > 0) {
                 this.value = this.value.slice(0,this.maxLength);
             }

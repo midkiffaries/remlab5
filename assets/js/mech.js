@@ -3,27 +3,22 @@ Mech Data JavaScript
 **************************/
 
 // Mech: Stats from user input fields
-const Stats = {
+const Mech = {
 	// Technology Base
-	type: "-",
-	mass: 10,
-	weightClass: 0,
+	type: "",
+	mass: 25,
 	chassis: 0,
 	techbase: 0,
-	edition: 0,
-	rules: 0,
+	edition: 1,
+	rules: 1,
 	era: 0,
 	year: 3025,
 	
 	// Movement
 	walkingMP: 1,
-	maxWalkingMP: 12,
-	legs: 2,
+	legs: 0,
 	
 	// Engine
-	engineRating: 10,
-	maxEngineRating: 400,
-	engineName: "GM",
 	engineType: 0,
 	engineMulti: 1,
 	
@@ -33,7 +28,6 @@ const Stats = {
 	
 	// Heat Sinks
 	heatsinks: 0,
-	heatsinkBase: 0,
 	heatsinkType: 0,
 	
     // Internal Components
@@ -43,13 +37,12 @@ const Stats = {
 	
 	// Internal Structure
 	isType: 0,
+	isMulti: 0,
 	ISH: 3,
 	ISC: 2,
 	IST: 1,
 	ISA: 1,
 	ISL: 1,
-	isMulti: 0,
-	isTotal: 0,
 	
     // External Armor
 	armorType: 0,
@@ -62,20 +55,20 @@ const Stats = {
 	ARA: 0,
 	ALL: 0,
 	ARL: 0,
-	armorTotal: 0,
-	maxAH: 0,
-	maxAT: 0,
-	maxAC: 0,
-	maxAA: 0,
-	maxAL: 0,
-	maxArmor: 0,
-
-	// Final Totals
-    totalDamage: 0,
-    totalDamagePerTon: 0,
-    totalHeatDisp: 0,
 	
-	// Warrior
+	// Calc Running MP
+	get running() {
+    	return Math.ceil(this.walkingMP * 1.5)
+	},
+
+	// Engine Rating
+	get engineRating() {
+		return this.walkingMP * this.mass
+	},
+};
+
+// Warrior Stats
+const Warrior = {
 	warriorName: "",
     warriorRace: 0,
     affiliation: 0,
@@ -84,9 +77,10 @@ const Stats = {
     experience: 0,
     piloting: 0,
     gunnery: 0,
-    autoeject: true
+    autoeject: true	
 };
-	
+
+
 // Mech: Total cumulated mass in tons
 const TotalMass = {	
 	engine: () => parseFloat(queryXML(Stats.enginerating/5-1,'tons','engine')) * Stats.enginemulti,
@@ -102,5 +96,4 @@ const TotalMass = {
 	weapons: () => (0),
 	theTotal: () => (parseFloat(this.engine() + this.is() + this.gyro() + this.cockpit() + this.jumpjets() + this.heatsinks() + this.lam() + this.poweramp() + this.armor() + this.weapons()))
 };
-
 

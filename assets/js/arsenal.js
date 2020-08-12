@@ -1,5 +1,5 @@
 /**************************
-JSON Tables
+JSON Tables - Weapons
 **************************/
 
 //var myWeapon = JSON.parse(Arsenal);

@@ -260,7 +260,7 @@ Custom Elements
     
 [type="radio"]:checked + label::before {    
     background: no-repeat center center / 0.8em; 
-  	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='dimgrey'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='dimgrey'/%3e%3c/svg%3e");
 }
     
 [type="checkbox"] + label::before {
@@ -312,17 +312,21 @@ Custom Elements
 
 /* Checkbox and Radio Buttons */
 
-.check-button + label, .radio-button + label {
+.check-button + label, 
+.radio-button + label {
     margin: 0;
 	text-align: center;
-	background: #fafafa;
+    background: #fafafa;
+    min-width: 6em;
 }	
 	
-.check-button:checked + label, .radio-button:checked + label {
+.check-button:checked + label, 
+.radio-button:checked + label {
     background: #aaa;
 }
     
-.check-button + label::before, .radio-button + label::before {
+.check-button + label::before, 
+.radio-button + label::before {
     display: none;
 }
 

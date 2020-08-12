@@ -126,3 +126,45 @@ const WeaponInfoPage = `
 </div>
 
 `;
+
+
+// Section - Tech Base
+const techbaseSection = `
+<section class="section-box size-half">
+    <header class="section-header">
+        <h2>Technology Base</h2>
+    </header>
+
+    <div role="tablist" class="panelswitch">
+        <button class="panelswitch_button">Info</button>
+        <div role="tabpanel" class="section-body">
+            <form class="section-form" onchange="showSectionTotals(this)" onsubmit="event.preventDefault()">
+                <p>
+                    <label>Ruleset</label> <select id="selRuleset" class="select" data-list="arrRuleSet" disabled></select>
+                    <label>Edition</label> <select id="selEdition" class="select" data-list="arrEdition" disabled></select>
+                </p>
+                <p>
+                    <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
+                </p>
+                <p>
+                    <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
+                    <label>Year</label> <input id="txtYear" type="number" value="${Stats.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
+                </p>
+            </form>
+        </div>
+        <div role="tabpanel" class="section-help">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+        </div>
+    </div>
+    
+    <footer class="section-footer">
+        <p>Rules are limited to Inner Sphere (3025)</p>
+    </footer>
+</section>
+`;
+
+document.getElementById("SectionsGrid").innerHTML = techbaseSection;
+
+function showSectionTotals(v) {
+
+}
