@@ -148,7 +148,7 @@ const techbaseSection = `
                 </p>
                 <p>
                     <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
-                    <label>Year</label> <input id="txtYear" type="number" value="${Stats.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
+                    <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
                 </p>
             </form>
         </div>
@@ -163,7 +163,42 @@ const techbaseSection = `
 </section>
 `;
 
-document.getElementById("SectionsGrid").innerHTML = techbaseSection;
+// Section - Movement
+const movementSection = `
+<section class="section-box size-half">
+    <header class="section-header">
+        <h2>Engine &amp; Movement</h2>
+    </header>
+
+    <div role="tablist" class="panelswitch">
+        <button class="panelswitch_button">Info</button>
+        <div role="tabpanel" class="section-body">
+            <form class="section-form" onchange="showSectionTotals(this)" onsubmit="event.preventDefault()">
+                <p>
+                    <label>Walking <abbr>MP</abbr></label><span class="stepper-container"><input type="number" id="txtWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1" readonly></span> Running <abbr>MP</abbr> <output for="txtWalking">${Mech.runningMP}</output>
+                </p>
+                <p>
+                    <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <span id="spnEngineRating">${Mech.engineRating} ${Mech.engineBrand}</span>
+                </p>
+                <p>
+                <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1"><label for="radioM2" role="button">4</label>
+                <!--input type="checkbox" id="chkMasc" disabled><label-- for="chkMasc"><abbr title="Myomer Accelerator Signal Circuitry">MASC</abbr></label-->
+                </p>
+            </form>
+        </div>
+        <div role="tabpanel" class="section-help">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+        </div>
+    </div>
+    
+    <footer class="section-footer">
+        <p>Rules are limited to Inner Sphere (3025)</p>
+    </footer>
+</section>
+`;
+
+// Populate techbaseSection
+document.getElementById("SectionsGrid").innerHTML = techbaseSection + movementSection;
 
 function showSectionTotals(v) {
 

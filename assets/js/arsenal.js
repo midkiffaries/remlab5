@@ -6,7 +6,7 @@ JSON Tables - Weapons
 //document.getElementById("demo").textContent = myWeapon.weapons[0].name + " " + myWeapon.weapons[0].crit;
 
 // Weapons and Equipment Table
-const Arsenal = `
+const tableArsenal = `
     {
         "weapons": [
             {
@@ -37,7 +37,7 @@ const Arsenal = `
                 "techRating": "b",
                 "availability": "a",
                 "fixed": "1"
-            }
+            },
 
             {
                 "type": "1",
@@ -73,7 +73,7 @@ const Arsenal = `
 `;
 
 // Engine Table
-const theEngine = `
+const tableEngine = `
 {
     "engine": [
         {
@@ -582,7 +582,7 @@ const theEngine = `
 
 
 // Internal Structure Table
-const theInternalStructure = `
+const tableIS = `
 {
     "is": [
         {
@@ -728,3 +728,10 @@ const theInternalStructure = `
     ]
 }
 `;
+
+// Parse JSON tables
+var weaponTable = JSON.parse(tableArsenal);
+
+var engineTable = JSON.parse(tableEngine);
+
+var isTable = JSON.parse(tableIS);

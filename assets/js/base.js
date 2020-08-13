@@ -11,12 +11,17 @@ const RemlabVersion = "4.0 - Development",
     HrefURL = PathName + window.location.search,
     Locale = "en-US";
 
-const App = {
-    version: () => { return RemlabVersion }
-}
-
 document.getElementById("AppVersion").textContent = RemlabVersion; 
-//document.getElementById("AppVersion").textContent = App.version(); 
+
+// Prevent all forms from submitting on button events
+(function(){
+    var formSubmit = document.getElementsByTagName("form"), l = formSubmit.length;
+    for (let i = 0; i < l; i++) {
+        formSubmit[i].onsubmit = function() {
+            return event.preventDefault();
+        }
+    }
+}());
 
 // Improve the behavior of input types
 (function(){

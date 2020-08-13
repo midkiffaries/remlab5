@@ -39,10 +39,6 @@ const Mech = {
 	isType: 0,
 	isMulti: 0,
 	ISH: 3,
-	ISC: 2,
-	IST: 1,
-	ISA: 1,
-	ISL: 1,
 	
     // External Armor
 	armorType: 0,
@@ -56,14 +52,39 @@ const Mech = {
 	ALL: 0,
 	ARL: 0,
 	
-	// Calc Running MP
-	get running() {
+	// Calc: Running MP
+	get runningMP() {
     	return Math.ceil(this.walkingMP * 1.5)
 	},
 
-	// Engine Rating
+	// Calc: Engine Rating
 	get engineRating() {
 		return this.walkingMP * this.mass
+	},
+
+	// Calc: Engine Brand
+	get engineBrand() {
+		return engineTable.engine[this.engineRating / 5 - 1].type
+	},
+
+	// Calc: IS Center
+	get ISC() {
+		return isTable.is[this.mass / 5 - 1].isc
+	},
+
+	// Calc: IS Torsos
+	get IST() {
+		return isTable.is[this.mass / 5 - 1].ist
+	},
+	
+	// Calc: IS Arms
+	get ISA() {
+		return isTable.is[this.mass / 5 - 1].isa
+	},
+
+	// Calc: IS Legs
+	get ISL() {
+		return isTable.is[this.mass / 5 - 1].isl
 	},
 };
 
@@ -75,8 +96,8 @@ const Warrior = {
     affiliationText: "",
     miniature: "",
     experience: 0,
-    piloting: 0,
-    gunnery: 0,
+    piloting: 5,
+    gunnery: 4,
     autoeject: true	
 };
 
@@ -97,3 +118,16 @@ const TotalMass = {
 	theTotal: () => (parseFloat(this.engine() + this.is() + this.gyro() + this.cockpit() + this.jumpjets() + this.heatsinks() + this.lam() + this.poweramp() + this.armor() + this.weapons()))
 };
 
+//
+function onchangeTotals() {
+
+}
+
+// Set the initial data from the input fields
+(function(){
+    var inputNum = document.getElementsByTagName("input"), l = inputNum.length;
+    for (let i = 0; i < l; i++) {
+        var initData = inputNum[i].getAttribute("data-init");
+        if (initData) inputNum[i].value = Mech[initData];
+    }
+}());
