@@ -419,7 +419,7 @@ textarea:focus,
 [role='textbox']:focus,
 [tabindex]:focus {
 	outline: none;
-	box-shadow: 0 0 3px 1px #999;
+	box-shadow: 0 0 1px 2px #bbb;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -526,7 +526,8 @@ input:not(:focus):invalid {
 
 [readonly],
 button > *,
-[type='button'] > * {
+[type='button'] > *,
+[role='button'] > * {
 	pointer-events: none;
 }
 
@@ -593,7 +594,7 @@ button,
 	-webkit-user-select: none;
 	user-select: none;
 }
-
+/*
 input::-webkit-file-upload-button {
 	border: 1px solid #999;
 	color: inherit;
@@ -604,7 +605,7 @@ input::-webkit-file-upload-button {
 	-webkit-touch-callout: none;
 	-webkit-appearance: none;
 }
-
+*/
 [type='checkbox'],
 [type='radio'] {
 	cursor: pointer;

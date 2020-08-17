@@ -51,7 +51,7 @@ const Mech = {
 	ARA: 0,
 	ALL: 0,
 	ARL: 0,
-	
+		
 	// Calc: Running MP
 	get runningMP() {
     	return Math.ceil(this.walkingMP * 1.5)
@@ -65,6 +65,16 @@ const Mech = {
 	// Calc: Engine Brand
 	get engineBrand() {
 		return engineTable.engine[this.engineRating / 5 - 1].type
+	},
+
+	// Calc: Engine Mass
+	get engineMass() {
+		return engineTable.engine[this.engineRating / 5 - 1].tons
+	},
+
+	// Calc: Engine Cost
+	get engineCost() {
+		return 0
 	},
 
 	// Calc: IS Center
@@ -118,12 +128,8 @@ const TotalMass = {
 	theTotal: () => (parseFloat(this.engine() + this.is() + this.gyro() + this.cockpit() + this.jumpjets() + this.heatsinks() + this.lam() + this.poweramp() + this.armor() + this.weapons()))
 };
 
-//
-function onchangeTotals() {
-
-}
-
 // Set the initial data from the input fields
+/*
 (function(){
     var inputNum = document.getElementsByTagName("input"), l = inputNum.length;
     for (let i = 0; i < l; i++) {
@@ -131,3 +137,4 @@ function onchangeTotals() {
         if (initData) inputNum[i].value = Mech[initData];
     }
 }());
+*/

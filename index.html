@@ -36,9 +36,9 @@
 <!-- Page Content -->
 <main class="page-main"> 
 
-    <form id="frmMain" onchange="">
+    <form id="frmMain" name="form" onchange="updateForm()">
 
-    <!-- SideBar -->
+    <!-- Side Bar -->
     <aside class="page-sidebar" id="SideBar">
         <p>
             <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
@@ -47,7 +47,7 @@
             <label>Chassis</label> <select id="selChassis" class="select" data-list="arrChassisType"></select>
         </p>
         <p>
-            <label>Tonnage</label> <span class="stepper-container"><input type="number" id="txtMass" value="20" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> <span id="spnWeightClass">Light</span>
+            <label>Tonnage</label> <span class="stepper-container"><input type="number" id="stepMass" value="20" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> <output for="stepMass" id="outWeightClass">Light</output>
         </p> 
         <hr>
         <p>
@@ -73,12 +73,40 @@
         <button id="btnCreateTR">Create Technical Readout</button>
     </aside>
     
+    <!-- Main Grid -->
     <div id="SectionsGrid" class="page-grid"></div>
 
+    <!--section class="section-box size-half">
+        <header class="section-header">
+            <h2>Engine &amp; Movement</h2>
+        </header>
+    
+        <div role="tablist" class="panelswitch">
+            <button class="panelswitch_button">Info</button>
+            <div role="tabpanel" class="section-body">
+                <p>
+                    <label>Walking <abbr>MP</abbr></label><span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="1" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">2</output>
+                </p>
+                <p>
+                    <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <span id="spnEngineRating"></span>
+                </p>
+                <p>
+                <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1"><label for="radioM2" role="button">4</label>
+                </p>
+            </div>
+            <div role="tabpanel" class="section-help">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+            </div>
+        </div>
+        
+        <footer class="section-footer">
+            <p>Rules are limited to Inner Sphere (3025)</p>
+        </footer>
+    </section-->
     </form>
-    <!-- Footer -->
 </main>
 
+<!-- Footer -->
 <footer class="page-footer">
     <hr>
     <p class="social-links"><a href="https://github.com/midkiffaries/remlab" title="Check out Remlab on Github" target="_blank">GitHub Project</a></p>

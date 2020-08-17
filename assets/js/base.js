@@ -13,7 +13,7 @@ const RemlabVersion = "4.0 - Development",
 
 document.getElementById("AppVersion").textContent = RemlabVersion; 
 
-// Prevent all forms from submitting on button events
+// Prevent all form elements from submitting on button events
 (function(){
     var formSubmit = document.getElementsByTagName("form"), l = formSubmit.length;
     for (let i = 0; i < l; i++) {
@@ -111,12 +111,18 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
         // Create buttons on either side of the input element
         Minus.appendBefore(el);
         Plus.appendAfter(el);
-        
+
+        // Fire the onchange event for the input element
+        el.addEventListener('change', function () {
+            updateForm();
+        });
+
         // Button step down
         el.previousElementSibling.onclick = function () {
             let x = this.nextElementSibling;
             if (parseInt(x.value) > parseInt(x.min)) {
                 x.value = parseInt(x.value) - parseInt(x.step);
+                el.dispatchEvent(new Event('change'));
             }
         };
 
@@ -125,8 +131,13 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
             let x = this.previousElementSibling;
             if (parseInt(x.value) < parseInt(x.max)) {
                 x.value = parseInt(x.value) + parseInt(x.step);
-            }            
+                el.dispatchEvent(new Event('change'));
+            }
         };
+
+        //el.nextElementSibling.addEventListener('click',function(){
+        //    el.dispatchEvent(new Event('change'));
+        //});
     }
 }());
 
@@ -242,7 +253,7 @@ function ConfirmModal(text, action) {
     }, 150);
 }
 
-   
+
 // Include pages.js
 /*
 (function(){
@@ -311,10 +322,6 @@ Global REMLAB Functions
 // The record sheet circle hash &#9675; or ○
 const thecircle = "○";
 
-// Header Navigation
-document.getElementById('btnHelp').onclick = () => { HtmlModal(HelpPage) };
-document.getElementById('btnAbout').onclick = () => { HtmlModal(AboutPage) };
-
 // Change a zero into a dash
 function zeroToDash(v) {
     if (v == 0 || v == null) {
@@ -382,11 +389,6 @@ function displayTicks(v, r) {
     return a;
 }
 
-// Generate a random number between a min and max
-function getRandomNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 // Convert null and 0 entries into underlines
 function toUnderline(v) {
     if (v == null || v == 0 || v == "(blank line)") {
@@ -395,3 +397,11 @@ function toUnderline(v) {
         return v;
     }
 }
+
+// Generate a random number between a min and max
+function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Abbriviate document element ID
+var elID = (v) => document.getElementById(v);

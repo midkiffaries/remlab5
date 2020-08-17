@@ -124,7 +124,6 @@ const WeaponInfoPage = `
         <button id="WeaponInfo-btnAdd">Add</button>
     </div>
 </div>
-
 `;
 
 
@@ -138,7 +137,7 @@ const techbaseSection = `
     <div role="tablist" class="panelswitch">
         <button class="panelswitch_button">Info</button>
         <div role="tabpanel" class="section-body">
-            <form class="section-form" onchange="showSectionTotals(this)" onsubmit="event.preventDefault()">
+            <!--form class="section-form" onchange="showSectionTotals(this)"-->
                 <p>
                     <label>Ruleset</label> <select id="selRuleset" class="select" data-list="arrRuleSet" disabled></select>
                     <label>Edition</label> <select id="selEdition" class="select" data-list="arrEdition" disabled></select>
@@ -150,7 +149,7 @@ const techbaseSection = `
                     <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
                     <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
                 </p>
-            </form>
+            </!--form-->
         </div>
         <div role="tabpanel" class="section-help">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
@@ -173,15 +172,15 @@ const movementSection = `
     <div role="tablist" class="panelswitch">
         <button class="panelswitch_button">Info</button>
         <div role="tabpanel" class="section-body">
-            <form class="section-form" onchange="showSectionTotals(this)" onsubmit="event.preventDefault()">
+            <form class="section-form" onchange="updateForm()">
                 <p>
-                    <label>Walking <abbr>MP</abbr></label><span class="stepper-container"><input type="number" id="txtWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1" readonly></span> Running <abbr>MP</abbr> <output for="txtWalking">${Mech.runningMP}</output>
+                    <label>Walking <abbr>MP</abbr></label><span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output>
                 </p>
                 <p>
-                    <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <span id="spnEngineRating">${Mech.engineRating} ${Mech.engineBrand}</span>
+                    <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
                 </p>
                 <p>
-                <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1"><label for="radioM2" role="button">4</label>
+                <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label>
                 <!--input type="checkbox" id="chkMasc" disabled><label-- for="chkMasc"><abbr title="Myomer Accelerator Signal Circuitry">MASC</abbr></label-->
                 </p>
             </form>
@@ -192,14 +191,26 @@ const movementSection = `
     </div>
     
     <footer class="section-footer">
-        <p>Rules are limited to Inner Sphere (3025)</p>
+        <ul>
+            <li>Mass <output id="outEngineMass">${Mech.engineMass}</output> tons</li>
+            <li>Crits <output id="outEngineCrit">0</output></li>
+            <li>Cost <output id="outEngineCost" class="cbills">${Mech.engineCost}</output></li>
+        </ul>
     </footer>
 </section>
 `;
 
+// Header Navigation
+document.getElementById('btnHelp').onclick = () => { HtmlModal(HelpPage) };
+document.getElementById('btnAbout').onclick = () => { HtmlModal(AboutPage) };
+
 // Populate techbaseSection
 document.getElementById("SectionsGrid").innerHTML = techbaseSection + movementSection;
 
-function showSectionTotals(v) {
-
+// Update form based on user input
+function updateForm() {
+    Mech.walkingMP = elID('stepWalking').value;
+    elID('outRunning').textContent = Mech.runningMP;
+    elID('outEngineRating').textContent = Mech.engineRating + " " + Mech.engineBrand;
+    elID('outEngineMass').textContent = addDecimal(Mech.engineMass);
 }
