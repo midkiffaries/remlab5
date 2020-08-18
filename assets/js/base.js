@@ -356,7 +356,7 @@ function isNumber(v) {
 
 // Get the remainder for the armor mass
 function armorMassAdjust() {
-    var r = Stats.ATotal() % 16;
+    var r = Mech.armorTotal % 16;
     if (r > 0 && r < 9) {
         return 0.5;
     } else if (r > 8) {
