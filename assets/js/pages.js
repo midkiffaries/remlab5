@@ -137,19 +137,17 @@ const techbaseSection = `
     <div role="tablist" class="panelswitch">
         <button class="panelswitch_button">Info</button>
         <div role="tabpanel" class="section-body">
-            <!--form class="section-form" onchange="showSectionTotals(this)"-->
-                <p>
-                    <label>Ruleset</label> <select id="selRuleset" class="select" data-list="arrRuleSet" disabled></select>
-                    <label>Edition</label> <select id="selEdition" class="select" data-list="arrEdition" disabled></select>
-                </p>
-                <p>
-                    <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
-                </p>
-                <p>
-                    <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
-                    <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
-                </p>
-            </!--form-->
+            <p>
+                <label>Ruleset</label> <select id="selRuleset" class="select" data-list="arrRuleSet" disabled></select>
+                <label>Edition</label> <select id="selEdition" class="select" data-list="arrEdition" disabled></select>
+            </p>
+            <p>
+                <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
+            </p>
+            <p>
+                <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
+                <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
+            </p>
         </div>
         <div role="tabpanel" class="section-help">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
@@ -172,18 +170,16 @@ const movementSection = `
     <div role="tablist" class="panelswitch">
         <button class="panelswitch_button">Info</button>
         <div role="tabpanel" class="section-body">
-            <form class="section-form" onchange="updateForm()">
-                <p>
-                    <label>Walking <abbr>MP</abbr></label><span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output>
-                </p>
-                <p>
-                    <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
-                </p>
-                <p>
-                <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label>
-                <!--input type="checkbox" id="chkMasc" disabled><label-- for="chkMasc"><abbr title="Myomer Accelerator Signal Circuitry">MASC</abbr></label-->
-                </p>
-            </form>
+            <p>
+                <label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output>
+            </p>
+            <p>
+                <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
+            </p>
+            <p>
+            <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label>
+            <!--input type="checkbox" id="chkMasc" disabled><label-- for="chkMasc"><abbr title="Myomer Accelerator Signal Circuitry">MASC</abbr></label-->
+            </p>
         </div>
         <div role="tabpanel" class="section-help">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
@@ -199,6 +195,35 @@ const movementSection = `
     </footer>
 </section>
 `;
+
+// name, title, content, help
+function sectionTemplate(section_name, section_title, section_content, section_help) {
+    return `
+    <section class="section-box size-half ${section_name}">
+        <header class="section-header">
+            <h2>${section_title}t</h2>
+        </header>
+    
+        <div role="tablist" class="panelswitch">
+            <button class="panelswitch_button">Info</button>
+            <div role="tabpanel" class="section-body">
+                ${section_content}
+            </div>
+            <div role="tabpanel" class="section-help">
+                ${section_help}
+            </div>
+        </div>
+        
+        <footer class="section-footer">
+            <ul>
+                <li>Mass <output id="out${section_name}"Mass">${Mech[section_name+'Mass']}</output> tons</li>
+                <li>Crits <output id="out${section_name}"Crit">0</output></li>
+                <li>Cost <output id="out${section_name}"Cost" class="cbills">${Mech[section_name+'Cost']}</output></li>
+            </ul>
+        </footer>
+    </section>
+    `;
+}
 
 // Header Navigation
 document.getElementById('btnHelp').onclick = () => { HtmlModal(HelpPage) };

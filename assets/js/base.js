@@ -15,7 +15,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Prevent all form elements from submitting on button events
 (function(){
-    var formSubmit = document.getElementsByTagName("form"), l = formSubmit.length;
+    const formSubmit = document.getElementsByTagName("form"), l = formSubmit.length;
     for (let i = 0; i < l; i++) {
         formSubmit[i].onsubmit = function() {
             return event.preventDefault();
@@ -25,7 +25,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Improve the behavior of input types
 (function(){
-    var inputNum = document.getElementsByTagName("input"), l = inputNum.length;
+    const inputNum = document.getElementsByTagName("input"), l = inputNum.length;
     for (let i = 0; i < l; i++) {
         var inputAttrib = inputNum[i].getAttribute("type");
         
@@ -36,6 +36,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
                 return event.charCode >= 40 && event.charCode <= 57;
             }
         }
+		
         // Custom charset for input[type="email"] and input[type="url"]
         if (inputAttrib === "email" || inputAttrib === "url") {
             // Accept everything but spaces
@@ -49,7 +50,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
             inputNum[i].oninput = function() {
                 var out = this.nextElementSibling;
                 if (out.getElementsByTagName("output") && out.getAttribute("for") == this.getAttribute("id")) {
-                    out.value = this.value;                   
+                    out.value = this.value;          
                 }
             }
         }
@@ -63,9 +64,17 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
     }
 }());
 
+// Append the loading="lazy" attribute to all img elements
+(function(){
+	const imgLazy = document.getElementsByTagName("img"), l = imgLazy.length;
+    for (let i = 0; i < l; i++) {
+		imgLazy[i].setAttribute("loading", "lazy");
+	}
+}());
+
 // Accordion Style Element, use class="accordion"
 (function(){
-    var acc = document.getElementsByClassName("accordion"), l = acc.length;
+    const acc = document.getElementsByClassName("accordion"), l = acc.length;
     for (let i = 0; i < l; i++) {
         acc[i].firstChild.nextSibling.onclick = function() {
             this.classList.toggle("active");
@@ -82,7 +91,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 // Stepper - Add buttons around type="Number" element with class="stepper"
 (function(){
     // Get all elements on page with class="stepper"
-    var inc = document.getElementsByClassName("stepper"), l = inc.length;
+    const inc = document.getElementsByClassName("stepper"), l = inc.length;
     
     for (let i = 0; i < l; i++) {
         var id = inc[i].getAttribute("id"),
@@ -143,7 +152,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Populate <select> with class="select" id="(id)" data-list="(arrayname)"
 (function(){
-    var inc = document.getElementsByClassName("select"), l = inc.length;
+    const inc = document.getElementsByClassName("select"), l = inc.length;
     
     // Add <select> element attributes
     for (let i = 0; i < l; i++) {
@@ -164,7 +173,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Panel Switch Element block, use class="panelswitch"
 (function(){
-    var panelswitch = document.getElementsByClassName("panelswitch"), 
+    const panelswitch = document.getElementsByClassName("panelswitch"), 
 		l = panelswitch.length;
 	
     for (let i = 0; i < l; i++) {
