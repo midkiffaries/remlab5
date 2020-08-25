@@ -2,38 +2,34 @@
 Tables and Conversions
 **************************/
 
-// Get the weight class description based the on total mass
-function weightClass(t) {
+// Convert total mass into a weight class
+var weightClass = (t) => {
+//function weightClass(t) {
     var c;
     if (t < 20) {
-        c = "Ultralight";
+        c = 'Ultralight';
     } else if (t < 40) {
-        c = "Light"; 
+        c = 'Light'; 
     } else if (t < 60) {
-        c = "Medium";
+        c = 'Medium';
     } else if (t < 80) {
-        c = "Heavy";
+        c = 'Heavy';
     } else if (t < 101) {
-        c = "Assault";
+        c = 'Assault';
     } else if (t < 201) {
-        c = "Superheavy";
+        c = 'Superheavy';
     }
     return c;
-}
+};
 
 // Convert Jumping Movement Points to meters
-function mp2Meters(v) {
-    return v * 30;
-}
+var mp2Meters = (v) => v * 30;
 
-// Remlab Page Theme Selections
-const arrTheme = [
-    'Default',
-    'Vintage'
-];
+// Convert Movement Points to KPH
+const mp2Kph = [0,14,21,32,43,54,64,75,86,97,108,118,129,140,151,162,172,184,194,201,216,230,248,261,275,290,305,318,329,340,351];
 
 // Btech Ruleset (aka Level)
-const arrRuleSet = [
+const a_RuleSet = [
     'Introductory', // Level 1
     'Standard', // Level 2
     'Advanced', // Level 2+
@@ -41,7 +37,7 @@ const arrRuleSet = [
 ];
 
 // Btech Box Set Edition
-const arrEdition = [
+const a_Edition = [
     '2nd', // Level 1
     '3rd', // Level 2
     '4th', // Level 2
@@ -49,13 +45,13 @@ const arrEdition = [
 ];
 
 // Technology Base
-const arrTechBase = [
+const a_TechBase = [
     'Inner Sphere',
     'Clan'
 ];
 
 // Mech Chassis
-const arrChassisType = [
+const a_ChassisType = [
     'BattleMech',
     'IndustrialMech',
     'Land-Air Mech'
@@ -64,7 +60,7 @@ const arrChassisType = [
 ];
 
 // Names for the Eras
-const arrEra = [
+const a_Era = [
     'Age of War',
     'Star League',
     'Succession Wars',
@@ -76,7 +72,7 @@ const arrEra = [
 ];
 
 // Names for the types of Weapons
-const arrWeaponKind = [
+const a_WeaponClass = [
     'Special',
     'Energy',
     'Ballistic',
@@ -89,7 +85,7 @@ const arrWeaponKind = [
 ];
 
 // Warrior Experience
-const arrExperience = [
+const a_Experience = [
     'Green',
     'Regular',
     'Veteran',
@@ -97,7 +93,7 @@ const arrExperience = [
 ];
 
 // Warrior Affiliation
-const arrAffiliation = [
+const a_Affiliation = [
     '(blank line)',
     'INNER SPHERE |—————————',
     'Capellan Confederation',
@@ -150,7 +146,7 @@ const arrAffiliation = [
 ];
 
 // Warrior Special Abilities
-const arrSpecialAbilities = [
+const a_SpecialAbilities = [
     'No Special Abilities',
     'Bulls-Eye Marksman',
     'Dodge Maneuver',
@@ -165,7 +161,7 @@ const arrSpecialAbilities = [
 ];
 
 // Weapon Tech Ratings
-const TechRating = {
+const a_TechRating = {
     a:'Primitive',
     b:'Low-Tech',
     c:'Common Tech',
@@ -175,7 +171,7 @@ const TechRating = {
 };
 
 // Weapon Availability ratings
-const AvailabilityRating = {
+const a_AvailabilityRating = {
     a:'Very Common',
     b:'Common',
     c:'Uncommon',
@@ -186,7 +182,7 @@ const AvailabilityRating = {
 };
 
 // Design Quirk : Positive
-const arrDQPositive = [
+const a_DQPositive = [
     'Accurate Weapon',
     'Anti-Aircraft Targeting',
     'Battle Computer',
@@ -224,7 +220,7 @@ const arrDQPositive = [
 ];
 
 // Design Quirk : Negative
-const arrDQNegative = [
+const a_DQNegative = [
     'Ammunition Feed Problem',
     'Bad Reputation',
     'Cooling System Flaws',
@@ -264,7 +260,7 @@ const arrDQNegative = [
 ];
 
 // Armor types
-const arrArmorType = [
+const a_ArmorType = [
     'Standard',
     'Ferro-Fibrous',
     'Light Ferro-Fibrous',
@@ -275,13 +271,13 @@ const arrArmorType = [
 ];
 
 // Internal Structure types
-const arrISType = [
+const a_ISType = [
     'Standard',
     'Endo Steel'
 ];
 
 // Gyro types
-const arrGyroType = [
+const a_GyroType = [
     'Standard',
     'Compact',
     'Heavy-duty',
@@ -289,31 +285,31 @@ const arrGyroType = [
 ];
 
 // Cockpit types
-const arrCockpitType = [
+const a_CockpitType = [
     'Standard',
     'Small'
 ];
 
 // Targeting System types
-const arrTargetType = [
+const a_TargetType = [
     'Standard',
     'Targeting Computer'
 ];
 
 // Heatsink types
-const arrHSType = [
+const a_HSType = [
     'Single',
     'Double'
 ];
 
 // Jump Jets types
-const arrJJType = [
+const a_JJType = [
     'Standard',
     'Improved'
 ];
 
 // Engine types
-const arrEngineType = [
+const a_EngineType = [
     'Fusion',
     //'Fusion XL',
     //'Fusion XXL',
@@ -324,21 +320,14 @@ const arrEngineType = [
     'ICE'
 ];
 
-// Leg Configuration types
-const arrLegsType = [
-    'Biped',
-    //'Tripod',
-    'Quadraped'
-];
-
 // Auto-Eject Modes
-const arrAutoEject = {
-    'false': 'Disabled',
-    'true':  'Enabled'
+const a_AutoEject = {
+    false: 'Disabled',
+    true: 'Enabled'
 };
 
-// Generate the Mech heat scale
-const arrHeatScale = {
+// Printout: Generate the Mech heat scale
+const a_HeatScale = {
     30: 'Shutdown',
     29: '',
     28: 'Ammo Explosion, avoid on 8+',
@@ -372,14 +361,11 @@ const arrHeatScale = {
     0: ''
 };
 
-// Movement Points to KPH conversion
-const mp2Kph = [0,14,21,32,43,54,64,75,86,97,108,118,129,140,151,162,172,184,194,201,216,230,248,261,275,290,305,318,329,340,351];
+// Calc BV: Defence Factor
+const a_DefenceFac = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7];
 
-// Defence Factor (Calulating BV)
-const arrDefenceFac = [1,1.1,1.2,1.3,1.4,1.5,1.6,1.7];
+// Calc BV: Target Modifier based on top speed
+const a_TargetMod = [0,0,0,1,1,2,2,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
 
-// Target Modifier based on top speed (Calulating BV)
-const arrTargetMod = [0,0,0,1,1,2,2,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
-
-// Speed Factor (Calulating BV)
-const arrSpeedFac = [0.44,0.54,0.65,0.77,0.88,1,1.12,1.24,1.37,1.5,1.63,1.76,1.89,2.02,2.16,2.3,2.44,2.58,2.72,2.86,3,3.15,3.29,3.44,3.59,3.74,4];
+// Calc BV: Speed Factor
+const a_SpeedFac = [0.44,0.54,0.65,0.77,0.88,1,1.12,1.24,1.37,1.5,1.63,1.76,1.89,2.02,2.16,2.3,2.44,2.58,2.72,2.86,3,3.15,3.29,3.44,3.59,3.74,4];

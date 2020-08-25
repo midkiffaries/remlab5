@@ -5,7 +5,7 @@ Pages JavaScript
 // About box content
 const AboutPage = `
 <h2>About REMLAB 4.0</h2>
-<img src="assets/images/remlab-icon.svg" alt="Remlab Logo" style="width:25%;float:right">
+<img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy" style="width:25%;float:right">
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
 <h3>History</h3>
@@ -138,14 +138,14 @@ const techbaseSection = `
         <button class="panelswitch_button">Info</button>
         <div role="tabpanel" class="section-body">
             <p>
-                <label>Ruleset</label> <select id="selRuleset" class="select" data-list="arrRuleSet" disabled></select>
-                <label>Edition</label> <select id="selEdition" class="select" data-list="arrEdition" disabled></select>
+                <label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select>
+                <label>Edition</label> <select id="selEdition" class="select" data-list="a_Edition" disabled></select>
             </p>
             <p>
                 <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
             </p>
             <p>
-                <label>Era</label> <select id="selEra" class="select" data-list="arrEra"></select>
+                <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
                 <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
             </p>
         </div>
@@ -174,7 +174,7 @@ const movementSection = `
                 <label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output>
             </p>
             <p>
-                <label>Type</label> <select id="selEngineType" class="select" data-list="arrEngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
+                <label>Type</label> <select id="selEngineType" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
             </p>
             <p>
             <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label>
@@ -197,11 +197,12 @@ const movementSection = `
 `;
 
 // name, title, content, help
-function sectionTemplate(section_name, section_title, section_content, section_help) {
-    return `
+//function sectionTemplate(section_name, section_title, section_content, section_help) {
+//   return `
+var Test = (section_name, section_title, section_content, section_help) => `
     <section class="section-box size-half ${section_name}">
         <header class="section-header">
-            <h2>${section_title}t</h2>
+            <h2>${section_title}</h2>
         </header>
     
         <div role="tablist" class="panelswitch">
@@ -223,19 +224,22 @@ function sectionTemplate(section_name, section_title, section_content, section_h
         </footer>
     </section>
     `;
-}
+//}
 
 // Header Navigation
-document.getElementById('btnHelp').onclick = () => { HtmlModal(HelpPage) };
-document.getElementById('btnAbout').onclick = () => { HtmlModal(AboutPage) };
+document.getElementById('btnHelp').onclick = () => HtmlModal(HelpPage);
+document.getElementById('btnAbout').onclick = () => HtmlModal(AboutPage);
 
-// Populate techbaseSection
-document.getElementById("SectionsGrid").innerHTML = techbaseSection + movementSection;
+// Footer Info
+document.getElementById("AppVersion").textContent = RemlabVersion; 
+
+// Populate the grid
+document.getElementById("SectionsGrid").innerHTML = techbaseSection + movementSection + Test("a","b","c","d");
 
 // Update form based on user input
-function updateForm() {
+var updateForm = () => {
     Mech.walkingMP = elID('stepWalking').value;
     elID('outRunning').textContent = Mech.runningMP;
     elID('outEngineRating').textContent = Mech.engineRating + " " + Mech.engineBrand;
     elID('outEngineMass').textContent = addDecimal(Mech.engineMass);
-}
+};

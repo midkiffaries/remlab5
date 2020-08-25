@@ -2,6 +2,9 @@
 Mech Data JavaScript
 **************************/
 
+// REMLAB version
+const RemlabVersion = "3.9.0001 - Development";
+
 // Mech: Stats from user input fields
 const Mech = {
 	// Technology Base
@@ -45,12 +48,16 @@ const Mech = {
 	gyroType: 0,
 	gyroCrits: 0,
 
-	// Limbs
-	leftLegCost: 3500,
-	rightLegCost: 3500,
-	leftArmCost: 2300,
-	rightArmCost: 2300,
-	
+	// Arm cost multipliers (each)
+	armupperMulti: 100,
+	armlowerMulti: 50,
+	armhandMulti: 80,
+
+	// Leg cost multipliers (each)
+	legupperMulti: 150,
+	leglowerMulti: 80,
+	legfootMulti: 120,
+
 	// Internal Structure
 	isType: 0,
 	isMulti: 1,
@@ -65,6 +72,8 @@ const Mech = {
 	ALTR: 0,
 	ACT: 0,
 	ACTR: 0,
+	ART: 0,
+	ARTR: 0,
 	ALA: 0,
 	ARA: 0,
 	ALL: 0,
@@ -78,6 +87,11 @@ const Mech = {
 	// Calc: Running MP
 	get runningMP() {
     	return Math.ceil(this.walkingMP * 1.5)
+	},
+
+	// Calc: Sprinting MP
+	get sprintingMP() {
+    	return this.walkingMP * 2
 	},
 
 	// Calc: Engine Rating
@@ -102,12 +116,12 @@ const Mech = {
 
 	// Calc: Power Amp Mass
 	get powerAmpMass() {
-		return 0
+		return Math.ceil(this.energyweaponsMass / 10)
 	},
 
 	// Calc: Power Amp Cost
 	get powerAmpCost() {
-		return 0
+		return this.powerAmpMass * 20000
 	},
 
 	// Calc: JumpJets Mass
@@ -142,12 +156,12 @@ const Mech = {
 
 	// Calc: LAM Mass
 	get lamMass() {
-		return 0
+		return this.mass / 10
 	},
 
 	// Calc: LAM Cost
 	get lamCost() {
-		return 0
+		return (this.weaponsCost + 0) * 0.75
 	},
 
 	// Calc: Gyro Mass
@@ -168,7 +182,42 @@ const Mech = {
 	// Calc: Sensors Cost
 	get sensorsCost() {
         return parseInt(this.mass * 2000)
-    }, 
+	}, 
+
+	// Calc: Upper arm cost
+	get armupperCost() {
+		return this.mass * this.armupperMulti
+	},
+
+	// Calc: Lower arm cost
+	get armlowerCost() {
+		return this.mass * this.armlowerMulti
+	},
+
+	// Calc: Hand cost
+	get armhandCost() {
+		return this.mass * this.armhandMulti
+	},
+
+	// Calc: Upper leg cost
+	get legupperCost() {
+		return this.mass * this.legupperMulti
+	},
+
+	// Calc: Lower leg cost
+	get leglowerCost() {
+		return this.mass * this.leglowerMulti
+	},
+
+	// Calc: Foot cost
+	get legfootCost() {
+		return this.mass * this.legfootMulti
+	},
+	
+	// Calc: Total structure cost
+	get totalstructureCost() {
+		return this.cockpitCost + this.lifesupportCost + this.sensorsCost + this.musculatureCost + this.gyroCost + this.engineCost + this.jumpjetsCost + this.isCost + (this.legfootCost * 2) + (this.leglowerCost * 2) + (this.legupperCost * 2)
+	},
 
 	// Calc: IS Mass
 	get isMass() {
@@ -212,6 +261,11 @@ const Mech = {
 
 	// Calc: Total Armor
 	get armorTotal() {
+		return this.AH + this.ALT + this.ALTR + this.ACT + this.ACTR + this.ART + this.ARTR + this.ALA + this.ARA + this.ALL + this.ARL
+	},
+
+	// Calc: Energy Weapons Mass
+	get energyweaponsMass() {
 		return 0
 	},
 
@@ -229,6 +283,7 @@ const Mech = {
 	get weaponsCost() {
 		return 0
 	},
+
 };
 
 // Warrior Stats
@@ -241,7 +296,7 @@ const Warrior = {
     experience: 0,
     piloting: 5,
     gunnery: 4,
-    autoeject: true	
+    autoeject: true,
 };
 
 // Crit limits by location (Biped)
@@ -253,7 +308,7 @@ const MaxCrits = {
     RL: 6, 
     LT: 12, 
     CT: 12, 
-    RT: 12
+    RT: 12,
 };
 
 // Set the initial data from the input fields

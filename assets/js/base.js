@@ -4,14 +4,11 @@ Base JavaScript
 "use strict";    
 
 // Declare Global Variables and settings
-const RemlabVersion = "4.0 - Development", 
-    HostName = window.location.host,
+const HostName = window.location.host,
     OriginURL = window.location.protocol + "//" + HostName + "/",        
     PathName = window.location.pathname,
     HrefURL = PathName + window.location.search,
     Locale = "en-US";
-
-document.getElementById("AppVersion").textContent = RemlabVersion; 
 
 // Prevent all form elements from submitting on button events
 (function(){
@@ -26,23 +23,20 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 // Improve the behavior of input types
 (function(){
     const inputNum = document.getElementsByTagName("input"), l = inputNum.length;
+	
     for (let i = 0; i < l; i++) {
         var inputAttrib = inputNum[i].getAttribute("type");
         
         // Custom charset for input[type="number"] and input[type="tel"]        
         if (inputAttrib === "number" || inputAttrib === "tel") {
             // Accept only numbers and relative chars
-            inputNum[i].onkeypress = function() {
-                return event.charCode >= 40 && event.charCode <= 57;
-            }
+            inputNum[i].onkeypress = () => event.charCode >= 40 && event.charCode <= 57;
         }
 		
         // Custom charset for input[type="email"] and input[type="url"]
         if (inputAttrib === "email" || inputAttrib === "url") {
             // Accept everything but spaces
-            inputNum[i].onkeypress = function() {
-                return event.charCode >= 33 && event.charCode <= 122;
-            }    
+            inputNum[i].onkeypress = () => event.charCode >= 33 && event.charCode <= 122;
         }
         
         // Change the value of the output[for] element based on the range element
@@ -62,14 +56,6 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
             }
         }
     }
-}());
-
-// Append the loading="lazy" attribute to all img elements
-(function(){
-	const imgLazy = document.getElementsByTagName("img"), l = imgLazy.length;
-    for (let i = 0; i < l; i++) {
-		imgLazy[i].setAttribute("loading", "lazy");
-	}
 }());
 
 // Accordion Style Element, use class="accordion"
@@ -275,8 +261,9 @@ function ConfirmModal(text, action) {
 function HtmlModal(JsVar) {    
     var aDialog = {
         dialog: document.createElement("dialog"),
-        div: document.createElement("div"),
-        section: document.createElement("section"),
+		header: document.createElement("div"),
+        inner: document.createElement("div"),
+        html: document.createElement("div"),
         button: document.createElement("button")
     };
 
@@ -287,23 +274,28 @@ function HtmlModal(JsVar) {
     aDialog.dialog.setAttribute("open", "open");        
     aDialog.dialog.setAttribute("class", "dialog-html " + JsVar);
 
-    // Dialog Box
-    aDialog.dialog.appendChild(aDialog.div);
-    aDialog.div.appendChild(aDialog.section);
-    aDialog.section.setAttribute("id", "AjaxHTMLWindow");
+    // Dialog Top
+	aDialog.dialog.appendChild(aDialog.header);
+    aDialog.header.setAttribute("class", "dialog-top");
 
-    // Append to page body
-    document.body.appendChild(aDialog.dialog);
-    document.getElementById("AjaxHTMLWindow").innerHTML = JsVar;
-    
     // Close button
-    aDialog.div.appendChild(aDialog.button);
+    aDialog.header.appendChild(aDialog.button);
     aDialog.button.setAttribute("onclick", "closeModals('dialog-html')");
     aDialog.button.setAttribute("class", "dialog-html-close");
-    aDialog.button.setAttribute("aria-label", "Close dialog box");
+    aDialog.button.setAttribute("aria-label", "Close dialog box");	
+	
+	// Inner Element
+	aDialog.dialog.appendChild(aDialog.inner);
+    aDialog.inner.setAttribute("class", "dialog-body");
+    aDialog.inner.appendChild(aDialog.html);
+    aDialog.html.setAttribute("id", "HTML_Frame");
+	
+    // Append to page body
+    document.body.appendChild(aDialog.dialog);
+    document.getElementById("HTML_Frame").innerHTML = JsVar;
 
     // Display Dialog
-    setTimeout(function(){ 
+    setTimeout(() => { 
         aDialog.dialog.classList.toggle("dialog-open");
     }, 150);
 }
@@ -328,8 +320,23 @@ function closeModals(c) {
 Global REMLAB Functions
 **************************/
 
-// The record sheet circle hash &#9675; or ○
-const thecircle = "○";
+// The record sheet circle - hash &#9675; or ○
+const theCircle = "○";
+
+// Generate a random number between a min and max
+//function getRandomNum(min, max) {
+//    return Math.floor(Math.random() * (max - min + 1)) + min;
+//}
+var getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Abbriviate document element ID
+var elID = (v) => document.getElementById(v);
+
+// Add commas to long numbers
+//function addComma(v) {
+//    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+//}
+var addComma = (v) => v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
 
 // Change a zero into a dash
 function zeroToDash(v) {
@@ -338,11 +345,6 @@ function zeroToDash(v) {
     } else {
         return v;
     }
-}
-
-// Add commas to long numbers
-function addComma(v) {
-    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
 }
 
 // Add an extra decimal place to a number
@@ -392,8 +394,8 @@ function displayRange(l, h) {
 function displayTicks(v, r) {
     var a = '';
     for (let i = 0; i < v; i++) {
-        if (i % r === 0 && i != 0) a += '<br>\n';
-        a += thecircle;
+        if (i % r === 0 && i != 0) a += "<br>\n";
+        a += theCircle;
     }
     return a;
 }
@@ -406,11 +408,3 @@ function toUnderline(v) {
         return v;
     }
 }
-
-// Generate a random number between a min and max
-function getRandomNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// Abbriviate document element ID
-var elID = (v) => document.getElementById(v);

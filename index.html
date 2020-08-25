@@ -34,48 +34,49 @@
 </header>
 
 <!-- Page Content -->
-<main class="page-main"> 
-
+<main class="page-main">
     <form id="frmMain" name="form" onchange="updateForm()">
 
-    <!-- Side Bar -->
-    <aside class="page-sidebar" id="SideBar">
-        <p>
-            <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
-        </p>
-        <p>
-            <label>Chassis</label> <select id="selChassis" class="select" data-list="arrChassisType"></select>
-        </p>
-        <p>
-            <label>Tonnage</label> <span class="stepper-container"><input type="number" id="stepMass" value="20" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> <output for="stepMass" id="outWeightClass">Light</output>
-        </p> 
-        <hr>
-        <p>
-            <label>Tonnage</label> <span id="spnCurrentMass"></span> / <span id="spnTotalMass"></span>
-        </p>
-        <p>
-            <label>Crit Slots</label> <span id="spnCurrentCrits">37</span> / <span id="spnTotalCrits">47</span>
-        </p>
-        <p>
-            <label>Total Cost</label> <span id="spnTotalCost" class="cbill"></span>
-        </p>
-        <p>
-            <label>Battle Value</label> <span id="spnTotalBV"></span>
-        </p>
-        <p>
-            <label>Alpha Strike</label> <span id="spnAlphaStrike"></span> (<span id="spnDamagePerTon">0.0</span> per ton)
-        </p>
-        <p>
-            <label>Heat Management</label> <span id="spnTotalHeat"></span> / <span id="spnHeatSinks"></span>
-        </p>
-        <hr>
-        <button id="btnCreateRS">Create Record Sheet</button>
-        <button id="btnCreateTR">Create Technical Readout</button>
-    </aside>
-    
-    <!-- Main Grid -->
-    <div id="SectionsGrid" class="page-grid"></div>
-    
+        <!-- Side Bar -->
+        <aside class="page-sidebar" id="SideBar">
+            <p>
+                <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
+            </p>
+            <p>
+                <label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select>
+            </p>
+            <p>
+                <label>Tonnage</label> <span class="stepper-container"><input type="number" id="stepMass" value="20" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> <output for="stepMass" id="outWeightClass">Light</output>
+            </p> 
+            <hr>
+            <p>
+                <label>Tonnage</label> <span id="spnCurrentMass"></span> / <span id="spnTotalMass"></span>
+            </p>
+            <p>
+                <label>Crit Slots</label> <span id="spnCurrentCrits">37</span> / <span id="spnTotalCrits">47</span>
+            </p>
+            <p>
+                <label>Total Cost</label> <span id="spnTotalCost" class="cbill"></span>
+            </p>
+            <p>
+                <label>Battle Value</label> <span id="spnTotalBV"></span>
+            </p>
+            <p>
+                <label>Alpha Strike</label> <span id="spnAlphaStrike"></span> (<span id="spnDamagePerTon">0.0</span> per ton)
+            </p>
+            <p>
+                <label>Heat Management</label> <span id="spnTotalHeat"></span> / <span id="spnHeatSinks"></span>
+            </p>
+            <hr>
+            <p>
+                <button id="btnCreateRS">Create Record Sheet</button>
+                <button id="btnCreateTR">Create Technical Readout</button>
+            </p>
+        </aside>
+        
+        <!-- Main Grid -->
+        <div id="SectionsGrid" class="page-grid"></div>
+
     </form>
 </main>
 
