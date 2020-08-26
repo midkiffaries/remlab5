@@ -42,7 +42,6 @@ html {
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	scrollbar-width: thin;
-	line-sizing: normal;
 	line-height: 1.5;
 	text-rendering: auto;
 	font-size: 100%;
@@ -66,7 +65,7 @@ Document
 *********************/
 
 body {
-	background-color: #fff;
+	background-color: #fdfdfd;
 	color: #111;
 	font-weight: 400;
 	min-height: 100%;
@@ -576,7 +575,7 @@ select {
 select:not([multiple]):not([size]) {
 	padding-right: 1.4em;
 	background: no-repeat 100% 50% / 1em;
-	background-color: #fff;
+	background-color: inherit;
 	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
 }
 
@@ -698,11 +697,11 @@ legend {
 
 [type='range'] {
 	-webkit-appearance: none;
-	height: 1.2em;
-	width: 12em;
-	vertical-align: bottom;
+	height: 1.8em;
+	width: 9em;
+	vertical-align: middle;
 	background: transparent;
-	font: 1em/1 arial, sans-serif;
+	font: 1.1em/1 arial, sans-serif;
 	border: none;
 }
 

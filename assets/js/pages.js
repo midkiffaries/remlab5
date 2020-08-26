@@ -1,5 +1,5 @@
 /**************************
-Pages JavaScript
+HTML Modals Content
 **************************/
 
 // About box content
@@ -127,117 +127,107 @@ const WeaponInfoPage = `
 `;
 
 
-// Section - Tech Base
-const techbaseSection = `
-<section class="section-box size-half">
-    <header class="section-header">
-        <h2>Technology Base</h2>
-    </header>
+/**************************
+Section Panels Constructor
+**************************/
 
-    <div role="tablist" class="panelswitch">
-        <button class="panelswitch_button">Info</button>
-        <div role="tabpanel" class="section-body">
-            <p>
-                <label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select>
-                <label>Edition</label> <select id="selEdition" class="select" data-list="a_Edition" disabled></select>
-            </p>
-            <p>
-                <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
-            </p>
-            <p>
-                <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
-                <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" onchange="Stats.year=parseInt(this.value)">
-            </p>
-        </div>
-        <div role="tabpanel" class="section-help">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
-        </div>
-    </div>
-    
-    <footer class="section-footer">
-        <p>Rules are limited to Inner Sphere (3025)</p>
-    </footer>
-</section>
-`;
+// Section Panel Data Constructor
+function SectionPanel(id, title, body, help, footer) {
+    this.id = id;
+    this.title = title;
+    this.body = body;
+    this.help = help;
+    this.footer = footer;
+}
 
-// Section - Movement
-const movementSection = `
-<section class="section-box size-half">
-    <header class="section-header">
-        <h2>Engine &amp; Movement</h2>
-    </header>
-
-    <div role="tablist" class="panelswitch">
-        <button class="panelswitch_button">Info</button>
-        <div role="tabpanel" class="section-body">
-            <p>
-                <label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output>
-            </p>
-            <p>
-                <label>Type</label> <select id="selEngineType" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
-            </p>
-            <p>
-            <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label>
-            <!--input type="checkbox" id="chkMasc" disabled><label-- for="chkMasc"><abbr title="Myomer Accelerator Signal Circuitry">MASC</abbr></label-->
-            </p>
-        </div>
-        <div role="tabpanel" class="section-help">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
-        </div>
-    </div>
-    
-    <footer class="section-footer">
-        <ul>
-            <li>Mass <output id="outEngineMass">${Mech.engineMass}</output> tons</li>
-            <li>Crits <output id="outEngineCrit">0</output></li>
-            <li>Cost <output id="outEngineCost" class="cbills">${Mech.engineCost}</output></li>
-        </ul>
-    </footer>
-</section>
-`;
-
-// name, title, content, help
-//function sectionTemplate(section_name, section_title, section_content, section_help) {
-//   return `
-var Test = (section_name, section_title, section_content, section_help) => `
-    <section class="section-box size-half ${section_name}">
+// Section HTML Template
+const sectionTemplate = (id, title, body, help, footer) => `
+    <section class="section-box size-half section-${id}">
         <header class="section-header">
-            <h2>${section_title}</h2>
+            <h2>${title}</h2>
         </header>
-    
+
         <div role="tablist" class="panelswitch">
             <button class="panelswitch_button">Info</button>
             <div role="tabpanel" class="section-body">
-                ${section_content}
+                ${body}
             </div>
             <div role="tabpanel" class="section-help">
-                ${section_help}
+                ${help}
             </div>
         </div>
-        
+
         <footer class="section-footer">
-            <ul>
-                <li>Mass <output id="out${section_name}"Mass">${Mech[section_name+'Mass']}</output> tons</li>
-                <li>Crits <output id="out${section_name}"Crit">0</output></li>
-                <li>Cost <output id="out${section_name}"Cost" class="cbills">${Mech[section_name+'Cost']}</output></li>
-            </ul>
+            ${footer}
         </footer>
     </section>
-    `;
-//}
+`;
+
+// Section : Technology Base
+const sectionTech = new SectionPanel(
+    "technology", 
+    
+    "Technology Base", 
+    
+    `<p>
+    <label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select>
+    <label>Edition</label> <select id="selEdition" class="select" data-list="a_Edition" disabled></select>
+    </p>
+    <p>
+    <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
+    </p>
+    <p>
+    <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
+    <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
+    </p>`, 
+    
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    `<p>Rules are limited to Inner Sphere (3025)</p>`
+);
+
+// Section : Engine and Movement
+const sectionEngine = new SectionPanel(
+    "engine", 
+    
+    "Engine &amp; Movement", 
+    
+    `<p>
+    <label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output>
+    </p>
+    <p>
+    <label>Type</label> <select id="selEngineType" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output>
+    </p>
+    <p>
+    <label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label>
+    </p>`, 
+    
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    `<ul>
+        <li>Mass <output id="outEngineMass">${Mech.engineMass}</output> tons</li>
+        <li>Crits <output id="outEngineCrit">0</output></li>
+        <li>Cost <output id="outEngineCost" class="cbills">${Mech.engineCost}</output></li>
+    </ul>`
+);
+
+
+
 
 // Header Navigation
 document.getElementById('btnHelp').onclick = () => HtmlModal(HelpPage);
 document.getElementById('btnAbout').onclick = () => HtmlModal(AboutPage);
 
 // Footer Info
-document.getElementById("AppVersion").textContent = RemlabVersion; 
+document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Populate the grid
-document.getElementById("SectionsGrid").innerHTML = techbaseSection + movementSection + Test("a","b","c","d");
+document.getElementById("SectionsGrid").innerHTML = 
+    sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.body, sectionTech.help, sectionTech.footer) + 
+    sectionTemplate(sectionEngine.id, sectionEngine.title, sectionEngine.body, sectionEngine.help, sectionEngine.footer);
 
 // Update form based on user input
-var updateForm = () => {
+const updateForm = () => {
     Mech.walkingMP = elID('stepWalking').value;
     elID('outRunning').textContent = Mech.runningMP;
     elID('outEngineRating').textContent = Mech.engineRating + " " + Mech.engineBrand;
