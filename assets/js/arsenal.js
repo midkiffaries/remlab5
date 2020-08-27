@@ -67,7 +67,7 @@ const tableArsenal = `
                 "techRating": "c",
                 "availability": "d",
                 "fixed": "0"
-            }
+            },
 
             {
                 "type": "1",
@@ -97,7 +97,7 @@ const tableArsenal = `
                 "techRating": "c",
                 "availability": "b",
                 "fixed": "0"
-            }
+            },
 
             {
                 "type": "1",
@@ -127,7 +127,9 @@ const tableArsenal = `
                 "techRating": "c",
                 "availability": "b",
                 "fixed": "0"
-            }
+            },
+            
+            {}
         ]
     }
 `;
