@@ -39,39 +39,49 @@
 
         <!-- Side Bar -->
         <aside class="page-sidebar" id="SideBar">
-            <p>
-                <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
-            </p>
-            <p>
-                <label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select>
-            </p>
-            <p>
-                <label>Tonnage</label> <span class="stepper-container"><input type="number" id="stepMass" value="20" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> <output for="stepMass" id="outWeightClass">Light</output>
-            </p> 
+            <div class="sidebar_baseinfo">
+                <p>
+                    <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
+                </p>
+                <p>
+                    <label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select>
+                </p>
+                <p>
+                    <label>Tonnage</label> <span class="stepper-container"><input type="number" id="stepMass" value="20" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> <output for="stepMass" id="outWeightClass"></output>
+                </p> 
+            </div>
             <hr>
-            <p>
-                <label>Tonnage</label> <output id="spnCurrentMass"></output> / <output id="spnTotalMass"></output>
-            </p>
-            <p>
-                <label>Crit Slots</label> <output id="spnCurrentCrits">37</output> / <output id="spnTotalCrits">47</output>
-            </p>
-            <p>
-                <label>Total Cost</label> <output id="spnTotalCost" class="cbill"></output>
-            </p>
-            <p>
-                <label>Battle Value</label> <output id="spnTotalBV"></output>
-            </p>
-            <p>
-                <label>Alpha Strike</label> <output id="spnAlphaStrike"></output> (<output id="spnDamagePerTon">0.0</output> per ton)
-            </p>
-            <p>
-                <label>Heat Management</label> <output id="spnTotalHeat"></output> / <output id="spnHeatSinks"></output>
-            </p>
+            <div class="sidebar_results">
+                <p>
+                    <label>Tonnage</label> <output id="spnCurrentMass">0</output> / <output id="spnTotalMass">0</output>
+                </p>
+                <p>
+                    <label>Crit Slots</label> <output id="spnCurrentCrits">37</output> / <output id="spnTotalCrits">47</output>
+                </p>
+                <p>
+                    <label>Total Cost</label> <output id="spnTotalCost" class="cbills">0</output>
+                </p>
+            </div>
+            <div class="sidebar_results">
+                <p>
+                    <label>Battle Value</label> <output id="spnTotalBV">0</output>
+                </p>
+                <p>
+                    <label>Alpha Strike</label> <output id="spnAlphaStrike">0</output> (<output id="spnDamagePerTon">0.0</output> per ton)
+                </p>
+                <p>
+                    <label>Heat Management</label> <output id="spnTotalHeat">0</output> / <output id="spnHeatSinks">0</output>
+                </p>
+            </div>
             <hr>
-            <p>
-                <button id="btnCreateRS">Create Record Sheet</button>
-                <button id="btnCreateTR">Create Technical Readout</button>
-            </p>
+            <div class="sidebar_buttons">
+                <p>
+                    <button id="btnCreateRS">Create Record Sheet</button>
+                </p>
+                <p>
+                    <button id="btnCreateTR">Create Technical Readout</button>
+                </p>
+            </div>
         </aside>
         
         <!-- Main Grid -->
@@ -94,8 +104,9 @@
 <script src="assets/js/tables.js"></script>
 <script src="assets/js/arsenal.js"></script>
 <script src="assets/js/mech.js"></script>
-<script src="assets/js/pages.js"></script>
+<script src="assets/js/panels.js"></script>
 <script src="assets/js/base.js"></script>
+<script src="assets/js/modals.js"></script>
 <script src="assets/js/printout.js"></script>
     
 </body>

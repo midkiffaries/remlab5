@@ -4,7 +4,6 @@ Tables and Conversions
 
 // Convert total mass into a weight class
 var weightClass = (t) => {
-//function weightClass(t) {
     var c;
     if (t < 20) {
         c = 'Ultralight';
@@ -162,23 +161,23 @@ const a_SpecialAbilities = [
 
 // Weapon Tech Ratings
 const a_TechRating = {
-    a:'Primitive',
-    b:'Low-Tech',
-    c:'Common Tech',
-    d:'High-Tech',
-    e:'Advanced',
-    f:'Hyper-Advanced'
+    a: 'Primitive',
+    b: 'Low-Tech',
+    c: 'Common Tech',
+    d: 'High-Tech',
+    e: 'Advanced',
+    f: 'Hyper-Advanced'
 };
 
 // Weapon Availability ratings
 const a_AvailabilityRating = {
-    a:'Very Common',
-    b:'Common',
-    c:'Uncommon',
-    d:'Rare',
-    e:'Very Rare',
-    f:'Unique',
-    x:'Unavailable'
+    a: 'Very Common',
+    b: 'Common',
+    c: 'Uncommon',
+    d: 'Rare',
+    e: 'Very Rare',
+    f: 'Unique',
+    x: 'Unavailable'
 };
 
 // Design Quirk : Positive
@@ -323,42 +322,7 @@ const a_EngineType = [
 // Auto-Eject Modes
 const a_AutoEject = {
     false: 'Disabled',
-    true: 'Enabled'
-};
-
-// Printout: Generate the Mech heat scale
-const a_HeatScale = {
-    30: 'Shutdown',
-    29: '',
-    28: 'Ammo Explosion, avoid on 8+',
-    27: '',
-    26: 'Shutdown, avoid on 10+',
-    25: '-5 Movement Points',
-    24: '+4 Modifier to Fire',
-    23: 'Ammo Explosion, avoid on 6+',
-    22: 'Shutdown, avoid on 8+',
-    21: '',
-    20: '-4 Movement Points',
-    19: 'Ammo Explosion, avoid on 4+',
-    18: 'Shutdown, avoid on 6+',
-    17: '+3 Modifier to Fire',
-    16: '',
-    15: '-3 Movement Points',
-    14: 'Shutdown, avoid on 4+',
-    13: '+2 Modifier to Fire',
-    12: '',
-    11: '',
-    10: '-2 Movement Points',
-    9: '',
-    8: '+1 Modifier to Fire',
-    7: '',
-    6: '',
-    5: '-1 Movement Points',
-    4: '',
-    3: '',
-    2: '',
-    1: '',
-    0: ''
+    true:  'Enabled'
 };
 
 // Calc BV: Defence Factor
