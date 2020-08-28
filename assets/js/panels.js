@@ -18,7 +18,6 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
         <header class="section-header">
             <h2>${title}</h2>
         </header>
-
         <div role="tablist" class="panelswitch">
             <button class="panelswitch_button">Info</button>
             <div role="tabpanel" class="section-body">
@@ -28,7 +27,6 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
                 ${help}
             </div>
         </div>
-
         <footer class="section-footer">
             ${footer}
         </footer>
@@ -108,7 +106,7 @@ const sectionJumpjets = new SectionPanel(
     
     // body
     `
-    <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="12" step="1"></span></p>
+    <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="${Mech.walkingMP}" step="1"></span></p>
     <p><label>Type</label> <select id="selJumpJetsType" class="select" data-list="a_JJType" disabled></select></p>
     `, 
     
@@ -123,12 +121,167 @@ const sectionJumpjets = new SectionPanel(
     </ul>`,
 );
 
+// Section : Heat Sinks
+const sectionHeatSinks = new SectionPanel(
+    // id
+    "heatsinks", 
+    
+    // title
+    "Heat Sinks",
+    
+    // size
+    "half",
+    
+    // body
+    `
+    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinks}" min="0" max="30" step="1"></span></p>
+    <p><label>Type</label> <select id="selHeatsinksType" class="select" data-list="a_HSType" disabled></select></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<ul>
+        <li>Mass <output id="outHeatSinksMass">${Mech.heatsinksMass}</output> tons</li>
+        <li>Crits <output id="outHeatSinksCrit">${Mech.heatsinksCrits}</output></li>
+        <li>Cost <output id="outHeatSinksCost" class="cbills">${Mech.heatsinksCost}</output></li>
+    </ul>`,
+);
+
+// Section : Internal Components
+const sectionComponents = new SectionPanel(
+    // id
+    "components", 
+    
+    // title
+    "Internal Components",
+    
+    // size
+    "half",
+    
+    // body
+    `
+    <p><label>Internal Structure</label> <select id="selIntSruct" class="select" data-list="a_ISType" disabled></select></p>
+    <p><label>Gyroscope</label> <select id="selGyro" class="select" data-list="a_GyroType" disabled></select></p>
+    <p><label>Cockpit</label> <select id="selCockpit" class="select" data-list="a_CockpitType" disabled></select></p>
+    <p><label>Targeting System</label> <select id="selTargeting" class="select" data-list="a_TargetType" disabled></select></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<ul>
+        <li>Mass <output id="outInternalMass">${Mech.internalComponentsMass}</output> tons</li>
+        <li>Crits <output id="outInternalCrit">${Mech.internalComponentsCrits}</output></li>
+        <li>Cost <output id="outInternalCost" class="cbills">${Mech.internalComponentsCost}</output></li>
+    </ul>`,
+);
+
+// Section : Design Quirks
+const sectionQuirks = new SectionPanel(
+    // id
+    "quirks", 
+    
+    // title
+    "Design Quirks",
+    
+    // size
+    "half",
+    
+    // body
+    `
+    <p><label>Positive</label></p>
+    <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
+    <!--p><label>Negative</label></p>
+    <ol-- role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol-->
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<p>The number of <i>Positive</i> and <i>Negative</i> should be equal.</p>`,
+);
+
+// Section : Weapons and Equipment
+const sectionWeapons = new SectionPanel(
+    // id
+    "weapons", 
+    
+    // title
+    "Weapons &amp; Equipment",
+    
+    // size
+    "full",
+    
+    // body
+    `
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Tons</th>
+                <th>Crits</th>
+                <th>More</th>
+            </tr>
+        </thead>
+        <tbody id="tblWeapons"></tbody>
+    </table>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<ul>
+        <li>Mass <output id="outWeaponsMass">${Mech.weaponsMass}</output> tons</li>
+        <li>Crits <output id="outWeaponsCrit">${Mech.weaponsCrits}</output></li>
+        <li>Cost <output id="outWeaponsCost" class="cbills">${Mech.weaponsCost}</output></li>
+    </ul>`,
+);
+
+// Section : Warrior
+const sectionWarrior = new SectionPanel(
+    // id
+    "warrior", 
+    
+    // title
+    "Warrior",
+    
+    // size
+    "full",
+    
+    // body
+    `
+    <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
+    <p><label>Race</label> <input id="radioR1" name="selRace" type="radio" class="radio-button" checked><label for="radioR1" role="button">Human</label><input id="radioR2" name="selRace" type="radio" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
+    <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
+    <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
+    <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
+    <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output>${Warrior.piloting}</output></p>
+    <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output>${Warrior.gunnery}</output></p>
+    <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" name="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<p>More...</p>`,
+);
+
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.size, sectionTech.body, sectionTech.help, sectionTech.footer) + 
     sectionTemplate(sectionEngine.id, sectionEngine.title, sectionEngine.size, sectionEngine.body, sectionEngine.help, sectionEngine.footer) +
-    sectionTemplate(sectionJumpjets.id, sectionJumpjets.title, sectionJumpjets.size, sectionJumpjets.body, sectionJumpjets.help, sectionJumpjets.footer)
-
+    sectionTemplate(sectionJumpjets.id, sectionJumpjets.title, sectionJumpjets.size, sectionJumpjets.body, sectionJumpjets.help, sectionJumpjets.footer) +
+    sectionTemplate(sectionHeatSinks.id, sectionHeatSinks.title, sectionHeatSinks.size, sectionHeatSinks.body, sectionHeatSinks.help, sectionHeatSinks.footer) +
+    sectionTemplate(sectionComponents.id, sectionComponents.title, sectionComponents.size, sectionComponents.body, sectionComponents.help, sectionComponents.footer) +
+    sectionTemplate(sectionQuirks.id, sectionQuirks.title, sectionQuirks.size, sectionQuirks.body, sectionQuirks.help, sectionQuirks.footer) +
+    sectionTemplate(sectionWeapons.id, sectionWeapons.title, sectionWeapons.size, sectionWeapons.body, sectionWeapons.help, sectionWeapons.footer) +
+    sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer)
 );
 
 // Update form based on user input

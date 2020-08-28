@@ -39,7 +39,8 @@ const Mech = {
     // Internal Components
 	cockpitType: 0,
 	cockpitMass: 3,
-    cockpitCost: 200000, 
+	cockpitCrits: 0,
+	cockpitCost: 200000, 
     lifesupportCost: 50000, 
 	targetingType: 0,
 	targetingMass: 0,
@@ -144,9 +145,14 @@ const Mech = {
 		return 0 + (this.heatsinks - 10)
 	},
 
-	// Calc: Internal Heat sinks
+	// Calc: Internal Heat sinks Crits
 	get heatsinksIntCrits() {
         return this.heatsinksBase - (Math.floor(this.engineRating / 25))
+	},
+
+	// Calc: Heat sinks Crits
+	get heatsinksCrits() {
+        return 0
 	},
 
 	// Calc: Heat sinks Cost
@@ -284,14 +290,29 @@ const Mech = {
 		return 0
 	},
 
+	// Calc: Combined Internal Components Mass
+	get internalComponentsMass() {
+		return this.isMass + this.gyroMass + this.cockpitMass + this.targetingMass
+	},
+
+	// Calc: Combined Internal Components Crits
+	get internalComponentsCrits() {
+		return this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits
+	},
+
+	// Calc: Combined Internal Components Cost
+	get internalComponentsCost() {
+		return this.isCost + this.gyroCost + this.cockpitCost + this.targetingCost
+	},
+
 };
 
 // Warrior Stats
 const Warrior = {
-	warriorName: "",
-    warriorRace: 0,
+	name: "",
+    race: 0,
     affiliation: 0,
-    affiliationText: "",
+    affiliationUser: "",
     miniature: "",
     experience: 0,
     piloting: 5,

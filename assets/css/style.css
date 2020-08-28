@@ -56,8 +56,8 @@ Base REMLAB Theme
 	background: #fff;
 	overflow-y: scroll;
 	opacity: 0;
-	transform: scale(0,1);
-    transform-origin: left center;
+	transform: scale(0,0);
+    transform-origin: top right;
     width: 100%;
     height: 100%;
 }
@@ -66,7 +66,7 @@ Base REMLAB Theme
     transition: all 0.3s ease-in-out;
 	opacity: 1;
 	transform: scale(1,1);
-	transform-origin: left center;
+	transform-origin: top right;
 }
 
 .panel-button-active {
@@ -438,6 +438,74 @@ Universal Elements
     padding: 0.2em;
     background: transparent;
     border: none;
+}
+
+
+/* Custom Multi Select element */
+
+.select-list {
+    display: block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.select-list li {
+    list-style: none;
+    line-height: 0.9em;
+}    
+    
+.select-list input {
+    opacity: 0 !important;
+    width: 0 !important;
+	overflow: hidden;
+    z-index: -1;
+    position: absolute;
+}
+    
+.select-list input + label:hover {
+    background-color: #fafafa;
+}    
+
+.select-list input:checked + label {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.select-list label {
+    padding: 4px;
+    width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select-list::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+.select-list::-webkit-scrollbar-track {
+    background: #eee; 
+}
+
+.select-list::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+.select-list::-webkit-scrollbar-thumb:hover {
+    background: #666; 
+}
+
+/* Sortable tables */
+.sortable thead th {
+    cursor: pointer;
+}
+
+.sortable thead th:not(:empty)::after {
+    content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14'%3E%3Cpath d='M4.235 0L0 5.928h8.47zm0 14l4.234-5.928H0z' fill='%23ccc'/%3E%3C/svg%3E");
+    padding-left: 3px;
 }
 
 

@@ -129,10 +129,40 @@ const HostName = window.location.host,
                 el.dispatchEvent(new Event('change'));
             }
         };
+    }
+}());
 
-        //el.nextElementSibling.addEventListener('click',function(){
-        //    el.dispatchEvent(new Event('change'));
-        //});
+// Populate <ul> or <ol> with class="select-list" id="(id)" data-list="(arrayname)"    
+(function(){
+    var inc = document.getElementsByClassName("select-list"), l = inc.length;
+    
+    // Add <ul> or <ol> element attributes
+    for (let i = 0; i < l; i++) {
+        var id = inc[i].getAttribute("id"),
+            listbox = document.getElementById(id),
+            lgth = eval(listbox.getAttribute("data-list")).length;
+                
+        // Create each <li> element        
+        for (let j = 0; j < lgth; j++) {
+            var li = document.createElement("li"),
+                inp = document.createElement("input"),
+                la = document.createElement("label");
+
+            // List item
+            listbox.appendChild(li);
+            li.appendChild(inp);
+            li.appendChild(la);
+
+            // Input Checkbox
+            inp.setAttribute("type", "checkbox");
+            inp.setAttribute("id", `${id}-${j}`);
+            inp.setAttribute("value", j);
+
+            // Label and text
+            la.setAttribute("for", `${id}-${j}`);
+            la.setAttribute("role", "listitem");
+            la.textContent = eval(listbox.getAttribute("data-list") + "[" + j + "]");
+        }
     }
 }());
 
@@ -169,6 +199,42 @@ const HostName = window.location.host,
 		},true);
     }
 }());
+
+// TableSort: Sort any table with class="sortable"
+(function(){
+    var table = document.querySelector("table.sortable"),
+        ths = table.querySelectorAll("thead th"), 
+        row = table.querySelectorAll("tbody tr"), 
+        tBody = table.querySelector("tbody"), 
+        docF = document.createDocumentFragment();
+
+    for (let i = 0; i < ths.length; i++){
+        ths[i].addEventListener("click", function(e) {
+            var thsArray = [].slice.call(ths),
+                rowArray = [].slice.call(row),
+                target = e.target,
+                thsIndex = thsArray.indexOf(target);
+
+            rowArray.sort(function(a,b){
+                var tdA = a.children[thsIndex].textContent,
+                tdB = b.children[thsIndex].textContent;
+                if (tdA > tdB) {
+                    return 1;
+                } else if (tdA < tdB) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+
+            rowArray.forEach(function(row){
+                docF.appendChild(row);
+            });
+
+            tBody.appendChild(docF);             
+        }, false);
+    }
+}()); 
 
 // Keyup Events
 document.addEventListener("keyup", () => {
