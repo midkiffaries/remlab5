@@ -629,7 +629,7 @@ label[for] {
 output {
 	display: inline-block;
 	font-weight: bold;
-	margin: auto 0.3em;
+	margin: auto 0.2em;
 }
 
 fieldset {

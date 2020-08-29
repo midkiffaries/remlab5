@@ -19,7 +19,7 @@
 <link rel="shortcut icon" href="assets/icons/favicon.ico">
 </head>
 
-<body class="body">
+<body class="body" onload="updateForm()">
     
 <!-- Header -->
 <header class="page-header" id="Header">
@@ -53,24 +53,24 @@
             <hr>
             <div class="sidebar_results">
                 <p>
-                    <label>Mass</label> <output id="spnCurrentMass">0</output> / <output id="spnTotalMass">0</output> tons
+                    <label>Mass</label> <output id="outCurrentMass">0</output> / <output id="outTotalMass">0</output> tons
                 </p>
                 <p>
-                    <label>Crit Slots</label> <output id="spnCurrentCrits">37</output> / <output id="spnTotalCrits">47</output>
+                    <label>Crit Slots</label> <output id="outCurrentCrits">0</output> / <output id="outTotalCrits">47</output>
                 </p>
                 <p>
-                    <label>Total Cost</label> <output id="spnTotalCost" class="cbills">0</output>
+                    <label>Total Cost</label> <output id="outTotalCost" class="cbills">0</output>
                 </p>
             </div>
             <div class="sidebar_results">
                 <p>
-                    <label>Battle Value</label> <output id="spnTotalBV">0</output>
+                    <label>Battle Value</label> <output id="outTotalBV">0</output>
                 </p>
                 <p>
-                    <label>Alpha Strike</label> <output id="spnAlphaStrike">0</output> (<output id="spnDamagePerTon">0.0</output> per ton)
+                    <label>Alpha Strike</label> <output id="outAlphaStrike">0</output> (<output id="outDamagePerTon">0.0</output> per ton)
                 </p>
                 <p>
-                    <label>Heat Management</label> <output id="spnTotalHeat">0</output> / <output id="spnHeatSinks">0</output>
+                    <label>Heat Management</label> <output id="outTotalHeat">0</output> / <output id="outHeatSinks">0</output>
                 </p>
             </div>
             <hr>

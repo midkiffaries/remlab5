@@ -201,6 +201,7 @@ const HostName = window.location.host,
 }());
 
 // TableSort: Sort any table with class="sortable"
+/*
 (function(){
     var table = document.querySelector("table.sortable"),
         ths = table.querySelectorAll("thead th"), 
@@ -235,7 +236,7 @@ const HostName = window.location.host,
         }, false);
     }
 }()); 
-
+*/
 // Keyup Events
 document.addEventListener("keyup", () => {
     if (event.keyCode === 27) { // Esc Key
@@ -432,6 +433,7 @@ function isNumber(v) {
 }
 
 // Get the remainder for the armor mass
+/*
 function armorMassAdjust() {
     var r = Mech.armorTotal % 16;
     if (r > 0 && r < 9) {
@@ -442,7 +444,7 @@ function armorMassAdjust() {
         return 0;
     }
 }
-
+*/
 // Display distance range or damage range as Low-High
 function displayRange(l, h) {
     if (l == h - 1 || h <= 1 || l == 0) {

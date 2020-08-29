@@ -257,7 +257,15 @@ const Mech = {
 
 	// Calc: Armor Mass
 	get armorMass() {
-		return Math.floor(this.armorTotal / 16) + armorMassAdjust()
+		let x, r = Mech.armorTotal % 16;
+		if (r > 0 && r < 9) {
+			x = 0.5;
+		} else if (r > 8) {
+			x = 1;
+		} else {
+			x = 0;
+		}
+		return Math.floor(this.armorTotal / 16) + x;
 	},
 
 	// Calc: Armor Cost
@@ -303,6 +311,21 @@ const Mech = {
 	// Calc: Combined Internal Components Cost
 	get internalComponentsCost() {
 		return this.isCost + this.gyroCost + this.cockpitCost + this.targetingCost
+	},
+
+	// Calc: Total mass of all components
+	get totalMass() {
+		return this.engineMass + this.jumpjetsMass + this.heatsinksMass + this.isMass + this.gyroMass + this.cockpitMass + this.targetingMass + this.armorMass + this.weaponsMass
+	},
+
+	// Calc: Total crits of all components
+	get totalCrits() {
+		return this.engineCrits + this.jumpjetsCrits + this.heatsinksCrits + this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits + this.armorCrits + this.weaponsCrits
+	},
+
+	// Calc: Total cost of all components
+	get totalCost() {
+		return 0
 	},
 
 };

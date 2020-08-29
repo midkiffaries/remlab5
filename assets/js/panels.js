@@ -12,6 +12,8 @@ function SectionPanel(id, title, size, body, help, footer) {
     this.footer = footer; // Footer Content
 }
 
+
+
 // Section HTML Template
 const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="section-box width-${size} section-${id}">
@@ -50,7 +52,7 @@ const sectionTech = new SectionPanel(
     <label>Edition</label> <select id="selEdition" class="select" data-list="a_Edition" disabled></select>
     </p>
     <p>
-    <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button"><label for="radioT2" role="button">Clan</label>
+    <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button" disabled><label for="radioT2" role="button">Clan</label>
     </p>
     <p>
     <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
@@ -78,7 +80,7 @@ const sectionEngine = new SectionPanel(
     // body
     `
     <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
-    <p><label>Type</label> <select id="selEngineType" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output></p>
+    <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output></p>
     <p><label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label></p>
     `, 
     
@@ -135,7 +137,7 @@ const sectionHeatSinks = new SectionPanel(
     // body
     `
     <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinks}" min="0" max="30" step="1"></span></p>
-    <p><label>Type</label> <select id="selHeatsinksType" class="select" data-list="a_HSType" disabled></select></p>
+    <p><label>Type</label> <select id="selHeatsinks" class="select" data-list="a_HSType" disabled></select></p>
     `, 
     
     // help
@@ -162,7 +164,7 @@ const sectionComponents = new SectionPanel(
     
     // body
     `
-    <p><label>Internal Structure</label> <select id="selIntSruct" class="select" data-list="a_ISType" disabled></select></p>
+    <p><label>Internal Structure</label> <select id="selInternalSruct" class="select" data-list="a_ISType" disabled></select></p>
     <p><label>Gyroscope</label> <select id="selGyro" class="select" data-list="a_GyroType" disabled></select></p>
     <p><label>Cockpit</label> <select id="selCockpit" class="select" data-list="a_CockpitType" disabled></select></p>
     <p><label>Targeting System</label> <select id="selTargeting" class="select" data-list="a_TargetType" disabled></select></p>
@@ -203,6 +205,35 @@ const sectionQuirks = new SectionPanel(
     
     // footer
     `<p>The number of <i>Positive</i> and <i>Negative</i> should be equal.</p>`,
+);
+
+// Section : Armor
+const sectionArmor = new SectionPanel(
+    // id
+    "armor", 
+    
+    // title
+    "Armor",
+    
+    // size
+    "full",
+    
+    // body
+    `
+    <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="spnArmorTotal">0</output>/<output id="outArmorTotalMax">0</output>
+        <input type="checkbox" id="chkBalance" disabled checked> <label for="chkBalance">Balance Armor</label></p> 
+    <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="9" step="1"></span> <output id="outMaxH">9</output></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<ul>
+        <li>Mass <output id="outArmorMass">${Mech.armorMass}</output> tons</li>
+        <li>Crits <output id="outArmorCrit">${Mech.armorCrits}</output></li>
+        <li>Cost <output id="outArmorCost" class="cbills">${Mech.armorCost}</output></li>
+    </ul>`,
 );
 
 // Section : Weapons and Equipment
@@ -280,19 +311,51 @@ document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sectionHeatSinks.id, sectionHeatSinks.title, sectionHeatSinks.size, sectionHeatSinks.body, sectionHeatSinks.help, sectionHeatSinks.footer) +
     sectionTemplate(sectionComponents.id, sectionComponents.title, sectionComponents.size, sectionComponents.body, sectionComponents.help, sectionComponents.footer) +
     sectionTemplate(sectionQuirks.id, sectionQuirks.title, sectionQuirks.size, sectionQuirks.body, sectionQuirks.help, sectionQuirks.footer) +
+    sectionTemplate(sectionArmor.id, sectionArmor.title, sectionArmor.size, sectionArmor.body, sectionArmor.help, sectionArmor.footer) +
     sectionTemplate(sectionWeapons.id, sectionWeapons.title, sectionWeapons.size, sectionWeapons.body, sectionWeapons.help, sectionWeapons.footer) +
     sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer)
 );
 
-// Update form based on user input
-const updateForm = () => {
-    // Engine Section
-    Mech.walkingMP = elID('stepWalking').value;
-    elID('outRunning').textContent = Mech.runningMP;
-    elID('outEngineRating').textContent = Mech.engineRating + " " + Mech.engineBrand;
-    elID('outEngineMass').textContent = addDecimal(Mech.engineMass);
-    elID('outEngineCost').textContent = addComma(Mech.engineCost);
-};
-
 // Footer Info
 document.getElementById("AppVersion").textContent = RemlabVersion;
+
+// Update form based on user input
+const updateForm = () => {
+    // Totals Side Bar
+    Mech.mass = elID('stepMass').value;
+    elID('outWeightClass').value = weightClass(Mech.mass);
+    elID('outTotalMass').value = addDecimal(Mech.mass);
+    elID('outCurrentMass').value = addDecimal(Mech.totalMass);
+    elID('outTotalCrits').value = Mech.baseCrits;
+    elID('outCurrentCrits').value = Mech.totalCrits;
+
+    // Engine Section
+    Mech.walkingMP = elID('stepWalking').value;
+    Mech.engineType = elID('selEngine').value;
+    elID('outRunning').value = Mech.runningMP;
+    elID('outEngineRating').value = `${Mech.engineRating} ${Mech.engineBrand}`;
+    elID('outEngineMass').value = addDecimal(Mech.engineMass);
+    elID('outEngineCost').value = addComma(Mech.engineCost);
+
+    // Jump Jets Section
+    Mech.jumpingMP = elID('stepJumping').value;
+    Mech.jumpjetsType = elID('selJumpJets').value;
+
+    // Heat Sinks Section
+    Mech.heatsinks = elID('stepHeatsinks').value;
+    Mech.heatsinkType = elID('selHeatsinks').value;
+
+    // Internal Comp Section
+    Mech.isType = elID('selInternalSruct').value;
+    Mech.gyroType = elID('selGyro').value;
+    Mech.cockpitType = elID('selCockpit').value;
+    Mech.targetingType = elID('selTargeting').value;
+
+    // Design Quirks Section
+
+    // Armor Secton
+    Mech.armorType = elID('selArmor').value;
+    // Weapons Section
+
+    // Warrior Section
+};

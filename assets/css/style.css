@@ -464,6 +464,10 @@ Universal Elements
     z-index: -1;
     position: absolute;
 }
+
+.select-list input + label::before {
+    display: none;
+}
     
 .select-list input + label:hover {
     background-color: #fafafa;
