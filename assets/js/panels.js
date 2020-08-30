@@ -15,6 +15,7 @@ function SectionPanel(id, title, size, body, help, footer) {
 
 
 // Section HTML Template
+/*
 const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="section-box width-${size} section-${id}">
         <header class="section-header">
@@ -34,11 +35,37 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
         </footer>
     </section>
 `);
+*/
+// Section HTML Template
+const sectionTemplate = (id, title, size, body, help, footer) => (`
+    <section class="section-box width-${size} section-${id}">
+        <header class="section-header">
+            <h2>${title}</h2>
+        </header>
+        <div role="tablist" class="panelswitch">
+            <button class="panelswitch_button">Info</button>
+            <div role="tabpanel" class="section-body">
+                ${body}
+            </div>
+            <div role="tabpanel" class="section-help">
+                ${help}
+            </div>
+        </div>
+        <footer class="section-footer">
+            ${footer}
+            <ul class="section-totals">
+                <li>Mass <output id="out${id}Mass">0.0</output> tons</li>
+                <li>Crits <output id="out${id}Crits">0</output></li>
+                <li>Cost <output id="out${id}Cost" class="cbills">0</output></li>
+            </ul>
+        </footer>
+    </section>
+`);
 
 // Section : Technology Base
 const sectionTech = new SectionPanel(
     // id
-    "technology", 
+    "Technology", 
     
     // title
     "Technology Base", 
@@ -69,7 +96,7 @@ const sectionTech = new SectionPanel(
 // Section : Engine and Movement
 const sectionEngine = new SectionPanel(
     // id
-    "engine", 
+    "Engine", 
     
     // title
     "Engine &amp; Movement",
@@ -88,17 +115,13 @@ const sectionEngine = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<ul>
-        <li>Mass <output id="outEngineMass">${Mech.engineMass}</output> tons</li>
-        <li>Crits <output id="outEngineCrit">${Mech.engineCrits}</output></li>
-        <li>Cost <output id="outEngineCost" class="cbills">${Mech.engineCost}</output></li>
-    </ul>`,
+    ``,
 );
 
 // Section : Jump Jets
 const sectionJumpjets = new SectionPanel(
     // id
-    "jumpjets", 
+    "JumpJets", 
     
     // title
     "Jump Jets",
@@ -109,24 +132,20 @@ const sectionJumpjets = new SectionPanel(
     // body
     `
     <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="${Mech.walkingMP}" step="1"></span></p>
-    <p><label>Type</label> <select id="selJumpJetsType" class="select" data-list="a_JJType" disabled></select></p>
+    <p><label>Type</label> <select id="selJumpJets" class="select" data-list="a_JJType" disabled></select></p>
     `, 
     
     // help
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<ul>
-        <li>Mass <output id="outJumpJetsMass">${Mech.jumpjetsMass}</output> tons</li>
-        <li>Crits <output id="outJumpJetsCrit">${Mech.jumpjetsCrits}</output></li>
-        <li>Cost <output id="outJumpJetsCost" class="cbills">${Mech.jumpjetsCost}</output></li>
-    </ul>`,
+    ``,
 );
 
 // Section : Heat Sinks
 const sectionHeatSinks = new SectionPanel(
     // id
-    "heatsinks", 
+    "HeatSinks", 
     
     // title
     "Heat Sinks",
@@ -136,25 +155,21 @@ const sectionHeatSinks = new SectionPanel(
     
     // body
     `
-    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinks}" min="0" max="30" step="1"></span></p>
-    <p><label>Type</label> <select id="selHeatsinks" class="select" data-list="a_HSType" disabled></select></p>
+    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinksBase}" min="10" max="40" step="1"></span></p>
+    <p><label>Type</label> <select id="selHeatSinks" class="select" data-list="a_HSType" disabled></select></p>
     `, 
     
     // help
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<ul>
-        <li>Mass <output id="outHeatSinksMass">${Mech.heatsinksMass}</output> tons</li>
-        <li>Crits <output id="outHeatSinksCrit">${Mech.heatsinksCrits}</output></li>
-        <li>Cost <output id="outHeatSinksCost" class="cbills">${Mech.heatsinksCost}</output></li>
-    </ul>`,
+    ``,
 );
 
 // Section : Internal Components
 const sectionComponents = new SectionPanel(
     // id
-    "components", 
+    "Internal", 
     
     // title
     "Internal Components",
@@ -174,17 +189,13 @@ const sectionComponents = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<ul>
-        <li>Mass <output id="outInternalMass">${Mech.internalComponentsMass}</output> tons</li>
-        <li>Crits <output id="outInternalCrit">${Mech.internalComponentsCrits}</output></li>
-        <li>Cost <output id="outInternalCost" class="cbills">${Mech.internalComponentsCost}</output></li>
-    </ul>`,
+    ``,
 );
 
 // Section : Design Quirks
 const sectionQuirks = new SectionPanel(
     // id
-    "quirks", 
+    "Quirks", 
     
     // title
     "Design Quirks",
@@ -210,7 +221,7 @@ const sectionQuirks = new SectionPanel(
 // Section : Armor
 const sectionArmor = new SectionPanel(
     // id
-    "armor", 
+    "Armor", 
     
     // title
     "Armor",
@@ -220,7 +231,7 @@ const sectionArmor = new SectionPanel(
     
     // body
     `
-    <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="spnArmorTotal">0</output>/<output id="outArmorTotalMax">0</output>
+    <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">0</output>/<output id="outArmorTotalMax">0</output>
         <input type="checkbox" id="chkBalance" disabled checked> <label for="chkBalance">Balance Armor</label></p> 
     <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="9" step="1"></span> <output id="outMaxH">9</output></p>
     `, 
@@ -229,17 +240,13 @@ const sectionArmor = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<ul>
-        <li>Mass <output id="outArmorMass">${Mech.armorMass}</output> tons</li>
-        <li>Crits <output id="outArmorCrit">${Mech.armorCrits}</output></li>
-        <li>Cost <output id="outArmorCost" class="cbills">${Mech.armorCost}</output></li>
-    </ul>`,
+    ``,
 );
 
 // Section : Weapons and Equipment
 const sectionWeapons = new SectionPanel(
     // id
-    "weapons", 
+    "Weapons", 
     
     // title
     "Weapons &amp; Equipment",
@@ -266,17 +273,13 @@ const sectionWeapons = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<ul>
-        <li>Mass <output id="outWeaponsMass">${Mech.weaponsMass}</output> tons</li>
-        <li>Crits <output id="outWeaponsCrit">${Mech.weaponsCrits}</output></li>
-        <li>Cost <output id="outWeaponsCost" class="cbills">${Mech.weaponsCost}</output></li>
-    </ul>`,
+    ``,
 );
 
 // Section : Warrior
 const sectionWarrior = new SectionPanel(
     // id
-    "warrior", 
+    "Warrior", 
     
     // title
     "Warrior",
@@ -335,26 +338,42 @@ const updateForm = () => {
     elID('outRunning').value = Mech.runningMP;
     elID('outEngineRating').value = `${Mech.engineRating} ${Mech.engineBrand}`;
     elID('outEngineMass').value = addDecimal(Mech.engineMass);
+    elID('outEngineCrits').value = Mech.engineCrits;
     elID('outEngineCost').value = addComma(Mech.engineCost);
 
     // Jump Jets Section
     Mech.jumpingMP = elID('stepJumping').value;
     Mech.jumpjetsType = elID('selJumpJets').value;
+    elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass);
+    elID('outJumpJetsCrits').value = Mech.jumpjetsCrits;
+    elID('outJumpJetsCost').value = addComma(Mech.jumpjetsCost);
 
     // Heat Sinks Section
-    Mech.heatsinks = elID('stepHeatsinks').value;
-    Mech.heatsinkType = elID('selHeatsinks').value;
+    Mech.heatsinks = elID('stepHeatSinks').value;
+    Mech.heatsinkType = elID('selHeatSinks').value;
+    elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass);
+    elID('outHeatSinksCrits').value = Mech.heatsinksCrits;
+    elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
     // Internal Comp Section
     Mech.isType = elID('selInternalSruct').value;
     Mech.gyroType = elID('selGyro').value;
     Mech.cockpitType = elID('selCockpit').value;
     Mech.targetingType = elID('selTargeting').value;
+    elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass);
+    elID('outInternalCrits').value = Mech.internalComponentsCrits;
+    elID('outInternalCost').value = addComma(Mech.internalComponentsCost);
 
     // Design Quirks Section
 
     // Armor Secton
     Mech.armorType = elID('selArmor').value;
+    elID('outArmorTotal').value = Mech.armorTotal;
+    elID('outArmorTotalMax').value = Mech.armorTotalMax;
+    elID('outArmorMass').value = addDecimal(Mech.armorMass);
+    elID('outArmorCrits').value = Mech.armorCrits;
+    elID('outArmorCost').value = addComma(Mech.armorCost); 
+
     // Weapons Section
 
     // Warrior Section

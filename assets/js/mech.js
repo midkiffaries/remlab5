@@ -126,8 +126,16 @@ const Mech = {
 	},
 
 	// Calc: JumpJets Mass
-	get jumpjetsMass() {	
-        return this.jumpingMP
+	get jumpjetsMass() {
+		let t;
+		if (this.mass > 55 && this.mass < 86) {
+			t = 1;
+		} else if (this.mass > 85) {
+			t = 2;
+		} else {
+			t = 0.5;
+		}
+        return this.jumpingMP * t;
 	},
 	
 	// Calc: JumpJets Crits
@@ -152,7 +160,7 @@ const Mech = {
 
 	// Calc: Heat sinks Crits
 	get heatsinksCrits() {
-        return 0
+        return this.heatsinks - this.heatsinksBase
 	},
 
 	// Calc: Heat sinks Cost
@@ -257,7 +265,7 @@ const Mech = {
 
 	// Calc: Armor Mass
 	get armorMass() {
-		let x, r = Mech.armorTotal % 16;
+		let x, r = this.armorTotal % 16;
 		if (r > 0 && r < 9) {
 			x = 0.5;
 		} else if (r > 8) {
@@ -276,6 +284,11 @@ const Mech = {
 	// Calc: Total Armor
 	get armorTotal() {
 		return this.AH + this.ALT + this.ALTR + this.ACT + this.ACTR + this.ART + this.ARTR + this.ALA + this.ARA + this.ALL + this.ARL
+	},
+
+	// Calc: Total Armor
+	get armorTotalMax() {
+		return 9 + (this.ISC * 2) + ((this.IST * 2) * 2) + ((this.ISA * 2) * 2) + ((this.ISL * 2) * 2)
 	},
 
 	// Calc: Energy Weapons Mass
@@ -320,7 +333,7 @@ const Mech = {
 
 	// Calc: Total crits of all components
 	get totalCrits() {
-		return this.engineCrits + this.jumpjetsCrits + this.heatsinksCrits + this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits + this.armorCrits + this.weaponsCrits
+		return this.engineCrits + this.jumpjetsCrits + this.heatsinksCrits + this.heatsinksIntCrits + this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits + this.armorCrits + this.weaponsCrits
 	},
 
 	// Calc: Total cost of all components
