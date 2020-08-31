@@ -231,9 +231,43 @@ const sectionArmor = new SectionPanel(
     
     // body
     `
-    <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">0</output>/<output id="outArmorTotalMax">0</output>
-        <input type="checkbox" id="chkBalance" disabled checked> <label for="chkBalance">Balance Armor</label></p> 
-    <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="9" step="1"></span> <output id="outMaxH">9</output></p>
+    <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
+        <input type="checkbox" id="chkBalance" disabled checked><label for="chkBalance">Balance Armor</label></p> 
+    <fieldset>
+        <legend>Head</legend>
+        <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1"></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
+    </fieldset>
+
+    <fieldset>
+        <legend>Torsos</legend>
+        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLT" class="stepper" value="${Mech.ALT}" min="0" max="${Mech.IST*2}" step="1"></span> 
+            Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1"></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
+        <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1"></span> 
+            Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1"></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
+        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1"></span>
+            Rear <span class="stepper-container"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1"></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
+    </fieldset>
+
+    <fieldset>
+        <legend>Arms</legend>
+        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1"></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
+        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1"></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
+    </fieldset> 
+
+    <fieldset>
+        <legend>Legs</legend>
+        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1"></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
+        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1"></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
+    </fieldset> 
+
+    <fieldset>
+        <legend>Auto Fill</legend>
+        <p><button id="btnArmorFill-100">Max</button></p>
+        <p><button id="btnArmorFill-75">75%</button></p>
+        <p><button id="btnArmorFill-50">50%</button></p>
+        <p><button id="btnArmorFill-25">25%</button></p>
+        <p><button id="btnArmorFill-0">None</button></p>
+    </fieldset>
     `, 
     
     // help
@@ -259,14 +293,30 @@ const sectionWeapons = new SectionPanel(
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>Type</th>
+                <th>Heat</th>
+                <th>Damage</th>
+                <th>Min</th>
+                <th>Short</th>
+                <th>Medium</th>
+                <th>Long</th>
                 <th>Tons</th>
                 <th>Crits</th>
-                <th>More</th>
+                <th>Ammo</th>
+                <th>Cost</th>
+                <th>BV</th>
             </tr>
         </thead>
         <tbody id="tblWeapons"></tbody>
     </table>
+
+    <div>
+        <p>NAME</p>
+        <p>MASS | CRITS</p>
+        <p>MORE...</p>
+    </div>
+
     `, 
     
     // help
@@ -294,8 +344,8 @@ const sectionWarrior = new SectionPanel(
     <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
     <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
-    <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output>${Warrior.piloting}</output></p>
-    <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output>${Warrior.gunnery}</output></p>
+    <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting">${Warrior.piloting}</output></p>
+    <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery">${Warrior.gunnery}</output></p>
     <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" name="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
     `, 
     
@@ -303,7 +353,7 @@ const sectionWarrior = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p>More...</p>`,
+    `<p>INFO</p>`,
 );
 
 // Populate the grid
@@ -325,7 +375,9 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 // Update form based on user input
 const updateForm = () => {
     // Totals Side Bar
+        // Get
     Mech.mass = elID('stepMass').value;
+        // Post
     elID('outWeightClass').value = weightClass(Mech.mass);
     elID('outTotalMass').value = addDecimal(Mech.mass);
     elID('outCurrentMass').value = addDecimal(Mech.totalMass);
@@ -333,8 +385,10 @@ const updateForm = () => {
     elID('outCurrentCrits').value = Mech.totalCrits;
 
     // Engine Section
+        // Get
     Mech.walkingMP = elID('stepWalking').value;
     Mech.engineType = elID('selEngine').value;
+        // Post
     elID('outRunning').value = Mech.runningMP;
     elID('outEngineRating').value = `${Mech.engineRating} ${Mech.engineBrand}`;
     elID('outEngineMass').value = addDecimal(Mech.engineMass);
@@ -342,24 +396,30 @@ const updateForm = () => {
     elID('outEngineCost').value = addComma(Mech.engineCost);
 
     // Jump Jets Section
+        // Get
     Mech.jumpingMP = elID('stepJumping').value;
     Mech.jumpjetsType = elID('selJumpJets').value;
+        // Post
     elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass);
     elID('outJumpJetsCrits').value = Mech.jumpjetsCrits;
     elID('outJumpJetsCost').value = addComma(Mech.jumpjetsCost);
 
     // Heat Sinks Section
+        // Get
     Mech.heatsinks = elID('stepHeatSinks').value;
     Mech.heatsinkType = elID('selHeatSinks').value;
+        // Post
     elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass);
     elID('outHeatSinksCrits').value = Mech.heatsinksCrits;
     elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
     // Internal Comp Section
+        // Get
     Mech.isType = elID('selInternalSruct').value;
     Mech.gyroType = elID('selGyro').value;
     Mech.cockpitType = elID('selCockpit').value;
     Mech.targetingType = elID('selTargeting').value;
+        // Post
     elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass);
     elID('outInternalCrits').value = Mech.internalComponentsCrits;
     elID('outInternalCost').value = addComma(Mech.internalComponentsCost);
@@ -367,7 +427,20 @@ const updateForm = () => {
     // Design Quirks Section
 
     // Armor Secton
+        // Get
     Mech.armorType = elID('selArmor').value;
+    Mech.AH = parseInt(elID('stepArmorH').value);
+    Mech.ALT = parseInt(elID('stepArmorLT').value);
+    Mech.ACT = parseInt(elID('stepArmorCT').value);
+    Mech.ART = parseInt(elID('stepArmorRT').value);
+    Mech.ALTR = parseInt(elID('stepArmorLTR').value);
+    Mech.ACTR = parseInt(elID('stepArmorCTR').value);
+    Mech.ARTR = parseInt(elID('stepArmorRTR').value);
+    Mech.ALA = parseInt(elID('stepArmorLA').value);
+    Mech.ARA = parseInt(elID('stepArmorRA').value);
+    Mech.ALL = parseInt(elID('stepArmorLL').value);
+    Mech.ARL = parseInt(elID('stepArmorRL').value);
+        // Post
     elID('outArmorTotal').value = Mech.armorTotal;
     elID('outArmorTotalMax').value = Mech.armorTotalMax;
     elID('outArmorMass').value = addDecimal(Mech.armorMass);
@@ -375,6 +448,20 @@ const updateForm = () => {
     elID('outArmorCost').value = addComma(Mech.armorCost); 
 
     // Weapons Section
+        // Post
+    elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
+    elID('outWeaponsCrits').value = Mech.weaponsCrits;
+    elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
     // Warrior Section
+        // Get
+    Warrior.name = elID('txtPilotName').value;
+    Warrior.race = document.forms.selRace.value;
+    Warrior.affiliation = elID('selAffiliation').value;
+    Warrior.affiliationUser = elID('txtAffiliation').value;
+    Warrior.miniature = elID('txtPilotName').value;
+    Warrior.experience = elID('selExperience').value;
+    Warrior.piloting = elID('rngPiloting').value;
+    Warrior.gunnery = elID('rngGunnery').value;
+    Warrior.autoeject = elID('chkAutoEject').value;
 };

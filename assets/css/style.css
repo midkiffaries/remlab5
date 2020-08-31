@@ -44,7 +44,7 @@ Base REMLAB Theme
 
 .panelswitch {
     position: relative;
-    height: 15em;
+    min-height: 6em;
 }	
 	
 .panelswitch_button {
@@ -52,7 +52,6 @@ Base REMLAB Theme
 }
 	
 .section-body {
-	position: absolute;
 	top: 2.4em;
 }	
 	

@@ -68,6 +68,7 @@ const Mech = {
     // External Armor
 	armorType: 0,
 	armorCrits: 0,
+	armorHead: 9,
 	AH: 0,
 	ALT: 0,
 	ALTR: 0,
