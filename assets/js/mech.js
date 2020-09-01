@@ -84,7 +84,15 @@ const Mech = {
 	// Combat stats
     damageTotal: 0,
     damagePerTon: 0,
-    heatTotal: 0,
+	heatTotal: 0,
+	
+	// Technical Readout
+	overviewTR: "",
+	capabilitiesTR: "",
+	historyTR: "",
+	deploymentTR: "",
+	variants: "",
+	notableTR: "",
 		
 	// Calc: Running MP
 	get runningMP() {

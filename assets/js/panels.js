@@ -13,29 +13,6 @@ function SectionPanel(id, title, size, body, help, footer) {
 }
 
 
-
-// Section HTML Template
-/*
-const sectionTemplate = (id, title, size, body, help, footer) => (`
-    <section class="section-box width-${size} section-${id}">
-        <header class="section-header">
-            <h2>${title}</h2>
-        </header>
-        <div role="tablist" class="panelswitch">
-            <button class="panelswitch_button">Info</button>
-            <div role="tabpanel" class="section-body">
-                ${body}
-            </div>
-            <div role="tabpanel" class="section-help">
-                ${help}
-            </div>
-        </div>
-        <footer class="section-footer">
-            ${footer}
-        </footer>
-    </section>
-`);
-*/
 // Section HTML Template
 const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="section-box width-${size} section-${id}">
@@ -290,7 +267,7 @@ const sectionWeapons = new SectionPanel(
     
     // body
     `
-    <table>
+    <table class="table-weapons">
         <thead>
             <tr>
                 <th></th>
@@ -312,11 +289,21 @@ const sectionWeapons = new SectionPanel(
     </table>
 
     <div>
-        <p>NAME</p>
-        <p>MASS | CRITS</p>
-        <p>MORE...</p>
+        <div>
+            <p>NAME</p>
+            <p>MASS | CRITS</p>
+            <p>MORE...</p>
+        </div>
     </div>
 
+    <div>
+        <div>
+            <h4>Location</h4>
+            <ol>
+                <li>item</li>
+            </ol>
+        </div>
+    </div>
     `, 
     
     // help
@@ -356,6 +343,34 @@ const sectionWarrior = new SectionPanel(
     `<p>INFO</p>`,
 );
 
+// Section : Technical Readout
+const sectionReadout = new SectionPanel(
+    // id
+    "Readout", 
+    
+    // title
+    "Technical Readout",
+    
+    // size
+    "full",
+    
+    // body
+    `
+    <p><label>Overview</label> <textarea id="txtOverview" placeholder="(Generated)">${Mech.overviewTR}</textarea></p>
+    <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(Generated)">${Mech.capabilitiesTR}</textarea></p>
+    <p><label>Battle History</label> <textarea id="txtHistory">${Mech.historyTR}</textarea></p>
+    <p><label>Deployment</label> <textarea id="txtDeployment">${Mech.deploymentTR}</textarea></p>
+    <p><label>Variants</label> <textarea id="txtVariants">${Mech.overviewTR}</textarea></p>
+    <p><label>Notable Units</label> <textarea id="txtNotable">${Mech.notableTR}</textarea></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<p>Content only appears on the technical readout.</p>`,
+);
+
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.size, sectionTech.body, sectionTech.help, sectionTech.footer) + 
@@ -366,7 +381,8 @@ document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sectionQuirks.id, sectionQuirks.title, sectionQuirks.size, sectionQuirks.body, sectionQuirks.help, sectionQuirks.footer) +
     sectionTemplate(sectionArmor.id, sectionArmor.title, sectionArmor.size, sectionArmor.body, sectionArmor.help, sectionArmor.footer) +
     sectionTemplate(sectionWeapons.id, sectionWeapons.title, sectionWeapons.size, sectionWeapons.body, sectionWeapons.help, sectionWeapons.footer) +
-    sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer)
+    sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer) +
+    sectionTemplate(sectionReadout.id, sectionReadout.title, sectionReadout.size, sectionReadout.body, sectionReadout.help, sectionReadout.footer)
 );
 
 // Footer Info
@@ -397,7 +413,7 @@ const updateForm = () => {
 
     // Jump Jets Section
         // Get
-    Mech.jumpingMP = elID('stepJumping').value;
+    Mech.jumpingMP = parseInt(elID('stepJumping').value);
     Mech.jumpjetsType = elID('selJumpJets').value;
         // Post
     elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass);

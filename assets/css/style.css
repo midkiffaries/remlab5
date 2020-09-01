@@ -81,7 +81,8 @@ Base REMLAB Theme
 /* Hide section-totals on certain panels */
 .section-Technology .section-totals,
 .section-Quirks .section-totals,
-.section-Warrior .section-totals {
+.section-Warrior .section-totals,
+.section-Readout .section-totals {
     display: none;
 }
 
