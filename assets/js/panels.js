@@ -285,7 +285,7 @@ const sectionWeapons = new SectionPanel(
                 <th>BV</th>
             </tr>
         </thead>
-        <tbody id="tblWeapons"></tbody>
+        <tbody id="tblWeapons">${populateWeaponsTbl()}</tbody>
     </table>
 
     <div>
@@ -481,3 +481,32 @@ const updateForm = () => {
     Warrior.gunnery = elID('rngGunnery').value;
     Warrior.autoeject = elID('chkAutoEject').value;
 };
+
+// Populate the weapons table
+function populateWeaponsTbl() {
+    let x = "";
+    
+    for (let i = 0; i < weaponTable.weapons.length - 1; i++) {
+        x += `<tr>`;
+        x += tableTD(`<button id="btnAddTblWeapon-${i}" data-id="${i}" class="tblweapons-add">+</button>`);
+        x += tableTD(weaponTable.weapons[i].name);
+        x += tableTD(weaponTable.weapons[i].heat);
+        x += tableTD(weaponTable.weapons[i].damage);
+        x += tableTD(weaponTable.weapons[i].rangeMin);
+        x += tableTD(weaponTable.weapons[i].rangeShort);
+        x += tableTD(weaponTable.weapons[i].rangeMedium);
+        x += tableTD(weaponTable.weapons[i].rangeLong);
+        x += tableTD(parseFloat(weaponTable.weapons[i].tons).toFixed(1));
+        x += tableTD(weaponTable.weapons[i].crits);
+        x += tableTD(weaponTable.weapons[i].ammo);
+        x += tableTD(weaponTable.weapons[i].cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","));
+        x += tableTD(weaponTable.weapons[i].bv);
+        x += `</tr>`;
+    }
+
+    return x;
+}
+
+function tableTD(v) {
+    return `<td>${v}</td>`;
+}

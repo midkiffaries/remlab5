@@ -26,7 +26,7 @@ const tableArsenal = `
                 "rangeLong": "0",
                 "rangeExtreme": "0",
                 "tons": "0",
-                "crit": "1",
+                "crits": "1",
                 "ammo": "0",
                 "cost": "0",
                 "bv": "0",
@@ -56,7 +56,7 @@ const tableArsenal = `
                 "rangeLong": "15",
                 "rangeExtreme": "20",
                 "tons": "5",
-                "crit": "2",
+                "crits": "2",
                 "ammo": "0",
                 "cost": "100000",
                 "bv": "124",
@@ -86,7 +86,7 @@ const tableArsenal = `
                 "rangeLong": "9",
                 "rangeExtreme": "12",
                 "tons": "1",
-                "crit": "1",
+                "crits": "1",
                 "ammo": "0",
                 "cost": "40000",
                 "bv": "48",
@@ -116,7 +116,7 @@ const tableArsenal = `
                 "rangeLong": "3",
                 "rangeExtreme": "4",
                 "tons": "0.5",
-                "crit": "1",
+                "crits": "1",
                 "ammo": "0",
                 "cost": "11250",
                 "bv": "9",
@@ -792,8 +792,8 @@ const tableIS = `
 `;
 
 // Parse JSON tables
-var weaponTable = JSON.parse(tableArsenal);
+const weaponTable = JSON.parse(tableArsenal);
 
-var engineTable = JSON.parse(tableEngine);
+const engineTable = JSON.parse(tableEngine);
 
-var isTable = JSON.parse(tableIS);
+const isTable = JSON.parse(tableIS);
