@@ -4,11 +4,11 @@ Base JavaScript
 "use strict";    
 
 // REMLAB version
-const RemlabVersion = "4.9.0010 - Development";
+const RemlabVersion = "4.9.0920 - Development";
 
 // Declare Global Variables and settings
 const HostName = window.location.host,
-    OriginURL = window.location.protocol + "//" + HostName + "/",        
+    OriginURL = `${window.location.protocol}//${HostName}/`,        
     PathName = window.location.pathname,
     HrefURL = PathName + window.location.search,
     Locale = "en-US";
@@ -50,7 +50,7 @@ function AlertModal(text, bgColor) {
     }, 6000);
 }
 
-// Display Confirmation Modal Box -- text: displayed text | action: Yes button's action/fucntion
+// Display Confirmation Modal Box -- text: displayed text | action: Yes button's action/function
 function ConfirmModal(text, action) {
     var aDialog = {
         dialog: document.createElement("dialog"),
