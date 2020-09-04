@@ -2,9 +2,6 @@
 Mech Data JavaScript
 **************************/
 
-// REMLAB version
-const RemlabVersion = "3.9.0001 - Development";
-
 // Mech: Stats from user input fields
 const Mech = {
 	// Technology Base

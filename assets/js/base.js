@@ -3,6 +3,9 @@ Base JavaScript
 **************************/
 "use strict";    
 
+// REMLAB version
+const RemlabVersion = "4.9.0010 - Development";
+
 // Declare Global Variables and settings
 const HostName = window.location.host,
     OriginURL = window.location.protocol + "//" + HostName + "/",        
@@ -10,233 +13,6 @@ const HostName = window.location.host,
     HrefURL = PathName + window.location.search,
     Locale = "en-US";
 
-// Prevent all form elements from submitting on button events
-(function(){
-    const formSubmit = document.getElementsByTagName("form"), l = formSubmit.length;
-    for (let i = 0; i < l; i++) {
-        formSubmit[i].onsubmit = function() {
-            return event.preventDefault();
-        }
-    }
-}());
-
-// Improve the behavior of input types
-(function(){
-    const inputNum = document.getElementsByTagName("input"), l = inputNum.length;
-	
-    for (let i = 0; i < l; i++) {
-        var inputAttrib = inputNum[i].getAttribute("type");
-        
-        // Custom charset for input[type="number"] and input[type="tel"]        
-        if (inputAttrib === "number" || inputAttrib === "tel") {
-            // Accept only numbers and relative chars
-            inputNum[i].onkeypress = () => event.charCode >= 40 && event.charCode <= 57;
-        }
-		
-        // Custom charset for input[type="email"] and input[type="url"]
-        if (inputAttrib === "email" || inputAttrib === "url") {
-            // Accept everything but spaces
-            inputNum[i].onkeypress = () => event.charCode >= 33 && event.charCode <= 122;
-        }
-        
-        // Change the value of the output[for] element based on the range element
-        if (inputAttrib === "range") {
-            inputNum[i].oninput = function() {
-                var out = this.nextElementSibling;
-                if (out.getElementsByTagName("output") && out.getAttribute("for") == this.getAttribute("id")) {
-                    out.value = this.value;          
-                }
-            }
-        }
-        
-        // Enforce a "maxlength" on all input elements
-        inputNum[i].onkeyup = function() {
-            if (this.value.length > this.maxLength && this.maxLength > 0) {
-                this.value = this.value.slice(0,this.maxLength);
-            }
-        }
-    }
-}());
-
-// Accordion Style Element, use class="accordion"
-(function(){
-    const acc = document.getElementsByClassName("accordion"), l = acc.length;
-    for (let i = 0; i < l; i++) {
-        acc[i].firstChild.nextSibling.onclick = function() {
-            this.classList.toggle("active");
-            var panel = this.nextSibling.nextSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            } 
-        }
-    }
-}());
-
-// Stepper - Add buttons around type="Number" element with class="stepper"
-(function(){
-    // Get all elements on page with class="stepper"
-    const inc = document.getElementsByClassName("stepper"), l = inc.length;
-    
-    for (let i = 0; i < l; i++) {
-        var id = inc[i].getAttribute("id"),
-            el = document.getElementById(id),
-            Minus = document.createElement("button"), 
-            Plus = document.createElement("button");
-        
-        // Setup buttons
-        Minus.textContent = "–";
-        Minus.className = "stepper-button";
-        Minus.setAttribute("aria-label", "Minus");
-        Plus.textContent = "+";
-        Plus.className = "stepper-button";
-        Plus.setAttribute("aria-label", "Plus");
-        
-        // Create Minus
-        Element.prototype.appendBefore = function (e) {
-            e.parentNode.insertBefore(this, e);
-        },false;
-        
-        // Create Plus
-        Element.prototype.appendAfter = function (e) {
-            e.parentNode.insertBefore(this, e.nextElementSibling);
-        },false;
-        
-        // Create buttons on either side of the input element
-        Minus.appendBefore(el);
-        Plus.appendAfter(el);
-
-        // Fire the onchange event for the input element
-        el.addEventListener('change', function () {
-            updateForm();
-        });
-
-        // Button step down
-        el.previousElementSibling.onclick = function () {
-            let x = this.nextElementSibling;
-            if (parseInt(x.value) > parseInt(x.min)) {
-                x.value = parseInt(x.value) - parseInt(x.step);
-                el.dispatchEvent(new Event('change'));
-            }
-        };
-
-        // Button step up
-        el.nextElementSibling.onclick = function () {
-            let x = this.previousElementSibling;
-            if (parseInt(x.value) < parseInt(x.max)) {
-                x.value = parseInt(x.value) + parseInt(x.step);
-                el.dispatchEvent(new Event('change'));
-            }
-        };
-    }
-}());
-
-// Populate <ul> or <ol> with class="select-list" id="(id)" data-list="(arrayname)"    
-(function(){
-    var inc = document.getElementsByClassName("select-list"), l = inc.length;
-    
-    // Add <ul> or <ol> element attributes
-    for (let i = 0; i < l; i++) {
-        var id = inc[i].getAttribute("id"),
-            listbox = document.getElementById(id),
-            lgth = eval(listbox.getAttribute("data-list")).length;
-                
-        // Create each <li> element        
-        for (let j = 0; j < lgth; j++) {
-            var li = document.createElement("li"),
-                inp = document.createElement("input"),
-                la = document.createElement("label");
-
-            // List item
-            listbox.appendChild(li);
-            li.appendChild(inp);
-            li.appendChild(la);
-
-            // Input Checkbox
-            inp.setAttribute("type", "checkbox");
-            inp.setAttribute("id", `${id}-${j}`);
-            inp.setAttribute("value", j);
-
-            // Label and text
-            la.setAttribute("for", `${id}-${j}`);
-            la.setAttribute("role", "listitem");
-            la.textContent = eval(listbox.getAttribute("data-list") + "[" + j + "]");
-        }
-    }
-}());
-
-// Populate <select> with class="select" id="(id)" data-list="(arrayname)"
-(function(){
-    const inc = document.getElementsByClassName("select"), l = inc.length;
-    
-    // Add <select> element attributes
-    for (let i = 0; i < l; i++) {
-        var id = inc[i].getAttribute("id"),
-            el = document.getElementById(id),
-            list = document.getElementById(id).getAttribute("data-list"),
-            lgth = eval(list).length;
-        
-        // Create each <option> element
-        for (let j = 0; j < lgth; j++) {
-            var opt = document.createElement("option");
-            opt.value = j;
-            opt.textContent = eval(list + "[" + j + "]");
-            el.appendChild(opt);
-        }
-    }
-}());
-
-// Panel Switch Element block, use class="panelswitch"
-(function(){
-    const panelswitch = document.getElementsByClassName("panelswitch"), 
-		l = panelswitch.length;
-	
-    for (let i = 0; i < l; i++) {
-		panelswitch[i].firstChild.nextElementSibling.addEventListener("click", () => {
-			panelswitch[i].firstChild.nextElementSibling.classList.toggle("panel-button-active");
-			panelswitch[i].lastChild.previousSibling.classList.toggle("panel-active");
-		},true);
-    }
-}());
-
-// TableSort: Sort any table with class="sortable"
-/*
-(function(){
-    var table = document.querySelector("table.sortable"),
-        ths = table.querySelectorAll("thead th"), 
-        row = table.querySelectorAll("tbody tr"), 
-        tBody = table.querySelector("tbody"), 
-        docF = document.createDocumentFragment();
-
-    for (let i = 0; i < ths.length; i++){
-        ths[i].addEventListener("click", function(e) {
-            var thsArray = [].slice.call(ths),
-                rowArray = [].slice.call(row),
-                target = e.target,
-                thsIndex = thsArray.indexOf(target);
-
-            rowArray.sort(function(a,b){
-                var tdA = a.children[thsIndex].textContent,
-                tdB = b.children[thsIndex].textContent;
-                if (tdA > tdB) {
-                    return 1;
-                } else if (tdA < tdB) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            });
-
-            rowArray.forEach(function(row){
-                docF.appendChild(row);
-            });
-
-            tBody.appendChild(docF);             
-        }, false);
-    }
-}()); 
-*/
 // Keyup Events
 document.addEventListener("keyup", () => {
     if (event.keyCode === 27) { // Esc Key
@@ -383,6 +159,7 @@ function closeModals(c) {
     }
 }
 
+
 /**************************
 Global REMLAB Functions
 **************************/
@@ -390,70 +167,42 @@ Global REMLAB Functions
 // The record sheet circle - hash &#9675; or ○
 const theCircle = "○";
 
-// Generate a random number between a min and max
-//function getRandomNum(min, max) {
-//    return Math.floor(Math.random() * (max - min + 1)) + min;
-//}
-var getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
 // Abbriviate document element ID
-var elID = (v) => document.getElementById(v);
-
-// Add commas to long numbers
-//function addComma(v) {
-//    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
-//}
-var addComma = (v) => v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
-
-// Change a zero into a dash
-function zeroToDash(v) {
-    if (v == 0 || v == null) {
-        return "-";
-    } else {
-        return v;
-    }
-}
-
-// Add an extra decimal place to a number
-function addDecimal(v) {
-    if (isNumber(v) || v == 0) {
-        return parseFloat(v).toFixed(1);
-    } else {
-        return v;
-    }
-}
+const elID = v => document.getElementById(v);
 
 // Check if the value is a number and if not make it a 0
-function isNumber(v) {
-    if (isNaN(v)) {
-        return 0;
-    } else {
-        return v;
-    }
-}
+const isNumber = v => (isNaN(v)) ? 0: v;
 
-// Get the remainder for the armor mass
-/*
-function armorMassAdjust() {
-    var r = Mech.armorTotal % 16;
-    if (r > 0 && r < 9) {
-        return 0.5;
-    } else if (r > 8) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-*/
+// Generate a random number between a min and max
+const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Add commas to long numbers
+const addComma = v => (isNumber(v)) ? v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") : v;
+
+// Change a zero into a dash
+const zeroToDash = v => (v == 0 || v == null) ? "-" : v;
+
+// Add an extra decimal place to a number
+const addDecimal = v => (isNumber(v)) ? parseFloat(v).toFixed(1) : v;
+
+// Convert null entries into underlines for the printout
+const toUnderline = v => (v == null || v == "(blank line)") ? null : v;
+
+// Convert tons into Kg
+const tons2Kg = v => v * 907;
+
+// Convert Jumping MP into meters
+const mp2Meters = v => v * 30;
+
 // Display distance range or damage range as Low-High
 function displayRange(l, h) {
     if (l == h - 1 || h <= 1 || l == 0) {
         return zeroToDash(h);
     } else {
         if (l == 1) {
-            return l + "-" + h;
+            return `${l}-${h}`;
         } else {
-            return (l+1) + "-" + h;
+            return `${l+1}-${h}`;
         }
     }
 }
@@ -462,17 +211,8 @@ function displayRange(l, h) {
 function displayTicks(v, r) {
     var a = '';
     for (let i = 0; i < v; i++) {
-        if (i % r === 0 && i != 0) a += "<br>\n";
+        if (i % r === 0 && i != 0) a += `<br>\n`;
         a += theCircle;
     }
     return a;
-}
-
-// Convert null and 0 entries into underlines
-function toUnderline(v) {
-    if (v == null || v == 0 || v == "(blank line)") {
-        return null;
-    } else {
-        return v;
-    }
 }

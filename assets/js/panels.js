@@ -327,7 +327,7 @@ const sectionWarrior = new SectionPanel(
     // body
     `
     <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
-    <p><label>Race</label> <input id="radioR1" name="selRace" type="radio" class="radio-button" checked><label for="radioR1" role="button">Human</label><input id="radioR2" name="selRace" type="radio" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
+    <p><label>Race</label> <input id="radioR1" name="radRace" type="radio" class="radio-button" checked><label for="radioR1" role="button">Human</label><input id="radioR2" name="radRace" type="radio" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
     <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
     <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
@@ -472,7 +472,7 @@ const updateForm = () => {
     // Warrior Section
         // Get
     Warrior.name = elID('txtPilotName').value;
-    Warrior.race = document.forms.selRace.value;
+    //Warrior.race = document.forms.radRace.value;
     Warrior.affiliation = elID('selAffiliation').value;
     Warrior.affiliationUser = elID('txtAffiliation').value;
     Warrior.miniature = elID('txtPilotName').value;
@@ -484,22 +484,28 @@ const updateForm = () => {
 
 // Populate the weapons table
 function populateWeaponsTbl() {
-    let x = "";
+    let x = "", sR, sM, sL;
     
     for (let i = 0; i < weaponTable.weapons.length - 1; i++) {
+        // Parse int ranges
+        sR = parseInt(weaponTable.weapons[i].rangeShort);
+        sM = parseInt(weaponTable.weapons[i].rangeMedium);
+        sL = parseInt(weaponTable.weapons[i].rangeLong);
+
+        // Generate table row
         x += `<tr>`;
         x += tableTD(`<button id="btnAddTblWeapon-${i}" data-id="${i}" class="tblweapons-add">+</button>`);
         x += tableTD(weaponTable.weapons[i].name);
         x += tableTD(weaponTable.weapons[i].heat);
         x += tableTD(weaponTable.weapons[i].damage);
-        x += tableTD(weaponTable.weapons[i].rangeMin);
-        x += tableTD(weaponTable.weapons[i].rangeShort);
-        x += tableTD(weaponTable.weapons[i].rangeMedium);
-        x += tableTD(weaponTable.weapons[i].rangeLong);
-        x += tableTD(parseFloat(weaponTable.weapons[i].tons).toFixed(1));
+        x += tableTD(zeroToDash(weaponTable.weapons[i].rangeMin));
+        x += tableTD(displayRange(1, sR));
+        x += tableTD(displayRange(sR, sM));
+        x += tableTD(displayRange(sM, sL));
+        x += tableTD(addDecimal(weaponTable.weapons[i].tons));
         x += tableTD(weaponTable.weapons[i].crits);
-        x += tableTD(weaponTable.weapons[i].ammo);
-        x += tableTD(weaponTable.weapons[i].cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","));
+        x += tableTD(zeroToDash(weaponTable.weapons[i].ammo));
+        x += tableTD(addComma(weaponTable.weapons[i].cost));
         x += tableTD(weaponTable.weapons[i].bv);
         x += `</tr>`;
     }
