@@ -534,33 +534,33 @@ const updateForm = () => {
 
 // Populate the weapons table
 function populateWeaponsTbl() {
-    let x = "", sR, sM, sL;
+    let tr, sR, sM, sL, l = weaponTable.weapons.length - 1;
     
-    for (let i = 0; i < weaponTable.weapons.length - 1; i++) {
+    for (let i = 0; i < l; i++) {
         // Parse int ranges
         sR = parseInt(weaponTable.weapons[i].rangeShort);
         sM = parseInt(weaponTable.weapons[i].rangeMedium);
         sL = parseInt(weaponTable.weapons[i].rangeLong);
 
         // Generate table row
-        x += `<tr>`;
-        x += tableTD(`<button id="btnAddTblWeapon-${i}" data-id="${i}" class="tblweapons-add">+</button>`);
-        x += tableTD(weaponTable.weapons[i].name);
-        x += tableTD(weaponTable.weapons[i].heat);
-        x += tableTD(weaponTable.weapons[i].damage);
-        x += tableTD(zeroToDash(weaponTable.weapons[i].rangeMin));
-        x += tableTD(displayRange(1, sR));
-        x += tableTD(displayRange(sR, sM));
-        x += tableTD(displayRange(sM, sL));
-        x += tableTD(addDecimal(weaponTable.weapons[i].tons));
-        x += tableTD(weaponTable.weapons[i].crits);
-        x += tableTD(zeroToDash(weaponTable.weapons[i].ammo));
-        x += tableTD(addComma(weaponTable.weapons[i].cost));
-        x += tableTD(weaponTable.weapons[i].bv);
-        x += `</tr>`;
+        tr += `<tr data-id="${i}">` 
+        + tableTD(`<button id="btnAddTblWeapon-${i}" data-id="${i}" class="tblweapons-add">+</button>`)
+        + tableTD(weaponTable.weapons[i].name)
+        + tableTD(weaponTable.weapons[i].heat)
+        + tableTD(weaponTable.weapons[i].damage)
+        + tableTD(zeroToDash(weaponTable.weapons[i].rangeMin))
+        + tableTD(displayRange(1, sR))
+        + tableTD(displayRange(sR, sM))
+        + tableTD(displayRange(sM, sL))
+        + tableTD(addDecimal(weaponTable.weapons[i].tons))
+        + tableTD(weaponTable.weapons[i].crits)
+        + tableTD(zeroToDash(weaponTable.weapons[i].ammo))
+        + tableTD(addComma(weaponTable.weapons[i].cost))
+        + tableTD(weaponTable.weapons[i].bv)
+        + `</tr>`;
     }
 
-    return x;
+    return tr;
 }
 
 function tableTD(v) {
