@@ -7,7 +7,7 @@ document.getElementById('btnHelp').onclick = () => HtmlModal(HelpModal);
 document.getElementById('btnAbout').onclick = () => HtmlModal(AboutModal);
 
 // About modal content
-const AboutModal = `
+const AboutModal = (`
 <h2>About REMLAB 4.0</h2>
 <img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy" style="width:25%;float:right">
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
@@ -25,15 +25,15 @@ const AboutModal = `
     <li><a href="http://www.battletechgame.com" target="_blank">BattleTech Computer Game</a></li>
     <li><i>...And of course all the source books.</i></li>
 </ul>
-`;
+`);
 
 // Help modal content
-const HelpModal = `
+const HelpModal = (`
 <h2>Help with REMLAB</h2>
 <p>Here are some tips for using REMLAB:</p>
 
 <h3>Limitations</h3>
-<p>Rules base - Level 1 / 3025 / Succession Wars.</p>
+<p>Rules base - <em>Level 1 / 3025 / Succession Wars</em></p>
 
 <h3>Printing</h3>
 <p>Printing results will vary some what from browser-to-browser.</p>
@@ -50,10 +50,10 @@ const HelpModal = `
 
 <h3>Browser Compatablility</h3>
 <p>The latest version of the big four browsers (Edge, Chrome, Firefox, and Safari) should work correctly with REMLAB.</p>
-`;
+`);
 
 // Weapon Info modal content
-const WeaponInfoModal = `
+const WeaponInfoModal = (`
 <div class="modal-weaponinfo">
     <h2 id="WeaponInfo-Name"></h2>
 
@@ -128,4 +128,4 @@ const WeaponInfoModal = `
         <button id="WeaponInfo-btnAdd">Add</button>
     </div>
 </div>
-`;
+`);

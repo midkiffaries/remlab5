@@ -4,7 +4,7 @@ Base JavaScript
 "use strict";    
 
 // REMLAB version
-const RemlabVersion = "4.9.0920 - Development";
+const RemlabVersion = "4.9.2009 - Development";
 
 // Declare Global Variables and settings
 const HostName = window.location.host,

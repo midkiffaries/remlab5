@@ -377,9 +377,9 @@ const MaxCrits = {
 // Set the initial data from the input fields
 /*
 (function(){
-    var inputNum = document.getElementsByTagName("input"), l = inputNum.length;
+    let inputNum = document.getElementsByTagName("input"), l = inputNum.length;
     for (let i = 0; i < l; i++) {
-        var initData = inputNum[i].getAttribute("data-init");
+        let initData = inputNum[i].getAttribute("data-init");
         if (initData) inputNum[i].value = Mech[initData];
     }
 }());

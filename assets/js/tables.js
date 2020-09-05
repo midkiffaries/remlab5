@@ -33,8 +33,8 @@ const a_RuleSet = [
 const a_Edition = [
     '2nd', // Level 1
     '3rd', // Level 2
-    '4th', // Level 2
-    '5th' // Level 2
+    '4th', // Level 2+
+    '5th' // Level 2++
 ];
 
 // Technology Base
@@ -54,14 +54,14 @@ const a_ChassisType = [
 
 // Names for the Eras
 const a_Era = [
-    'Age of War',
-    'Star League',
-    'Succession Wars',
-    'Clan Invasion',
-    'Civil War',
-    'Jihad',
-    'Republic',
-    'Dark Age'
+    'Age of War', // 2398
+    'Star League', // 2571
+    'Succession Wars', // 2781
+    'Clan Invasion', // 3050
+    'Civil War', // 3062
+    'Jihad', // 3068
+    'Republic', // 3081
+    'Dark Age' // 3131
 ];
 
 // Names for the types of Weapons

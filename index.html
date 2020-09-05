@@ -27,8 +27,8 @@
     <img src="assets/images/logo.svg" alt="REMLAB Web Mech Designer">
     <menu class="page-header-menu">
         <ul>
-            <li><button id="btnAbout">About</button></li>
             <li><button id="btnHelp">Help</button></li>
+            <li><button id="btnAbout">About</button></li>
         </ul>
     </menu>
 </header>
@@ -38,51 +38,7 @@
     <form id="frmMain" name="form" onchange="updateForm()">
 
         <!-- Side Bar -->
-        <aside class="page-sidebar" id="SideBar">
-            <div class="sidebar_baseinfo">
-                <p>
-                    <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" spellcheck="false" autocorrect="off" autofocus>
-                </p>
-                <p>
-                    <label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select>
-                </p>
-                <p>
-                    <label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="25" min="10" max="100" step="5" class="stepper" data-init="mass" readonly></span> tons <output for="stepMass" id="outWeightClass"></output>
-                </p> 
-            </div>
-            <hr>
-            <div class="sidebar_results">
-                <p>
-                    <label>Mass</label> <output id="outCurrentMass">0</output> / <output id="outTotalMass">0</output> tons
-                </p>
-                <p>
-                    <label>Crit Slots</label> <output id="outCurrentCrits">0</output> / <output id="outTotalCrits">47</output>
-                </p>
-                <p>
-                    <label>Total Cost</label> <output id="outTotalCost" class="cbills">0</output>
-                </p>
-            </div>
-            <div class="sidebar_results">
-                <p>
-                    <label>Battle Value</label> <output id="outTotalBV">0</output>
-                </p>
-                <p>
-                    <label>Alpha Strike</label> <output id="outAlphaStrike">0</output> (<output id="outDamagePerTon">0.0</output> per ton)
-                </p>
-                <p>
-                    <label>Heat Management</label> <output id="outTotalHeat">0</output> / <output id="outHeatSinks">0</output>
-                </p>
-            </div>
-            <hr>
-            <div class="sidebar_buttons">
-                <p>
-                    <button id="btnCreateRS">Create Record Sheet</button>
-                </p>
-                <p>
-                    <button id="btnCreateTR">Create Technical Readout</button>
-                </p>
-            </div>
-        </aside>
+        <aside class="page-sidebar" id="SideBar"></aside>
         
         <!-- Main Grid -->
         <div id="SectionsGrid" class="page-grid"></div>

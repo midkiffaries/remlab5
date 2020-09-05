@@ -12,7 +12,6 @@ function SectionPanel(id, title, size, body, help, footer) {
     this.footer = footer; // Footer Content
 }
 
-
 // Section HTML Template
 const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="section-box width-${size} section-${id}">
@@ -368,8 +367,56 @@ const sectionReadout = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p>Content only appears on the technical readout.</p>`,
+    `<p>Note: This content only appears on the technical readout.</p>`,
 );
+
+// Side Bar content
+const sideBar = (`
+    <div class="sidebar_baseinfo">
+        <p>
+            <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus>
+        </p>
+        <p>
+            <label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select>
+        </p>
+        <p>
+            <label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output for="stepMass" id="outWeightClass">${weightClass(Mech.mass)}</output>
+        </p> 
+    </div>
+    <hr>
+    <div class="sidebar_results">
+        <p>
+            <label>Mass</label> <output id="outCurrentMass">0</output> / <output id="outTotalMass">${Mech.mass}</output> tons
+        </p>
+        <p>
+            <label>Crit Slots</label> <output id="outCurrentCrits">0</output> / <output id="outTotalCrits">${Mech.baseCrits}</output>
+        </p>
+        <p>
+            <label>Total Cost</label> <output id="outTotalCost" class="cbills">0</output>
+        </p>
+    </div>
+    <div class="sidebar_results">
+        <p>
+            <label>Battle Value</label> <output id="outTotalBV">0</output>
+        </p>
+        <p>
+            <label>Alpha Strike</label> <output id="outAlphaStrike">0</output> (<output id="outDamagePerTon">0.0</output> per ton)
+        </p>
+        <p>
+            <label>Heat Management</label> <output id="outTotalHeat">0</output> / <output id="outHeatSinks">0</output>
+        </p>
+    </div>
+    <hr>
+    <div class="sidebar_buttons">
+        <p>
+            <button id="btnCreateRS">Create Record Sheet</button>
+        </p>
+        <p>
+            <button id="btnCreateTR">Create Technical Readout</button>
+        </p>
+    </div>
+
+`);
 
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
@@ -384,6 +431,9 @@ document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer) +
     sectionTemplate(sectionReadout.id, sectionReadout.title, sectionReadout.size, sectionReadout.body, sectionReadout.help, sectionReadout.footer)
 );
+
+// Populate the side bar
+document.getElementById("SideBar").innerHTML = sideBar;
 
 // Footer Info
 document.getElementById("AppVersion").textContent = RemlabVersion;
