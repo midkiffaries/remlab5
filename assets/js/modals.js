@@ -54,12 +54,12 @@ const HelpModal = (`
 
 // Weapon Info modal content
 const WeaponInfoModal = (`
-<div class="modal-weaponinfo">
-    <h2 id="WeaponInfo-Name"></h2>
+<div class="WeaponInfo-body">
+    <h2 id="Info-name"></h2>
 
-    <h3 id="WeaponInfo-Type"></h3>
+    <h3 id="Info-type"></h3>
 
-    <p id="WeaponInfo-Info"></p>
+    <p id="Info-desc"></p>
 
     <table>
         <tr>
@@ -68,9 +68,9 @@ const WeaponInfoModal = (`
             <th>Availability</th>
         </tr>
         <tr>
-            <td id="WeaponInfo-Year"></td>
-            <td id="WeaponInfo-Rating"></td>
-            <td id="WeaponInfo-Avail"></td>
+            <td id="Info-year"></td>
+            <td id="Info-techRating"></td>
+            <td id="Info-availability"></td>
         </tr>
     </table>
 
@@ -83,10 +83,10 @@ const WeaponInfoModal = (`
             <th>Battle Value</th>
         </tr>
         <tr>
-            <td id="WeaponInfo-Mass">0.0</td>
-            <td id="WeaponInfo-Crits">0</td>
-            <td id="WeaponInfo-Cost" class="cbill">0</td>
-            <td id="WeaponInfo-BV">0</td>
+            <td id="Info-tons">0.0</td>
+            <td id="Info-crits">0</td>
+            <td id="Info-cost" class="cbills">0</td>
+            <td id="Info-bv">0</td>
         </tr>
     </table>
 
@@ -99,10 +99,10 @@ const WeaponInfoModal = (`
             <th>Delay (Solaris)</th>
         </tr>
         <tr>
-            <td id="WeaponInfo-Heat">0</td>
-            <td id="WeaponInfo-Damage">0</td>
-            <td id="WeaponInfo-Ammo">0</td>
-            <td id="WeaponInfo-Delay">0</td>
+            <td id="Info-heat">0</td>
+            <td id="Info-damage">0</td>
+            <td id="Info-ammo">0</td>
+            <td id="Info-delay">0</td>
         </tr>
     </table>
 
@@ -116,16 +116,16 @@ const WeaponInfoModal = (`
             <th>Extreme</th>
         </tr>
         <tr>
-            <td id="WeaponInfo-Min">0</td>
-            <td id="WeaponInfo-Short">0</td>
-            <td id="WeaponInfo-Med">0</td>
-            <td id="WeaponInfo-Long">0</td>
-            <td id="WeaponInfo-Ext">0</td>
+            <td id="Info-rangeMin">0</td>
+            <td id="Info-rangeShort">0</td>
+            <td id="Info-rangeMedium">0</td>
+            <td id="Info-rangeLong">0</td>
+            <td id="Info-rangeExtreme">0</td>
         </tr>
     </table>
 
     <div class="WeaponInfo-footer">
-        <button id="WeaponInfo-btnAdd">Add</button>
+        <button id="Info-btnAdd">Add</button>
     </div>
 </div>
 `);

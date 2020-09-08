@@ -5,19 +5,23 @@ Tables and Conversions
 // Convert total mass into a weight class
 const weightClass = t => {
     let c;
-    if (t < 20) {
-        c = 'Ultralight';
-    } else if (t < 40) {
-        c = 'Light'; 
-    } else if (t < 60) {
-        c = 'Medium';
-    } else if (t < 80) {
-        c = 'Heavy';
-    } else if (t < 101) {
-        c = 'Assault';
-    } else if (t < 201) {
-        c = 'Superheavy';
-    }
+    if (t < 20) c = 'Ultralight'; // 5-15
+    else if (t < 40) c = 'Light'; // 20-35
+    else if (t < 60) c = 'Medium'; // 40-55
+    else if (t < 80) c = 'Heavy'; // 60-75
+    else if (t < 101) c = 'Assault'; // 80-100
+    else c = 'Superheavy'; // 100+
+    return c;
+};
+
+// Present the maximum range in plain english
+const rangeClass = r => {
+    let c;
+    if (r < 4) c = 'Point'; // 0-3
+    else if (r < 10) c = 'Short'; // 4-9
+    else if (r < 19) c = 'Medium'; // 10-18
+    else if (r < 25) c = 'Long'; // 19-24
+    else c = 'Extreme'; // 25+
     return c;
 };
 
@@ -75,15 +79,6 @@ const a_WeaponClass = [
     'Equipment',
     'Industrial',
     'Ammunition'
-];
-
-// Present the numerical ranges in a word
-const a_WeaponRange = [
-    'Point',
-    'Short',
-    'Medium',
-    'Long',
-    'Extreme'
 ];
 
 // Warrior Experience
@@ -343,7 +338,7 @@ const a_SpeedFac = [0.44,0.54,0.65,0.77,0.88,1,1.12,1.24,1.37,1.5,1.63,1.76,1.89
 // Weapons and Equipment Table
 const tableArsenal = `
     {
-        "weapons": [
+        "weapon": [
             {
                 "type": "0",
                 "name": "Shoulder",

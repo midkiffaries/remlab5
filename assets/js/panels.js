@@ -534,35 +534,66 @@ const updateForm = () => {
 
 // Populate the weapons table
 function populateWeaponsTbl() {
-    let tr, sR, sM, sL, l = weaponTable.weapons.length - 1;
+    let w, sR, sM, sL, tr = "", l = weaponTable.weapon.length - 1;
     
+    // Loop for each entry in weaponTable
     for (let i = 0; i < l; i++) {
-        // Parse int ranges
-        sR = parseInt(weaponTable.weapons[i].rangeShort);
-        sM = parseInt(weaponTable.weapons[i].rangeMedium);
-        sL = parseInt(weaponTable.weapons[i].rangeLong);
+        w = weaponTable.weapon[i];
 
-        // Generate table row
-        tr += `<tr data-id="${i}">` 
-        + tableTD(`<button id="btnAddTblWeapon-${i}" data-id="${i}" class="tblweapons-add">+</button>`)
-        + tableTD(weaponTable.weapons[i].name)
-        + tableTD(weaponTable.weapons[i].heat)
-        + tableTD(weaponTable.weapons[i].damage)
-        + tableTD(zeroToDash(weaponTable.weapons[i].rangeMin))
-        + tableTD(displayRange(1, sR))
-        + tableTD(displayRange(sR, sM))
-        + tableTD(displayRange(sM, sL))
-        + tableTD(addDecimal(weaponTable.weapons[i].tons))
-        + tableTD(weaponTable.weapons[i].crits)
-        + tableTD(zeroToDash(weaponTable.weapons[i].ammo))
-        + tableTD(addComma(weaponTable.weapons[i].cost))
-        + tableTD(weaponTable.weapons[i].bv)
-        + `</tr>`;
+        // Parse int ranges
+        sR = parseInt(w.rangeShort);
+        sM = parseInt(w.rangeMedium);
+        sL = parseInt(w.rangeLong);
+
+        // Generate each table row
+        tr += (`
+        <tr data-id="${i}">
+            <td>
+                <button class="tblweapons-add" onclick="addWeapon(${i})">+</button>
+                <button class="tblweapons-info" onclick="infoWeapon(${i})">?</button>
+            </td>
+            <td>${w.name}</td>
+            <td>${w.heat}</td>
+            <td>${w.damage}</td>
+            <td>${zeroToDash(w.rangeMin)}</td>
+            <td>${displayRange(1, sR)}</td>
+            <td>${displayRange(sR, sM)}</td>
+            <td>${displayRange(sM, sL)}</td>
+            <td>${addDecimal(w.tons)}</td>
+            <td>${w.crits}</td>
+            <td>${zeroToDash(w.ammo)}</td>
+            <td>${addComma(w.cost)}</td>
+            <td>${w.bv}</td>
+        </tr>
+        `);
     }
 
     return tr;
 }
 
-function tableTD(v) {
-    return `<td>${v}</td>`;
+// Display Weapon Info Modal and populate it
+function infoWeapon(id) {
+    let w = weaponTable.weapon[id];
+
+    HtmlModal(WeaponInfoModal);
+
+    elID('Info-name').textContent = w.name;
+    elID('Info-type').textContent = a_WeaponClass[w.type];
+    elID('Info-desc').textContent = w.desc;
+    elID('Info-year').textContent = w.year;
+    elID('Info-techRating').textContent = a_TechRating[w.techRating];
+    elID('Info-availability').textContent = a_AvailabilityRating[w.availability];
+    elID('Info-tons').textContent = addDecimal(w.tons);
+    elID('Info-crits').textContent = w.crits;
+    elID('Info-cost').textContent = addComma(w.cost);
+    elID('Info-bv').textContent = w.bv;
+    elID('Info-heat').textContent = w.heat;
+    elID('Info-damage').textContent = w.damage;
+    elID('Info-ammo').textContent = zeroToDash(w.ammo);
+    elID('Info-delay').textContent = w.delay;
+    elID('Info-rangeMin').textContent = zeroToDash(w.rangeMin);
+    elID('Info-rangeShort').textContent = zeroToDash(w.rangeShort);
+    elID('Info-rangeMedium').textContent = zeroToDash(w.rangeMedium);
+    elID('Info-rangeLong').textContent = zeroToDash(w.rangeLong);
+    elID('Info-rangeExtreme').textContent = zeroToDash(w.rangeExtreme);
 }
