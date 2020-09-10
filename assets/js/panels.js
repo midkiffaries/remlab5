@@ -39,6 +39,7 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
 `);
 
 // Section : Technology Base
+/*
 const sectionTech = new SectionPanel(
     // id
     "Technology", 
@@ -51,8 +52,7 @@ const sectionTech = new SectionPanel(
     
     // body
     `<p>
-    <label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select>
-    <label>Edition</label> <select id="selEdition" class="select" data-list="a_Edition" disabled></select>
+    <label>Ruleset</label> <select id="selRulesetX" class="select" data-list="a_RuleSet" disabled></select>
     </p>
     <p>
     <label>Technology</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button" disabled><label for="radioT2" role="button">Clan</label>
@@ -68,7 +68,7 @@ const sectionTech = new SectionPanel(
     // footer
     `<p>Rules are limited to Inner Sphere (3025)</p>`,
 );
-
+*/
 // Section : Engine and Movement
 const sectionEngine = new SectionPanel(
     // id
@@ -177,21 +177,21 @@ const sectionQuirks = new SectionPanel(
     "Design Quirks",
     
     // size
-    "half",
+    "full",
     
     // body
     `
     <p><label>Positive</label></p>
     <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
-    <!--p><label>Negative</label></p>
-    <ol-- role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol-->
+    <p><label>Negative</label></p>
+    <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
     `, 
     
     // help
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p>The number of <i>Positive</i> and <i>Negative</i> should be equal.</p>`,
+    `<p>The number of <i>Positive</i> and <i>Negative</i> quirks should be equal.</p>`,
 );
 
 // Section : Armor
@@ -238,11 +238,11 @@ const sectionArmor = new SectionPanel(
 
     <fieldset>
         <legend>Auto Fill</legend>
-        <p><button id="btnArmorFill-100">Max</button></p>
-        <p><button id="btnArmorFill-75">75%</button></p>
-        <p><button id="btnArmorFill-50">50%</button></p>
-        <p><button id="btnArmorFill-25">25%</button></p>
-        <p><button id="btnArmorFill-0">None</button></p>
+        <p><button id="btnArmorFill-100" onclick="autoFillArmor(1)">Max</button></p>
+        <p><button id="btnArmorFill-75" onclick="autoFillArmor(0.75)">75%</button></p>
+        <p><button id="btnArmorFill-50" onclick="autoFillArmor(0.5)">50%</button></p>
+        <p><button id="btnArmorFill-25" onclick="autoFillArmor(0.25)">25%</button></p>
+        <p><button id="btnArmorFill-0" onclick="autoFillArmor(0)">None</button></p>
     </fieldset>
     `, 
     
@@ -355,6 +355,10 @@ const sectionReadout = new SectionPanel(
     
     // body
     `
+    <p>
+        <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
+        <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
+    </p>
     <p><label>Overview</label> <textarea id="txtOverview" placeholder="(Generated)">${Mech.overviewTR}</textarea></p>
     <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(Generated)">${Mech.capabilitiesTR}</textarea></p>
     <p><label>Battle History</label> <textarea id="txtHistory">${Mech.historyTR}</textarea></p>
@@ -373,62 +377,41 @@ const sectionReadout = new SectionPanel(
 // Side Bar content
 const sideBar = (`
     <div class="sidebar_baseinfo">
-        <p>
-            <input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus>
-        </p>
-        <p>
-            <label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select>
-        </p>
-        <p>
-            <label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output for="stepMass" id="outWeightClass">${weightClass(Mech.mass)}</output>
-        </p> 
+        <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
+        <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
+        <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output id="outWeightClass">${weightClass(Mech.mass)}</output></p>
+        <p><label>Tech</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
+        <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
     </div>
     <hr>
     <div class="sidebar_results">
-        <p>
-            <label>Mass</label> <output id="outCurrentMass">0</output> / <output id="outTotalMass">${Mech.mass}</output> tons
-        </p>
-        <p>
-            <label>Crit Slots</label> <output id="outCurrentCrits">0</output> / <output id="outTotalCrits">${Mech.baseCrits}</output>
-        </p>
-        <p>
-            <label>Total Cost</label> <output id="outTotalCost" class="cbills">0</output>
-        </p>
+        <p><label>Mass</label> <output id="outCurrentMass">0</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
+        <p><label>Crit Slots</label> <output id="outCurrentCrits">0</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
+        <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">0</output></p>
     </div>
     <div class="sidebar_results">
-        <p>
-            <label>Battle Value</label> <output id="outTotalBV">0</output>
-        </p>
-        <p>
-            <label>Alpha Strike</label> <output id="outAlphaStrike">0</output> (<output id="outDamagePerTon">0.0</output> per ton)
-        </p>
-        <p>
-            <label>Heat Management</label> <output id="outTotalHeat">0</output> / <output id="outHeatSinks">0</output>
-        </p>
+        <p><label>Battle Value</label> <output id="outTotalBV">0</output></p>
+        <p><label>Alpha Strike</label> <output id="outAlphaStrike">0</output> (<output id="outDamagePerTon">0.0</output> per ton)</p>
+        <p><label>Heat Management</label> <output id="outTotalHeat">0</output> / <output id="outHeatSinks">0</output></p>
     </div>
     <hr>
     <div class="sidebar_buttons">
-        <p>
-            <button id="btnCreateRS">Create Record Sheet</button>
-        </p>
-        <p>
-            <button id="btnCreateTR">Create Technical Readout</button>
-        </p>
+        <p><button id="btnCreateRS">Create Record Sheet</button></p>
+        <p><button id="btnCreateTR">Create Technical Readout</button></p>
     </div>
-
 `);
 
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
-    sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.size, sectionTech.body, sectionTech.help, sectionTech.footer) + 
+    //sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.size, sectionTech.body, sectionTech.help, sectionTech.footer) + 
     sectionTemplate(sectionEngine.id, sectionEngine.title, sectionEngine.size, sectionEngine.body, sectionEngine.help, sectionEngine.footer) +
     sectionTemplate(sectionJumpjets.id, sectionJumpjets.title, sectionJumpjets.size, sectionJumpjets.body, sectionJumpjets.help, sectionJumpjets.footer) +
     sectionTemplate(sectionHeatSinks.id, sectionHeatSinks.title, sectionHeatSinks.size, sectionHeatSinks.body, sectionHeatSinks.help, sectionHeatSinks.footer) +
     sectionTemplate(sectionComponents.id, sectionComponents.title, sectionComponents.size, sectionComponents.body, sectionComponents.help, sectionComponents.footer) +
-    sectionTemplate(sectionQuirks.id, sectionQuirks.title, sectionQuirks.size, sectionQuirks.body, sectionQuirks.help, sectionQuirks.footer) +
     sectionTemplate(sectionArmor.id, sectionArmor.title, sectionArmor.size, sectionArmor.body, sectionArmor.help, sectionArmor.footer) +
     sectionTemplate(sectionWeapons.id, sectionWeapons.title, sectionWeapons.size, sectionWeapons.body, sectionWeapons.help, sectionWeapons.footer) +
     sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer) +
+    sectionTemplate(sectionQuirks.id, sectionQuirks.title, sectionQuirks.size, sectionQuirks.body, sectionQuirks.help, sectionQuirks.footer) +
     sectionTemplate(sectionReadout.id, sectionReadout.title, sectionReadout.size, sectionReadout.body, sectionReadout.help, sectionReadout.footer)
 );
 

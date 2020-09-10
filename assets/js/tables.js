@@ -27,18 +27,10 @@ const rangeClass = r => {
 
 // Btech Ruleset (aka Level)
 const a_RuleSet = [
-    'Introductory', // Level 1
+    'Basic', // Level 1
     'Standard', // Level 2
     'Advanced', // Level 2+
     'Experimental' // Level 3
-];
-
-// Btech Box Set Edition
-const a_Edition = [
-    '2nd', // Level 1
-    '3rd', // Level 2
-    '4th', // Level 2+
-    '5th' // Level 2++
 ];
 
 // Technology Base

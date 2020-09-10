@@ -2,16 +2,6 @@
 Page Scrubber Functions
 **************************/
 
-// Prevent all form elements from submitting on button events
-(function(){
-    const formSubmit = document.getElementsByTagName("form"), l = formSubmit.length;
-    for (let i = 0; i < l; i++) {
-        formSubmit[i].onsubmit = function() {
-            return event.preventDefault();
-        }
-    }
-}());
-
 // Improve the behavior of input types
 (function(){
     const inputNum = document.getElementsByTagName("input"), l = inputNum.length;
@@ -99,13 +89,8 @@ Page Scrubber Functions
         Minus.appendBefore(el);
         Plus.appendAfter(el);
 
-        // Fire the onchange event for the input element
-        el.addEventListener('change', function () {
-            updateForm();
-        });
-
         // Button step down
-        el.previousElementSibling.onclick = function () {
+        el.previousElementSibling.onmousedown = function () {
             let x = this.nextElementSibling;
             if (parseInt(x.value) > parseInt(x.min)) {
                 x.value = parseInt(x.value) - parseInt(x.step);
@@ -114,13 +99,18 @@ Page Scrubber Functions
         };
 
         // Button step up
-        el.nextElementSibling.onclick = function () {
+        el.nextElementSibling.onmousedown = function () {
             let x = this.previousElementSibling;
             if (parseInt(x.value) < parseInt(x.max)) {
                 x.value = parseInt(x.value) + parseInt(x.step);
                 el.dispatchEvent(new Event('change'));
             }
         };
+
+        // Fire the onchange event for the input element
+        el.addEventListener('change', () => {
+            updateForm();
+        });
     }
 }());
 

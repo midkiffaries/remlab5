@@ -9,7 +9,6 @@ const Mech = {
 	mass: 25,
 	chassis: 0,
 	techbase: 0,
-	edition: 1,
 	rules: 1,
 	era: 0,
 	year: 3025,

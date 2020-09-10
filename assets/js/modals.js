@@ -125,7 +125,7 @@ const WeaponInfoModal = (`
     </table>
 
     <div class="WeaponInfo-footer">
-        <button id="Info-btnAdd">Add</button>
+        <button id="Info-btnAdd" onclick="addWeapon(0)">Add</button>
     </div>
 </div>
 `);

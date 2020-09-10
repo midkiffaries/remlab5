@@ -209,7 +209,7 @@ function displayRange(l, h) {
 
 // Display circle ticks for the record sheet
 function displayTicks(v, r) {
-    var a = '';
+    let a = '';
     for (let i = 0; i < v; i++) {
         if (i % r === 0 && i != 0) a += `<br>\n`;
         a += theCircle;
