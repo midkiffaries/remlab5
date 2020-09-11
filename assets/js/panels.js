@@ -398,6 +398,8 @@ const sideBar = (`
     <div class="sidebar_buttons">
         <p><button id="btnCreateRS">Create Record Sheet</button></p>
         <p><button id="btnCreateTR">Create Technical Readout</button></p>
+        <hr>
+        <p><input type="reset" value="Start over"></p>
     </div>
 `);
 
@@ -494,8 +496,14 @@ const updateForm = () => {
     elID('outArmorTotalMax').value = Mech.armorTotalMax;
     elID('outArmorMass').value = addDecimal(Mech.armorMass);
     elID('outArmorCrits').value = Mech.armorCrits;
-    elID('outArmorCost').value = addComma(Mech.armorCost); 
-
+    elID('outArmorCost').value = addComma(Mech.armorCost);
+    elID('outMaxLT').value = Mech.IST * 2;
+    elID('outMaxCT').value = Mech.ISC * 2;
+    elID('outMaxRT').value = Mech.IST * 2;
+    elID('outMaxLA').value = Mech.ISA * 2;
+    elID('outMaxRA').value = Mech.ISA * 2;
+    elID('outMaxLL').value = Mech.ISL * 2;
+    elID('outMaxRL').value = Mech.ISL * 2;
     // Weapons Section
         // Post
     elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);

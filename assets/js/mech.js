@@ -373,6 +373,28 @@ const MaxCrits = {
     RT: 12,
 };
 
+// Armor auto fill buttons logic
+const autoFillArmor = v => {
+	// Balance the front and rear armor of the torsos
+    let CTfront = parseInt((Mech.ISC * 2) * 0.8),
+        CTrear = (Mech.ISC * 2) - CTfront,
+        STfront = parseInt((Mech.IST * 2) * 0.8),
+        STrear = (Mech.IST * 2) - STfront;
+
+	// Post data
+    elID('stepArmorH').value = parseInt(9 * v);
+	elID('stepArmorLT').value = parseInt(STfront * v);
+    elID('stepArmorLTR').value = parseInt(STrear * v);
+	elID('stepArmorCT').value = parseInt(CTfront * v);
+    elID('stepArmorCTR').value = parseInt(CTrear * v);
+	elID('stepArmorRT').value = parseInt(STfront * v);
+    elID('stepArmorRTR').value = parseInt(STrear * v);
+    elID('stepArmorLA').value = (Mech.ISA * 2) * v;
+    elID('stepArmorRA').value = (Mech.ISA * 2) * v;
+    elID('stepArmorLL').value = (Mech.ISL * 2) * v;
+	elID('stepArmorRL').value = (Mech.ISL * 2) * v;
+};
+
 // Set the initial data from the input fields
 /*
 (function(){
