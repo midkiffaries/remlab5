@@ -171,7 +171,7 @@ const Mech = {
 	// Calc: Heat sinks Cost
 	get heatsinksCost() {
         return parseInt(this.heatsinks * 2000)
-    },
+	},
 
 	// Calc: LAM Mass
 	get lamMass() {
@@ -341,8 +341,13 @@ const Mech = {
 		return this.engineCrits + this.jumpjetsCrits + this.heatsinksCrits + this.heatsinksIntCrits + this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits + this.armorCrits + this.weaponsCrits
 	},
 
-	// Calc: Total cost of all components
+	// Calc: Total cost with all components
 	get totalCost() {
+		return this.lifesupportCost + this.cockpitCost + this.targetingCost
+	},
+
+	// Calc: BV with all components
+	get totalBV() {
 		return 0
 	},
 
@@ -372,6 +377,18 @@ const MaxCrits = {
     CT: 12, 
     RT: 12,
 };
+
+// Assigned content lists per location
+const AssignedCrits = {
+    H:  [12,13,11,14,13,12], 
+    LA: [0,1,2,3], 
+    RA: [0,1,2,3], 
+    LL: [7,8,9,10], 
+    RL: [7,8,9,10], 
+    LT: [], 
+    CT: [5,5,5,6,6,6,6,5,5,5], 
+    RT: []
+}; 
 
 // Armor auto fill buttons logic
 const autoFillArmor = v => {

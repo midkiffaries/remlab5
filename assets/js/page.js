@@ -284,24 +284,20 @@ const sectionWeapons = new SectionPanel(
                 <th>BV</th>
             </tr>
         </thead>
-        <tbody id="tblWeapons">${populateWeaponsTbl()}</tbody>
+        <tbody id="tblWeapons">${completeWeaponsTable()}</tbody>
     </table>
 
-    <div>
-        <div>
-            <p>NAME</p>
-            <p>MASS | CRITS</p>
-            <p>MORE...</p>
-        </div>
+    <div class="list-weapons">
+        <ol>
+            ${compactWeaponsTable()}
+        </ol>
     </div>
 
-    <div>
-        <div>
-            <h4>Location</h4>
-            <ol>
-                <li>item</li>
-            </ol>
-        </div>
+    <div class="mech-locations">
+        <h5>Left Arm</h5>
+        <ol>
+            <li>x</li>
+        </ol>
     </div>
     `, 
     
@@ -385,14 +381,14 @@ const sideBar = (`
     </div>
     <hr>
     <div class="sidebar_results">
-        <p><label>Mass</label> <output id="outCurrentMass">0</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
-        <p><label>Crit Slots</label> <output id="outCurrentCrits">0</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
-        <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">0</output></p>
+        <p><label>Mass</label> <output id="outCurrentMass">${Mech.totalMass}</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
+        <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
+        <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
     </div>
     <div class="sidebar_results">
-        <p><label>Battle Value</label> <output id="outTotalBV">0</output></p>
-        <p><label>Alpha Strike</label> <output id="outAlphaStrike">0</output> (<output id="outDamagePerTon">0.0</output> per ton)</p>
-        <p><label>Heat Management</label> <output id="outTotalHeat">0</output> / <output id="outHeatSinks">0</output></p>
+        <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
+        <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> (<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton)</p>
+        <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
     <hr>
     <div class="sidebar_buttons">
@@ -434,6 +430,7 @@ const updateForm = () => {
     elID('outCurrentMass').value = addDecimal(Mech.totalMass);
     elID('outTotalCrits').value = Mech.baseCrits;
     elID('outCurrentCrits').value = Mech.totalCrits;
+    elId('outTotalCost').value = addComma(Mech.totalCost);
 
     // Engine Section
         // Get
@@ -523,43 +520,71 @@ const updateForm = () => {
     Warrior.autoeject = elID('chkAutoEject').value;
 };
 
-// Populate the weapons table
-function populateWeaponsTbl() {
+// Populate the complete weapons table
+function completeWeaponsTable() {
     let w, sR, sM, sL, tr = "", l = weaponTable.weapon.length - 1;
     
     // Loop for each entry in weaponTable
     for (let i = 0; i < l; i++) {
         w = weaponTable.weapon[i];
 
-        // Parse int ranges
-        sR = parseInt(w.rangeShort);
-        sM = parseInt(w.rangeMedium);
-        sL = parseInt(w.rangeLong);
+        // Display everything but structure items "0"
+        if (w.type > 0) {
+            // Parse int ranges
+            sR = parseInt(w.rangeShort);
+            sM = parseInt(w.rangeMedium);
+            sL = parseInt(w.rangeLong);
 
-        // Generate each table row
-        tr += (`
-        <tr data-id="${i}">
-            <td>
-                <button class="tblweapons-add" onclick="addWeapon(${i})">+</button>
-                <button class="tblweapons-info" onclick="infoWeapon(${i})">?</button>
-            </td>
-            <td>${w.name}</td>
-            <td>${w.heat}</td>
-            <td>${w.damage}</td>
-            <td>${zeroToDash(w.rangeMin)}</td>
-            <td>${displayRange(1, sR)}</td>
-            <td>${displayRange(sR, sM)}</td>
-            <td>${displayRange(sM, sL)}</td>
-            <td>${addDecimal(w.tons)}</td>
-            <td>${w.crits}</td>
-            <td>${zeroToDash(w.ammo)}</td>
-            <td>${addComma(w.cost)}</td>
-            <td>${w.bv}</td>
-        </tr>
-        `);
+            // Generate each table row
+            tr += (`
+            <tr data-id="${i}">
+                <td>
+                    <button class="tblweapons-add" onclick="addWeapon(${i})">+</button>
+                    <button class="tblweapons-info" onclick="infoWeapon(${i})">?</button>
+                </td>
+                <td>${w.name}</td>
+                <td>${w.heat}</td>
+                <td>${w.damage}</td>
+                <td>${zeroToDash(w.rangeMin)}</td>
+                <td>${displayRange(1, sR)}</td>
+                <td>${displayRange(sR, sM)}</td>
+                <td>${displayRange(sM, sL)}</td>
+                <td>${addDecimal(w.tons)}</td>
+                <td>${w.crits}</td>
+                <td>${zeroToDash(w.ammo)}</td>
+                <td>${addComma(w.cost)}</td>
+                <td>${w.bv}</td>
+            </tr>
+            `);
+        }
     }
 
     return tr;
+}
+
+// Display Compact Weapons List
+function compactWeaponsTable() {
+    let li = "", l = weaponTable.weapon.length - 1;
+
+    // Loop for each entry in weaponTable
+    for (let i = 0; i < l; i++) {
+        w = weaponTable.weapon[i];
+
+        // Display everything but structure items "0"
+        if (w.type > 0) {       
+            // Generate each table row
+            li += (`
+            <li data-id="${i}">
+                <h6>${w.name}</h6>
+                <p><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon(${i})">Add</button></p>
+                <p>${w.heat} | ${w.damage} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</p>
+            </li>
+            `);
+        }
+    }
+
+    return li;    
+
 }
 
 // Display Weapon Info Modal and populate it

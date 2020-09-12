@@ -17,13 +17,19 @@ const weightClass = t => {
 // Present the maximum range in plain english
 const rangeClass = r => {
     let c;
-    if (r < 4) c = 'Point'; // 0-3
+    if (r < 4) c = 'Point'; // 1-3
     else if (r < 10) c = 'Short'; // 4-9
     else if (r < 19) c = 'Medium'; // 10-18
     else if (r < 25) c = 'Long'; // 19-24
     else c = 'Extreme'; // 25+
     return c;
 };
+
+// Display random quotes in the footer
+const a_Quotes = [
+    `<q>Life is cheap. BattleMechs are expensive.</q> <cite>Irain BattleMechs Ltd.</cite>`,
+    ``
+];
 
 // Btech Ruleset (aka Level)
 const a_RuleSet = [
@@ -44,8 +50,7 @@ const a_ChassisType = [
     'BattleMech',
     'IndustrialMech',
     'Land-Air Mech'
-    //'OmniMech',
-    //'QuadVee'
+    //'OmniMech'
 ];
 
 // Names for the Eras
@@ -62,7 +67,7 @@ const a_Era = [
 
 // Names for the types of Weapons
 const a_WeaponClass = [
-    'Special',
+    'Structure',
     'Energy',
     'Ballistic',
     'Missle',
@@ -70,7 +75,8 @@ const a_WeaponClass = [
     'Artillery',
     'Equipment',
     'Industrial',
-    'Ammunition'
+    'Ammunition',
+    'Bombs'
 ];
 
 // Warrior Experience
@@ -300,12 +306,6 @@ const a_JJType = [
 // Engine types
 const a_EngineType = [
     'Fusion',
-    //'Fusion XL',
-    //'Fusion XXL',
-    //'Light Fusion',
-    //'Compact Fusion',
-    //'Fission'
-    //'Fuel Cell',
     'ICE'
 ];
 
@@ -327,7 +327,12 @@ const a_TargetMod = [0,0,0,1,1,2,2,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
 // Calc BV: Speed Factor
 const a_SpeedFac = [0.44,0.54,0.65,0.77,0.88,1,1.12,1.24,1.37,1.5,1.63,1.76,1.89,2.02,2.16,2.3,2.44,2.58,2.72,2.86,3,3.15,3.29,3.44,3.59,3.74,4];
 
+
+// JSON Tables
+
+//////////////////////////////
 // Weapons and Equipment Table
+//////////////////////////////
 const tableArsenal = `
     {
         "weapon": [
@@ -336,7 +341,7 @@ const tableArsenal = `
                 "name": "Shoulder",
                 "nameShort": "Shoulder",
                 "level": "1",
-                "edition": "2",
+                "edition": "1",
                 "tech": "2",
                 "heat": "0",
                 "minDamage": "0",
@@ -352,7 +357,7 @@ const tableArsenal = `
                 "ammo": "0",
                 "cost": "0",
                 "bv": "0",
-                "modifier": "0",
+                "modifier": "",
                 "special": "a",
                 "year": "",
                 "desc": "",
@@ -360,6 +365,549 @@ const tableArsenal = `
                 "availability": "a",
                 "fixed": "1"
             },
+
+            {
+                "type": "0",
+                "name": "Upper Arm",
+                "nameShort": "Upper Arm",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Lower Arm",
+                "nameShort": "Lower Arm",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Hand",
+                "nameShort": "Hand",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Engine",
+                "nameShort": "Engine",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Gyro",
+                "nameShort": "Gyro",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Hip",
+                "nameShort": "Hip",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Upper Leg",
+                "nameShort": "Upper Leg",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Lower Leg",
+                "nameShort": "Lower Leg",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Foot",
+                "nameShort": "Foot",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Cockpit",
+                "nameShort": "Cockpit",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Life Support",
+                "nameShort": "Life Support",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Sensors",
+                "nameShort": "Sensors",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "-",
+                "nameShort": "empty head slot",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Ferro-Fibrous",
+                "nameShort": "Ferro",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Endo Steel",
+                "nameShort": "Endo",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "XL Engine",
+                "nameShort": "XL Engine",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Jump Jet",
+                "nameShort": "Jump Jet",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+            {
+                "type": "0",
+                "name": "Heat Sink",
+                "nameShort": "Heat Sink",
+                "level": "1",
+                "edition": "1",
+                "tech": "2",
+                "heat": "0",
+                "minDamage": "0",
+                "damage": "0",
+                "delay": "0",
+                "rangeMin": "0",
+                "rangeShort": "0",
+                "rangeMedium": "0",
+                "rangeLong": "0",
+                "rangeExtreme": "0",
+                "tons": "0",
+                "crits": "1",
+                "ammo": "0",
+                "cost": "0",
+                "bv": "0",
+                "modifier": "",
+                "special": "a",
+                "year": "",
+                "desc": "",
+                "techRating": "b",
+                "availability": "a",
+                "fixed": "1"
+            },
+
+
+            
 
             {
                 "type": "1",
@@ -456,7 +1004,9 @@ const tableArsenal = `
     }
 `;
 
+//////////////////////////////
 // Engine Table
+//////////////////////////////
 const tableEngine = `
 {
     "engine": [
@@ -964,8 +1514,9 @@ const tableEngine = `
 }
 `;
 
-
+//////////////////////////////
 // Internal Structure Table
+//////////////////////////////
 const tableIS = `
 {
     "is": [
