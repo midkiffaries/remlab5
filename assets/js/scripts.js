@@ -91,7 +91,6 @@ function ConfirmModal(text, action) {
     }, 150);
 }
 
-
 // Include pages.js
 /*
 (function(){

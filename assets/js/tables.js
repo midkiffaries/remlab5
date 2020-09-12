@@ -17,7 +17,8 @@ const weightClass = t => {
 // Present the maximum range in plain english
 const rangeClass = r => {
     let c;
-    if (r < 4) c = 'Point'; // 1-3
+    if (r < 1) c = 'None'; // 0
+    else if (r < 4) c = 'Point'; // 1-3
     else if (r < 10) c = 'Short'; // 4-9
     else if (r < 19) c = 'Medium'; // 10-18
     else if (r < 25) c = 'Long'; // 19-24

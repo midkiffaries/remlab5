@@ -1,5 +1,5 @@
 /**************************
-Printout of Record Sheet
+Mech print out modals
 **************************/
 
 // Printout: Generate the Mech heat scale

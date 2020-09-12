@@ -81,6 +81,10 @@ const Mech = {
     damageTotal: 0,
     damagePerTon: 0,
 	heatTotal: 0,
+
+	// Design Quirks
+	//positiveDQ: [],
+	//negativeDQ: [],
 	
 	// Technical Readout
 	overviewTR: "",
@@ -356,7 +360,7 @@ const Mech = {
 // Warrior Stats
 const Warrior = {
 	name: "",
-    race: 0,
+    race: "Human",
     affiliation: 0,
     affiliationUser: "",
     miniature: "",

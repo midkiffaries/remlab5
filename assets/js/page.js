@@ -84,7 +84,7 @@ const sectionEngine = new SectionPanel(
     `
     <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
     <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output></p>
-    <p><label>Legs</label> <input id="radioM1" name="selLegs" type="radio" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input id="radioM2" name="selLegs" type="radio" class="radio-button" value="1" disabled><label for="radioM2" role="button">4</label></p>
+    <p><label>Legs</label> <input type="radio" name="selLegs" id="radioM1" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input type="radio" name="selLegs" id="radioM2" class="radio-button" value="1"><label for="radioM2" role="button">4</label></p>
     `, 
     
     // help
@@ -166,32 +166,6 @@ const sectionComponents = new SectionPanel(
     
     // footer
     ``,
-);
-
-// Section : Design Quirks
-const sectionQuirks = new SectionPanel(
-    // id
-    "Quirks", 
-    
-    // title
-    "Design Quirks",
-    
-    // size
-    "full",
-    
-    // body
-    `
-    <p><label>Positive</label></p>
-    <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
-    <p><label>Negative</label></p>
-    <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
-    `, 
-    
-    // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
-    
-    // footer
-    `<p>The number of <i>Positive</i> and <i>Negative</i> quirks should be equal.</p>`,
 );
 
 // Section : Armor
@@ -322,13 +296,13 @@ const sectionWarrior = new SectionPanel(
     // body
     `
     <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
-    <p><label>Race</label> <input id="radioR1" name="radRace" type="radio" class="radio-button" checked><label for="radioR1" role="button">Human</label><input id="radioR2" name="radRace" type="radio" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
+    <p><label>Race</label> <input type="radio" name="radRace" id="radioR1" value="Human" class="radio-button" checked><label for="radioR1" role="button">Human</label><input type="radio" name="radRace" id="radioR2" value="Clanner" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
     <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
     <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
     <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting">${Warrior.piloting}</output></p>
     <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery">${Warrior.gunnery}</output></p>
-    <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" name="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
+    <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
     `, 
     
     // help
@@ -336,6 +310,32 @@ const sectionWarrior = new SectionPanel(
     
     // footer
     `<p>INFO</p>`,
+);
+
+// Section : Design Quirks
+const sectionQuirks = new SectionPanel(
+    // id
+    "Quirks", 
+    
+    // title
+    "Design Quirks",
+    
+    // size
+    "full",
+    
+    // body
+    `
+    <p><label>Positive</label></p>
+    <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
+    <p><label>Negative</label></p>
+    <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    `<p>The number of <i>Positive</i> and <i>Negative</i> quirks should be equal.</p>`,
 );
 
 // Section : Technical Readout
@@ -355,12 +355,12 @@ const sectionReadout = new SectionPanel(
         <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
         <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
     </p>
-    <p><label>Overview</label> <textarea id="txtOverview" placeholder="(Generated)">${Mech.overviewTR}</textarea></p>
-    <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(Generated)">${Mech.capabilitiesTR}</textarea></p>
-    <p><label>Battle History</label> <textarea id="txtHistory">${Mech.historyTR}</textarea></p>
-    <p><label>Deployment</label> <textarea id="txtDeployment">${Mech.deploymentTR}</textarea></p>
-    <p><label>Variants</label> <textarea id="txtVariants">${Mech.overviewTR}</textarea></p>
-    <p><label>Notable Units</label> <textarea id="txtNotable">${Mech.notableTR}</textarea></p>
+    <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
+    <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(summary)">${Mech.capabilitiesTR}</textarea></p>
+    <p><label>Battle History</label> <textarea id="txtHistory" placeholder="(summary)">${Mech.historyTR}</textarea></p>
+    <p><label>Deployment</label> <textarea id="txtDeployment" placeholder="(summary)">${Mech.deploymentTR}</textarea></p>
+    <p><label>Variants</label> <textarea id="txtVariants" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
+    <p><label>Notable Units</label> <textarea id="txtNotable" placeholder="(summary)">${Mech.notableTR}</textarea></p>
     `, 
     
     // help
@@ -376,7 +376,7 @@ const sideBar = (`
         <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
         <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
         <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output id="outWeightClass">${weightClass(Mech.mass)}</output></p>
-        <p><label>Tech</label> <input id="radioT1" name="selTechnology" type="radio" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input id="radioT2" name="selTechnology" type="radio" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
+        <p><label>Tech</label> <input type="radio" name="selTechnology" id="radioT1" value="0" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input type="radio" name="selTechnology" id="radioT2" value="1" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
         <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
     </div>
     <hr>
@@ -395,7 +395,7 @@ const sideBar = (`
         <p><button id="btnCreateRS">Create Record Sheet</button></p>
         <p><button id="btnCreateTR">Create Technical Readout</button></p>
         <hr>
-        <p><input type="reset" value="Start over"></p>
+        <p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p>
     </div>
 `);
 
@@ -430,7 +430,7 @@ const updateForm = () => {
     elID('outCurrentMass').value = addDecimal(Mech.totalMass);
     elID('outTotalCrits').value = Mech.baseCrits;
     elID('outCurrentCrits').value = Mech.totalCrits;
-    elId('outTotalCost').value = addComma(Mech.totalCost);
+    elID('outTotalCost').value = addComma(Mech.totalCost);
 
     // Engine Section
         // Get
@@ -470,9 +470,7 @@ const updateForm = () => {
         // Post
     elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass);
     elID('outInternalCrits').value = Mech.internalComponentsCrits;
-    elID('outInternalCost').value = addComma(Mech.internalComponentsCost);
-
-    // Design Quirks Section
+    elID('outInternalCost').value = addComma(Mech.internalComponentsCost);    
 
     // Armor Secton
         // Get
@@ -501,23 +499,29 @@ const updateForm = () => {
     elID('outMaxRA').value = Mech.ISA * 2;
     elID('outMaxLL').value = Mech.ISL * 2;
     elID('outMaxRL').value = Mech.ISL * 2;
+
     // Weapons Section
         // Post
     elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
+    // Design Quirks Section
+        // Get
+    //Mech.positiveDQ = document.forms[0];
+        // Post
+
     // Warrior Section
         // Get
     Warrior.name = elID('txtPilotName').value;
-    //Warrior.race = document.forms.radRace.value;
+    Warrior.race = document.forms[0].radRace.value;
     Warrior.affiliation = elID('selAffiliation').value;
     Warrior.affiliationUser = elID('txtAffiliation').value;
     Warrior.miniature = elID('txtPilotName').value;
     Warrior.experience = elID('selExperience').value;
     Warrior.piloting = elID('rngPiloting').value;
     Warrior.gunnery = elID('rngGunnery').value;
-    Warrior.autoeject = elID('chkAutoEject').value;
+    Warrior.autoeject = elID('chkAutoEject').checked;
 };
 
 // Populate the complete weapons table
