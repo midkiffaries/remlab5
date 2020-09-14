@@ -338,6 +338,7 @@ const tableArsenal = `
     {
         "weapon": [
             {
+                "id": "0",
                 "type": "0",
                 "name": "Shoulder",
                 "nameShort": "Shoulder",
@@ -368,6 +369,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "1",
                 "type": "0",
                 "name": "Upper Arm",
                 "nameShort": "Upper Arm",
@@ -398,6 +400,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "2",
                 "type": "0",
                 "name": "Lower Arm",
                 "nameShort": "Lower Arm",
@@ -428,6 +431,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "3",
                 "type": "0",
                 "name": "Hand",
                 "nameShort": "Hand",
@@ -458,6 +462,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "4",
                 "type": "0",
                 "name": "Engine",
                 "nameShort": "Engine",
@@ -488,6 +493,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "5",
                 "type": "0",
                 "name": "Gyro",
                 "nameShort": "Gyro",
@@ -518,6 +524,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "6",
                 "type": "0",
                 "name": "Hip",
                 "nameShort": "Hip",
@@ -548,6 +555,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "7",
                 "type": "0",
                 "name": "Upper Leg",
                 "nameShort": "Upper Leg",
@@ -578,6 +586,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "8",
                 "type": "0",
                 "name": "Lower Leg",
                 "nameShort": "Lower Leg",
@@ -608,6 +617,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "9",
                 "type": "0",
                 "name": "Foot",
                 "nameShort": "Foot",
@@ -638,6 +648,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "10",
                 "type": "0",
                 "name": "Cockpit",
                 "nameShort": "Cockpit",
@@ -668,6 +679,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "11",
                 "type": "0",
                 "name": "Life Support",
                 "nameShort": "Life Support",
@@ -698,6 +710,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "12",
                 "type": "0",
                 "name": "Sensors",
                 "nameShort": "Sensors",
@@ -728,6 +741,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "13",
                 "type": "0",
                 "name": "-",
                 "nameShort": "empty head slot",
@@ -758,6 +772,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "14",
                 "type": "0",
                 "name": "Ferro-Fibrous",
                 "nameShort": "Ferro",
@@ -788,6 +803,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "15",
                 "type": "0",
                 "name": "Endo Steel",
                 "nameShort": "Endo",
@@ -818,6 +834,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "16",
                 "type": "0",
                 "name": "XL Engine",
                 "nameShort": "XL Engine",
@@ -848,6 +865,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "17",
                 "type": "0",
                 "name": "Jump Jet",
                 "nameShort": "Jump Jet",
@@ -878,6 +896,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "18",
                 "type": "0",
                 "name": "Heat Sink",
                 "nameShort": "Heat Sink",
@@ -911,6 +930,7 @@ const tableArsenal = `
             
 
             {
+                "id": "19",
                 "type": "1",
                 "name": "Large Laser",
                 "nameShort": "LLaser",
@@ -941,6 +961,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "20",
                 "type": "1",
                 "name": "Medium Laser",
                 "nameShort": "MLaser",
@@ -971,6 +992,7 @@ const tableArsenal = `
             },
 
             {
+                "id": "21",
                 "type": "1",
                 "name": "Small Laser",
                 "nameShort": "SLaser",

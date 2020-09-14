@@ -83,8 +83,8 @@ const Mech = {
 	heatTotal: 0,
 
 	// Design Quirks
-	//positiveDQ: [],
-	//negativeDQ: [],
+	positiveDQ: [],
+	negativeDQ: [],
 	
 	// Technical Readout
 	overviewTR: "",
@@ -93,7 +93,27 @@ const Mech = {
 	deploymentTR: "",
 	variants: "",
 	notableTR: "",
-		
+
+	// Max Crits by location (Biped)
+	maxcrits_H:  6,
+    maxcrits_LA: 12,
+    maxcrits_RA: 12,
+    maxcrits_LL: 6, 
+    maxcrits_RL: 6, 
+    maxcrits_LT: 12, 
+    maxcrits_CT: 12, 
+    maxcrits_RT: 12,
+
+	// Assigned Crits by location
+	assigned_H:  [11,12,10,13,12,11], 
+    assigned_LT: [], 
+    assigned_CT: [4,4,4,5,5,5,5,4,4,4], 
+    assigned_RT: [],
+    assigned_LA: [0,1,2,3],
+    assigned_RA: [0,1,2,3],
+    assigned_LL: [6,7,8,9],
+    assigned_RL: [6,7,8,9],
+
 	// Calc: Running MP
 	get runningMP() {
     	return Math.ceil(this.walkingMP * 1.5)
@@ -367,32 +387,8 @@ const Warrior = {
     experience: 0,
     piloting: 5,
     gunnery: 4,
-    autoeject: true,
+    autoeject: true
 };
-
-// Crit limits by location (Biped)
-const MaxCrits = {
-    H:  6,
-    LA: 12,
-    RA: 12,
-    LL: 6, 
-    RL: 6, 
-    LT: 12, 
-    CT: 12, 
-    RT: 12,
-};
-
-// Assigned content lists per location
-const AssignedCrits = {
-    H:  [12,13,11,14,13,12], 
-    LA: [0,1,2,3], 
-    RA: [0,1,2,3], 
-    LL: [7,8,9,10], 
-    RL: [7,8,9,10], 
-    LT: [], 
-    CT: [5,5,5,6,6,6,6,5,5,5], 
-    RT: []
-}; 
 
 // Armor auto fill buttons logic
 const autoFillArmor = v => {

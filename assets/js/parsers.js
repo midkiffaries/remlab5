@@ -7,7 +7,7 @@ Page Scrubber Functions
     const inputNum = document.getElementsByTagName("input"), l = inputNum.length;
 	
     for (let i = 0; i < l; i++) {
-        var inputAttrib = inputNum[i].getAttribute("type");
+        let inputAttrib = inputNum[i].getAttribute("type");
         
         // Custom charset for input[type="number"] and input[type="tel"]        
         if (inputAttrib === "number" || inputAttrib === "tel") {
@@ -24,7 +24,7 @@ Page Scrubber Functions
         // Change the value of the output[for] element based on the range element
         if (inputAttrib === "range") {
             inputNum[i].oninput = function() {
-                var out = this.nextElementSibling;
+                let out = this.nextElementSibling;
                 if (out.getElementsByTagName("output") && out.getAttribute("for") == this.getAttribute("id")) {
                     out.value = this.value;          
                 }
@@ -46,7 +46,7 @@ Page Scrubber Functions
     for (let i = 0; i < l; i++) {
         acc[i].firstChild.nextSibling.onclick = function() {
             this.classList.toggle("active");
-            var panel = this.nextSibling.nextSibling;
+            let panel = this.nextSibling.nextSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
             } else {
@@ -62,7 +62,7 @@ Page Scrubber Functions
     const inc = document.getElementsByClassName("stepper"), l = inc.length;
     
     for (let i = 0; i < l; i++) {
-        var id = inc[i].getAttribute("id"),
+        let id = inc[i].getAttribute("id"),
             el = document.getElementById(id),
             Minus = document.createElement("button"), 
             Plus = document.createElement("button");
@@ -116,17 +116,17 @@ Page Scrubber Functions
 
 // Populate <ul> or <ol> with class="select-list" id="(id)" data-list="(arrayname)"    
 (function(){
-    var inc = document.getElementsByClassName("select-list"), l = inc.length;
+    const inc = document.getElementsByClassName("select-list"), l = inc.length;
     
     // Add <ul> or <ol> element attributes
     for (let i = 0; i < l; i++) {
-        var id = inc[i].getAttribute("id"),
+        let id = inc[i].getAttribute("id"),
             listbox = document.getElementById(id),
             lgth = eval(listbox.getAttribute("data-list")).length;
                 
         // Create each <li> element        
         for (let j = 0; j < lgth; j++) {
-            var li = document.createElement("li"),
+            let li = document.createElement("li"),
                 inp = document.createElement("input"),
                 la = document.createElement("label");
 
@@ -154,14 +154,14 @@ Page Scrubber Functions
     
     // Add <select> element attributes
     for (let i = 0; i < l; i++) {
-        var id = inc[i].getAttribute("id"),
+        let id = inc[i].getAttribute("id"),
             el = document.getElementById(id),
             list = document.getElementById(id).getAttribute("data-list"),
             lgth = eval(list).length;
         
         // Create each <option> element
         for (let j = 0; j < lgth; j++) {
-            var opt = document.createElement("option");
+            let opt = document.createElement("option");
             opt.value = j;
             opt.textContent = eval(list + "[" + j + "]");
             el.appendChild(opt);
@@ -185,7 +185,7 @@ Page Scrubber Functions
 // TableSort: Sort any table with class="sortable"
 /*
 (function(){
-    var table = document.querySelector("table.sortable"),
+    const table = document.querySelector("table.sortable"),
         ths = table.querySelectorAll("thead th"), 
         row = table.querySelectorAll("tbody tr"), 
         tBody = table.querySelector("tbody"), 
@@ -193,13 +193,13 @@ Page Scrubber Functions
 
     for (let i = 0; i < ths.length; i++){
         ths[i].addEventListener("click", function(e) {
-            var thsArray = [].slice.call(ths),
+            let thsArray = [].slice.call(ths),
                 rowArray = [].slice.call(row),
                 target = e.target,
                 thsIndex = thsArray.indexOf(target);
 
             rowArray.sort(function(a,b){
-                var tdA = a.children[thsIndex].textContent,
+                let tdA = a.children[thsIndex].textContent,
                 tdB = b.children[thsIndex].textContent;
                 if (tdA > tdB) {
                     return 1;

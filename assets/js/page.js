@@ -267,11 +267,30 @@ const sectionWeapons = new SectionPanel(
         </ol>
     </div>
 
-    <div class="mech-locations">
+    <div class="mech-crit-locations">
         <h5>Left Arm</h5>
-        <ol>
-            <li>x</li>
-        </ol>
+        <ol id="listCritList_LA"></ol>
+        
+        <h5>Left Torso</h5>
+        <ol id="listCritList_LT"></ol>
+
+        <h5>Head</h5>
+        <ol id="listCritList_H"></ol>
+
+        <h5>Right Torso</h5>
+        <ol id="listCritList_RT"></ol>
+
+        <h5>Right Arm</h5>
+        <ol id="listCritList_RA"></ol>
+
+        <h5>Left Leg</h5>
+        <ol id="listCritList_LL"></ol>
+
+        <h5>Center Torso</h5>
+        <ol id="listCritList_CT"></ol>
+
+        <h5>Right Leg</h5>
+        <ol id="listCritList_RL"></ol>
     </div>
     `, 
     
@@ -617,3 +636,30 @@ function infoWeapon(id) {
     elID('Info-rangeLong').textContent = zeroToDash(w.rangeLong);
     elID('Info-rangeExtreme').textContent = zeroToDash(w.rangeExtreme);
 }
+
+// List the contents of a crit location array
+function listCritsbyLoc(id, max, loc) {
+    let li = "";
+
+    // Increment through selected location array 
+    for (let i = 0; i < max; i++) {
+        // Check if location array has contents
+        if (loc[i] >= 0) {
+            li += `<li data-id="${weaponTable.weapon[loc[i]].id}">${weaponTable.weapon[loc[i]].name}</li>`;
+        } else {
+            li += `<li>–</li>`;
+        }
+    }
+
+    elID(id).innerHTML = li;
+}
+
+// Populate the Crit Location Diagram
+listCritsbyLoc('listCritList_LA', Mech.maxcrits_LA, Mech.assigned_LA);
+listCritsbyLoc('listCritList_LT', Mech.maxcrits_LT, Mech.assigned_LT);
+listCritsbyLoc('listCritList_H', Mech.maxcrits_H, Mech.assigned_H);
+listCritsbyLoc('listCritList_RT', Mech.maxcrits_RT, Mech.assigned_RT);
+listCritsbyLoc('listCritList_RA', Mech.maxcrits_RA, Mech.assigned_RA);
+listCritsbyLoc('listCritList_LL', Mech.maxcrits_LL, Mech.assigned_LL);
+listCritsbyLoc('listCritList_CT', Mech.maxcrits_CT, Mech.assigned_CT);
+listCritsbyLoc('listCritList_RL', Mech.maxcrits_RL, Mech.assigned_RL);
