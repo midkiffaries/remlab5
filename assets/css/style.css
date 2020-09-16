@@ -247,44 +247,44 @@ Universal Elements
 	overflow: hidden;
     z-index: -1;
 }
- 
+
 [type="radio"] + label, 
 [type="checkbox"] + label {
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 1.2em;
     display: inline-block;
-    line-height: 1.3em;
+    line-height: 1.5em;
 }
-    
+
 [type="radio"] + label::before,
 [type="checkbox"] + label::before {
     content: "";
     display: inline-block;
-    width: 19px;
-    height: 19px;
-    margin: -1px 7px 0 0;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.4em;
     background-color: #fff;
 	border: 2px solid #666;
     vertical-align: -0.2rem;
 }
-	
+
 [type="radio"] + label:hover::before,
 [type="checkbox"] + label:hover::before {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
 	transition: box-shadow 0.2s ease-in-out;
 }
-    
+
 [type="radio"] + label::before {
     border-radius: 50%;
     transition: background 0.2s ease-in-out;
 	background: no-repeat center center / 0.5em; 
 }
-    
+
 [type="radio"]:checked + label::before {    
-    background: no-repeat center center / 0.8em; 
+    background: no-repeat center center / 0.8em;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='dimgrey'/%3e%3c/svg%3e");
 }
-    
+
 [type="checkbox"] + label::before {
 	border-radius: 0.1rem;
     transition: background-color 0.2s ease-in-out;
@@ -293,42 +293,48 @@ Universal Elements
 [type="checkbox"]:checked + label::before {
     background: no-repeat 50% 50% / 1em;   
     background-color: #666;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15'%3E%3Cpath d='M12 2L5 8 2 5 0 7l5 6 9-9z' fill='white'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15'%3E%3Cpath d='M12 2L5 8 2 5 0 7l5 6 9-9z' fill='white'/%3E%3C/svg%3E");
 }
-    
-    
+
+
 /* Checkbox that works like a switch */
-    
+
 [type="checkbox"] + label.switch {
     background: #999;
     width: 2.5em;
-	height: 1.4rem;
+    height: 1.5em;
     margin: 0 0.5rem;
     padding: 0;
-    border-radius: 0.35rem;
-	overflow: hidden;
+    border-radius: 0.7rem;
+    vertical-align: -0.1em;
 }
 
 [type="checkbox"] + label.switch::before {
     background-color: #ddd;
     width: 1.3rem;
-    transition: 0.2s;
-    border-radius: 0.35rem;
-    vertical-align: bottom;	
-	height: 1.5rem;
-	border: none;
+    height: 1.5rem;
+    transition: 0.2s ease-in-out;
+    border-radius: 0.7rem;
+	border: 0;
+    outline: 0;
 }
+
+/* Safari Hack */
+@media not all and (min-resolution:.001dpcm) { @media {
+    [type="checkbox"] + label.switch::before {
+        vertical-align: -9px;
+    }
+}}
 
 [type="checkbox"]:checked + label.switch {
     background: #090;
 }
 
 [type="checkbox"]:checked + label.switch::before {
-    margin-left: 20px;
+    margin-left: 1.2em;
     background: #ddd;
     transition: 0.2s;
 }
-	
 
 
 
@@ -339,14 +345,14 @@ Universal Elements
     margin: 0;
 	text-align: center;
     background: #fafafa;
-    min-width: 6em;
+    min-width: 3em;
 }	
-	
+
 .check-button:checked + label, 
 .radio-button:checked + label {
     background: #aaa;
 }
-    
+
 .check-button + label::before, 
 .radio-button + label::before {
     display: none;
@@ -377,6 +383,31 @@ Universal Elements
         content: "✖";
         line-height: 0.8em;
     }
+}
+
+
+
+/* input="file" button */
+
+.file_download {
+    opacity: 0 !important;
+    width: 0 !important;
+	padding: 0;
+	overflow: hidden;
+}
+
+.file_download:focus + label {
+	outline: 1px dotted #222;
+}
+
+.file_download + label::before {
+    /*
+	content: "\21E9";
+	border-bottom: 1px solid #000;
+	*/
+	margin-right: 5px;
+	vertical-align: -3px;
+	content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='19'%3E%3Cpath d='M1.8 16.7h15.6V19H1.8zm15.6-10l-7.8 7.8-7.8-7.8h4.4V0H13v6.7z'/%3E%3C/svg%3E");	
 }
 
 

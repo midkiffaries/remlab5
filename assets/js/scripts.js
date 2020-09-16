@@ -179,7 +179,7 @@ const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) +
 const addComma = v => (isNumber(v)) ? v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") : v;
 
 // Change a zero into a dash
-const zeroToDash = v => (v == 0 || v == null) ? "-" : v;
+const zeroToDash = v => (v == 0 || v == null) ? "–" : v;
 
 // Add an extra decimal place to a number
 const addDecimal = v => (isNumber(v)) ? parseFloat(v).toFixed(1) : v;

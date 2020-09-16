@@ -267,7 +267,12 @@ const sectionWeapons = new SectionPanel(
         </ol>
     </div>
 
-    <div class="mech-crit-locations">
+    <div class="">
+        <h5>Left Arm</h5>
+        <ul id="LA-List"></ul>
+    </div>
+
+    <div class="mech-crit-table">
         <h5>Left Arm</h5>
         <ol id="listCritList_LA"></ol>
         
@@ -545,10 +550,10 @@ const updateForm = () => {
 
 // Populate the complete weapons table
 function completeWeaponsTable() {
-    let w, sR, sM, sL, tr = "", l = weaponTable.weapon.length - 1;
+    let w, sR, sM, sL, tr = "";
     
     // Loop for each entry in weaponTable
-    for (let i = 0; i < l; i++) {
+    for (let i in weaponTable.weapon) {
         w = weaponTable.weapon[i];
 
         // Display everything but structure items "0"
@@ -587,10 +592,10 @@ function completeWeaponsTable() {
 
 // Display Compact Weapons List
 function compactWeaponsTable() {
-    let li = "", l = weaponTable.weapon.length - 1;
+    let li = "";
 
     // Loop for each entry in weaponTable
-    for (let i = 0; i < l; i++) {
+    for (let i in weaponTable.weapon) {
         w = weaponTable.weapon[i];
 
         // Display everything but structure items "0"
@@ -638,8 +643,11 @@ function infoWeapon(id) {
 }
 
 // List the contents of a crit location array
-function listCritsbyLoc(id, max, loc) {
-    let li = "";
+function listCritsbyLoc(v) {
+    let id = `listCritList_${v}`,
+        max = eval('Mech.maxcrits_' + v),
+        loc = eval('Mech.assigned_' + v),
+        li = "";
 
     // Increment through selected location array 
     for (let i = 0; i < max; i++) {
@@ -655,11 +663,11 @@ function listCritsbyLoc(id, max, loc) {
 }
 
 // Populate the Crit Location Diagram
-listCritsbyLoc('listCritList_LA', Mech.maxcrits_LA, Mech.assigned_LA);
-listCritsbyLoc('listCritList_LT', Mech.maxcrits_LT, Mech.assigned_LT);
-listCritsbyLoc('listCritList_H', Mech.maxcrits_H, Mech.assigned_H);
-listCritsbyLoc('listCritList_RT', Mech.maxcrits_RT, Mech.assigned_RT);
-listCritsbyLoc('listCritList_RA', Mech.maxcrits_RA, Mech.assigned_RA);
-listCritsbyLoc('listCritList_LL', Mech.maxcrits_LL, Mech.assigned_LL);
-listCritsbyLoc('listCritList_CT', Mech.maxcrits_CT, Mech.assigned_CT);
-listCritsbyLoc('listCritList_RL', Mech.maxcrits_RL, Mech.assigned_RL);
+listCritsbyLoc('LA');
+listCritsbyLoc('LT');
+listCritsbyLoc('H');
+listCritsbyLoc('RT');
+listCritsbyLoc('RA');
+listCritsbyLoc('LL');
+listCritsbyLoc('CT');
+listCritsbyLoc('RL');
