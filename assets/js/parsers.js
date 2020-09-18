@@ -1,5 +1,5 @@
 /**************************
-Page Scrubber Functions
+ * Page Parser Functions
 **************************/
 
 // Improve the behavior of input types

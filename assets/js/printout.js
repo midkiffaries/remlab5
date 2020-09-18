@@ -1,5 +1,5 @@
 /**************************
-Mech print out modals
+ * Mech print out modals
 **************************/
 
 // Printout: Generate the Mech heat scale

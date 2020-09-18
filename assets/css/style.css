@@ -322,7 +322,7 @@ Universal Elements
 /* Safari Hack */
 @media not all and (min-resolution:.001dpcm) { @media {
     [type="checkbox"] + label.switch::before {
-        vertical-align: -9px;
+        vertical-align: 0;
     }
 }}
 

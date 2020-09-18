@@ -1,5 +1,5 @@
 /**************************
-Mech Data JavaScript
+ * Mech Data JavaScript
 **************************/
 
 // Mech: Stats from user input fields

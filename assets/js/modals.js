@@ -1,5 +1,5 @@
 /**************************
-HTML Modals Content
+ * HTML Modal Content
 **************************/
 
 // Buttons modal logic

@@ -1,6 +1,6 @@
 /**************************
-Tables and Conversions
-**************************/
+ * Tables and Conversions
+ **************************/
 
 // Convert total mass into a weight class
 const weightClass = t => {
@@ -114,7 +114,7 @@ const a_Affiliation = [
     'Clan Wolf',
     'Clan Hell\'s Horses',
     'Ghost Bear Dominion',
-    'PERIPHERY |——————————', 
+    'PERIPHERY |——————————',
     'Circinus Federation',
     'Elysian Fields',
     'Greater Valkyrate',
@@ -313,1377 +313,1726 @@ const a_EngineType = [
 // Auto-Eject Modes
 const a_AutoEject = {
     false: 'Disabled',
-    true:  'Enabled'
+    true: 'Enabled'
 };
 
 // Teach Readout: Convert MP to KPH
-const mp2Kph = [0,14,21,32,43,54,64,75,86,97,108,118,129,140,151,162,172,184,194,201,216,230,248,261,275,290,305,318,329,340,351];
+const mp2Kph = [0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 162, 172, 184, 194, 201, 216, 230, 248, 261, 275, 290, 305, 318, 329, 340, 351];
 
 // Calc BV: Defence Factor
 const a_DefenceFac = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7];
 
 // Calc BV: Target Modifier based on top speed
-const a_TargetMod = [0,0,0,1,1,2,2,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
+const a_TargetMod = [0, 0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
 
 // Calc BV: Speed Factor
-const a_SpeedFac = [0.44,0.54,0.65,0.77,0.88,1,1.12,1.24,1.37,1.5,1.63,1.76,1.89,2.02,2.16,2.3,2.44,2.58,2.72,2.86,3,3.15,3.29,3.44,3.59,3.74,4];
+const a_SpeedFac = [0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63, 1.76, 1.89, 2.02, 2.16, 2.3, 2.44, 2.58, 2.72, 2.86, 3, 3.15, 3.29, 3.44, 3.59, 3.74, 4];
 
 
-// JSON Tables
+/**************************
+ * JSON Tables
+ **************************/
+// Original Spreadsheet: https://docs.google.com/spreadsheets/d/1j4kh83VdzD2SbhHTBsUDTIhraINZ4W9-QzQ6T3m-cm8/edit#gid=1474955611
 
-//////////////////////////////
-// Weapons and Equipment Table
-//////////////////////////////
+// Type: 0 = Hardpoint, 1 = Energy, 2 = Ballistic, 3 = Missle, 4 = Artillery, 5 = Equipment, 6 = Industrial, 7 = Ammo, 8 = Other
+
+// Weapons and Equipment
 const tableArsenal = `
-    {
-        "weapon": [
-            {
-                "id": "0",
-                "type": "0",
-                "name": "Shoulder",
-                "nameShort": "Shoulder",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "1",
-                "type": "0",
-                "name": "Upper Arm",
-                "nameShort": "Upper Arm",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "2",
-                "type": "0",
-                "name": "Lower Arm",
-                "nameShort": "Lower Arm",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "3",
-                "type": "0",
-                "name": "Hand",
-                "nameShort": "Hand",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "4",
-                "type": "0",
-                "name": "Engine",
-                "nameShort": "Engine",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "5",
-                "type": "0",
-                "name": "Gyro",
-                "nameShort": "Gyro",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "6",
-                "type": "0",
-                "name": "Hip",
-                "nameShort": "Hip",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "7",
-                "type": "0",
-                "name": "Upper Leg",
-                "nameShort": "Upper Leg",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "8",
-                "type": "0",
-                "name": "Lower Leg",
-                "nameShort": "Lower Leg",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "9",
-                "type": "0",
-                "name": "Foot",
-                "nameShort": "Foot",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "10",
-                "type": "0",
-                "name": "Cockpit",
-                "nameShort": "Cockpit",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "11",
-                "type": "0",
-                "name": "Life Support",
-                "nameShort": "Life Support",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "12",
-                "type": "0",
-                "name": "Sensors",
-                "nameShort": "Sensors",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "13",
-                "type": "0",
-                "name": "-",
-                "nameShort": "empty head slot",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "14",
-                "type": "0",
-                "name": "Ferro-Fibrous",
-                "nameShort": "Ferro",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "15",
-                "type": "0",
-                "name": "Endo Steel",
-                "nameShort": "Endo",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "16",
-                "type": "0",
-                "name": "XL Engine",
-                "nameShort": "XL Engine",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "17",
-                "type": "0",
-                "name": "Jump Jet",
-                "nameShort": "Jump Jet",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-            {
-                "id": "18",
-                "type": "0",
-                "name": "Heat Sink",
-                "nameShort": "Heat Sink",
-                "level": "1",
-                "edition": "1",
-                "tech": "2",
-                "heat": "0",
-                "minDamage": "0",
-                "damage": "0",
-                "delay": "0",
-                "rangeMin": "0",
-                "rangeShort": "0",
-                "rangeMedium": "0",
-                "rangeLong": "0",
-                "rangeExtreme": "0",
-                "tons": "0",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "0",
-                "bv": "0",
-                "modifier": "",
-                "special": "a",
-                "year": "",
-                "desc": "",
-                "techRating": "b",
-                "availability": "a",
-                "fixed": "1"
-            },
-
-
-            
-
-            {
-                "id": "19",
-                "type": "1",
-                "name": "Large Laser",
-                "nameShort": "LLaser",
-                "level": "1",
-                "edition": "2",
-                "tech": "0",
-                "heat": "8",
-                "minDamage": "0",
-                "damage": "8",
-                "delay": "2",
-                "rangeMin": "0",
-                "rangeShort": "5",
-                "rangeMedium": "10",
-                "rangeLong": "15",
-                "rangeExtreme": "20",
-                "tons": "5",
-                "crits": "2",
-                "ammo": "0",
-                "cost": "100000",
-                "bv": "123",
-                "modifier": "0",
-                "special": "9",
-                "year": "2306",
-                "desc": "Lasers cause damage by firing an intense beam of light at a target, flooding concentrated energy in the form of heat, which can melt material and overwhelm heat-sensitive electronics. The Large Laser differs from its smaller cousins by being a gamma-ray laser firing a much more powerful beam, allowing it to reach to further ranges and cause more damage.",
-                "techRating": "c",
-                "availability": "d",
-                "fixed": "0"
-            },
-
-            {
-                "id": "20",
-                "type": "1",
-                "name": "Medium Laser",
-                "nameShort": "MLaser",
-                "level": "1",
-                "edition": "2",
-                "tech": "0",
-                "heat": "3",
-                "minDamage": "0",
-                "damage": "5",
-                "delay": "1",
-                "rangeMin": "0",
-                "rangeShort": "3",
-                "rangeMedium": "6",
-                "rangeLong": "9",
-                "rangeExtreme": "12",
-                "tons": "1",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "40000",
-                "bv": "46",
-                "modifier": "0",
-                "special": "0",
-                "year": "2290",
-                "desc": "A free-electron laser, it is a device that focuses an amplified beam of light on a small surface area. The medium laser uses this intensified beam of light to damage targets by heating them to melting temperatures.",
-                "techRating": "c",
-                "availability": "b",
-                "fixed": "0"
-            },
-
-            {
-                "id": "21",
-                "type": "1",
-                "name": "Small Laser",
-                "nameShort": "SLaser",
-                "level": "1",
-                "edition": "2",
-                "tech": "0",
-                "heat": "1",
-                "minDamage": "0",
-                "damage": "3",
-                "delay": "1",
-                "rangeMin": "0",
-                "rangeShort": "1",
-                "rangeMedium": "2",
-                "rangeLong": "3",
-                "rangeExtreme": "4",
-                "tons": "0.5",
-                "crits": "1",
-                "ammo": "0",
-                "cost": "11250",
-                "bv": "9",
-                "modifier": "0",
-                "special": "0",
-                "year": "2290",
-                "desc": "The compact size of the Small Laser allows it to be equipped and used efficiently on practically anything; however the reduced firepower means that Small Lasers are not usually used on heavier combat devices such as 'Mechs or tanks.",
-                "techRating": "c",
-                "availability": "b",
-                "fixed": "0"
-            },
-            
-            {}
-        ]
-    }
-`;
-
-//////////////////////////////
-// Engine Table
-//////////////////////////////
-const tableEngine = `
 {
-    "engine": [
-        {
-            "rating": "5",
-            "tons": "0.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "10",
-            "tons": "0.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "15",
-            "tons": "0.5",
-            "type": "GM"
-        },
-        {
-            "rating": "20",
-            "tons": "0.5",
-            "type": "Pitban"
-        },
-        {
-            "rating": "25",
-            "tons": "0.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "30",
-            "tons": "1",
-            "type": "Nissan"
-        },
-        {
-            "rating": "35",
-            "tons": "1",
-            "type": "VOX"
-        },
-        {
-            "rating": "40",
-            "tons": "1",
-            "type": "GM"
-        },
-        {
-            "rating": "45",
-            "tons": "1",
-            "type": "GM"
-        },
-        {
-            "rating": "50",
-            "tons": "1.5",
-            "type": "DAV"
-        },
-        {
-            "rating": "55",
-            "tons": "1.5",
-            "type": "VOX"
-        },
-        {
-            "rating": "60",
-            "tons": "1.5",
-            "type": "Leenex"
-        },
-        {
-            "rating": "65",
-            "tons": "2",
-            "type": "Nissan"
-        },
-        {
-            "rating": "70",
-            "tons": "2",
-            "type": "Omni"
-        },
-        {
-            "rating": "75",
-            "tons": "2",
-            "type": "GM"
-        },
-        {
-            "rating": "80",
-            "tons": "2.5",
-            "type": "VOX"
-        },
-        {
-            "rating": "85",
-            "tons": "2.5",
-            "type": "DAV"
-        },
-        {
-            "rating": "90",
-            "tons": "3",
-            "type": "DAV"
-        },
-        {
-            "rating": "95",
-            "tons": "3",
-            "type": "Nissan"
-        },
-        {
-            "rating": "100",
-            "tons": "3",
-            "type": "Hermes"
-        },
-        {
-            "rating": "105",
-            "tons": "3.5",
-            "type": "DAV"
-        },
-        {
-            "rating": "110",
-            "tons": "3.5",
-            "type": "GM"
-        },
-        {
-            "rating": "115",
-            "tons": "4",
-            "type": "GM"
-        },
-        {
-            "rating": "120",
-            "tons": "4",
-            "type": "GM"
-        },
-        {
-            "rating": "125",
-            "tons": "4",
-            "type": "Vlar"
-        },
-        {
-            "rating": "130",
-            "tons": "4.5",
-            "type": "Magna"
-        },
-        {
-            "rating": "135",
-            "tons": "4.5",
-            "type": "Hermes"
-        },
-        {
-            "rating": "140",
-            "tons": "5",
-            "type": "Leenex"
-        },
-        {
-            "rating": "145",
-            "tons": "5",
-            "type": "Omni"
-        },
-        {
-            "rating": "150",
-            "tons": "5.5",
-            "type": "GM"
-        },
-        {
-            "rating": "155",
-            "tons": "5.5",
-            "type": "GM"
-        },
-        {
-            "rating": "160",
-            "tons": "6",
-            "type": "LTV"
-        },
-        {
-            "rating": "165",
-            "tons": "6",
-            "type": "VOX"
-        },
-        {
-            "rating": "170",
-            "tons": "6",
-            "type": "DAV"
-        },
-        {
-            "rating": "175",
-            "tons": "7",
-            "type": "Omni"
-        },
-        {
-            "rating": "180",
-            "tons": "7",
-            "type": "GM"
-        },
-        {
-            "rating": "185",
-            "tons": "7.5",
-            "type": "GM"
-        },
-        {
-            "rating": "190",
-            "tons": "7.5",
-            "type": "GM"
-        },
-        {
-            "rating": "195",
-            "tons": "8",
-            "type": "Nissan"
-        },
-        {
-            "rating": "200",
-            "tons": "8.5",
-            "type": "Nissan"
-        },
-        {
-            "rating": "205",
-            "tons": "8.5",
-            "type": "Vlar"
-        },
-        {
-            "rating": "210",
-            "tons": "9",
-            "type": "GM"
-        },
-        {
-            "rating": "215",
-            "tons": "9.5",
-            "type": "Core Tek"
-        },
-        {
-            "rating": "220",
-            "tons": "10",
-            "type": "DAV"
-        },
-        {
-            "rating": "225",
-            "tons": "10",
-            "type": "VOX"
-        },
-        {
-            "rating": "230",
-            "tons": "10.5",
-            "type": "Leenex"
-        },
-        {
-            "rating": "235",
-            "tons": "11",
-            "type": "GM"
-        },
-        {
-            "rating": "240",
-            "tons": "11.5",
-            "type": "Pitban"
-        },
-        {
-            "rating": "245",
-            "tons": "12",
-            "type": "Magna"
-        },
-        {
-            "rating": "250",
-            "tons": "12.5",
-            "type": "Magna"
-        },
-        {
-            "rating": "255",
-            "tons": "13",
-            "type": "Strand"
-        },
-        {
-            "rating": "260",
-            "tons": "13.5",
-            "type": "Magna"
-        },
-        {
-            "rating": "265",
-            "tons": "14",
-            "type": "Vlar"
-        },
-        {
-            "rating": "270",
-            "tons": "14.5",
-            "type": "GM"
-        },
-        {
-            "rating": "275",
-            "tons": "15.5",
-            "type": "Core Tek"
-        },
-        {
-            "rating": "280",
-            "tons": "16",
-            "type": "VOX"
-        },
-        {
-            "rating": "285",
-            "tons": "16.5",
-            "type": "Pitban"
-        },
-        {
-            "rating": "290",
-            "tons": "17.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "295",
-            "tons": "18",
-            "type": "GM"
-        },
-        {
-            "rating": "300",
-            "tons": "19",
-            "type": "Vlar"
-        },
-        {
-            "rating": "305",
-            "tons": "19.5",
-            "type": "GM"
-        },
-        {
-            "rating": "310",
-            "tons": "20.5",
-            "type": "Magna"
-        },
-        {
-            "rating": "315",
-            "tons": "21.5",
-            "type": "GM"
-        },
-        {
-            "rating": "320",
-            "tons": "22.5",
-            "type": "Pitban"
-        },
-        {
-            "rating": "325",
-            "tons": "23.5",
-            "type": "VOX"
-        },
-        {
-            "rating": "330",
-            "tons": "24.5",
-            "type": "VOX"
-        },
-        {
-            "rating": "335",
-            "tons": "25.5",
-            "type": "Leenex"
-        },
-        {
-            "rating": "340",
-            "tons": "27",
-            "type": "VOX"
-        },
-        {
-            "rating": "345",
-            "tons": "28.5",
-            "type": "Vlar"
-        },
-        {
-            "rating": "350",
-            "tons": "29.5",
-            "type": "Magna"
-        },
-        {
-            "rating": "355",
-            "tons": "31.5",
-            "type": "LTV"
-        },
-        {
-            "rating": "360",
-            "tons": "33",
-            "type": "Hermes"
-        },
-        {
-            "rating": "365",
-            "tons": "34.5",
-            "type": "Vlar"
-        },
-        {
-            "rating": "370",
-            "tons": "36.5",
-            "type": "Magna"
-        },
-        {
-            "rating": "375",
-            "tons": "38.5",
-            "type": "GM"
-        },
-        {
-            "rating": "380",
-            "tons": "41",
-            "type": "GM"
-        },
-        {
-            "rating": "385",
-            "tons": "43.5",
-            "type": "LTV"
-        },
-        {
-            "rating": "390",
-            "tons": "46",
-            "type": "Magna"
-        },
-        {
-            "rating": "395",
-            "tons": "49",
-            "type": "Hermes"
-        },
-        {
-            "rating": "400",
-            "tons": "56.5",
-            "type": "LTV"
-        },
-        {
-            "rating": "405",
-            "tons": "56.5",
-            "type": "LTV"
-        },
-        {
-            "rating": "410",
-            "tons": "61",
-            "type": "Magna"
-        },
-        {
-            "rating": "415",
-            "tons": "66.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "420",
-            "tons": "72.5",
-            "type": "Hermes"
-        },
-        {
-            "rating": "425",
-            "tons": "79.5",
-            "type": "GM"
-        },
-        {
-            "rating": "430",
-            "tons": "87.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "435",
-            "tons": "97.5",
-            "type": "DAV"
-        },
-        {
-            "rating": "440",
-            "tons": "107.5",
-            "type": "Vlar"
-        },
-        {
-            "rating": "445",
-            "tons": "119.5",
-            "type": "Core Tek"
-        },
-        {
-            "rating": "450",
-            "tons": "133.5",
-            "type": "VOX"
-        },
-        {
-            "rating": "455",
-            "tons": "150",
-            "type": "Nissan"
-        },
-        {
-            "rating": "460",
-            "tons": "168.5",
-            "type": "VOX"
-        },
-        {
-            "rating": "465",
-            "tons": "190",
-            "type": "Pitban"
-        },
-        {
-            "rating": "470",
-            "tons": "214.5",
-            "type": "Pitban"
-        },
-        {
-            "rating": "475",
-            "tons": "243",
-            "type": "Vlar"
-        },
-        {
-            "rating": "480",
-            "tons": "275.5",
-            "type": "Omni"
-        },
-        {
-            "rating": "485",
-            "tons": "313",
-            "type": "Magna"
-        },
-        {
-            "rating": "490",
-            "tons": "356",
-            "type": "Hermes"
-        },
-        {
-            "rating": "495",
-            "tons": "405.5",
-            "type": "LTV"
-        },
-        {
-            "rating": "500",
-            "tons": "462.5",
-            "type": "GM"
-        }
-    ]
+"weapon": [
+    {
+        "id": 0,
+        "type": 0,
+        "name": "Shoulder",
+        "nameShort": "Shoulder",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 1,
+        "type": 0,
+        "name": "Upper Arm",
+        "nameShort": "Upper Arm",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 2,
+        "type": 0,
+        "name": "Lower Arm",
+        "nameShort": "Lower Arm",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 3,
+        "type": 0,
+        "name": "Hand",
+        "nameShort": "Hand",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 4,
+        "type": 0,
+        "name": "Engine",
+        "nameShort": "Engine",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 5,
+        "type": 0,
+        "name": "Gyro",
+        "nameShort": "Gyro",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 6,
+        "type": 0,
+        "name": "Hip",
+        "nameShort": "Hip",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 7,
+        "type": 0,
+        "name": "Upper Leg",
+        "nameShort": "Upper Leg",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 8,
+        "type": 0,
+        "name": "Lower Leg",
+        "nameShort": "Lower Leg",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 9,
+        "type": 0,
+        "name": "Foot",
+        "nameShort": "Foot",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 10,
+        "type": 0,
+        "name": "Cockpit",
+        "nameShort": "Cockpit",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 11,
+        "type": 0,
+        "name": "Life Support",
+        "nameShort": "Life Support",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 12,
+        "type": 0,
+        "name": "Sensors",
+        "nameShort": "Sensors",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 13,
+        "type": 0,
+        "name": "-",
+        "nameShort": "empty head slot",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 14,
+        "type": 0,
+        "name": "Ferro-Fibrous",
+        "nameShort": "Ferro",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 15,
+        "type": 0,
+        "name": "Endo Steel",
+        "nameShort": "Endo",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 16,
+        "type": 0,
+        "name": "XL Engine",
+        "nameShort": "XL Engine",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 17,
+        "type": 0,
+        "name": "Jump Jet",
+        "nameShort": "Jump Jet",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 18,
+        "type": 0,
+        "name": "Heat Sink",
+        "nameShort": "Heat Sink",
+        "level": 1,
+        "edition": 1,
+        "tech": 2,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 0,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 0,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 0,
+        "bv": 0,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": null,
+        "desc": ""
+    },
+    {
+        "id": 19,
+        "type": 1,
+        "name": "Large Laser",
+        "nameShort": "LLaser",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 8,
+        "minDamage": 0,
+        "damage": 8,
+        "delay": 2,
+        "rangeMin": 0,
+        "rangeShort": 5,
+        "rangeMedium": 10,
+        "rangeLong": 15,
+        "rangeExtreme": 20,
+        "tons": 5,
+        "crits": 2,
+        "ammo": 0,
+        "cost": 100000,
+        "bv": 123,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "d",
+        "year": 2306,
+        "desc": "Lasers cause damage by firing an intense beam of light at a target, flooding concentrated energy in the form of heat, which can melt material and overwhelm heat-sensitive electronics. The Large Laser differs from its smaller cousins by being a gamma-ray laser firing a much more powerful beam, allowing it to reach to further ranges and cause more damage."
+    },
+    {
+        "id": 20,
+        "type": 1,
+        "name": "Medium Laser",
+        "nameShort": "MLaser",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 3,
+        "minDamage": 0,
+        "damage": 5,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 3,
+        "rangeMedium": 6,
+        "rangeLong": 9,
+        "rangeExtreme": 12,
+        "tons": 1,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 40000,
+        "bv": 46,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "b",
+        "year": 2290,
+        "desc": "A free-electron laser, it is a device that focuses an amplified beam of light on a small surface area. The medium laser uses this intensified beam of light to damage targets by heating them to melting temperatures."
+    },
+    {
+        "id": 21,
+        "type": 1,
+        "name": "Small Laser",
+        "nameShort": "SLaser",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 1,
+        "minDamage": 0,
+        "damage": 3,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 1,
+        "rangeMedium": 2,
+        "rangeLong": 3,
+        "rangeExtreme": 4,
+        "tons": 1,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 11250,
+        "bv": 9,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "b",
+        "year": 2290,
+        "desc": "The compact size of the Small Laser allows it to be equipped and used efficiently on practically anything; however the reduced firepower means that Small Lasers are not usually used on heavier combat devices such as Mechs or tanks."
+    },
+    {
+        "id": 22,
+        "type": 1,
+        "name": "PPC",
+        "nameShort": "PPC",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 10,
+        "minDamage": 0,
+        "damage": 10,
+        "delay": 3,
+        "rangeMin": 3,
+        "rangeShort": 6,
+        "rangeMedium": 12,
+        "rangeLong": 18,
+        "rangeExtreme": 24,
+        "tons": 7,
+        "crits": 3,
+        "ammo": 0,
+        "cost": 200000,
+        "bv": 176,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2460,
+        "desc": "The Particle Projector Cannon is an energy weapon, firing a concentrated stream of protons or ions at a target, with damage resulting from both thermal and kinetic energy. Despite being an energy weapon, it produces recoil."
+    },
+    {
+        "id": 23,
+        "type": 1,
+        "name": "Flamer",
+        "nameShort": "Flamer",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 3,
+        "minDamage": 0,
+        "damage": 2,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 1,
+        "rangeMedium": 2,
+        "rangeLong": 3,
+        "rangeExtreme": 4,
+        "tons": 1,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 7500,
+        "bv": 6,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "b",
+        "year": 2025,
+        "desc": "The standard Flamer taps into a BattleMechs reactor to produce heat in the form of a plasma release. An extremely short-ranged weapon, the Flamer is devastating against infantry, however damage done against other Mechs and vehicles is negligible, though it can raise the enemy units heat levels."
+    },
+    {
+        "id": 24,
+        "type": 2,
+        "name": "Autocannon/2",
+        "nameShort": "AC/2",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 1,
+        "minDamage": 0,
+        "damage": 2,
+        "delay": 0,
+        "rangeMin": 4,
+        "rangeShort": 8,
+        "rangeMedium": 16,
+        "rangeLong": 24,
+        "rangeExtreme": 32,
+        "tons": 6,
+        "crits": 1,
+        "ammo": 45,
+        "cost": 75000,
+        "bv": 37,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "d",
+        "year": 2290,
+        "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
+    },
+    {
+        "id": 25,
+        "type": 2,
+        "name": "Autocannon/5",
+        "nameShort": "AC/5",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 1,
+        "minDamage": 0,
+        "damage": 5,
+        "delay": 1,
+        "rangeMin": 3,
+        "rangeShort": 6,
+        "rangeMedium": 12,
+        "rangeLong": 18,
+        "rangeExtreme": 24,
+        "tons": 8,
+        "crits": 4,
+        "ammo": 20,
+        "cost": 125000,
+        "bv": 70,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2240,
+        "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
+    },
+    {
+        "id": 26,
+        "type": 2,
+        "name": "Autocannon/10",
+        "nameShort": "AC/10",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 3,
+        "minDamage": 0,
+        "damage": 10,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 5,
+        "rangeMedium": 10,
+        "rangeLong": 15,
+        "rangeExtreme": 20,
+        "tons": 12,
+        "crits": 7,
+        "ammo": 10,
+        "cost": 200000,
+        "bv": 124,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "d",
+        "year": 2443,
+        "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
+    },
+    {
+        "id": 27,
+        "type": 2,
+        "name": "Autocannon/20",
+        "nameShort": "AC/20",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 7,
+        "minDamage": 0,
+        "damage": 20,
+        "delay": 2,
+        "rangeMin": 0,
+        "rangeShort": 3,
+        "rangeMedium": 6,
+        "rangeLong": 9,
+        "rangeExtreme": 12,
+        "tons": 14,
+        "crits": 10,
+        "ammo": 5,
+        "cost": 300000,
+        "bv": 178,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "e",
+        "year": 2490,
+        "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
+    },
+    {
+        "id": 28,
+        "type": 2,
+        "name": "Machine Gun",
+        "nameShort": "MG",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 0,
+        "minDamage": 0,
+        "damage": 2,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 1,
+        "rangeMedium": 2,
+        "rangeLong": 3,
+        "rangeExtreme": 4,
+        "tons": 0.5,
+        "crits": 1,
+        "ammo": 200,
+        "cost": 5000,
+        "bv": 5,
+        "modifier": 0,
+        "techRating": "b",
+        "availability": "a",
+        "year": 1950,
+        "desc": "The Machine Gun is the quintessential anti-infantry weapon, issuing a stream of bullets at a high rate of fire to cut down opposing soldiers, while still being effective at damaging BattleMechs."
+    },
+    {
+        "id": 29,
+        "type": 2,
+        "name": "Flamer (Vehicle)",
+        "nameShort": "FlamerV",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 3,
+        "minDamage": 0,
+        "damage": 2,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 1,
+        "rangeMedium": 2,
+        "rangeLong": 3,
+        "rangeExtreme": 4,
+        "tons": 0.5,
+        "crits": 1,
+        "ammo": 20,
+        "cost": 7500,
+        "bv": 5,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "b",
+        "year": 1978,
+        "desc": "The Vehicle Flamer performs the same as a Mech-mounted Flamer, venting superheated gases at a target to cause it to overheat/burn up. As most non-Mech combat units lack expensive nuclear fusion reactors, Vehicle Flamers instead draw from a pool of combusting ammunition and use that to generate the stream of hot gas."
+    },
+    {
+        "id": 30,
+        "type": 3,
+        "name": "LRM-5",
+        "nameShort": "LRM-5",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 2,
+        "minDamage": 1,
+        "damage": 5,
+        "delay": 2,
+        "rangeMin": 6,
+        "rangeShort": 7,
+        "rangeMedium": 14,
+        "rangeLong": 21,
+        "rangeExtreme": 28,
+        "tons": 2,
+        "crits": 1,
+        "ammo": 24,
+        "cost": 30000,
+        "bv": 45,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2300,
+        "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
+    },
+    {
+        "id": 31,
+        "type": 3,
+        "name": "LRM-10",
+        "nameShort": "LRM-10",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 4,
+        "minDamage": 3,
+        "damage": 10,
+        "delay": 2,
+        "rangeMin": 6,
+        "rangeShort": 7,
+        "rangeMedium": 14,
+        "rangeLong": 21,
+        "rangeExtreme": 28,
+        "tons": 5,
+        "crits": 2,
+        "ammo": 12,
+        "cost": 100000,
+        "bv": 90,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2300,
+        "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
+    },
+    {
+        "id": 32,
+        "type": 3,
+        "name": "LRM-15",
+        "nameShort": "LRM-15",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 5,
+        "minDamage": 5,
+        "damage": 15,
+        "delay": 2,
+        "rangeMin": 6,
+        "rangeShort": 7,
+        "rangeMedium": 14,
+        "rangeLong": 21,
+        "rangeExtreme": 28,
+        "tons": 7,
+        "crits": 3,
+        "ammo": 8,
+        "cost": 175000,
+        "bv": 136,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2315,
+        "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
+    },
+    {
+        "id": 33,
+        "type": 3,
+        "name": "LRM-20",
+        "nameShort": "LRM-20",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 6,
+        "minDamage": 6,
+        "damage": 20,
+        "delay": 2,
+        "rangeMin": 6,
+        "rangeShort": 7,
+        "rangeMedium": 14,
+        "rangeLong": 21,
+        "rangeExtreme": 28,
+        "tons": 10,
+        "crits": 5,
+        "ammo": 6,
+        "cost": 250000,
+        "bv": 181,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2315,
+        "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
+    },
+    {
+        "id": 34,
+        "type": 3,
+        "name": "SRM-2",
+        "nameShort": "SRM-2",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 2,
+        "minDamage": 2,
+        "damage": 4,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 3,
+        "rangeMedium": 6,
+        "rangeLong": 9,
+        "rangeExtreme": 12,
+        "tons": 1,
+        "crits": 1,
+        "ammo": 50,
+        "cost": 10000,
+        "bv": 21,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2370,
+        "desc": "Short Range Missiles pack more power into the missile than almost any other kind. They lack sophisticated guidance systems, so they must deliver their punch at short range."
+    },
+    {
+        "id": 35,
+        "type": 3,
+        "name": "SRM-4",
+        "nameShort": "SRM-4",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 3,
+        "minDamage": 2,
+        "damage": 8,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 3,
+        "rangeMedium": 6,
+        "rangeLong": 9,
+        "rangeExtreme": 12,
+        "tons": 2,
+        "crits": 1,
+        "ammo": 25,
+        "cost": 60000,
+        "bv": 39,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2370,
+        "desc": "Short Range Missiles pack more power into the missile than almost any other kind. They lack sophisticated guidance systems, so they must deliver their punch at short range."
+    },
+    {
+        "id": 36,
+        "type": 3,
+        "name": "SRM-6",
+        "nameShort": "SRM-6",
+        "level": 1,
+        "edition": 2,
+        "tech": 0,
+        "heat": 4,
+        "minDamage": 4,
+        "damage": 12,
+        "delay": 1,
+        "rangeMin": 0,
+        "rangeShort": 3,
+        "rangeMedium": 6,
+        "rangeLong": 9,
+        "rangeExtreme": 12,
+        "tons": 3,
+        "crits": 2,
+        "ammo": 15,
+        "cost": 80000,
+        "bv": 59,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "c",
+        "year": 2370,
+        "desc": "Short Range Missiles pack more power into the missile than almost any other kind. They lack sophisticated guidance systems, so they must deliver their punch at short range."
+    }
+]
 }
 `;
 
-//////////////////////////////
+// Engine Table
+const tableEngine = `
+{
+"engine": [
+    {
+        "rating": 5,
+        "tons": 0.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 10,
+        "tons": 0.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 15,
+        "tons": 0.5,
+        "type": "GM"
+    },
+    {
+        "rating": 20,
+        "tons": 0.5,
+        "type": "Pitban"
+    },
+    {
+        "rating": 25,
+        "tons": 0.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 30,
+        "tons": 1,
+        "type": "Nissan"
+    },
+    {
+        "rating": 35,
+        "tons": 1,
+        "type": "VOX"
+    },
+    {
+        "rating": 40,
+        "tons": 1,
+        "type": "GM"
+    },
+    {
+        "rating": 45,
+        "tons": 1,
+        "type": "GM"
+    },
+    {
+        "rating": 50,
+        "tons": 1.5,
+        "type": "DAV"
+    },
+    {
+        "rating": 55,
+        "tons": 1.5,
+        "type": "VOX"
+    },
+    {
+        "rating": 60,
+        "tons": 1.5,
+        "type": "Leenex"
+    },
+    {
+        "rating": 65,
+        "tons": 2,
+        "type": "Nissan"
+    },
+    {
+        "rating": 70,
+        "tons": 2,
+        "type": "Omni"
+    },
+    {
+        "rating": 75,
+        "tons": 2,
+        "type": "GM"
+    },
+    {
+        "rating": 80,
+        "tons": 2.5,
+        "type": "VOX"
+    },
+    {
+        "rating": 85,
+        "tons": 2.5,
+        "type": "DAV"
+    },
+    {
+        "rating": 90,
+        "tons": 3,
+        "type": "DAV"
+    },
+    {
+        "rating": 95,
+        "tons": 3,
+        "type": "Nissan"
+    },
+    {
+        "rating": 100,
+        "tons": 3,
+        "type": "Hermes"
+    },
+    {
+        "rating": 105,
+        "tons": 3.5,
+        "type": "DAV"
+    },
+    {
+        "rating": 110,
+        "tons": 3.5,
+        "type": "GM"
+    },
+    {
+        "rating": 115,
+        "tons": 4,
+        "type": "GM"
+    },
+    {
+        "rating": 120,
+        "tons": 4,
+        "type": "GM"
+    },
+    {
+        "rating": 125,
+        "tons": 4,
+        "type": "Vlar"
+    },
+    {
+        "rating": 130,
+        "tons": 4.5,
+        "type": "Magna"
+    },
+    {
+        "rating": 135,
+        "tons": 4.5,
+        "type": "Hermes"
+    },
+    {
+        "rating": 140,
+        "tons": 5,
+        "type": "Leenex"
+    },
+    {
+        "rating": 145,
+        "tons": 5,
+        "type": "Omni"
+    },
+    {
+        "rating": 150,
+        "tons": 5.5,
+        "type": "GM"
+    },
+    {
+        "rating": 155,
+        "tons": 5.5,
+        "type": "GM"
+    },
+    {
+        "rating": 160,
+        "tons": 6,
+        "type": "LTV"
+    },
+    {
+        "rating": 165,
+        "tons": 6,
+        "type": "VOX"
+    },
+    {
+        "rating": 170,
+        "tons": 6,
+        "type": "DAV"
+    },
+    {
+        "rating": 175,
+        "tons": 7,
+        "type": "Omni"
+    },
+    {
+        "rating": 180,
+        "tons": 7,
+        "type": "GM"
+    },
+    {
+        "rating": 185,
+        "tons": 7.5,
+        "type": "GM"
+    },
+    {
+        "rating": 190,
+        "tons": 7.5,
+        "type": "GM"
+    },
+    {
+        "rating": 195,
+        "tons": 8,
+        "type": "Nissan"
+    },
+    {
+        "rating": 200,
+        "tons": 8.5,
+        "type": "Nissan"
+    },
+    {
+        "rating": 205,
+        "tons": 8.5,
+        "type": "Vlar"
+    },
+    {
+        "rating": 210,
+        "tons": 9,
+        "type": "GM"
+    },
+    {
+        "rating": 215,
+        "tons": 9.5,
+        "type": "Core Tek"
+    },
+    {
+        "rating": 220,
+        "tons": 10,
+        "type": "DAV"
+    },
+    {
+        "rating": 225,
+        "tons": 10,
+        "type": "VOX"
+    },
+    {
+        "rating": 230,
+        "tons": 10.5,
+        "type": "Leenex"
+    },
+    {
+        "rating": 235,
+        "tons": 11,
+        "type": "GM"
+    },
+    {
+        "rating": 240,
+        "tons": 11.5,
+        "type": "Pitban"
+    },
+    {
+        "rating": 245,
+        "tons": 12,
+        "type": "Magna"
+    },
+    {
+        "rating": 250,
+        "tons": 12.5,
+        "type": "Magna"
+    },
+    {
+        "rating": 255,
+        "tons": 13,
+        "type": "Strand"
+    },
+    {
+        "rating": 260,
+        "tons": 13.5,
+        "type": "Magna"
+    },
+    {
+        "rating": 265,
+        "tons": 14,
+        "type": "Vlar"
+    },
+    {
+        "rating": 270,
+        "tons": 14.5,
+        "type": "GM"
+    },
+    {
+        "rating": 275,
+        "tons": 15.5,
+        "type": "Core Tek"
+    },
+    {
+        "rating": 280,
+        "tons": 16,
+        "type": "VOX"
+    },
+    {
+        "rating": 285,
+        "tons": 16.5,
+        "type": "Pitban"
+    },
+    {
+        "rating": 290,
+        "tons": 17.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 295,
+        "tons": 18,
+        "type": "GM"
+    },
+    {
+        "rating": 300,
+        "tons": 19,
+        "type": "Vlar"
+    },
+    {
+        "rating": 305,
+        "tons": 19.5,
+        "type": "GM"
+    },
+    {
+        "rating": 310,
+        "tons": 20.5,
+        "type": "Magna"
+    },
+    {
+        "rating": 315,
+        "tons": 21.5,
+        "type": "GM"
+    },
+    {
+        "rating": 320,
+        "tons": 22.5,
+        "type": "Pitban"
+    },
+    {
+        "rating": 325,
+        "tons": 23.5,
+        "type": "VOX"
+    },
+    {
+        "rating": 330,
+        "tons": 24.5,
+        "type": "VOX"
+    },
+    {
+        "rating": 335,
+        "tons": 25.5,
+        "type": "Leenex"
+    },
+    {
+        "rating": 340,
+        "tons": 27,
+        "type": "VOX"
+    },
+    {
+        "rating": 345,
+        "tons": 28.5,
+        "type": "Vlar"
+    },
+    {
+        "rating": 350,
+        "tons": 29.5,
+        "type": "Magna"
+    },
+    {
+        "rating": 355,
+        "tons": 31.5,
+        "type": "LTV"
+    },
+    {
+        "rating": 360,
+        "tons": 33,
+        "type": "Hermes"
+    },
+    {
+        "rating": 365,
+        "tons": 34.5,
+        "type": "Vlar"
+    },
+    {
+        "rating": 370,
+        "tons": 36.5,
+        "type": "Magna"
+    },
+    {
+        "rating": 375,
+        "tons": 38.5,
+        "type": "GM"
+    },
+    {
+        "rating": 380,
+        "tons": 41,
+        "type": "GM"
+    },
+    {
+        "rating": 385,
+        "tons": 43.5,
+        "type": "LTV"
+    },
+    {
+        "rating": 390,
+        "tons": 46,
+        "type": "Magna"
+    },
+    {
+        "rating": 395,
+        "tons": 49,
+        "type": "Hermes"
+    },
+    {
+        "rating": 400,
+        "tons": 56.5,
+        "type": "LTV"
+    },
+    {
+        "rating": 405,
+        "tons": 56.5,
+        "type": "LTV"
+    },
+    {
+        "rating": 410,
+        "tons": 61,
+        "type": "Magna"
+    },
+    {
+        "rating": 415,
+        "tons": 66.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 420,
+        "tons": 72.5,
+        "type": "Hermes"
+    },
+    {
+        "rating": 425,
+        "tons": 79.5,
+        "type": "GM"
+    },
+    {
+        "rating": 430,
+        "tons": 87.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 435,
+        "tons": 97.5,
+        "type": "DAV"
+    },
+    {
+        "rating": 440,
+        "tons": 107.5,
+        "type": "Vlar"
+    },
+    {
+        "rating": 445,
+        "tons": 119.5,
+        "type": "Core Tek"
+    },
+    {
+        "rating": 450,
+        "tons": 133.5,
+        "type": "VOX"
+    },
+    {
+        "rating": 455,
+        "tons": 150,
+        "type": "Nissan"
+    },
+    {
+        "rating": 460,
+        "tons": 168.5,
+        "type": "VOX"
+    },
+    {
+        "rating": 465,
+        "tons": 190,
+        "type": "Pitban"
+    },
+    {
+        "rating": 470,
+        "tons": 214.5,
+        "type": "Pitban"
+    },
+    {
+        "rating": 475,
+        "tons": 243,
+        "type": "Vlar"
+    },
+    {
+        "rating": 480,
+        "tons": 275.5,
+        "type": "Omni"
+    },
+    {
+        "rating": 485,
+        "tons": 313,
+        "type": "Magna"
+    },
+    {
+        "rating": 490,
+        "tons": 356,
+        "type": "Hermes"
+    },
+    {
+        "rating": 495,
+        "tons": 405.5,
+        "type": "LTV"
+    },
+    {
+        "rating": 500,
+        "tons": 462.5,
+        "type": "GM"
+    }
+]
+}
+`;
+
 // Internal Structure Table
-//////////////////////////////
 const tableIS = `
 {
-    "is": [
-        {
-            "tons": "5",
-            "isc": "3",
-            "ist": "2",
-            "isa": "1",
-            "isl": "1"
-        },
-        {
-            "tons": "10",
-            "isc": "4",
-            "ist": "3",
-            "isa": "1",
-            "isl": "2"
-        },
-        {
-            "tons": "15",
-            "isc": "5",
-            "ist": "4",
-            "isa": "2",
-            "isl": "3"
-        },
-        {
-            "tons": "20",
-            "isc": "6",
-            "ist": "5",
-            "isa": "3",
-            "isl": "4"
-        },
-        {
-            "tons": "25",
-            "isc": "8",
-            "ist": "6",
-            "isa": "4",
-            "isl": "6"
-        },
-        {
-            "tons": "30",
-            "isc": "10",
-            "ist": "7",
-            "isa": "5",
-            "isl": "7"
-        },
-        {
-            "tons": "35",
-            "isc": "11",
-            "ist": "8",
-            "isa": "6",
-            "isl": "8"
-        },
-        {
-            "tons": "40",
-            "isc": "12",
-            "ist": "10",
-            "isa": "6",
-            "isl": "10"
-        },
-        {
-            "tons": "45",
-            "isc": "14",
-            "ist": "11",
-            "isa": "7",
-            "isl": "11"
-        },
-        {
-            "tons": "50",
-            "isc": "16",
-            "ist": "12",
-            "isa": "8",
-            "isl": "12"
-        },
-        {
-            "tons": "55",
-            "isc": "18",
-            "ist": "13",
-            "isa": "9",
-            "isl": "13"
-        },
-        {
-            "tons": "60",
-            "isc": "20",
-            "ist": "14",
-            "isa": "10",
-            "isl": "14"
-        },
-        {
-            "tons": "65",
-            "isc": "21",
-            "ist": "15",
-            "isa": "10",
-            "isl": "15"
-        },
-        {
-            "tons": "70",
-            "isc": "22",
-            "ist": "15",
-            "isa": "11",
-            "isl": "15"
-        },
-        {
-            "tons": "75",
-            "isc": "23",
-            "ist": "16",
-            "isa": "12",
-            "isl": "16"
-        },
-        {
-            "tons": "80",
-            "isc": "25",
-            "ist": "17",
-            "isa": "13",
-            "isl": "17"
-        },
-        {
-            "tons": "85",
-            "isc": "27",
-            "ist": "18",
-            "isa": "14",
-            "isl": "18"
-        },
-        {
-            "tons": "90",
-            "isc": "29",
-            "ist": "19",
-            "isa": "15",
-            "isl": "19"
-        },
-        {
-            "tons": "95",
-            "isc": "30",
-            "ist": "20",
-            "isa": "16",
-            "isl": "20"
-        },
-        {
-            "tons": "100",
-            "isc": "31",
-            "ist": "21",
-            "isa": "17",
-            "isl": "21"
-        }
-    ]
+"is": [
+    {
+        "tons": 5,
+        "isc": 3,
+        "ist": 2,
+        "isa": 1,
+        "isl": 1
+    },
+    {
+        "tons": 10,
+        "isc": 4,
+        "ist": 3,
+        "isa": 1,
+        "isl": 2
+    },
+    {
+        "tons": 15,
+        "isc": 5,
+        "ist": 4,
+        "isa": 2,
+        "isl": 3
+    },
+    {
+        "tons": 20,
+        "isc": 6,
+        "ist": 5,
+        "isa": 3,
+        "isl": 4
+    },
+    {
+        "tons": 25,
+        "isc": 8,
+        "ist": 6,
+        "isa": 4,
+        "isl": 6
+    },
+    {
+        "tons": 30,
+        "isc": 10,
+        "ist": 7,
+        "isa": 5,
+        "isl": 7
+    },
+    {
+        "tons": 35,
+        "isc": 11,
+        "ist": 8,
+        "isa": 6,
+        "isl": 8
+    },
+    {
+        "tons": 40,
+        "isc": 12,
+        "ist": 10,
+        "isa": 6,
+        "isl": 10
+    },
+    {
+        "tons": 45,
+        "isc": 14,
+        "ist": 11,
+        "isa": 7,
+        "isl": 11
+    },
+    {
+        "tons": 50,
+        "isc": 16,
+        "ist": 12,
+        "isa": 8,
+        "isl": 12
+    },
+    {
+        "tons": 55,
+        "isc": 18,
+        "ist": 13,
+        "isa": 9,
+        "isl": 13
+    },
+    {
+        "tons": 60,
+        "isc": 20,
+        "ist": 14,
+        "isa": 10,
+        "isl": 14
+    },
+    {
+        "tons": 65,
+        "isc": 21,
+        "ist": 15,
+        "isa": 10,
+        "isl": 15
+    },
+    {
+        "tons": 70,
+        "isc": 22,
+        "ist": 15,
+        "isa": 11,
+        "isl": 15
+    },
+    {
+        "tons": 75,
+        "isc": 23,
+        "ist": 16,
+        "isa": 12,
+        "isl": 16
+    },
+    {
+        "tons": 80,
+        "isc": 25,
+        "ist": 17,
+        "isa": 13,
+        "isl": 17
+    },
+    {
+        "tons": 85,
+        "isc": 27,
+        "ist": 18,
+        "isa": 14,
+        "isl": 18
+    },
+    {
+        "tons": 90,
+        "isc": 29,
+        "ist": 19,
+        "isa": 15,
+        "isl": 19
+    },
+    {
+        "tons": 95,
+        "isc": 30,
+        "ist": 20,
+        "isa": 16,
+        "isl": 20
+    },
+    {
+        "tons": 100,
+        "isc": 31,
+        "ist": 21,
+        "isa": 17,
+        "isl": 21
+    }
+]
 }
 `;
 

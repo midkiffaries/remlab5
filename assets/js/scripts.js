@@ -1,5 +1,5 @@
 /**************************
-Base JavaScript
+ * Base JavaScript
 **************************/
 "use strict";    
 
@@ -160,7 +160,7 @@ function closeModals(c) {
 
 
 /**************************
-Global REMLAB Functions
+ * Global REMLAB Functions
 **************************/
 
 // The record sheet circle - hash &#9675; or ○

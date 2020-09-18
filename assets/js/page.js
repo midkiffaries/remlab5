@@ -1,5 +1,5 @@
 /**************************
-Section Panels Constructor
+ * Section Panels Constructor
 **************************/
 
 // Section Panel Data Constructor
@@ -559,9 +559,9 @@ function completeWeaponsTable() {
         // Display everything but structure items "0"
         if (w.type > 0) {
             // Parse int ranges
-            sR = parseInt(w.rangeShort);
-            sM = parseInt(w.rangeMedium);
-            sL = parseInt(w.rangeLong);
+            sR = w.rangeShort;
+            sM = w.rangeMedium;
+            sL = w.rangeLong;
 
             // Generate each table row
             tr += (`
