@@ -87,12 +87,12 @@ const Mech = {
 	negativeDQ: [],
 	
 	// Technical Readout
-	overviewTR: "",
-	capabilitiesTR: "",
-	historyTR: "",
-	deploymentTR: "",
-	variants: "",
-	notableTR: "",
+	overviewTR: ``,
+	capabilitiesTR: ``,
+	historyTR: ``,
+	deploymentTR: ``,
+	variants: ``,
+	notableTR: ``,
 
 	// Max Crits by location (Biped)
 	maxcrits_H:  6,

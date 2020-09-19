@@ -376,8 +376,8 @@ const sectionReadout = new SectionPanel(
     // body
     `
     <p>
+        <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
         <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
-        <label>Year</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
     </p>
     <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
     <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(summary)">${Mech.capabilitiesTR}</textarea></p>
@@ -556,8 +556,8 @@ function completeWeaponsTable() {
     for (let i in weaponTable.weapon) {
         w = weaponTable.weapon[i];
 
-        // Display everything but structure items "0"
-        if (w.type > 0) {
+        // Display everything but structure items (0) and only Basic ruleset (0)
+        if (w.type > 0 && w.rules == 0) {
             // Parse int ranges
             sR = w.rangeShort;
             sM = w.rangeMedium;
@@ -598,8 +598,8 @@ function compactWeaponsTable() {
     for (let i in weaponTable.weapon) {
         w = weaponTable.weapon[i];
 
-        // Display everything but structure items "0"
-        if (w.type > 0) {       
+        // Display everything but structure items (0) and only Basic ruleset (0)
+        if (w.type > 0 && w.rules == 0) {
             // Generate each table row
             li += (`
             <li data-id="${i}">
@@ -613,33 +613,6 @@ function compactWeaponsTable() {
 
     return li;    
 
-}
-
-// Display Weapon Info Modal and populate it
-function infoWeapon(id) {
-    let w = weaponTable.weapon[id];
-
-    HtmlModal(WeaponInfoModal);
-
-    elID('Info-name').textContent = w.name;
-    elID('Info-type').textContent = a_WeaponClass[w.type];
-    elID('Info-desc').textContent = w.desc;
-    elID('Info-year').textContent = w.year;
-    elID('Info-techRating').textContent = a_TechRating[w.techRating];
-    elID('Info-availability').textContent = a_AvailabilityRating[w.availability];
-    elID('Info-tons').textContent = addDecimal(w.tons);
-    elID('Info-crits').textContent = w.crits;
-    elID('Info-cost').textContent = addComma(w.cost);
-    elID('Info-bv').textContent = w.bv;
-    elID('Info-heat').textContent = w.heat;
-    elID('Info-damage').textContent = w.damage;
-    elID('Info-ammo').textContent = zeroToDash(w.ammo);
-    elID('Info-delay').textContent = w.delay;
-    elID('Info-rangeMin').textContent = zeroToDash(w.rangeMin);
-    elID('Info-rangeShort').textContent = zeroToDash(w.rangeShort);
-    elID('Info-rangeMedium').textContent = zeroToDash(w.rangeMedium);
-    elID('Info-rangeLong').textContent = zeroToDash(w.rangeLong);
-    elID('Info-rangeExtreme').textContent = zeroToDash(w.rangeExtreme);
 }
 
 // List the contents of a crit location array

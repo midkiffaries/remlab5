@@ -17,6 +17,7 @@ Tedilize 2.0 - Normalization and Base Styling
 *::before,
 *::after {
 	text-decoration: inherit;
+    white-space: pre;
 	speak: none;
 }
 

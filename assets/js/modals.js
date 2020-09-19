@@ -59,11 +59,13 @@ const WeaponInfoModal = (`
 
     <h3 id="Info-type"></h3>
 
+    <p id="Info-rules"></p>
+
     <p id="Info-desc"></p>
 
     <table>
         <tr>
-            <th>Year of introduction</th>
+            <th>Year of Introduction</th>
             <th>Technology Rating</th>
             <th>Availability</th>
         </tr>
@@ -129,3 +131,31 @@ const WeaponInfoModal = (`
     </div>
 </div>
 `);
+
+// Display Weapon Info Modal and populate it
+function infoWeapon(id) {
+    let w = weaponTable.weapon[id];
+
+    HtmlModal(WeaponInfoModal);
+
+    elID('Info-name').textContent = w.name;
+    elID('Info-rules').textContent = `${a_RuleSet[w.rules]} Ruleset`;
+    elID('Info-type').textContent = a_WeaponClass[w.type];
+    elID('Info-desc').textContent = w.desc;
+    elID('Info-year').textContent = w.year;
+    elID('Info-techRating').textContent = a_TechRating[w.techRating];
+    elID('Info-availability').textContent = a_AvailabilityRating[w.availability];
+    elID('Info-tons').textContent = addDecimal(w.tons);
+    elID('Info-crits').textContent = w.crits;
+    elID('Info-cost').textContent = addComma(w.cost);
+    elID('Info-bv').textContent = w.bv;
+    elID('Info-heat').textContent = w.heat;
+    elID('Info-damage').textContent = w.damage;
+    elID('Info-ammo').textContent = zeroToDash(w.ammo);
+    elID('Info-delay').textContent = w.delay;
+    elID('Info-rangeMin').textContent = zeroToDash(w.rangeMin);
+    elID('Info-rangeShort').textContent = zeroToDash(w.rangeShort);
+    elID('Info-rangeMedium').textContent = zeroToDash(w.rangeMedium);
+    elID('Info-rangeLong').textContent = zeroToDash(w.rangeLong);
+    elID('Info-rangeExtreme').textContent = zeroToDash(w.rangeExtreme);
+}

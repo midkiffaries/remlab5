@@ -87,10 +87,36 @@ Base REMLAB Theme
 }
 
 
+/* Footer */
+
+.icon-github::before {
+    content: " ";
+    width: 1.5em;
+	background: no-repeat 50% 50% / 1.3em;
+	background-color: inherit;
+	background-image: url(../images/github.svg);
+}
+
+.icon-m20::before {
+    content: " ";
+    width: 1.5em;
+	background: no-repeat 50% 50% / 1.2em;
+	background-color: inherit;
+	background-image: url(../images/m20-logo.svg);
+}
+
+.icon-m20:hover, 
+.icon-m20:hover::before {
+    filter: invert(60%);
+}
+
+
+
+
 
 
 /*********************
-Universal Elements
+Generic Elements
 *********************/
 
 /* Dialog Alert */    
