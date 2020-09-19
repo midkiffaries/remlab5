@@ -14,12 +14,13 @@ const HostName = window.location.host,
     Locale = "en-US";
 
 // Keyup Events
-document.addEventListener("keyup", () => {
-    if (event.keyCode === 27) { // Esc Key
+document.addEventListener("keyup", (e) => {
+	e = e || window.event;
+    if (e.keyCode === 27) { // Esc Key
         closeModals('dialog-html');
         closeModals('dialog-image');
     }
-    if (event.keyCode === 13) { // Enter Key
+    if (e.keyCode === 13) { // Enter Key
         closeModals('dialog-alert');
     }
 },false);
