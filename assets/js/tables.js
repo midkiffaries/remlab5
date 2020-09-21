@@ -57,13 +57,21 @@ const a_ChassisType = [
 // Names for the Eras
 const a_Era = [
     'Age of War', // 2398
-    'Star League', // 2571
+    'Star League', // 2570
     'Succession Wars', // 2781
-    'Clan Invasion', // 3050
+    'Clan Invasion', // 3049
     'Civil War', // 3062
     'Jihad', // 3068
     'Republic', // 3081
-    'Dark Age' // 3131
+    'Dark Age' // 3132
+];
+
+// Names for the Eras Simplified
+const a_EraSimplified = [
+    'Star League', // 2570-2780
+    'Succession Wars', // 2781-3030
+    'Clan Invasion', // 3049-3052
+    'Dark Age' // 3132+
 ];
 
 // Names for the types of Weapons
@@ -334,8 +342,6 @@ const a_SpeedFac = [0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63
  **************************/
 // Spreadsheet: https://docs.google.com/spreadsheets/d/1j4kh83VdzD2SbhHTBsUDTIhraINZ4W9-QzQ6T3m-cm8/edit?usp=sharing
 // JSON converter: https://csvjson.com/csv2json
-
-// Type: 0 = Hardpoint, 1 = Energy, 2 = Ballistic, 3 = Missle, 4 = Artillery, 5 = Equipment, 6 = Industrial, 7 = Ammo, 8 = Other
 
 // Weapons and Equipment
 const tableArsenal = `

@@ -9,14 +9,13 @@ const Mech = {
 	mass: 25,
 	chassis: 0,
 	techbase: 0,
-	rules: 1,
-	era: 0,
-	year: 3025,
-	baseCrits: 47,
+	rules: 0,
+	era: 1,
 	
 	// Movement
 	walkingMP: 1,
 	legs: 0,
+	masc: 0,
 	
 	// Engine
 	engineType: 0,
@@ -87,6 +86,7 @@ const Mech = {
 	negativeDQ: [],
 	
 	// Technical Readout
+	year: 3025,
 	overviewTR: ``,
 	capabilitiesTR: ``,
 	historyTR: ``,
@@ -105,6 +105,7 @@ const Mech = {
     maxcrits_RT: 12,
 
 	// Assigned Crits by location
+	baseCrits: 47,
 	assigned_H:  [11,12,10,13,12,11], 
     assigned_LT: [], 
     assigned_CT: [4,4,4,5,5,5,5,4,4,4], 
@@ -204,7 +205,12 @@ const Mech = {
 
 	// Calc: LAM Cost
 	get lamCost() {
-		return (this.weaponsCost + 0) * 0.75
+		return (this.weaponsCost + this.totalstructureCost) * 0.75
+	},
+
+	// Calc: LAM BV
+	get lamCost() {
+		return 0
 	},
 
 	// Calc: Gyro Mass
@@ -352,7 +358,7 @@ const Mech = {
 
 	// Calc: Combined Internal Components Cost
 	get internalComponentsCost() {
-		return this.isCost + this.gyroCost + this.cockpitCost + this.targetingCost
+		return this.isCost + this.gyroCost + this.cockpitCost + this.targetingCost + this.lifesupportCost
 	},
 
 	// Calc: Total mass of all components
@@ -367,7 +373,7 @@ const Mech = {
 
 	// Calc: Total cost with all components
 	get totalCost() {
-		return this.lifesupportCost + this.cockpitCost + this.targetingCost
+		return (this.internalComponentsCost + this.engineCost + this.armorCost + this.jumpjetsCost + this.heatsinksCost + this.totalstructureCost + this.weaponsCost) * parseInt(1 + (this.mass/100))
 	},
 
 	// Calc: BV with all components
@@ -411,14 +417,3 @@ const autoFillArmor = v => {
     elID('stepArmorLL').value = (Mech.ISL * 2) * v;
 	elID('stepArmorRL').value = (Mech.ISL * 2) * v;
 };
-
-// Set the initial data from the input fields
-/*
-(function(){
-    let inputNum = document.getElementsByTagName("input"), l = inputNum.length;
-    for (let i = 0; i < l; i++) {
-        let initData = inputNum[i].getAttribute("data-init");
-        if (initData) inputNum[i].value = Mech[initData];
-    }
-}());
-*/

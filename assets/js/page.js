@@ -599,7 +599,7 @@ function compactWeaponsTable() {
         w = weaponTable.weapon[i];
 
         // Display everything but structure items (0) and only Basic ruleset (0)
-        if (w.type > 0 && w.rules == 0) {
+        if (w.type > 0 && w.rules == Mech.rules) {
             // Generate each table row
             li += (`
             <li data-id="${i}">
