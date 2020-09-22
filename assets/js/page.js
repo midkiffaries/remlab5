@@ -604,7 +604,7 @@ function compactWeaponsTable() {
             li += (`
             <li data-id="${i}">
                 <h6>${w.name}</h6>
-                <p><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon(${i})">Add</button></p>
+                <p><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></p>
                 <p>${w.heat} | ${w.damage} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</p>
             </li>
             `);
@@ -612,7 +612,6 @@ function compactWeaponsTable() {
     }
 
     return li;    
-
 }
 
 // List the contents of a crit location array
@@ -626,7 +625,7 @@ function listCritsbyLoc(v) {
     for (let i = 0; i < max; i++) {
         // Check if location array has contents
         if (loc[i] >= 0) {
-            li += `<li data-id="${weaponTable.weapon[loc[i]].id}">${weaponTable.weapon[loc[i]].name}</li>`;
+            li += `<li>${weaponTable.weapon[loc[i]].name} <button class="remove" data-id="${weaponTable.weapon[loc[i]].id}" onclick="removeWeapon('LA',${weaponTable.weapon[i].id})">x</button></li>`;
         } else {
             li += `<li>–</li>`;
         }
@@ -644,3 +643,17 @@ listCritsbyLoc('RA');
 listCritsbyLoc('LL');
 listCritsbyLoc('CT');
 listCritsbyLoc('RL');
+
+
+
+function addWeapon(v, id) {
+    Mech.assigned_LA.push(id);
+    listCritsbyLoc('LA');
+}
+
+
+function removeWeapon(v, id) {
+    let a = Mech.assigned_LA.indexOf(id);
+    Mech.assigned_LA.pop(a);
+    listCritsbyLoc('LA');
+}
