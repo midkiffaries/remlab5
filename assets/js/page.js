@@ -182,7 +182,7 @@ const sectionArmor = new SectionPanel(
     // body
     `
     <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
-        <input type="checkbox" id="chkBalance" disabled checked><label for="chkBalance">Balance Armor</label></p> 
+        <input type="checkbox" id="chkBalance" disabled><label for="chkBalance">Balance Armor</label></p> 
     <fieldset>
         <legend>Head</legend>
         <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1"></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
@@ -619,14 +619,25 @@ function listCritsbyLoc(v) {
     let id = `listCritList_${v}`,
         max = eval('Mech.maxcrits_' + v),
         loc = eval('Mech.assigned_' + v),
-        li = "";
+        li = "",
+        w;
 
     // Increment through selected location array 
     for (let i = 0; i < max; i++) {
         // Check if location array has contents
+        w = weaponTable.weapon[loc[i]];
+
+        // Populate slot
         if (loc[i] >= 0) {
-            li += `<li>${weaponTable.weapon[loc[i]].name} <button class="remove" data-id="${weaponTable.weapon[loc[i]].id}" onclick="removeWeapon('LA',${weaponTable.weapon[i].id})">x</button></li>`;
+            li += `<li>${w.name} <button class="remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})">x</button></li>`;
+            // If weapon takes up more than 1 crit
+            if (w.crits > 1) {
+                for (let j = 1; j < w.crits; j++) {
+                    li += `<li>${w.name}</li>`;
+                }
+            }
         } else {
+            // Empty slot
             li += `<li>–</li>`;
         }
     }
