@@ -2,6 +2,10 @@
 Base REMLAB Theme
 *********************/
 
+body {
+    /* background-image: url("../images/bg-noise.png"); */
+}
+
 /* Add the c-bill symbol before the price */
 .cbills::before {
     vertical-align: -2px;

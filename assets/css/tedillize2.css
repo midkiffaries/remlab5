@@ -383,7 +383,6 @@ figure > a::after {
 figcaption {
 	text-align: center;
 	padding: 0.6em 0.2em;
-	font-size: 0.9rem;
 	line-height: 1.2em;
 }
 
@@ -594,18 +593,7 @@ button,
 	-webkit-user-select: none;
 	user-select: none;
 }
-/*
-input::-webkit-file-upload-button {
-	border: 1px solid #999;
-	color: inherit;
-	letter-spacing: inherit;
-	padding: 0.25em 0.375em;
-	background-color: #eee;
-	cursor: pointer;
-	-webkit-touch-callout: none;
-	-webkit-appearance: none;
-}
-*/
+
 [type='checkbox'],
 [type='radio'] {
 	cursor: pointer;
@@ -644,27 +632,6 @@ legend {
 	white-space: normal;
 	margin-bottom: 0.2rem;
 	font-size: 1.1rem;
-}
-
-/* Special Fields */
-
-/*
-[type='date'],
-[type='time'],
-[type='datetime-local'],
-[type='month'] {
-	-webkit-appearance: listbox;
-}
-*/
-::-webkit-datetime-edit-fields-wrapper,
-::-webkit-datetime-edit-text,
-::-webkit-datetime-edit-minute,
-::-webkit-datetime-edit-hour-field,
-::-webkit-datetime-edit-day-field,
-::-webkit-datetime-edit-month-field,
-::-webkit-datetime-edit-year-field,
-::-webkit-color-swatch-wrapper {
-	padding: 0;
 }
 
 /* Input Number */
