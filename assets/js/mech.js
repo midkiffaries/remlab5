@@ -265,7 +265,17 @@ const Mech = {
 	
 	// Calc: Total structure cost
 	get totalstructureCost() {
-		return this.cockpitCost + this.lifesupportCost + this.sensorsCost + this.musculatureCost + this.gyroCost + this.engineCost + this.jumpjetsCost + this.isCost + (this.legfootCost * 2) + (this.leglowerCost * 2) + (this.legupperCost * 2)
+		return this.cockpitCost 
+		+ this.lifesupportCost 
+		+ this.sensorsCost 
+		+ this.musculatureCost 
+		+ this.gyroCost 
+		+ this.engineCost 
+		+ this.jumpjetsCost 
+		+ this.isCost 
+		+ (this.legfootCost * 2) 
+		+ (this.leglowerCost * 2) 
+		+ (this.legupperCost * 2)
 	},
 
 	// Calc: IS Mass
@@ -318,12 +328,26 @@ const Mech = {
 
 	// Calc: Total Armor
 	get armorTotal() {
-		return this.AH + this.ALT + this.ALTR + this.ACT + this.ACTR + this.ART + this.ARTR + this.ALA + this.ARA + this.ALL + this.ARL
+		return this.AH 
+		+ this.ALT 
+		+ this.ALTR 
+		+ this.ACT 
+		+ this.ACTR 
+		+ this.ART 
+		+ this.ARTR 
+		+ this.ALA 
+		+ this.ARA 
+		+ this.ALL 
+		+ this.ARL
 	},
 
 	// Calc: Total Armor
 	get armorTotalMax() {
-		return 9 + (this.ISC * 2) + ((this.IST * 2) * 2) + ((this.ISA * 2) * 2) + ((this.ISL * 2) * 2)
+		return this.armorHead 
+		+ (this.ISC * 2) 
+		+ ((this.IST * 2) * 2) 
+		+ ((this.ISA * 2) * 2) 
+		+ ((this.ISL * 2) * 2)
 	},
 
 	// Calc: Energy Weapons Mass
@@ -348,32 +372,65 @@ const Mech = {
 
 	// Calc: Combined Internal Components Mass
 	get internalComponentsMass() {
-		return this.isMass + this.gyroMass + this.cockpitMass + this.targetingMass
+		return this.isMass 
+		+ this.gyroMass 
+		+ this.cockpitMass 
+		+ this.targetingMass
 	},
 
 	// Calc: Combined Internal Components Crits
 	get internalComponentsCrits() {
-		return this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits
+		return this.isCrits 
+		+ this.gyroCrits 
+		+ this.cockpitCrits 
+		+ this.targetingCrits
 	},
 
 	// Calc: Combined Internal Components Cost
 	get internalComponentsCost() {
-		return this.isCost + this.gyroCost + this.cockpitCost + this.targetingCost + this.lifesupportCost
+		return this.isCost 
+		+ this.gyroCost 
+		+ this.cockpitCost 
+		+ this.targetingCost 
+		+ this.lifesupportCost
 	},
 
 	// Calc: Total mass of all components
 	get totalMass() {
-		return this.engineMass + this.jumpjetsMass + this.heatsinksMass + this.isMass + this.gyroMass + this.cockpitMass + this.targetingMass + this.armorMass + this.weaponsMass
+		return this.engineMass 
+		+ this.jumpjetsMass 
+		+ this.heatsinksMass 
+		+ this.isMass 
+		+ this.gyroMass 
+		+ this.cockpitMass 
+		+ this.targetingMass 
+		+ this.armorMass 
+		+ this.weaponsMass
 	},
 
 	// Calc: Total crits of all components
 	get totalCrits() {
-		return this.engineCrits + this.jumpjetsCrits + this.heatsinksCrits + this.heatsinksIntCrits + this.isCrits + this.gyroCrits + this.cockpitCrits + this.targetingCrits + this.armorCrits + this.weaponsCrits
+		return this.engineCrits 
+		+ this.jumpjetsCrits 
+		+ this.heatsinksCrits 
+		+ this.heatsinksIntCrits 
+		+ this.isCrits 
+		+ this.gyroCrits 
+		+ this.cockpitCrits 
+		+ this.targetingCrits 
+		+ this.armorCrits 
+		+ this.weaponsCrits
 	},
 
 	// Calc: Total cost with all components
 	get totalCost() {
-		return (this.internalComponentsCost + this.engineCost + this.armorCost + this.jumpjetsCost + this.heatsinksCost + this.totalstructureCost + this.weaponsCost) * parseInt(1 + (this.mass/100))
+		return (this.internalComponentsCost 
+			+ this.engineCost 
+			+ this.armorCost 
+			+ this.jumpjetsCost 
+			+ this.heatsinksCost 
+			+ this.totalstructureCost 
+			+ this.weaponsCost) * parseInt(1 + (this.mass/100))
 	},
 
 	// Calc: BV with all components
@@ -383,7 +440,8 @@ const Mech = {
 
 };
 
-// Warrior Stats
+
+// Warrior: Stats for the warrior/pilot/crew
 const Warrior = {
 	name: "",
     race: "Human",
@@ -394,26 +452,4 @@ const Warrior = {
     piloting: 5,
     gunnery: 4,
     autoeject: true
-};
-
-// Armor auto fill buttons logic
-const autoFillArmor = v => {
-	// Balance the front and rear armor of the torsos
-    let CTfront = parseInt((Mech.ISC * 2) * 0.8),
-        CTrear = (Mech.ISC * 2) - CTfront,
-        STfront = parseInt((Mech.IST * 2) * 0.8),
-        STrear = (Mech.IST * 2) - STfront;
-
-	// Post data
-    elID('stepArmorH').value = parseInt(9 * v);
-	elID('stepArmorLT').value = parseInt(STfront * v);
-    elID('stepArmorLTR').value = parseInt(STrear * v);
-	elID('stepArmorCT').value = parseInt(CTfront * v);
-    elID('stepArmorCTR').value = parseInt(CTrear * v);
-	elID('stepArmorRT').value = parseInt(STfront * v);
-    elID('stepArmorRTR').value = parseInt(STrear * v);
-    elID('stepArmorLA').value = (Mech.ISA * 2) * v;
-    elID('stepArmorRA').value = (Mech.ISA * 2) * v;
-    elID('stepArmorLL').value = (Mech.ISL * 2) * v;
-	elID('stepArmorRL').value = (Mech.ISL * 2) * v;
 };
