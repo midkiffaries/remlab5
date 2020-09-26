@@ -39,7 +39,7 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
 `);
 
 // Section : Engine and Movement
-const sectionEngine = new SectionPanel(
+const sEngine = new SectionPanel(
     // id
     "Engine", 
     
@@ -64,7 +64,7 @@ const sectionEngine = new SectionPanel(
 );
 
 // Section : Jump Jets
-const sectionJumpjets = new SectionPanel(
+const sJumpjets = new SectionPanel(
     // id
     "JumpJets", 
     
@@ -88,7 +88,7 @@ const sectionJumpjets = new SectionPanel(
 );
 
 // Section : Heat Sinks
-const sectionHeatSinks = new SectionPanel(
+const sHeatSinks = new SectionPanel(
     // id
     "HeatSinks", 
     
@@ -112,7 +112,7 @@ const sectionHeatSinks = new SectionPanel(
 );
 
 // Section : Internal Components
-const sectionComponents = new SectionPanel(
+const sComponents = new SectionPanel(
     // id
     "Internal", 
     
@@ -138,7 +138,7 @@ const sectionComponents = new SectionPanel(
 );
 
 // Section : Armor
-const sectionArmor = new SectionPanel(
+const sArmor = new SectionPanel(
     // id
     "Armor", 
     
@@ -197,7 +197,7 @@ const sectionArmor = new SectionPanel(
 );
 
 // Section : Weapons and Equipment
-const sectionWeapons = new SectionPanel(
+const sWeapons = new SectionPanel(
     // id
     "Weapons", 
     
@@ -276,7 +276,7 @@ const sectionWeapons = new SectionPanel(
 );
 
 // Section : Warrior
-const sectionWarrior = new SectionPanel(
+const sWarrior = new SectionPanel(
     // id
     "Warrior", 
     
@@ -302,11 +302,11 @@ const sectionWarrior = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p>INFO</p>`,
+    `<p></p>`,
 );
 
 // Section : Design Quirks
-const sectionQuirks = new SectionPanel(
+const sQuirks = new SectionPanel(
     // id
     "Quirks", 
     
@@ -332,7 +332,7 @@ const sectionQuirks = new SectionPanel(
 );
 
 // Section : Technical Readout
-const sectionReadout = new SectionPanel(
+const sReadout = new SectionPanel(
     // id
     "Readout", 
     
@@ -395,15 +395,15 @@ const sideBar = (`
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
     //sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.size, sectionTech.body, sectionTech.help, sectionTech.footer) + 
-    sectionTemplate(sectionEngine.id, sectionEngine.title, sectionEngine.size, sectionEngine.body, sectionEngine.help, sectionEngine.footer) +
-    sectionTemplate(sectionJumpjets.id, sectionJumpjets.title, sectionJumpjets.size, sectionJumpjets.body, sectionJumpjets.help, sectionJumpjets.footer) +
-    sectionTemplate(sectionHeatSinks.id, sectionHeatSinks.title, sectionHeatSinks.size, sectionHeatSinks.body, sectionHeatSinks.help, sectionHeatSinks.footer) +
-    sectionTemplate(sectionComponents.id, sectionComponents.title, sectionComponents.size, sectionComponents.body, sectionComponents.help, sectionComponents.footer) +
-    sectionTemplate(sectionArmor.id, sectionArmor.title, sectionArmor.size, sectionArmor.body, sectionArmor.help, sectionArmor.footer) +
-    sectionTemplate(sectionWeapons.id, sectionWeapons.title, sectionWeapons.size, sectionWeapons.body, sectionWeapons.help, sectionWeapons.footer) +
-    sectionTemplate(sectionWarrior.id, sectionWarrior.title, sectionWarrior.size, sectionWarrior.body, sectionWarrior.help, sectionWarrior.footer) +
-    sectionTemplate(sectionQuirks.id, sectionQuirks.title, sectionQuirks.size, sectionQuirks.body, sectionQuirks.help, sectionQuirks.footer) +
-    sectionTemplate(sectionReadout.id, sectionReadout.title, sectionReadout.size, sectionReadout.body, sectionReadout.help, sectionReadout.footer)
+    sectionTemplate(sEngine.id, sEngine.title, sEngine.size, sEngine.body, sEngine.help, sEngine.footer) +
+    sectionTemplate(sJumpjets.id, sJumpjets.title, sJumpjets.size, sJumpjets.body, sJumpjets.help, sJumpjets.footer) +
+    sectionTemplate(sHeatSinks.id, sHeatSinks.title, sHeatSinks.size, sHeatSinks.body, sHeatSinks.help, sHeatSinks.footer) +
+    sectionTemplate(sComponents.id, sComponents.title, sComponents.size, sComponents.body, sComponents.help, sComponents.footer) +
+    sectionTemplate(sArmor.id, sArmor.title, sArmor.size, sArmor.body, sArmor.help, sArmor.footer) +
+    sectionTemplate(sWeapons.id, sWeapons.title, sWeapons.size, sWeapons.body, sWeapons.help, sWeapons.footer) +
+    sectionTemplate(sWarrior.id, sWarrior.title, sWarrior.size, sWarrior.body, sWarrior.help, sWarrior.footer) +
+    sectionTemplate(sQuirks.id, sQuirks.title, sQuirks.size, sQuirks.body, sQuirks.help, sQuirks.footer) +
+    sectionTemplate(sReadout.id, sReadout.title, sReadout.size, sReadout.body, sReadout.help, sReadout.footer)
 );
 
 // Populate the side bar

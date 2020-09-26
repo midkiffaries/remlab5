@@ -2,6 +2,17 @@
 Base REMLAB Theme
 *********************/
 
+::-moz-selection {
+	text-shadow: none;
+	background-color: rgb(255, 237, 136);
+}
+
+::selection {
+	text-shadow: none;
+	background-color: rgb(255, 237, 136);
+}
+
+
 body {
     /* background-image: url("../images/bg-noise.png"); */
 }
@@ -349,13 +360,6 @@ Generic Elements
     outline: 0;
 }
 
-/* Safari Hack */
-@media not all and (min-resolution:.001dpcm) { @media {
-    [type="checkbox"] + label.switch::before {
-        vertical-align: 0;
-    }
-}}
-
 [type="checkbox"]:checked + label.switch {
     background: #090;
 }
@@ -395,9 +399,9 @@ Generic Elements
     [type="checkbox"] + label::before {
         margin-bottom: 0.2em;
     }
-    
+
     [type="checkbox"] + label.switch::before {
-        margin-top: -0.2em;
+        margin-top: 0;
     }
 }
     

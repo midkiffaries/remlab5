@@ -21,17 +21,6 @@ Tedilize 2.0 - Normalization and Base Styling
 	speak: none;
 }
 
-::-moz-selection {
-	text-shadow: none;
-	background-color: #ddd;
-}
-
-::selection {
-	text-shadow: none;
-	background-color: #ddd;
-}
-
-
 /* Default system sans-serif font */
 
 html {
