@@ -26,7 +26,7 @@ Tedilize 2.0 - Normalization and Base Styling
 html {
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
@@ -417,7 +417,7 @@ textarea:focus,
 a[href] {
 	color: #000;
 	background-color: transparent;
-	-webkit-tap-highlight-color: rgba(220, 220, 220, 0.4);
+	-webkit-tap-highlight-color: rgba(220,220,220,0.4);
 	-webkit-text-decoration-skip: ink;
 	text-decoration-skip: ink;
 }
@@ -620,7 +620,6 @@ legend {
 	max-width: 100%;
 	white-space: normal;
 	margin-bottom: 0.2rem;
-	font-size: 1.1rem;
 }
 
 /* Input Number */
@@ -714,7 +713,6 @@ legend {
 	display: none;
 }
 
-
 /* Meter */
 
 meter {
@@ -805,7 +803,7 @@ abbr {
 }
 
 [aria-hidden='false'][hidden]:not(:focus) {
-	clip: rect(0, 0, 0, 0);
+	clip: rect(0,0,0,0);
 	position: absolute;
 }
 
@@ -971,7 +969,7 @@ Responsive elements
 	}
 
 	abbr[title]::after {
-		content: " ("attr(title) ")";
+		content: " (" attr(title) ")";
 		font-size: 80%;
 		color: grey;
 	}
@@ -981,7 +979,7 @@ Responsive elements
 	}
 
 	main [href]::after {
-		content: " ("attr(href) ")";
+		content: " (" attr(href) ")";
 		font-size: 70%;
 		color: grey;
 	}
