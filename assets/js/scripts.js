@@ -27,7 +27,7 @@ document.addEventListener("keyup", (e) => {
 
 // Display Alert Modal Box -- text: displayed text | bgColor: background-color
 function AlertModal(text, bgColor) {
-    var dialog;
+    let dialog;
     
     // Main dialog box
     dialog = document.createElement("dialog");
@@ -53,7 +53,7 @@ function AlertModal(text, bgColor) {
 
 // Display Confirmation Modal Box -- text: displayed text | action: Yes button's action/function
 function ConfirmModal(text, action) {
-    var aDialog = {
+    let aDialog = {
         dialog: document.createElement("dialog"),
         div: document.createElement("div"),
         p: document.createElement("p"),
@@ -102,7 +102,7 @@ function ConfirmModal(text, action) {
 */
 // Load an external JS document and display it in a modal window
 function HtmlModal(JsVar) {    
-    var aDialog = {
+    let aDialog = {
         dialog: document.createElement("dialog"),
 		header: document.createElement("div"),
         inner: document.createElement("div"),
@@ -145,7 +145,7 @@ function HtmlModal(JsVar) {
     
 // Close all open dialog nodes specific "c = ClassName"
 function closeModals(c) {
-    var dialog = document.getElementsByClassName(c), 
+    let dialog = document.getElementsByClassName(c), 
         l = dialog.length;
     
     if (l) {

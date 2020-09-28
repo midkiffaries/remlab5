@@ -54,13 +54,16 @@
             } 
         }
     }
+	// Stylesheet
+	let st = document.createElement("style");
+	st.innerHTML = (`.accordion>button{width:100%;text-align:left;background:0 0;border:0;border-top:1px solid #eee;font-size:1.2em;line-height:1em;outline:0;padding:.55em}.accordion>button::before{content:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M16 9H9v7H7V9H0V7h7V0h2v7h7z'/%3E%3C/svg%3E");margin:0 .5em 0 0;display:inline-block;transition:transform .4s ease-in-out 0s;transform-origin:50% 50%;will-change:transform}.accordion>button.active::before{-webkit-transform:rotate(135deg);transform:rotate(135deg)}.accordion>section{padding:0 1em;max-height:0;overflow:hidden;transition:max-height .2s ease-out;border-bottom:1px solid #eee;will-change:auto}`);
+	document.body.appendChild(st); 	
 }());
 
 // Stepper - Add buttons around type="Number" element with class="stepper"
 (function(){
     // Get all elements on page with class="stepper"
     const inc = document.getElementsByClassName("stepper"), l = inc.length;
-    
     for (let i = 0; i < l; i++) {
         let id = inc[i].getAttribute("id"),
             el = document.getElementById(id),
@@ -112,12 +115,15 @@
             updateForm();
         });
     }
+	// Stylesheet
+	let st = document.createElement("style");
+    st.innerHTML = (`.stepper-container{height:2em;display:inline-block;border:1px solid #999}.stepper{vertical-align:top;width:3em;height:100%;font-size:1.1em;text-align:center;border:none;background:transparent;padding:0}.stepper-button{width:1.3em;height:1.2em;line-height:.2em;font-size:1.5em;padding:.2em;background:transparent;border:none}`);
+    document.body.appendChild(st); 	
 }());
 
 // Populate <ul> or <ol> with class="select-list" id="(id)" data-list="(arrayname)"    
 (function(){
     const inc = document.getElementsByClassName("select-list"), l = inc.length;
-    
     // Add <ul> or <ol> element attributes
     for (let i = 0; i < l; i++) {
         let id = inc[i].getAttribute("id"),
@@ -146,6 +152,10 @@
             la.textContent = eval(listbox.getAttribute("data-list") + "[" + j + "]");
         }
     }
+	// Stylesheet
+	let st = document.createElement("style");
+    st.innerHTML = (`.select-list{display:block;overflow-y:scroll;overflow-x:hidden;text-overflow:ellipsis;-webkit-user-select:none;user-select:none}.select-list li{list-style:none;line-height:.9em}.select-list input{opacity:0!important;width:0!important;overflow:hidden;z-index:-1;position:absolute}.select-list input+label::before{display:none}.select-list input+label:hover{background-color:#fafafa}.select-list input:checked+label{background-color:#eee;font-weight:700}.select-list label{padding:4px;width:100%;overflow-x:hidden;text-overflow:ellipsis;white-space:nowrap}.select-list::-webkit-scrollbar{width:.8em}.select-list::-webkit-scrollbar-track{background:#eee}.select-list::-webkit-scrollbar-thumb{background:#888}.select-list::-webkit-scrollbar-thumb:hover{background:#666}`);
+    document.body.appendChild(st);
 }());
 
 // Populate <select> with class="select" id="(id)" data-list="(arrayname)"
