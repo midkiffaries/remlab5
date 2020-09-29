@@ -209,7 +209,7 @@ const sWeapons = new SectionPanel(
     
     // body
     `
-    <table class="table-weapons">
+    <table class="table-weapons sortable">
         <thead>
             <tr>
                 <th></th>
