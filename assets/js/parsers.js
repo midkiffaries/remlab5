@@ -14,12 +14,6 @@
             // Accept only numbers and relative chars
             inputNum[i].onkeypress = () => event.charCode >= 40 && event.charCode <= 57;
         }
-		
-        // Custom charset for input[type="email"] and input[type="url"]
-        if (inputAttrib === "email" || inputAttrib === "url") {
-            // Accept everything but spaces
-            inputNum[i].onkeypress = () => event.charCode >= 33 && event.charCode <= 122;
-        }
         
         // Change the value of the output[for] element based on the range element
         if (inputAttrib === "range") {

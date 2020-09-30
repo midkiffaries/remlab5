@@ -424,6 +424,7 @@ const updateForm = () => {
     elID('outTotalCrits').value = Mech.baseCrits;
     elID('outCurrentCrits').value = Mech.totalCrits;
     elID('outTotalCost').value = addComma(Mech.totalCost);
+    elID('outTotalBV').value = addComma(Mech.totalBV);
 
     // Engine Section
         // Get
@@ -620,7 +621,11 @@ function listCritsbyLoc(v) {
 
         // Populate slot
         if (loc[i] >= 0) {
-            li += `<li>${w.name} <button class="remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})">x</button></li>`;
+            if (w.tons > 0) {
+                li += `<li>${w.name} <button class="remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})">x</button></li>`;
+            } else {
+                li += `<li>${w.name}</li>`;
+            }
             // If weapon takes up more than 1 crit
             if (w.crits > 1) {
                 for (let j = 1; j < w.crits; j++) {

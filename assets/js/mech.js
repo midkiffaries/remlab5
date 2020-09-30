@@ -425,17 +425,23 @@ const Mech = {
 	// Calc: Total cost with all components
 	get totalCost() {
 		return (this.internalComponentsCost 
-			+ this.engineCost 
-			+ this.armorCost 
-			+ this.jumpjetsCost 
-			+ this.heatsinksCost 
-			+ this.totalstructureCost 
-			+ this.weaponsCost) * parseInt(1 + (this.mass/100))
+		+ this.engineCost 
+		+ this.armorCost 
+		+ this.jumpjetsCost 
+		+ this.heatsinksCost 
+		+ this.totalstructureCost 
+		+ this.weaponsCost) * parseInt(1 + (this.mass/100))
 	},
 
 	// Calc: BV with all components
 	get totalBV() {
-		return 0
+		return parseInt(this.mass)
+		+ (this.armorTotal * 2)
+		+ parseInt((this.ISH
+		+ isTable.is[this.mass / 5 - 1].isc
+		+ (isTable.is[this.mass / 5 - 1].ist * 2)
+		+ (isTable.is[this.mass / 5 - 1].isa * 2)
+		+ (isTable.is[this.mass / 5 - 1].isl * 2)) * 1.5)
 	},
 
 };
