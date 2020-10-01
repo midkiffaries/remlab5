@@ -621,6 +621,7 @@ function listCritsbyLoc(v) {
 
         // Populate slot
         if (loc[i] >= 0) {
+            // Check if item is a hardpoint
             if (w.tons > 0) {
                 li += `<li>${w.name} <button class="remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})">x</button></li>`;
             } else {

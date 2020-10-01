@@ -714,7 +714,7 @@ const tableArsenal = `
         "rangeMedium": 0,
         "rangeLong": 0,
         "rangeExtreme": 0,
-        "tons": 0,
+        "tons": -1,
         "crits": 1,
         "ammo": 0,
         "cost": 0,

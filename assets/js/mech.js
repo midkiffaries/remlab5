@@ -104,8 +104,7 @@ const Mech = {
     maxcrits_CT: 12, 
     maxcrits_RT: 12,
 
-	// Assigned Crits by location
-	baseCrits: 47,
+	// Assigned Items by location
 	assigned_H:  [11,12,10,13,12,11], 
     assigned_LT: [], 
     assigned_CT: [4,4,4,5,5,5,5,4,4,4], 
@@ -113,7 +112,17 @@ const Mech = {
     assigned_LA: [0,1,2,3],
     assigned_RA: [0,1,2,3],
     assigned_LL: [6,7,8,9],
-    assigned_RL: [6,7,8,9],
+	assigned_RL: [6,7,8,9],
+	
+	// Assigned Crits by location
+	crits_H:  0, 
+    crits_LT: 0, 
+    crits_CT: 0, 
+    crits_RT: 0,
+    crits_LA: 0,
+    crits_RA: 0,
+    crits_LL: 0,
+    crits_RL: 0,
 
 	// Calc: Running MP
 	get runningMP() {
@@ -209,7 +218,7 @@ const Mech = {
 	},
 
 	// Calc: LAM BV
-	get lamCost() {
+	get lamBV() {
 		return 0
 	},
 
@@ -352,22 +361,152 @@ const Mech = {
 
 	// Calc: Energy Weapons Mass
 	get energyweaponsMass() {
-		return 0
+		let t = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_CT.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_LT.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_RT.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_LA.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_RA.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_LL.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		this.assigned_RL.forEach(element => {
+			if (w[element].tons > 0 && w[element].type == 1) t += w[element].tons
+		});
+		return t
 	},
 
 	// Calc: Total Weapon Mass
 	get weaponsMass() {
-		return 0
+		let t = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_CT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_LT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_RT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_LA.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_RA.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_LL.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		this.assigned_RL.forEach(element => {
+			if (w[element].tons > 0) t += w[element].tons
+		});
+		return t
 	},
 
 	// Calc: Total Weapon Crits
 	get weaponsCrits() {
-		return 0
+		let t = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_CT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_LT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_RT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_LA.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_RA.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_LL.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		this.assigned_RL.forEach(element => {
+			if (w[element].tons > 0) t += w[element].crits
+		});
+		return t
 	},
 
 	// Calc: Total Weapon Cost
 	get weaponsCost() {
-		return 0
+		let t = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_CT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_LT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_RT.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_LA.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_RA.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_LL.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		this.assigned_RL.forEach(element => {
+			if (w[element].tons > 0) t += w[element].cost
+		});
+		return t
+	},
+
+	// Calc: Total Hardpoints Crits
+	get hardpointsCrits() {
+		let t = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_CT.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_LT.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_RT.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_LA.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_RA.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_LL.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		this.assigned_RL.forEach(element => {
+			if (w[element].tons == 0) t++
+		});
+		return t
 	},
 
 	// Calc: Combined Internal Components Mass
@@ -406,6 +545,19 @@ const Mech = {
 		+ this.targetingMass 
 		+ this.armorMass 
 		+ this.weaponsMass
+	},
+	
+	// Calc: Total crits for all locations
+	get baseCrits() {
+		return (this.maxcrits_H
+		+ this.maxcrits_CT
+		+ this.maxcrits_LT
+		+ this.maxcrits_RT
+		+ this.maxcrits_LA
+		+ this.maxcrits_RA
+		+ this.maxcrits_LL
+		+ this.maxcrits_RL)
+		- this.hardpointsCrits
 	},
 
 	// Calc: Total crits of all components
