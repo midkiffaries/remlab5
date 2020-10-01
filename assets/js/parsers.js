@@ -306,7 +306,13 @@
 
             rowArray.sort(function(a,b){
                 let tdA = a.children[thsIndex].textContent,
-                tdB = b.children[thsIndex].textContent;
+                    tdB = b.children[thsIndex].textContent;
+                
+                if (!isNaN(tdA)) {
+                    tdA = parseFloat(tdA);
+                    tdB = parseFloat(tdB);
+                }
+
                 if (tdA > tdB) {
                     return 1;
                 } else if (tdA < tdB) {
