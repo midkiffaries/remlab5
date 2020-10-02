@@ -4,7 +4,7 @@
 "use strict";    
 
 // REMLAB version
-const RemlabVersion = "4.9.2009 - Development";
+const RemlabVersion = "4.9.2010 - Development";
 
 // Declare Global Variables and settings
 const HostName = window.location.host,
