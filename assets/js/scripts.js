@@ -219,7 +219,8 @@ function HtmlModal(JsVar) {
         box-shadow: 0px 10px 14px -7px rgba(0,0,0,0.7), 5px 5px 16px 5px rgba(0,0,0,0);
         transform: scale(0.8);
         transition: transform 0.15s ease-in-out 0s;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
     #HTML_Frame {
         margin-top: -2em;
@@ -346,6 +347,9 @@ const tons2Kg = v => v * 907;
 
 // Convert Jumping MP into meters
 const mp2Meters = v => v * 30;
+
+// Display damage as either m-d "min-max" or d "max"
+const displayDamage = (m, d) => (m > 0) ? `${m}-${d}` : d;
 
 // Display distance range or damage range as Low-High
 function displayRange(l, h) {

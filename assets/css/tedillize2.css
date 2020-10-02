@@ -170,17 +170,16 @@ h5,
 h6 {
 	line-height: 1.25;
 	margin-bottom: 0.5rem;
+	font-weight: 400;
 }
 
 h1 {
 	font-size: 2.4rem;
-	font-weight: 400;
 	margin: 0.67em 0;
 }
 
 h2 {
 	font-size: 2rem;
-	font-weight: 300;
 }
 
 h3 {
@@ -190,12 +189,10 @@ h3 {
 
 h4 {
 	font-size: 1.5rem;
-	font-weight: 400;
 }
 
 h5 {
 	font-size: 1.2rem;
-	font-weight: 400;
 }
 
 h6 {
@@ -393,25 +390,13 @@ select,
 textarea,
 summary,
 [role='button'],
-[role='textbox'],
 [contenteditable],
 [tabindex] {
 	touch-action: manipulation;
 }
 
-button:focus,
-input:focus:not([type='checkbox']):not([type='radio']):not([type='range']),
-select:focus,
-textarea:focus,
-[role='button']:focus,
-[role='textbox']:focus,
-[tabindex]:focus {
-	outline: none;
-	box-shadow: 0 0 1px 2px #bbb;
-}
-
 [tabindex="-1"]:focus:not(:focus-visible) {
-	box-shadow: none !important;
+	outline: none !important;
 }
 
 a[href] {
@@ -642,10 +627,11 @@ legend {
 [type='search'] {
 	-webkit-appearance: textfield;
 	appearance: textfield;
-	outline-offset: -1px;
 }
 
-::-webkit-search-decoration {
+[type='search']::-webkit-search-decoration, 
+[type='search']::-webkit-search-results-button, 
+[type='search']::-webkit-search-results-decoration {
 	-webkit-appearance: none;
 }
 

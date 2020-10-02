@@ -51,7 +51,7 @@ const sEngine = new SectionPanel(
     
     // body
     `
-    <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1"></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
+    <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="20" step="1" readonly></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
     <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineRating} ${Mech.engineBrand}</output></p>
     <p><label>Legs</label> <input type="radio" name="selLegs" id="radioM1" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input type="radio" name="selLegs" id="radioM2" class="radio-button" value="1"><label for="radioM2" role="button">4</label></p>
     `, 
@@ -76,7 +76,7 @@ const sJumpjets = new SectionPanel(
     
     // body
     `
-    <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="${Mech.walkingMP}" step="1"></span></p>
+    <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="${Mech.walkingMP}" step="1" readonly></span></p>
     <p><label>Type</label> <select id="selJumpJets" class="select" data-list="a_JJType" disabled></select></p>
     `, 
     
@@ -100,7 +100,7 @@ const sHeatSinks = new SectionPanel(
     
     // body
     `
-    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinksBase}" min="10" max="40" step="1"></span></p>
+    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinksBase}" min="10" max="40" step="1" readonly></span></p>
     <p><label>Type</label> <select id="selHeatSinks" class="select" data-list="a_HSType" disabled></select></p>
     `, 
     
@@ -154,29 +154,29 @@ const sArmor = new SectionPanel(
         <input type="checkbox" id="chkBalance" disabled><label for="chkBalance">Balance Armor</label></p> 
     <fieldset>
         <legend>Head</legend>
-        <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1"></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
+        <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1" readonly></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
     </fieldset>
 
     <fieldset>
         <legend>Torsos</legend>
-        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLT" class="stepper" value="${Mech.ALT}" min="0" max="${Mech.IST*2}" step="1"></span> 
-            Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1"></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
-        <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1"></span> 
-            Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1"></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
-        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1"></span>
-            Rear <span class="stepper-container"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1"></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
+        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLT" class="stepper" value="${Mech.ALT}" min="0" max="${Mech.IST*2}" step="1" readonly></span> 
+            Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
+        <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1" readonly></span> 
+            Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
+        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
+            Rear <span class="stepper-container"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
     </fieldset>
 
     <fieldset>
         <legend>Arms</legend>
-        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1"></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
-        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1"></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
+        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
+        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
     </fieldset> 
 
     <fieldset>
         <legend>Legs</legend>
-        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1"></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
-        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1"></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
+        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
+        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
     </fieldset> 
 
     <fieldset>
@@ -564,7 +564,7 @@ function completeWeaponsTable() {
                 </td>
                 <td>${w.name}</td>
                 <td>${w.heat}</td>
-                <td>${w.damage}</td>
+                <td>${displayDamage(w.minDamage, w.damage)}</td>
                 <td>${zeroToDash(w.rangeMin)}</td>
                 <td>${displayRange(1, sR)}</td>
                 <td>${displayRange(sR, sM)}</td>
@@ -584,7 +584,7 @@ function completeWeaponsTable() {
 
 // Display Compact Weapons List
 function compactWeaponsTable() {
-    let li = "";
+    let li = "", damage;
 
     // Loop for each entry in weaponTable
     for (let i in weaponTable.weapon) {
@@ -597,7 +597,7 @@ function compactWeaponsTable() {
             <li data-id="${i}">
                 <h6>${w.name}</h6>
                 <p><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></p>
-                <p>${w.heat} | ${w.damage} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</p>
+                <p>${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</p>
             </li>
             `);
         }
@@ -651,7 +651,6 @@ listCritsbyLoc('RA');
 listCritsbyLoc('LL');
 listCritsbyLoc('CT');
 listCritsbyLoc('RL');
-
 
 
 function addWeapon(v, id) {

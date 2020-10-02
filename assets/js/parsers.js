@@ -147,7 +147,6 @@
     .stepper-container {
         height: 2em;
         display: inline-block;
-        border: 1px solid #999;
     }
     .stepper {
         vertical-align: top;
