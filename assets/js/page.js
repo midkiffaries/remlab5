@@ -559,7 +559,7 @@ function completeWeaponsTable() {
             tr += (`
             <tr data-id="${i}">
                 <td>
-                    <button class="tblweapons-add" onclick="addWeapon(${i})">+</button>
+                    <button class="tblweapons-add" onclick="addWeapon('LA', ${i})">+</button>
                     <button class="tblweapons-info" onclick="infoWeapon(${i})">?</button>
                 </td>
                 <td>${w.name}</td>
