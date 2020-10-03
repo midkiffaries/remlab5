@@ -172,7 +172,7 @@ Radio and Checkbox style
 .check-button:focus + label, 
 .radio-button:focus + label,
 [type="checkbox"]:focus + label.switch {
-	outline: 1px dotted #222;
+    outline: auto 5px -webkit-focus-ring-color;
 }	
 
 [type="radio"], 
@@ -233,22 +233,22 @@ Radio and Checkbox style
 
 /* Checkbox that works like a switch */
 [type="checkbox"] + label.switch {
+    font-size: 1rem !important;
     background: #999;
-    width: 2.5em;
+    width: 2.6em;
     height: 1.5em;
     margin: 0 0.5rem;
     padding: 0;
     border-radius: 0.7rem;
-    vertical-align: -0.1em;
 }
 
 [type="checkbox"] + label.switch::before {
     background-color: #ddd;
-    width: 1.3rem;
-    height: 1.5rem;
+    width: 1.4rem;
+    height: 1.55rem;
     transition: 0.2s ease-in-out;
     border-radius: 0.7rem;
-	border: 0;
+    border: 0;
     outline: 0;
 }
 
@@ -290,7 +290,7 @@ Radio and Checkbox style
 }
 
 .file_download:focus + label {
-	outline: 1px dotted #222;
+	outline: auto 5px -webkit-focus-ring-color;
 }
 
 .file_download + label::before {
@@ -304,11 +304,6 @@ Radio and Checkbox style
 
 /* Phone (Portrait) and narrow screen */
 @media only screen and (min-width: 320px) and (max-width: 812px)  {
-    [type="radio"] + label::before, 
-    [type="checkbox"] + label::before {
-        margin-bottom: 0.2em;
-    }
-
     [type="checkbox"] + label.switch::before {
         margin-top: 0;
     }

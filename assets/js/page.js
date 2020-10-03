@@ -653,6 +653,7 @@ listCritsbyLoc('CT');
 listCritsbyLoc('RL');
 
 
+
 function addWeapon(v, id) {
     Mech.assigned_LA.push(id);
     listCritsbyLoc('LA');

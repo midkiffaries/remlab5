@@ -184,7 +184,7 @@ h2 {
 
 h3 {
 	font-size: 1.7rem;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 h4 {
@@ -193,10 +193,12 @@ h4 {
 
 h5 {
 	font-size: 1.2rem;
+	font-weight: 500;
 }
 
 h6 {
 	font-size: 1rem;
+	font-weight: 600;
 }
 
 
@@ -398,7 +400,11 @@ summary,
 [tabindex="-1"]:focus:not(:focus-visible) {
 	outline: none !important;
 }
-
+/*
+:focus {
+    outline: auto 5px -webkit-focus-ring-color;
+}
+*/
 a[href] {
 	color: #000;
 	background-color: transparent;
