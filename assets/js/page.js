@@ -606,6 +606,16 @@ function compactWeaponsTable() {
     return li;    
 }
 
+// onload: Populate the Crit Location Diagram 
+listCritsbyLoc('LA');
+listCritsbyLoc('LT');
+listCritsbyLoc('H');
+listCritsbyLoc('RT');
+listCritsbyLoc('RA');
+listCritsbyLoc('LL');
+listCritsbyLoc('CT');
+listCritsbyLoc('RL');
+
 // List the contents of a crit location array
 function listCritsbyLoc(v) {
     let id = `listCritList_${v}`,
@@ -646,17 +656,6 @@ function listCritsbyLoc(v) {
 
     elID(id).innerHTML = li;
 }
-
-// onload: Populate the Crit Location Diagram 
-listCritsbyLoc('LA');
-listCritsbyLoc('LT');
-listCritsbyLoc('H');
-listCritsbyLoc('RT');
-listCritsbyLoc('RA');
-listCritsbyLoc('LL');
-listCritsbyLoc('CT');
-listCritsbyLoc('RL');
-
 
 // Add weapon (id) to assigned location (v)
 function addWeapon(v, id) {
