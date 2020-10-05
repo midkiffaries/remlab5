@@ -609,8 +609,8 @@ function compactWeaponsTable() {
 // List the contents of a crit location array
 function listCritsbyLoc(v) {
     let id = `listCritList_${v}`,
-        max = eval('Mech.maxcrits_' + v),
-        loc = eval('Mech.assigned_' + v),
+        max = Mech[`maxcrits_${v}`],
+        loc = Mech[`assigned_${v}`],
         li = "",
         w;
 
@@ -621,12 +621,17 @@ function listCritsbyLoc(v) {
 
         // Populate slot
         if (loc[i] >= 0) {
+
+            // Add to crits_+v
+            Mech[`crits_${v}`] += w.crits;
+
             // Check if item is a hardpoint
             if (w.tons > 0) {
-                li += `<li>${w.name} <button class="remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})">x</button></li>`;
+                li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
             } else {
                 li += `<li>${w.name}</li>`;
             }
+
             // If weapon takes up more than 1 crit
             if (w.crits > 1) {
                 for (let j = 1; j < w.crits; j++) {
@@ -642,7 +647,7 @@ function listCritsbyLoc(v) {
     elID(id).innerHTML = li;
 }
 
-// Populate the Crit Location Diagram
+// onload: Populate the Crit Location Diagram 
 listCritsbyLoc('LA');
 listCritsbyLoc('LT');
 listCritsbyLoc('H');
@@ -653,15 +658,20 @@ listCritsbyLoc('CT');
 listCritsbyLoc('RL');
 
 
-
+// Add weapon (id) to assigned location (v)
 function addWeapon(v, id) {
-    Mech.assigned_LA.push(id);
-    listCritsbyLoc('LA');
+    let loc = Mech[`assigned_${v}`],
+        max = Mech[`maxcrits_${v}`];
+
+    if (Mech[`crits_${v}`] + weaponTable.weapon[id].crits < max) {
+        loc.push(id);
+        listCritsbyLoc(v);
+    }
 }
 
-
+// Remove weapon (id) from assigned location (v)
 function removeWeapon(v, id) {
-    let a = Mech.assigned_LA.indexOf(id);
-    Mech.assigned_LA.pop(a);
-    listCritsbyLoc('LA');
+    let a = Mech[`assigned_${v}`].indexOf(id);
+    Mech[`assigned_${v}`].pop(a);
+    listCritsbyLoc(v);
 }

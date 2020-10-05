@@ -71,6 +71,14 @@ body {
     margin: 0;
 }
 
+.tbllocation-remove {
+    padding: 6px 4px;
+    line-height: 0.5;
+    background-color: #d00;
+    color: #fff;
+    border: 0;
+}
+
 /* Default Section Panels style */
 
 .section-box {
