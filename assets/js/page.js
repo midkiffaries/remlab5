@@ -595,9 +595,9 @@ function compactWeaponsTable() {
             // Generate each table row
             li += (`
             <li data-id="${i}">
-                <h6>${w.name}</h6>
-                <p><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></p>
-                <p>${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</p>
+                <span class="weapon-name">${w.name}</span>
+                <span><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></span>
+                <span>${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</span>
             </li>
             `);
         }
@@ -616,7 +616,7 @@ listCritsbyLoc('LL');
 listCritsbyLoc('CT');
 listCritsbyLoc('RL');
 
-// List the contents of a crit location array
+// List the contents of a crit location array in a list
 function listCritsbyLoc(v) {
     let id = `listCritList_${v}`,
         max = Mech[`maxcrits_${v}`],
@@ -632,10 +632,12 @@ function listCritsbyLoc(v) {
         // Populate slot
         if (loc[i] >= 0) {
 
-            // Check if item is a hardpoint
+            // Check if item is a a weapon or a hardpoint
             if (w.tons > 0) {
+                // Weapon
                 li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
             } else {
+                // Hardpoint
                 li += `<li>${w.name}</li>`;
             }
 
@@ -643,6 +645,7 @@ function listCritsbyLoc(v) {
             if (w.crits > 1) {
                 for (let j = 1; j < w.crits; j++) {
                     li += `<li>${w.name}</li>`;
+                    max--;
                 }
             }
         } else {
@@ -660,12 +663,13 @@ function addWeapon(v, id) {
         max = Mech[`maxcrits_${v}`],
         w = weaponTable.weapon[id].crits;
 
-    // Add to crits_v
-    Mech[`crits_${v}`] += w;
-
-    // Check if weapon fits in location
-    if (Mech[`crits_${v}`] + w < max) {
+    // Check if item id can fit in v
+    if (Mech[`crits_${v}`] + w <= max) {
+        // Add to crits_v
+        Mech[`crits_${v}`] += w;
+        // Add to assigned_v
         loc.push(id);
+        // List location contents
         listCritsbyLoc(v);
     }
 }
@@ -681,4 +685,9 @@ function removeWeapon(v, id) {
     // Remove item
     Mech[`assigned_${v}`].pop(a);
     listCritsbyLoc(v);
+}
+
+// List the contents of a crit location array in a compact list
+function compactListCritsbyLoc(v) {
+
 }

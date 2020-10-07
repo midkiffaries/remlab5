@@ -115,14 +115,14 @@ const Mech = {
 	assigned_RL: [6,7,8,9],
 	
 	// Assigned Crits by location
-	crits_H:  0, 
+	crits_H:  5, 
     crits_LT: 0, 
-    crits_CT: 0, 
+    crits_CT: 10, 
     crits_RT: 0,
-    crits_LA: 0,
-    crits_RA: 0,
-    crits_LL: 0,
-    crits_RL: 0,
+    crits_LA: 4,
+    crits_RA: 4,
+    crits_LL: 4,
+    crits_RL: 4,
 
 	// Calc: Running MP
 	get runningMP() {
