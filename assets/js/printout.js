@@ -39,7 +39,6 @@ const a_HeatScale = {
 
 // Record Sheet modal content
 const RecordSheetModal = (`
-
 <div class="print-container">
 	<div class="print-sheet">
 		<div class="print-body">
@@ -188,9 +187,9 @@ const RecordSheetModal = (`
 
 			<div class="print-rightside">
 				<div class="print-data">
-					<!--h3>Mech Data</h3-->
-					<p><b id="P-MechType"></b></p>
-					<p>Tonnage: <b id="P-Tonnage"></b></p>
+					<h3>Mech Data</h3>
+					<p><b id="P-MechType">${Mech.type}</b></p>
+					<p>Tonnage: <b id="P-Tonnage">${Mech.mass}</b></p>
 					<p>Technology: <b id="P-TechBase"></b></p>
 					<p>Ruleset: <b id="P-Ruleset"></b></p>
 					<p>Movement Points:</p>
@@ -284,5 +283,4 @@ const RecordSheetModal = (`
 		</footer>
 	</div>
 </div>
-
 `);

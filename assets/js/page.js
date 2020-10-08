@@ -236,35 +236,41 @@ const sWeapons = new SectionPanel(
         </ol>
     </div>
 
-    <div class="">
+    <div class="mech-location-list">
         <h5>Left Arm</h5>
-        <ul id="LA-List"></ul>
+        <p>
+            <input id="radioLA1" name="radioLA" type="radio" class="radio-button" checked><label for="radioLA1" role="button">Full Arm</label>
+            <input id="radioLA2" name="radioLA" type="radio" class="radio-button"><label for="radioLA2" role="button">No Lower Arm</label>
+            <input id="radioLA3" name="radioLA" type="radio" class="radio-button"><label for="radioLA3" role="button">No Hand</label>
+        </p>
+        <ul id="critList_LA"></ul>
+        <p>Crits left: <output id="">0</output></p>
     </div>
 
     <div class="mech-crit-table">
         <h5>Left Arm</h5>
-        <ol id="listCritList_LA"></ol>
+        <ol id="fullCritList_LA"></ol>
         
         <h5>Left Torso</h5>
-        <ol id="listCritList_LT"></ol>
+        <ol id="fullCritList_LT"></ol>
 
         <h5>Head</h5>
-        <ol id="listCritList_H"></ol>
+        <ol id="fullCritList_H"></ol>
 
         <h5>Right Torso</h5>
-        <ol id="listCritList_RT"></ol>
+        <ol id="fullCritList_RT"></ol>
 
         <h5>Right Arm</h5>
-        <ol id="listCritList_RA"></ol>
+        <ol id="fullCritList_RA"></ol>
 
         <h5>Left Leg</h5>
-        <ol id="listCritList_LL"></ol>
+        <ol id="fullCritList_LL"></ol>
 
         <h5>Center Torso</h5>
-        <ol id="listCritList_CT"></ol>
+        <ol id="fullCritList_CT"></ol>
 
         <h5>Right Leg</h5>
-        <ol id="listCritList_RL"></ol>
+        <ol id="fullCritList_RL"></ol>
     </div>
     `, 
     
@@ -618,7 +624,7 @@ listCritsbyLoc('RL');
 
 // List the contents of a crit location array in a list
 function listCritsbyLoc(v) {
-    let id = `listCritList_${v}`,
+    let id = `fullCritList_${v}`,
         max = Mech[`maxcrits_${v}`],
         loc = Mech[`assigned_${v}`],
         li = "",
@@ -671,6 +677,7 @@ function addWeapon(v, id) {
         loc.push(id);
         // List location contents
         listCritsbyLoc(v);
+        compactListCritsbyLoc(v);
     }
 }
 
@@ -685,9 +692,37 @@ function removeWeapon(v, id) {
     // Remove item
     Mech[`assigned_${v}`].pop(a);
     listCritsbyLoc(v);
+    compactListCritsbyLoc(v);
 }
 
 // List the contents of a crit location array in a compact list
 function compactListCritsbyLoc(v) {
+    let id = `critList_${v}`,
+    max = Mech[`maxcrits_${v}`],
+    loc = Mech[`assigned_${v}`],
+    li = "",
+    w;
 
+    // Increment through selected location array 
+    for (let i = 0; i < max; i++) {
+        // Check if location array has contents
+        w = weaponTable.weapon[loc[i]];
+
+        // Populate slot
+        if (loc[i] >= 0) {
+
+            // Check if item is a a weapon or a hardpoint
+            if (w.tons > 0) {
+                // Weapon
+                li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
+            } else {
+                // Hardpoint
+                li += `<li>${w.name}</li>`;
+            }
+        }
+    }
+
+    elID(id).innerHTML = li;
 }
+
+compactListCritsbyLoc('LA');

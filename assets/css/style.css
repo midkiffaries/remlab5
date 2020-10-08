@@ -2,6 +2,13 @@
 Base REMLAB Style
 *************************/
 
+/* Variables */
+:root {
+    --base-gold: #ebc125;
+    --dark-gold: #c0a300;
+    --light-gold: #f5d666;
+}
+
 ::-moz-selection {
 	text-shadow: none;
 	background-color: rgb(255, 237, 136);

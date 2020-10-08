@@ -155,6 +155,7 @@ function ConfirmModal(text, action) {
     aDialog.buttonYes.appendChild(document.createTextNode("Yes"));
     aDialog.buttonYes.setAttribute("onclick", "closeModals('dialog-confirm');" + action);
     aDialog.buttonYes.setAttribute("type", "button");
+    aDialog.buttonYes.setAttribute("autofocus", "autofocus");
 
     // Button No
     aDialog.div.appendChild(aDialog.buttonNo);
@@ -279,7 +280,8 @@ function HtmlModal(JsVar) {
     aDialog.header.appendChild(aDialog.button);
     aDialog.button.setAttribute("onclick", "closeModals('dialog-html')");
     aDialog.button.setAttribute("class", "dialog-html-close");
-    aDialog.button.setAttribute("aria-label", "Close dialog box");	
+    aDialog.button.setAttribute("aria-label", "Close dialog box");
+    aDialog.button.setAttribute("autofocus", "autofocus");	
 	
 	// Inner Element
 	aDialog.dialog.appendChild(aDialog.inner);
@@ -315,7 +317,7 @@ function closeModals(c) {
 
 
 /**************************
- * Global REMLAB Functions
+* Global REMLAB Functions
 **************************/
 
 // The record sheet circle - hash &#9675; or ○
