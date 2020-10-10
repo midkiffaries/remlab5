@@ -238,13 +238,12 @@ const sWeapons = new SectionPanel(
 
     <div class="mech-location-list">
         <h5>Left Arm</h5>
-        <p>
-            <input id="radioLA1" name="radioLA" type="radio" class="radio-button" checked><label for="radioLA1" role="button">Full Arm</label>
-            <input id="radioLA2" name="radioLA" type="radio" class="radio-button"><label for="radioLA2" role="button">No Lower Arm</label>
-            <input id="radioLA3" name="radioLA" type="radio" class="radio-button"><label for="radioLA3" role="button">No Hand</label>
-        </p>
+        <ul>
+            <li><input type="checkbox" id="chkLowerArm_LA" onclick="checkActuator()" checked disabled><label for="chkLowerArm_LA">Lower Arm</label></li>
+            <li><input type="checkbox" id="chkHand_LA" onclick="checkActuator()" checked><label for="chkHand_LA">Hand</label></li>
+        </ul>
         <ul id="critList_LA"></ul>
-        <p>Crits left: <output id="">0</output></p>
+        <p>Crits Available <output id="outCrits_LA">0</output></p>
     </div>
 
     <div class="mech-crit-table">
@@ -715,14 +714,12 @@ function compactListCritsbyLoc(v) {
             if (w.tons > 0) {
                 // Weapon
                 li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
-            } else {
-                // Hardpoint
-                li += `<li>${w.name}</li>`;
             }
         }
     }
 
     elID(id).innerHTML = li;
+    elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
 }
 
 compactListCritsbyLoc('LA');

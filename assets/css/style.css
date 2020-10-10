@@ -4,19 +4,19 @@ Base REMLAB Style
 
 /* Variables */
 :root {
-    --base-gold: #ebc125;
-    --dark-gold: #c0a300;
-    --light-gold: #f5d666;
+    --base-gold: #e9c500;
+    --dark-gold: #cfaf00;
+    --light-gold: #ffe75e;
 }
 
 ::-moz-selection {
 	text-shadow: none;
-	background-color: rgb(255, 237, 136);
+	background-color: var(--light-gold);
 }
 
 ::selection {
 	text-shadow: none;
-	background-color: rgb(255, 237, 136);
+	background-color: var(--light-gold);
 }
 
 /************************
