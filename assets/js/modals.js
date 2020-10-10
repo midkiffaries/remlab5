@@ -3,12 +3,12 @@
 **************************/
 
 // Buttons modal logic
-document.getElementById('btnHelp').onclick = () => HtmlModal(HelpModal);
-document.getElementById('btnAbout').onclick = () => HtmlModal(AboutModal);
+document.getElementById('btnHelp').onclick = () => HtmlModal(HelpModal, 'helpModal');
+document.getElementById('btnAbout').onclick = () => HtmlModal(AboutModal, 'aboutModal');
 
 // About modal content
-const AboutModal = (`
-<h2>About REMLAB 4.0</h2>
+const AboutModal = () => (`
+<h2>About REMLAB ${RemlabVersion}</h2>
 <img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy" style="width:25%;float:right">
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
@@ -28,7 +28,7 @@ const AboutModal = (`
 `);
 
 // Help modal content
-const HelpModal = (`
+const HelpModal = () => (`
 <h2>Help with REMLAB</h2>
 <p>Here are some tips for using REMLAB:</p>
 
@@ -53,7 +53,7 @@ const HelpModal = (`
 `);
 
 // Weapon Info modal content
-const WeaponInfoModal = (`
+const WeaponInfoModal = () => (`
 <div class="WeaponInfo-body">
     <h2 id="Info-name"></h2>
 

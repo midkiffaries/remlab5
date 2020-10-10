@@ -368,6 +368,7 @@ const sReadout = new SectionPanel(
     `<p>Note: This content only appears on the technical readout.</p>`,
 );
 
+
 // Side Bar content
 const sideBar = (`
     <div class="sidebar_baseinfo">
@@ -390,7 +391,7 @@ const sideBar = (`
     </div>
     <hr>
     <div class="sidebar_buttons">
-        <p><button id="btnCreateRS">Create Record Sheet</button></p>
+        <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
         <p><button id="btnCreateTR">Create Technical Readout</button></p>
         <hr>
         <p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p>
@@ -421,6 +422,7 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 const updateForm = () => {
     // Totals Side Bar
         // Get
+    Mech.type = elID('txtType').value;
     Mech.mass = elID('stepMass').value;
         // Post
     elID('outWeightClass').value = weightClass(Mech.mass);
@@ -565,7 +567,7 @@ function completeWeaponsTable() {
             <tr data-id="${i}">
                 <td>
                     <button class="tblweapons-add" onclick="addWeapon('LA', ${i})">+</button>
-                    <button class="tblweapons-info" onclick="infoWeapon(${i})">?</button>
+                    <button class="tblweapons-info" onclick="infoWeapon(${i}),'infoWeapons'">?</button>
                 </td>
                 <td>${w.name}</td>
                 <td>${w.heat}</td>
@@ -601,7 +603,7 @@ function compactWeaponsTable() {
             li += (`
             <li data-id="${i}">
                 <span class="weapon-name">${w.name}</span>
-                <span><button class="tblweapons-info" onclick="infoWeapon(${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></span>
+                <span><button class="tblweapons-info" onclick="infoWeapon(${i},'infoWeapons')">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></span>
                 <span>${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</span>
             </li>
             `);
@@ -722,4 +724,5 @@ function compactListCritsbyLoc(v) {
     elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
 }
 
+// list
 compactListCritsbyLoc('LA');

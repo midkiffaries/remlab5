@@ -4,7 +4,8 @@
 "use strict";    
 
 // REMLAB version
-const RemlabVersion = "4.9.2010 - Development";
+const RemlabVersion = "4.9.2010 DEV";
+const TodaysDate = new Date();
 
 // Declare Global Variables and settings
 const HostName = window.location.host,
@@ -181,7 +182,7 @@ function ConfirmModal(text, action) {
 }());
 */
 // Load an external JS document and display it in a modal window
-function HtmlModal(JsVar) {    
+function HtmlModal(JsVar, c) {
     let aDialog = {
         style: document.createElement("style"),
         dialog: document.createElement("dialog"),
@@ -270,7 +271,7 @@ function HtmlModal(JsVar) {
 
     // Dialog attributes
     aDialog.dialog.setAttribute("open", "open");        
-    aDialog.dialog.setAttribute("class", "dialog-html " + JsVar);
+    aDialog.dialog.setAttribute("class", "dialog-html " + c);
 
     // Dialog Top
 	aDialog.dialog.appendChild(aDialog.header);
@@ -291,7 +292,7 @@ function HtmlModal(JsVar) {
 	
     // Append to page body
     document.body.appendChild(aDialog.dialog);
-    document.getElementById("HTML_Frame").innerHTML = JsVar;
+    document.getElementById("HTML_Frame").innerHTML = JsVar();
 
     // Display Dialog
     setTimeout(() => { 

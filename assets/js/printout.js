@@ -3,131 +3,144 @@
 **************************/
 
 // Printout: Generate the Mech heat scale
-const a_HeatScale = {
-    30: 'Shutdown',
-    29: '',
-    28: 'Ammo Explosion, avoid on 8+',
-    27: '',
-    26: 'Shutdown, avoid on 10+',
-    25: '-5 Movement Points',
-    24: '+4 Modifier to Fire',
-    23: 'Ammo Explosion, avoid on 6+',
-    22: 'Shutdown, avoid on 8+',
-    21: '',
-    20: '-4 Movement Points',
-    19: 'Ammo Explosion, avoid on 4+',
-    18: 'Shutdown, avoid on 6+',
-    17: '+3 Modifier to Fire',
-    16: '',
-    15: '-3 Movement Points',
-    14: 'Shutdown, avoid on 4+',
-    13: '+2 Modifier to Fire',
-    12: '',
-    11: '',
-    10: '-2 Movement Points',
-    9:  '',
-    8:  '+1 Modifier to Fire',
-    7:  '',
-    6:  '',
-    5:  '-1 Movement Points',
-    4:  '',
-    3:  '',
-    2:  '',
-    1:  '',
-    0:  ''
+const a_HeatScale = [
+    'Shutdown',
+    '',
+    'Ammo Explosion, avoid on 8+',
+    '',
+    'Shutdown, avoid on 10+',
+    '-5 Movement Points',
+    '+4 Modifier to Fire',
+    'Ammo Explosion, avoid on 6+',
+    'Shutdown, avoid on 8+',
+    '',
+    '-4 Movement Points',
+    'Ammo Explosion, avoid on 4+',
+    'Shutdown, avoid on 6+',
+    '+3 Modifier to Fire',
+    '',
+    '-3 Movement Points',
+    'Shutdown, avoid on 4+',
+    '+2 Modifier to Fire',
+    '',
+    '',
+    '-2 Movement Points',
+    '',
+    '+1 Modifier to Fire',
+    '',
+    '',
+    '-1 Movement Points',
+    '',
+    '',
+    '',
+    '',
+    ''
+];
+
+// Generate the Heat Scale for the Record Sheet
+const generateHeatScale = () => {
+	let t = `<tr><th class="print-hs-box"></th><td>OVERFLOW</td></tr>`;
+		l = a_HeatScale.length - 1;
+
+	// Loop through the array
+    for (let i = 0; i < l; i++) {
+		t += `<tr><th>${l-i}</th><td>${a_HeatScale[i]}</td></tr>`;
+	}
+	
+    return t;
 };
 
 // Record Sheet modal content
-const RecordSheetModal = (`
+const RecordSheetModal = () => (`
 <div class="print-container">
 	<div class="print-sheet">
 		<div class="print-body">
 			<div class="print-leftside">
-				<div class="print-header">
-                    <h1>
-                    <img id="P-HeaderLogo" src="assets/images/btech2010.svg" alt="Battletech">
-                    <span class="print-subtitle"><span id="P-WeightClass">Light</span> <span id="P-ChassisType">BattleMech</span> Record Sheet</span>
-					</h1>
-					<div class="print-header-right">Miniature<br><b id="P-Miniature"></b></div>
-				</div>
+				<header class="print-header">
+                    <h2>
+                    <img src="assets/images/btech2010.svg" alt="Battletech">
+                    <span class="print-subtitle"><span>${weightClass(Mech.mass)}</span> <span>${a_ChassisType[Mech.chassis]}</span> Record Sheet</span>
+					</h2>
+					<div class="print-header-right">Miniature<br><b>${Warrior.miniature}</b></div>
+				</header>
 
 				<div class="print-armordiagram">
 					<h3>Armor Diagram</h3>
 					<div class="print-armor-col">
 						<div class="print-armorbox">
-							<h4>Left Arm <span>[10,11]</span></h4>
+							<h4>Left Arm <small>[10,11]</small></h4>
 							<div>
-								<span id="P-RS-LAArmor"></span>
-								<span id="P-RS-LAIS" class="print-isbox"></span>
+								<span>${displayTicks(Mech.ALA)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISA)}</span>
 							</div>
 						</div>
 						<div class="print-center">
-							<div>Armor<br><b id="P-ArmorType">Standard</b></div>
-							<div>Targeting<br><b id="P-Targeting">Standard</b></div>
+							<div>Armor<br><b>${a_ArmorType[Mech.armorType]}</b></div>
+							<div>Targeting<br><b>${a_TargetType[Mech.targetingType]}</b></div>
 						</div>
 					</div>
 					<div class="print-armor-col">
 						<div class="print-armorbox">
-							<h4>Left Torso <span>[8]</span></h4>
+							<h4>Left Torso <small>[8]</small></h4>
 							<div>
-								<span id="P-RS-LTArmor"></span>
-								<span id="P-RS-LTIS" class="print-isbox"></span>
-								<span id="P-RS-LTArmorR" class="print-reararmor"></span>
+								<span>${displayTicks(Mech.ALT)}</span>
+								<span class="print-isbox">${displayTicks(Mech.IST)}</span>
+								<span class="print-reararmor">${displayTicks(Mech.ALTR)}</span>
 							</div>
 						</div>
 						<div class="print-armorbox">
-							<h4>Left Leg <span>[9]</span></h4>
+							<h4>Left Leg <small>[9]</small></h4>
 							<div>
-								<span id="P-RS-LLArmor"></span>
-								<span id="P-RS-LLIS" class="print-isbox"></span>
-							</div>
-						</div>
-					</div>
-					<div class="print-armor-col">
-						<div class="print-armorbox">
-							<h4>Head <span>[12]</span></h4>
-							<div>
-								<span id="P-RS-HArmor"></span>
-								<span id="P-RS-HIS" class="print-isbox"></span>
-							</div>
-						</div>
-						<div class="print-armorbox">
-							<h4>Center Torso <span>[2,7]</span></h4>
-							<div>
-								<span id="P-RS-CTArmor"></span>
-								<span id="P-RS-CTIS" class="print-isbox"></span>
-								<span id="P-RS-CTArmorR" class="print-reararmor"></span>
+								<span>${displayTicks(Mech.ALL)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISL)}</span>
 							</div>
 						</div>
 					</div>
 					<div class="print-armor-col">
 						<div class="print-armorbox">
-							<h4>Right Torso <span>[6]</span></h4>
+							<h4>Head <small>[12]</small></h4>
 							<div>
-								<span id="P-RS-RTArmor"></span>
-								<span id="P-RS-RTIS" class="print-isbox"></span>
-								<span id="P-RS-RTArmorR" class="print-reararmor"></span>
+								<span>${displayTicks(Mech.AH)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISH)}</span>
 							</div>
 						</div>
 						<div class="print-armorbox">
-							<h4>Right Leg <span>[5]</span></h4>
+							<h4>Center Torso <small>[2,7]</small></h4>
 							<div>
-								<span id="P-RS-RLArmor"></span>
-								<span id="P-RS-RLIS" class="print-isbox"></span>
+								<span>${displayTicks(Mech.ACT)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISC)}</span>
+								<span class="print-reararmor">${displayTicks(Mech.ACTR)}</span>
 							</div>
 						</div>
 					</div>
 					<div class="print-armor-col">
 						<div class="print-armorbox">
-							<h4>Right Arm <span>[3,4]</span></h4>
+							<h4>Right Torso <small>[6]</small></h4>
 							<div>
-								<span id="P-RS-RAArmor"></span>
-								<span id="P-RS-RAIS" class="print-isbox"></span>
+								<span>${displayTicks(Mech.ART)}</span>
+								<span class="print-isbox">${displayTicks(Mech.IST)}</span>
+								<span class="print-reararmor">${displayTicks(Mech.ARTR)}</span>
+							</div>
+						</div>
+						<div class="print-armorbox">
+							<h4>Right Leg <small>[5]</small></h4>
+							<div>
+								<span>${displayTicks(Mech.ARL)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISL)}</span>
+							</div>
+						</div>
+					</div>
+					<div class="print-armor-col">
+						<div class="print-armorbox">
+							<h4>Right Arm <small>[3,4]</small></h4>
+							<div>
+								<span>${displayTicks(Mech.ARA)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISA)}</span>
 							</div>
 						</div>
 						<div class="print-center">
-							<div>Structure<br><b id="P-InternalStuct">Standard</b></div>
-							<div>Gyroscope<br><b id="P-GyroType">Standard</b></div>
+							<div>Structure<br><b>${a_ISType[Mech.isType]}</b></div>
+							<div>Gyroscope<br><b>${a_GyroType[Mech.gyroType]}</b></div>
 						</div>
 					</div>
 				</div>
@@ -136,75 +149,74 @@ const RecordSheetModal = (`
 					<h3>Critical Hit Table</h3>
 					<div>
 						<h4>Left Arm</h4>
-						<ol id="P-CritLA-H" class="high"></ol>
-						<ol id="P-CritLA-L" class="low"></ol>
+						<ol class="high"></ol>
+						<ol class="low"></ol>
 
 						<h4>Left Torso</h4>
-						<ol id="P-CritLT-H" class="high"></ol>
-						<ol id="P-CritLT-L" class="low"></ol>
+						<ol class="high"></ol>
+						<ol class="low"></ol>
 
 						<h4>Left Leg</h4>
-						<ol id="P-CritLL"></ol>
+						<ol></ol>
 					</div>
 
 					<div>
 						<h4>Head</h4>
-						<ol id="P-CritH"></ol>
+						<ol></ol>
 
 						<h4>Center Torso</h4>
-						<ol id="P-CritCT-H" class="high"></ol>
-						<ol id="P-CritCT-L" class="low"></ol>
+						<ol class="high"></ol>
+						<ol class="low"></ol>
 
 						<div class="print-hitboxes">
-							<p><label>Engine Hits</label> &#9675;&#9675;&#9675;</p>
-							<p><label>Gyro Hits</label> &#9675;&#9675;</p>
-							<p><label>Sensor Hits</label> &#9675;&#9675;</p>
-							<p><label>Life Support</label> &#9675;</p>
+							<p><label>Engine Hits</label> ${displayTicks(3)}</p>
+							<p><label>Gyro Hits</label> ${displayTicks(2)}</p>
+							<p><label>Sensor Hits</label> ${displayTicks(2)}</p>
+							<p><label>Life Support</label> ${displayTicks(1)}</p>
 						</div>
 
 						<div class="print-costbv">
-							<p>Cost: <b id="P-TotalCost" class="cbill">00,000,000</b></p>
-							<p>Battle Value: <b id="P-TotalBV">0000</b></p>
+							<p>Cost: <b class="cbills">${addComma(Mech.totalCost)}</b></p>
+							<p>Battle Value: <b>${addComma(Mech.totalBV)}</b></p>
 						</div>
 
 					</div>
 
 					<div>
 						<h4>Right Arm</h4>
-						<ol id="P-CritRA-H" class="high"></ol>
-						<ol id="P-CritRA-L" class="low"></ol>
+						<ol class="high"></ol>
+						<ol class="low"></ol>
 
 						<h4>Right Torso</h4>
-						<ol id="P-CritRT-H" class="high"></ol>
-						<ol id="P-CritRT-L" class="low"></ol>
+						<ol class="high"></ol>
+						<ol class="low"></ol>
 
 						<h4>Right Leg</h4>
-						<ol id="P-CritRL"></ol>
+						<ol></ol>
 					</div>
 
 				</div>
 			</div>
 
-			<div class="print-rightside">
+			<aside class="print-rightside">
 				<div class="print-data">
 					<h3>Mech Data</h3>
-					<p><b id="P-MechType">${Mech.type}</b></p>
-					<p>Tonnage: <b id="P-Tonnage">${Mech.mass}</b></p>
-					<p>Technology: <b id="P-TechBase"></b></p>
-					<p>Ruleset: <b id="P-Ruleset"></b></p>
+					<p><b>${Mech.type}</b></p>
+					<p>Tonnage: <b>${Mech.mass}</b></p>
+					<p>Technology: <b>${a_TechBase[Mech.techbase]}</b></p>
+					<p>Ruleset: <b>${a_RuleSet[Mech.rules]}</b></p>
 					<p>Movement Points:</p>
 					<ul>
-						<li><label>Walking:</label> <b id="P-Walking"></b></li>
-						<li><label>Running:</label> <b id="P-Running"></b></li>
-						<!--li><label>Sprinting:</label> <b id="P-Sprinting"></b></li-->
-						<li><label>Jumping:</label> <b id="P-Jumping"></b></li>
+						<li><label>Walking:</label> <b>${Mech.walkingMP}</b></li>
+						<li><label>Running:</label> <b>${Mech.runningMP}</b></li>
+						<li><label>Jumping:</label> <b>${Mech.jumpingMP}</b></li>
 					</ul>
 				</div>
 				<div class="print-warrior">
 					<h3>Warrior</h3>
-					<p>Name: <span id="P-WarriorName"></span></p>
-					<p>Affiliation: <span id="P-Affiliation"></span></p>
-					<p>Gunnery: <b id="P-Gunnery"></b> &nbsp; Piloting: <b id="P-Piloting"></b> &nbsp;&nbsp; <i id="P-Experience"></i></p>
+					<p>Name: <span>${Warrior.name}</span></p>
+					<p>Affiliation: <span>${a_Affiliation[Warrior.affiliation]}</span></p>
+					<p>Gunnery: <b>${Warrior.gunnery}</b> &nbsp; Piloting: <b>${Warrior.piloting}</b> &nbsp;&nbsp; <i>${a_Experience[Warrior.experience]}</i></p>
 					<table class="print-warriorstats">
 						<tr>
 							<th>Hits Taken</th>
@@ -225,19 +237,20 @@ const RecordSheetModal = (`
 							<td>&times;</td>
 						</tr>
 					</table>
-					<p>Auto-Eject: <b id="P-AutoEject"></b></p>
+					<p>Auto-Eject: <b>${Warrior.autoeject}</b></p>
 				</div>
 				<div class="print-heat">
 					<h3>Heat Data</h3>
-					<p><b id="P-HeatSinks">10</b> | <span id="P-HSType">Single</span> Heat Sinks</p>
-					<p><span id="P-HeatSinkTicks"></span></p>
+					<p><b>${Mech.heatTotal}</b> | <span>${a_HSType[Mech.heatsinkType]}</span> Heat Sinks</p>
+					<p><span>${displayTicks(Mech.heatTotal)}</span></p>
 				</div>
 				<div class="print-heatscale">
 					<h3>Heat Scale</h3>
-					<table id="P-HeatScale">
+					<table class="print-heatscale">
+						${generateHeatScale()}
 					</table>
 				</div>
-			</div>
+			</aside>
 		</div>
 
 		<div class="print-bottom">
@@ -257,7 +270,7 @@ const RecordSheetModal = (`
 							<th>Mod</th>
 						</tr>
 					</thead>
-					<tbody id="P-WeaponsList">
+					<tbody class="print-weaponslist">
 					</tbody>
 				</table>
 			</div>
@@ -272,15 +285,19 @@ const RecordSheetModal = (`
 							<th>Shots</th>
 						</tr>
 					</thead>
-					<tbody id="P-AmmoList">
+					<tbody class="print-ammolist">
 					</tbody>
 				</table>
 			</div>
 		</div>
 
 		<footer class="print-footer">
-			<p>Created with <a href="https://github.com/midkiffaries/remlab5"><span id="P-Version">REMLAB</span></a> on <span id="P-DateCreated">2020</span>. Please recycle this document.</p>
+			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${RemlabVersion}</span></a> on <span>${TodaysDate.getFullYear()}</span>. Please recycle this document.</p>
 		</footer>
 	</div>
 </div>
+
+<style>
+
+</style>
 `);
