@@ -91,7 +91,7 @@ const Mech = {
 	capabilitiesTR: ``,
 	historyTR: ``,
 	deploymentTR: ``,
-	variants: ``,
+	variantsTR: ``,
 	notableTR: ``,
 
 	// Max Crits by location (Biped)

@@ -37,6 +37,42 @@ const a_HeatScale = [
     ''
 ];
 
+// List the contents of a crit location array in a list
+const listCritsLocation = (v) => {
+    let max = Mech[`maxcrits_${v}`],
+        loc = Mech[`assigned_${v}`],
+        li = `<ol class="high">`,
+        w;
+
+    // Increment through selected location array 
+    for (let i = 0; i < max; i++) {
+		// Split the crits list if its more than 6
+		if (i == 6) li += `</ol><ol class="low">`
+
+        w = weaponTable.weapon[loc[i]];
+
+        // Populate slot
+        if (loc[i] >= 0) {
+
+			// Populate single line
+			li += `<li>${w.name}</li>`;
+
+            // If weapon takes up more than 1 crit
+            if (w.crits > 1) {
+                for (let j = 1; j < w.crits; j++) {
+                    li += `<li>${w.name}</li>`;
+                    max--;
+                }
+            }
+        } else {
+            // Empty slot
+            li += `<li>–</li>`;
+        }
+	}
+
+    return li + `</ol>`;
+};
+
 // Generate the Heat Scale for the Record Sheet
 const generateHeatScale = () => {
 	let t = `<tr><th class="print-hs-box"></th><td>OVERFLOW</td></tr>`;
@@ -50,7 +86,7 @@ const generateHeatScale = () => {
     return t;
 };
 
-// Record Sheet modal content
+// Record Sheet print modal content
 const RecordSheetModal = () => (`
 <div class="print-container">
 	<div class="print-sheet">
@@ -59,7 +95,7 @@ const RecordSheetModal = () => (`
 				<header class="print-header">
                     <h2>
                     <img src="assets/images/btech2010.svg" alt="Battletech">
-                    <span class="print-subtitle"><span>${weightClass(Mech.mass)}</span> <span>${a_ChassisType[Mech.chassis]}</span> Record Sheet</span>
+                    <span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
 					</h2>
 					<div class="print-header-right">Miniature<br><b>${Warrior.miniature}</b></div>
 				</header>
@@ -149,24 +185,21 @@ const RecordSheetModal = () => (`
 					<h3>Critical Hit Table</h3>
 					<div>
 						<h4>Left Arm</h4>
-						<ol class="high"></ol>
-						<ol class="low"></ol>
+						${listCritsLocation('LA')}
 
 						<h4>Left Torso</h4>
-						<ol class="high"></ol>
-						<ol class="low"></ol>
+						${listCritsLocation('LT')}
 
 						<h4>Left Leg</h4>
-						<ol></ol>
+						${listCritsLocation('LL')}
 					</div>
 
 					<div>
 						<h4>Head</h4>
-						<ol></ol>
+						${listCritsLocation('H')}
 
 						<h4>Center Torso</h4>
-						<ol class="high"></ol>
-						<ol class="low"></ol>
+						${listCritsLocation('CT')}
 
 						<div class="print-hitboxes">
 							<p><label>Engine Hits</label> ${displayTicks(3)}</p>
@@ -184,15 +217,13 @@ const RecordSheetModal = () => (`
 
 					<div>
 						<h4>Right Arm</h4>
-						<ol class="high"></ol>
-						<ol class="low"></ol>
+						${listCritsLocation('RA')}
 
 						<h4>Right Torso</h4>
-						<ol class="high"></ol>
-						<ol class="low"></ol>
+						${listCritsLocation('RT')}
 
 						<h4>Right Leg</h4>
-						<ol></ol>
+						${listCritsLocation('RL')}
 					</div>
 
 				</div>
@@ -297,7 +328,273 @@ const RecordSheetModal = () => (`
 	</div>
 </div>
 
-<style>
+<style type="text/css">
+/* Stop page scrolling - fixes issues with printing */
+body {
+	overflow: hidden !important;
+	width: 100wh;
+	height: 90vh;
+}
 
+@media only print {
+	/* Hide the interface */
+	dialog {
+		background: none !important;
+	}
+
+	header,
+	main,
+	aside,
+	footer,
+	.print-settings,
+	.dialog-html-close {
+		display: none !important;
+	}
+
+	.print-mech-rs > div,
+	.print-container {
+		position: relative;
+		border: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		top: 0 !important;
+		overflow: visible;
+		font-family: Arial, sans-serif !important;
+	}
+
+	/* Special Settings */
+	.print-footer {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+	}
+}
+</style>
+`);
+
+
+
+// Technical Readout print modal content
+const TechReadoutModal = () => (`
+<div class="print-container">
+    <div class="print-sheet">
+        <div class="print-body">
+			<h2>
+				<img src="assets/images/btech2010.svg" alt="Battletech">
+				<span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
+			</h2>
+
+            <h1 id="P-MechType">${Mech.type}</h1>
+            
+            <div class="tr-leftside">
+                <p><b>Mass:</b> ${Mech.mass} tons</p>
+                <p><b>Chassis:</b> ${a_ChassisType[Mech.chassis]}</p>
+                <p><b>Power Plant:</b> ${Mech.engineRating} ${Mech.engineBrand}</p>
+                <p><b>Cruising Speed:</b> ${mp2Kph[Mech.walkingMP]} kph</p>
+                <p><b>Maxiumum Speed:</b> ${mp2Kph[Mech.runningMP]} kph</p>
+                <p><b>Jump Jets:</b> ${a_JJType[Mech.jumpjetsType]}</p>
+                <p class="indent"><b>Jump Capacity:</b> ${mp2Meters(Mech.jumpingMP)} meters</p>
+                <p><b>Armor:</b> ${a_ArmorType[Mech.armorType]}</p>
+                <p><b>Armament:</b></p>
+				<ul>
+				
+                </ul>
+                <p><b>Manufacturer:</b> Unknown</p> 
+                <p class="indent"><b>Primary Factory:</b> Unknown</p>
+                <p><b>Communications System:</b> Standard</p>
+                <p><b>Targeting &amp; Tracking System:</b> ${a_TargetType[Mech.targetingType]}</p>
+				
+                <p>${Mech.overviewTR}</p>
+                <h3>Capabilities</h3>
+                <p>${Mech.capabilitiesTR}</p>
+                <h3>Battle History</h3>
+                <p>${Mech.historyTR}</p>
+                <h3>Deployment</h3>
+                <p>${Mech.deploymentTR}</p>
+                <h3>Variants</h3>
+                <p>${Mech.variantsTR}</p>
+                <h3>Notable Units</h3>
+                <p>${Mech.notableTR}</p>
+            </div>
+            
+            <div class="tr-rightside">
+                <table class="tr-stats">
+                    <tr>
+                        <td>Type:</td>
+                        <th colspan="2">${Mech.type}</th>
+                    </tr>
+                    <tr>
+                        <td>Technology Base:</td>
+                        <td colspan="2">${a_TechBase[Mech.techbase]}</td>
+                    </tr>
+                    <tr>
+                        <td>Ruleset:</td>
+                        <td colspan="2">${a_RuleSet[Mech.rules]}</td>
+                    </tr>
+                    <tr>
+                        <td>Tonnage:</td>
+                        <td colspan="2">${Mech.mass}</td>
+                    </tr>
+                    <tr>
+                        <td>Cost:</td>
+                        <td colspan="2" class="cbills">${addComma(Mech.totalCost)}</td>
+                    </tr>
+                    <tr>
+                        <td>Battle Value:</td>
+                        <td colspan="2">${addComma(Mech.totalBV)}</td>
+                    </tr>
+                    <tr>
+                        <th>Equipment</th>
+                        <th></th>
+                        <th>Mass</th>
+                    </tr>
+                    <tr>
+                        <td>Internal Structure:</td>
+                        <td></td>
+                        <td>${addDecimal(Mech.isMass)}</td>
+                    </tr>            
+                    <tr>
+                        <td>Engine:</td>
+                        <td></td>
+                        <td>${addDecimal(Mech.engineMass)}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">Walking MP:</td>
+                        <td>${Mech.walkingMP}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="indent">Running MP:</td>
+                        <td>${Mech.runningMP}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="indent">Jumping MP:</td>
+                        <td>${Mech.jumpingMP}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Heat Sinks:</td>
+                        <td>${Mech.heatsinks}</td>
+                        <td>${addDecimal(Mech.heatsinksMass)}</td>
+                    </tr>
+                    <tr>
+                        <td>Gyro:</td>
+                        <td></td>
+                        <td>${addDecimal(Mech.gyroMass)}</td>
+                    </tr>
+                    <tr>
+                        <td>Cockpit:</td>
+                        <td></td>
+                        <td>${addDecimal(Mech.cockpitMass)}</td>
+                    </tr>
+                    <tr>
+                        <td>Armor Factor:</td>
+                        <td></td>
+                        <td>${addDecimal(Mech.armorMass)}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><i>Internal Structure</i></td>
+                        <td><i>Armor Value</i></td>
+                    </tr>
+                    <tr>
+                        <td class="indent">Head</td>
+                        <td>${Mech.ISH}</td>
+                        <td>${Mech.AH}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">Center Torso</td>
+                        <td>${Mech.ISC}</td>
+                        <td>${Mech.ACT}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">Center Torso (rear)</td>
+                        <td></td>
+                        <td>${Mech.ACTR}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">L/R Torso</td>
+						<td>${Mech.IST}/${Mech.IST}</td>
+                        <td>${Mech.ALT}/${Mech.ART}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">L/R Torso (rear)</td>
+                        <td></td>
+                        <td>${Mech.ARTR}/${Mech.ALTR}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">L/R Arms</td>
+						<td>${Mech.ISA}/${Mech.ISA}</td>
+                        <td>${Mech.ALA}/${Mech.ARA}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent">L/R Legs</td>
+						<td>${Mech.ISL}/${Mech.ISL}</td>
+                        <td>${Mech.ALL}/${Mech.ARL}</td>
+                    </tr>
+                </table>
+                
+                <table class="tr-weapons">
+                    <thead>
+                        <tr>
+                            <th>Weapons and Ammo</th>
+                            <th>Location</th>
+                            <th>Crits</th>
+                            <th>Tons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                <p><b>Notes:</b> </p>
+            </div>
+        </div>
+        
+        <footer class="print-footer">
+            Created with <a href="https://github.com/midkiffaries/remlab"><span id="P-Version">REMLAB</span></a> on <span id="P-DateCreated">2018</span>. <span class="icon-recycle"></span> Please recycle this document.
+        </footer>
+    </div>
+</div>
+
+<style type="text/css">
+/* Stop page scrolling - fixes issues with printing */
+body {
+    overflow: hidden !important;
+	width: 100wh;
+	height: 90vh;
+}
+    
+@media only print {    
+    /* Hide the interface */    
+    dialog {
+        background: none !important;
+    }
+    
+    header, main, aside, footer, .print-settings, .dialog-html-close {
+        display: none !important;
+    }
+    
+    .print-mech-tr > div, .print-container {
+        position: relative;
+        border: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        overflow: visible;
+    }
+    
+    /* Special Settings */
+    .print-footer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+}
 </style>
 `);

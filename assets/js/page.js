@@ -246,7 +246,7 @@ const sWeapons = new SectionPanel(
         <p>Crits Available <output id="outCrits_LA">0</output></p>
     </div>
 
-    <div class="mech-crit-table">
+    <!--div class="mech-crit-table">
         <h5>Left Arm</h5>
         <ol id="fullCritList_LA"></ol>
         
@@ -270,7 +270,7 @@ const sWeapons = new SectionPanel(
 
         <h5>Right Leg</h5>
         <ol id="fullCritList_RL"></ol>
-    </div>
+    </div-->
     `, 
     
     // help
@@ -392,7 +392,7 @@ const sideBar = (`
     <hr>
     <div class="sidebar_buttons">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
-        <p><button id="btnCreateTR">Create Technical Readout</button></p>
+        <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
         <hr>
         <p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p>
     </div>
@@ -624,6 +624,7 @@ listCritsbyLoc('CT');
 listCritsbyLoc('RL');
 
 // List the contents of a crit location array in a list
+/*
 function listCritsbyLoc(v) {
     let id = `fullCritList_${v}`,
         max = Mech[`maxcrits_${v}`],
@@ -663,7 +664,7 @@ function listCritsbyLoc(v) {
 
     elID(id).innerHTML = li;
 }
-
+*/
 // Add weapon (id) to assigned location (v)
 function addWeapon(v, id) {
     let loc = Mech[`assigned_${v}`],
