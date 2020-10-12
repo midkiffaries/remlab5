@@ -76,16 +76,16 @@ const a_EraSimplified = [
 
 // Names for the types of Weapons
 const a_WeaponClass = [
-    'Hardpoints',
-    'Energy',
-    'Ballistic',
-    'Missle',
-    'Artillery',
-    'Equipment',
-    'Industrial',
-    'Ammunition',
-    'Bombs',
-    'Other'
+    'Hardpoints', // 0
+    'Energy', // 1
+    'Ballistic', // 2
+    'Missle', // 3
+    'Artillery', // 4
+    'Equipment', // 5
+    'Industrial', // 6
+    'Ammunition', // 7
+    'Bombs', // 8
+    'Other' // 9
 ];
 
 // Warrior Experience

@@ -236,17 +236,79 @@ const sWeapons = new SectionPanel(
         </ol>
     </div>
 
-    <div class="mech-location-list">
-        <h5>Left Arm</h5>
-        <ul>
-            <li><input type="checkbox" id="chkLowerArm_LA" onclick="checkActuator()" checked disabled><label for="chkLowerArm_LA">Lower Arm</label></li>
-            <li><input type="checkbox" id="chkHand_LA" onclick="checkActuator()" checked><label for="chkHand_LA">Hand</label></li>
-        </ul>
-        <ul id="critList_LA"></ul>
-        <p>Crits Available <output id="outCrits_LA">0</output></p>
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Left Arm</h5>
+            <ul>
+                <li><input type="checkbox" id="chkLowerArm_LA" onclick="checkActuator()" checked disabled><label for="chkLowerArm_LA">Lower Arm</label></li>
+                <li><input type="checkbox" id="chkHand_LA" onclick="checkActuator()" checked><label for="chkHand_LA">Hand</label></li>
+            </ul>
+            <ul id="critList_LA"></ul>
+            <p>Crits Available <output id="outCrits_LA">0</output></p>
+        </section>
     </div>
 
-    <!--div class="mech-crit-table">
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Left Torso</h5>
+            <ul id="critList_LT"></ul>
+            <p>Crits Available <output id="outCrits_LT">0</output></p>
+        </section>
+    </div>
+
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Head</h5>
+            <ul id="critList_H"></ul>
+            <p>Crits Available <output id="outCrits_H">0</output></p>
+        </section>
+    </div>
+
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Right Torso</h5>
+            <ul id="critList_RT"></ul>
+            <p>Crits Available <output id="outCrits_RT">0</output></p>
+        </section>
+    </div>
+
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Right Arm</h5>
+            <ul>
+                <li><input type="checkbox" id="chkLowerArm_RA" onclick="checkActuator()" checked disabled><label for="chkLowerArm_RA">Lower Arm</label></li>
+                <li><input type="checkbox" id="chkHand_RA" onclick="checkActuator()" checked><label for="chkHand_RA">Hand</label></li>
+            </ul>
+            <ul id="critList_RA"></ul>
+            <p>Crits Available <output id="outCrits_RA">0</output></p>
+        </section>
+    </div>
+
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Left Leg</h5>
+            <ul id="critList_LL"></ul>
+            <p>Crits Available <output id="outCrits_LL">0</output></p>
+        </section>
+    </div>
+
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Center Torso</h5>
+            <ul id="critList_CT"></ul>
+            <p>Crits Available <output id="outCrits_CT">0</output></p>
+        </section>
+    </div>
+
+    <div class="locations-list">
+        <section class="location-list">
+            <h5>Right Leg</h5>
+            <ul id="critList_RL"></ul>
+            <p>Crits Available <output id="outCrits_RL">0</output></p>
+        </section>
+    </div>
+
+    <!--div class="crit-table">
         <h5>Left Arm</h5>
         <ol id="fullCritList_LA"></ol>
         
@@ -589,6 +651,16 @@ function completeWeaponsTable() {
     return tr;
 }
 
+// onload: Populate the Crit Location Diagram 
+compactListCritsbyLoc('LA');
+compactListCritsbyLoc('LT');
+compactListCritsbyLoc('H');
+compactListCritsbyLoc('RT');
+compactListCritsbyLoc('RA');
+compactListCritsbyLoc('LL');
+compactListCritsbyLoc('CT');
+compactListCritsbyLoc('RL');
+
 // Display Compact Weapons List
 function compactWeaponsTable() {
     let li = "", damage;
@@ -614,14 +686,14 @@ function compactWeaponsTable() {
 }
 
 // onload: Populate the Crit Location Diagram 
-listCritsbyLoc('LA');
-listCritsbyLoc('LT');
-listCritsbyLoc('H');
-listCritsbyLoc('RT');
-listCritsbyLoc('RA');
-listCritsbyLoc('LL');
-listCritsbyLoc('CT');
-listCritsbyLoc('RL');
+//listCritsbyLoc('LA');
+//listCritsbyLoc('LT');
+//listCritsbyLoc('H');
+//listCritsbyLoc('RT');
+//listCritsbyLoc('RA');
+//listCritsbyLoc('LL');
+//listCritsbyLoc('CT');
+//listCritsbyLoc('RL');
 
 // List the contents of a crit location array in a list
 /*
@@ -665,45 +737,14 @@ function listCritsbyLoc(v) {
     elID(id).innerHTML = li;
 }
 */
-// Add weapon (id) to assigned location (v)
-function addWeapon(v, id) {
-    let loc = Mech[`assigned_${v}`],
-        max = Mech[`maxcrits_${v}`],
-        w = weaponTable.weapon[id].crits;
-
-    // Check if item id can fit in v
-    if (Mech[`crits_${v}`] + w <= max) {
-        // Add to crits_v
-        Mech[`crits_${v}`] += w;
-        // Add to assigned_v
-        loc.push(id);
-        // List location contents
-        listCritsbyLoc(v);
-        compactListCritsbyLoc(v);
-    }
-}
-
-// Remove weapon (id) from assigned location (v)
-function removeWeapon(v, id) {
-    let a = Mech[`assigned_${v}`].indexOf(id),
-        w = weaponTable.weapon[id].crits;
-    
-    // Remove from crits_v
-    Mech[`crits_${v}`] -= w;
-
-    // Remove item
-    Mech[`assigned_${v}`].pop(a);
-    listCritsbyLoc(v);
-    compactListCritsbyLoc(v);
-}
 
 // List the contents of a crit location array in a compact list
 function compactListCritsbyLoc(v) {
     let id = `critList_${v}`,
-    max = Mech[`maxcrits_${v}`],
-    loc = Mech[`assigned_${v}`],
-    li = "",
-    w;
+        max = Mech[`maxcrits_${v}`],
+        loc = Mech[`assigned_${v}`],
+        li = "",
+        w;
 
     // Increment through selected location array 
     for (let i = 0; i < max; i++) {
@@ -725,5 +766,34 @@ function compactListCritsbyLoc(v) {
     elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
 }
 
-// list
-compactListCritsbyLoc('LA');
+// Add weapon (id) to assigned location (v)
+function addWeapon(v, id) {
+    let loc = Mech[`assigned_${v}`],
+        max = Mech[`maxcrits_${v}`],
+        w = weaponTable.weapon[id].crits;
+
+    // Check if item id can fit in v
+    if (Mech[`crits_${v}`] + w <= max) {
+        // Add to crits_v
+        Mech[`crits_${v}`] += w;
+        // Add to assigned_v
+        loc.push(id);
+        // List location contents
+        //listCritsbyLoc(v);
+        compactListCritsbyLoc(v);
+    }
+}
+
+// Remove weapon (id) from assigned location (v)
+function removeWeapon(v, id) {
+    let a = Mech[`assigned_${v}`].indexOf(id),
+        w = weaponTable.weapon[id].crits;
+    
+    // Remove from crits_v
+    Mech[`crits_${v}`] -= w;
+
+    // Remove item
+    Mech[`assigned_${v}`].pop(a);
+    //listCritsbyLoc(v);
+    compactListCritsbyLoc(v);
+}

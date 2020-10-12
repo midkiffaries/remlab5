@@ -2,7 +2,7 @@
  * Mech print out modals
 **************************/
 
-// Printout: Generate the Mech heat scale
+// Record Sheet: Generate the Mech heat scale
 const a_HeatScale = [
     'Shutdown',
     '',
@@ -37,7 +37,20 @@ const a_HeatScale = [
     ''
 ];
 
-// List the contents of a crit location array in a list
+// Record Sheet: Generate the Heat Scale for the Record Sheet
+const generateHeatScale = () => {
+	let t = `<tr><th class="print-hs-box"></th><td>OVERFLOW</td></tr>`;
+		l = a_HeatScale.length - 1;
+
+	// Loop through the array
+    for (let i = 0; i < l; i++) {
+		t += `<tr><th>${l-i}</th><td>${a_HeatScale[i]}</td></tr>`;
+	}
+	
+    return t;
+};
+
+// Record Sheet: List the contents of a crit location array in a list
 const listCritsLocation = (v) => {
     let max = Mech[`maxcrits_${v}`],
         loc = Mech[`assigned_${v}`],
@@ -73,17 +86,30 @@ const listCritsLocation = (v) => {
     return li + `</ol>`;
 };
 
-// Generate the Heat Scale for the Record Sheet
-const generateHeatScale = () => {
-	let t = `<tr><th class="print-hs-box"></th><td>OVERFLOW</td></tr>`;
-		l = a_HeatScale.length - 1;
+// Record Sheet: List weapons
+const listPrintWeapons = (v) => {
+	let w = weaponTable.weapon,
+		loc = Mech[`assigned_${v}`],
+		l = loc.length,
+		tr = ``;
 
-	// Loop through the array
-    for (let i = 0; i < l; i++) {
-		t += `<tr><th>${l-i}</th><td>${a_HeatScale[i]}</td></tr>`;
+	for (let i = 0; i < l; i++ ) {
+		if (w[loc[i]].type > 0) {
+			tr += `<tr>`;
+			tr += `<td>${v}</td>`;
+			tr += `<td>${w[loc[i]].name}</td>`;
+			tr += `<td>${w[loc[i]].heat}</td>`;
+			tr += `<td>${w[loc[i]].damage}</td>`;
+			tr += `<td>${w[loc[i]].rangeMin}</td>`;
+			tr += `<td>${w[loc[i]].rangeShort}</td>`;
+			tr += `<td>${w[loc[i]].rangeMedium}</td>`;
+			tr += `<td>${w[loc[i]].rangeLong}</td>`;
+			tr += `<td>${w[loc[i]].modifier}</td>`;
+			tr += `</tr>`;
+		}
 	}
-	
-    return t;
+
+	return tr;
 };
 
 // Record Sheet print modal content
@@ -272,8 +298,8 @@ const RecordSheetModal = () => (`
 				</div>
 				<div class="print-heat">
 					<h3>Heat Data</h3>
-					<p><b>${Mech.heatTotal}</b> | <span>${a_HSType[Mech.heatsinkType]}</span> Heat Sinks</p>
-					<p><span>${displayTicks(Mech.heatTotal)}</span></p>
+					<p><b>${Mech.heatsinks}</b> | <span>${a_HSType[Mech.heatsinkType]}</span> Heat Sinks</p>
+					<p><span>${displayTicks(Mech.heatsinks)}</span></p>
 				</div>
 				<div class="print-heatscale">
 					<h3>Heat Scale</h3>
@@ -302,6 +328,14 @@ const RecordSheetModal = () => (`
 						</tr>
 					</thead>
 					<tbody class="print-weaponslist">
+					${listPrintWeapons('LA')}
+					${listPrintWeapons('RA')}
+					${listPrintWeapons('LT')}
+					${listPrintWeapons('RT')}
+					${listPrintWeapons('CT')}
+					${listPrintWeapons('H')}
+					${listPrintWeapons('LL')}
+					${listPrintWeapons('RL')}
 					</tbody>
 				</table>
 			</div>
@@ -328,7 +362,7 @@ const RecordSheetModal = () => (`
 	</div>
 </div>
 
-<style type="text/css">
+<style>
 /* Stop page scrolling - fixes issues with printing */
 body {
 	overflow: hidden !important;
@@ -336,39 +370,35 @@ body {
 	height: 90vh;
 }
 
-@media only print {
-	/* Hide the interface */
-	dialog {
-		background: none !important;
-	}
+.dialog-body {
+	margin: 1em;
+	max-width: 100%;
+}
 
-	header,
-	main,
-	aside,
-	footer,
-	.print-settings,
-	.dialog-html-close {
+@media only print {
+    /* Hide the interface */    
+	.page-header, 
+	.page-main, 
+	.page-footer, 
+	.print-settings, 
+	.dialog-top {
 		display: none !important;
 	}
-
-	.print-mech-rs > div,
+	
+	dialog,
+	.dialog-body,
+	.dialog-html,
 	.print-container {
-		position: relative;
+		background-color: #fff;
+		position: absolute;
 		border: 0 !important;
 		margin: 0 !important;
 		padding: 0 !important;
 		width: 100% !important;
 		height: 100% !important;
 		top: 0 !important;
+		box-shadow: none !important;
 		overflow: visible;
-		font-family: Arial, sans-serif !important;
-	}
-
-	/* Special Settings */
-	.print-footer {
-		position: fixed;
-		bottom: 0;
-		right: 0;
 	}
 }
 </style>
@@ -554,47 +584,54 @@ const TechReadoutModal = () => (`
             </div>
         </div>
         
-        <footer class="print-footer">
-            Created with <a href="https://github.com/midkiffaries/remlab"><span id="P-Version">REMLAB</span></a> on <span id="P-DateCreated">2018</span>. <span class="icon-recycle"></span> Please recycle this document.
-        </footer>
+		<footer class="print-footer">
+			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${RemlabVersion}</span></a> on <span>${TodaysDate.getFullYear()}</span>. Please recycle this document.</p>
+		</footer>
     </div>
 </div>
 
-<style type="text/css">
+<style>
 /* Stop page scrolling - fixes issues with printing */
 body {
     overflow: hidden !important;
 	width: 100wh;
 	height: 90vh;
 }
-    
-@media only print {    
+
+.dialog-body {
+	margin: 1em;
+	max-width: 100%;
+}
+
+.indent {
+	margin-left: 2em;
+}
+
+@media only print {
     /* Hide the interface */    
-    dialog {
-        background: none !important;
-    }
-    
-    header, main, aside, footer, .print-settings, .dialog-html-close {
-        display: none !important;
-    }
-    
-    .print-mech-tr > div, .print-container {
-        position: relative;
-        border: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        top: 0 !important;
-        overflow: visible;
-    }
-    
-    /* Special Settings */
-    .print-footer {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-    }
+	.page-header, 
+	.page-main, 
+	.page-footer, 
+	.print-settings, 
+	.dialog-top {
+		display: none !important;
+	}
+	
+	dialog,
+	.dialog-body,
+	.dialog-html,
+	.print-container {
+		background-color: #fff;
+		position: absolute;
+		border: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		top: 0 !important;
+		box-shadow: none !important;
+		overflow: visible;
+	}
 }
 </style>
 `);
