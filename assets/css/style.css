@@ -30,28 +30,134 @@ body {
 /* Header */
 
 .page-header {
+    height: 8em;
+}
+
+.page-title {
+    float: left;
+}
+
+.page-title img {
+    width: 8em;
+}
+
+.page-header-menu {
+    float: right;
+}
+
+.page-header-menu li {
+    float: left;
+    margin-right: 1em;;
+}
+
+
+/* Main content */
+
+.page-main {
 
 }
 
 /* Sidebar */
 
 .page-sidebar {
-    /*
     width: 25vw;
     float: left;
-    */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 30em;
 }
 
-/* Main content */
+/* Cards */
 
-.page-main {
-    /*
+.page-grid {
     width: 75vw;
     float: right;
-    */
 }
 
-/* Weapons panel */
+/* Default Section Cards style */
+
+.section-card {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+.section-card.width-full {
+    width: 100%;
+}
+
+.section-body {
+    min-height: 12em;
+}
+
+.section-footer ul {
+    padding: 0;
+}
+
+.section-footer li {
+    float: left;
+    list-style: none;
+    width: 30%;
+}
+
+/* Hide section-totals on certain panels */
+.section-Technology .section-totals,
+.section-Quirks .section-totals,
+.section-Warrior .section-totals,
+.section-Readout .section-totals {
+    display: none;
+}
+
+/* Footer */
+
+.page-footer {
+
+}
+
+.icon-github::before {
+    content: " ";
+    width: 1.5em;
+	background: no-repeat 50% 50% / 1.3em;
+	background-color: inherit;
+	background-image: url(../images/github.svg);
+}
+
+.icon-m20::before {
+    content: " ";
+    width: 1.5em;
+	background: no-repeat 50% 50% / 1.2em;
+	background-color: inherit;
+	background-image: url(../images/m20-logo.svg);
+}
+
+.icon-m20:hover, 
+.icon-m20:hover::before {
+    filter: invert(60%);
+}
+
+/* Armor card */
+
+.section-card .col-1 {
+    float: left;
+    width: 50%
+}
+
+.section-card .col-2 {
+    float: left;
+    width: 36%;
+}
+
+.section-card .col-3 {
+    float: left;
+    width: 14%;
+}
+
+.section-card .col-3 button {
+    width: 100%;
+}
+
+/* Weapons card */
 
 .table-weapons {
     font-size: 0.85em;
@@ -86,41 +192,32 @@ body {
     border: 0;
 }
 
-/* Default Section Panels style */
-
-.section-box {
-    position: relative;
-}
-
-.section-button-info {
-
-}
-
 /* Panel Switch Component */
 
 .panelswitch {
     position: relative;
-    min-height: 6em;
 }	
 	
-.panelswitch_button {
-    
+.panelswitch-button {
+    float: right;
+    margin: -3.5em 1em 0 0;
 }
 	
-.section-body {
-	top: 2.4em;
+.section-main {
+	top: 0;
 }	
 	
 .section-help {
 	position: absolute;
-	top: 2.4em;
-	background: #fff;
+	top: -0.8em;
+	background: #fafafa;
 	overflow-y: scroll;
 	opacity: 0;
 	transform: scale(1,0);
     transform-origin: top right;
     width: 100%;
     height: 100%;
+    padding: 0 1em;
 }
 	
 .panel-active {
@@ -134,37 +231,6 @@ body {
 	background: #aaa;
 }
 
-/* Hide section-totals on certain panels */
-.section-Technology .section-totals,
-.section-Quirks .section-totals,
-.section-Warrior .section-totals,
-.section-Readout .section-totals {
-    display: none;
-}
-
-
-/* Footer */
-
-.icon-github::before {
-    content: " ";
-    width: 1.5em;
-	background: no-repeat 50% 50% / 1.3em;
-	background-color: inherit;
-	background-image: url(../images/github.svg);
-}
-
-.icon-m20::before {
-    content: " ";
-    width: 1.5em;
-	background: no-repeat 50% 50% / 1.2em;
-	background-color: inherit;
-	background-image: url(../images/m20-logo.svg);
-}
-
-.icon-m20:hover, 
-.icon-m20:hover::before {
-    filter: invert(60%);
-}
 
 
 /************************

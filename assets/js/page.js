@@ -14,13 +14,13 @@ function SectionPanel(id, title, size, body, help, footer) {
 
 // Section HTML Template
 const sectionTemplate = (id, title, size, body, help, footer) => (`
-    <section class="section-box width-${size} section-${id}">
+    <section class="section-card width-${size} section-${id}">
         <header class="section-header">
             <h2>${title}</h2>
         </header>
-        <div role="tablist" class="panelswitch">
-            <button class="panelswitch_button">Info</button>
-            <div role="tabpanel" class="section-body">
+        <div role="tablist" class="panelswitch section-body">
+            <button class="panelswitch-button">Info</button>
+            <div role="tabpanel" class="section-main">
                 ${body}
             </div>
             <div role="tabpanel" class="section-help">
@@ -30,9 +30,9 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
         <footer class="section-footer">
             ${footer}
             <ul class="section-totals">
-                <li>Mass <output id="out${id}Mass">0.0</output> tons</li>
-                <li>Crits <output id="out${id}Crits">0</output></li>
-                <li>Cost <output id="out${id}Cost" class="cbills">0</output></li>
+                <li>Mass <output id="out${id}Mass"></output> tons</li>
+                <li>Crits <output id="out${id}Crits"></output></li>
+                <li>Cost <output id="out${id}Cost" class="cbills"></output></li>
             </ul>
         </footer>
     </section>
@@ -150,43 +150,52 @@ const sArmor = new SectionPanel(
     
     // body
     `
-    <p><label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
-        <input type="checkbox" id="chkBalance" disabled><label for="chkBalance">Balance Armor</label></p> 
-    <fieldset>
-        <legend>Head</legend>
-        <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1" readonly></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
-    </fieldset>
+    <p>
+        <label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
+        <input type="checkbox" id="chkBalance" disabled><label for="chkBalance">Balance Armor</label>
+    </p> 
+    
+    <div class="col-1">
+        <fieldset>
+            <legend>Head</legend>
+            <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1" readonly></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
+        </fieldset>
 
-    <fieldset>
-        <legend>Torsos</legend>
-        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLT" class="stepper" value="${Mech.ALT}" min="0" max="${Mech.IST*2}" step="1" readonly></span> 
-            Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
-        <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1" readonly></span> 
-            Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
-        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
-            Rear <span class="stepper-container"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
-    </fieldset>
+        <fieldset>
+            <legend>Torsos</legend>
+            <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLT" class="stepper" value="${Mech.ALT}" min="0" max="${Mech.IST*2}" step="1" readonly></span> 
+                Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
+            <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1" readonly></span> 
+                Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
+                Rear <span class="stepper-container"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
+        </fieldset>
+    </div>
 
-    <fieldset>
-        <legend>Arms</legend>
-        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
-        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
-    </fieldset> 
+    <div class="col-2">
+        <fieldset>
+            <legend>Arms</legend>
+            <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
+        </fieldset> 
 
-    <fieldset>
-        <legend>Legs</legend>
-        <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
-        <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
-    </fieldset> 
+        <fieldset>
+            <legend>Legs</legend>
+            <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
+        </fieldset> 
+    </div>
 
-    <fieldset>
-        <legend>Auto Fill</legend>
-        <p><button id="btnArmorFill-100" onclick="autoFillArmor(1)">Max</button></p>
-        <p><button id="btnArmorFill-75" onclick="autoFillArmor(0.75)">75%</button></p>
-        <p><button id="btnArmorFill-50" onclick="autoFillArmor(0.5)">50%</button></p>
-        <p><button id="btnArmorFill-25" onclick="autoFillArmor(0.25)">25%</button></p>
-        <p><button id="btnArmorFill-0" onclick="autoFillArmor(0)">None</button></p>
-    </fieldset>
+    <div class="col-3">
+        <fieldset>
+            <legend>Auto Fill</legend>
+            <p><button id="btnArmorFill-100" onclick="autoFillArmor(1)">Max</button></p>
+            <p><button id="btnArmorFill-75" onclick="autoFillArmor(0.75)">75%</button></p>
+            <p><button id="btnArmorFill-50" onclick="autoFillArmor(0.5)">50%</button></p>
+            <p><button id="btnArmorFill-25" onclick="autoFillArmor(0.25)">25%</button></p>
+            <p><button id="btnArmorFill-0" onclick="autoFillArmor(0)">None</button></p>
+        </fieldset>
+    </div>
     `, 
     
     // help
@@ -307,32 +316,6 @@ const sWeapons = new SectionPanel(
             <p>Crits Available <output id="outCrits_RL">0</output></p>
         </section>
     </div>
-
-    <!--div class="crit-table">
-        <h5>Left Arm</h5>
-        <ol id="fullCritList_LA"></ol>
-        
-        <h5>Left Torso</h5>
-        <ol id="fullCritList_LT"></ol>
-
-        <h5>Head</h5>
-        <ol id="fullCritList_H"></ol>
-
-        <h5>Right Torso</h5>
-        <ol id="fullCritList_RT"></ol>
-
-        <h5>Right Arm</h5>
-        <ol id="fullCritList_RA"></ol>
-
-        <h5>Left Leg</h5>
-        <ol id="fullCritList_LL"></ol>
-
-        <h5>Center Torso</h5>
-        <ol id="fullCritList_CT"></ol>
-
-        <h5>Right Leg</h5>
-        <ol id="fullCritList_RL"></ol>
-    </div-->
     `, 
     
     // help
@@ -433,7 +416,7 @@ const sReadout = new SectionPanel(
 
 // Side Bar content
 const sideBar = (`
-    <div class="sidebar_baseinfo">
+    <div class="sidebar-baseinfo">
         <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
         <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
         <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output id="outWeightClass">${weightClass(Mech.mass)}</output></p>
@@ -441,18 +424,18 @@ const sideBar = (`
         <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
     </div>
     <hr>
-    <div class="sidebar_results">
+    <div class="sidebar-results">
         <p><label>Mass</label> <output id="outCurrentMass">${Mech.totalMass}</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
         <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
         <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
     </div>
-    <div class="sidebar_results">
+    <div class="sidebar-results">
         <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
         <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> (<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton)</p>
         <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
     <hr>
-    <div class="sidebar_buttons">
+    <div class="sidebar-buttons">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
         <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
         <hr>
