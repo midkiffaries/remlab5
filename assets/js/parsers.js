@@ -212,6 +212,7 @@
         text-overflow: ellipsis;
         -webkit-user-select: none;
         user-select: none;
+        height: 12em;
     }
     .select-list li {
         list-style: none;

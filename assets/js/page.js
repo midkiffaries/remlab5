@@ -155,7 +155,7 @@ const sArmor = new SectionPanel(
         <input type="checkbox" id="chkBalance" disabled><label for="chkBalance">Balance Armor</label>
     </p> 
     
-    <div class="col-1">
+    <div class="col-3">
         <fieldset>
             <legend>Head</legend>
             <p><label>Head</label> <span class="stepper-container"><input type="number" id="stepArmorH" class="stepper" value="${Mech.AH}" min="0" max="${Mech.armorHead}" step="1" readonly></span> <output id="outMaxH">${Mech.armorHead}</output></p> 
@@ -172,7 +172,7 @@ const sArmor = new SectionPanel(
         </fieldset>
     </div>
 
-    <div class="col-2">
+    <div class="col-3">
         <fieldset>
             <legend>Arms</legend>
             <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
@@ -239,82 +239,21 @@ const sWeapons = new SectionPanel(
         <tbody id="tblWeapons">${completeWeaponsTable()}</tbody>
     </table>
 
-    <div class="list-weapons">
+    <div class="list-weapons col-2">
         <ol>
             ${compactWeaponsTable()}
         </ol>
     </div>
 
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Left Arm</h5>
-            <ul>
-                <li><input type="checkbox" id="chkLowerArm_LA" onclick="checkActuator()" checked disabled><label for="chkLowerArm_LA">Lower Arm</label></li>
-                <li><input type="checkbox" id="chkHand_LA" onclick="checkActuator()" checked><label for="chkHand_LA">Hand</label></li>
-            </ul>
-            <ul id="critList_LA"></ul>
-            <p>Crits Available <output id="outCrits_LA">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Left Torso</h5>
-            <ul id="critList_LT"></ul>
-            <p>Crits Available <output id="outCrits_LT">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Head</h5>
-            <ul id="critList_H"></ul>
-            <p>Crits Available <output id="outCrits_H">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Right Torso</h5>
-            <ul id="critList_RT"></ul>
-            <p>Crits Available <output id="outCrits_RT">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Right Arm</h5>
-            <ul>
-                <li><input type="checkbox" id="chkLowerArm_RA" onclick="checkActuator()" checked disabled><label for="chkLowerArm_RA">Lower Arm</label></li>
-                <li><input type="checkbox" id="chkHand_RA" onclick="checkActuator()" checked><label for="chkHand_RA">Hand</label></li>
-            </ul>
-            <ul id="critList_RA"></ul>
-            <p>Crits Available <output id="outCrits_RA">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Left Leg</h5>
-            <ul id="critList_LL"></ul>
-            <p>Crits Available <output id="outCrits_LL">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Center Torso</h5>
-            <ul id="critList_CT"></ul>
-            <p>Crits Available <output id="outCrits_CT">0</output></p>
-        </section>
-    </div>
-
-    <div class="locations-list">
-        <section class="location-list">
-            <h5>Right Leg</h5>
-            <ul id="critList_RL"></ul>
-            <p>Crits Available <output id="outCrits_RL">0</output></p>
-        </section>
+    <div class="locations-list col-2">
+        ${locationList('Left Arm', 'LA')}
+        ${locationList('Left Torso', 'LT')}
+        ${locationList('Head', 'H')}
+        ${locationList('Right Torso', 'RT')}
+        ${locationList('Right Arm', 'RA')}
+        ${locationList('Left Leg', 'LL')}
+        ${locationList('Center Torso','CT')}
+        ${locationList('Right Leg','RL')}
     </div>
     `, 
     
@@ -338,14 +277,18 @@ const sWarrior = new SectionPanel(
     
     // body
     `
-    <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
-    <p><label>Race</label> <input type="radio" name="radRace" id="radioR1" value="Human" class="radio-button" checked><label for="radioR1" role="button">Human</label><input type="radio" name="radRace" id="radioR2" value="Clanner" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
-    <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
-    <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
-    <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
-    <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting">${Warrior.piloting}</output></p>
-    <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery">${Warrior.gunnery}</output></p>
-    <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
+    <div class="col-2">
+        <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
+        <p><label>Race</label> <input type="radio" name="radRace" id="radioR1" value="Human" class="radio-button" checked><label for="radioR1" role="button">Human</label><input type="radio" name="radRace" id="radioR2" value="Clanner" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
+        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
+        <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
+    </div>
+    <div class="col-2">
+        <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
+        <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting">${Warrior.piloting}</output></p>
+        <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery">${Warrior.gunnery}</output></p>
+        <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
+    </div>
     `, 
     
     // help
@@ -368,10 +311,14 @@ const sQuirks = new SectionPanel(
     
     // body
     `
-    <p><label>Positive</label></p>
-    <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
-    <p><label>Negative</label></p>
-    <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
+    <div class="col-2">
+        <p><label>Positive</label></p>
+        <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
+    </div>
+    <div class="col-2">
+        <p><label>Negative</label></p>
+        <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
+    </div>
     `, 
     
     // help
@@ -395,15 +342,35 @@ const sReadout = new SectionPanel(
     // body
     `
     <p>
-        <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em">
+        <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" list="List-Year">
+        <datalist id="List-Year">
+            <option value="2750">
+            <option value="3025">
+            <option value="3028">
+            <option value="3039">
+            <option value="3050">
+            <option value="3055">
+            <option value="3058">
+            <option value="3060">
+            <option value="3067">
+            <option value="3075">
+            <option value="3085">
+            <option value="3135">
+            <option value="3145">
+            <option value="3150">
+        </datalist>
         <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
     </p>
-    <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
-    <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(summary)">${Mech.capabilitiesTR}</textarea></p>
-    <p><label>Battle History</label> <textarea id="txtHistory" placeholder="(summary)">${Mech.historyTR}</textarea></p>
-    <p><label>Deployment</label> <textarea id="txtDeployment" placeholder="(summary)">${Mech.deploymentTR}</textarea></p>
-    <p><label>Variants</label> <textarea id="txtVariants" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
-    <p><label>Notable Units</label> <textarea id="txtNotable" placeholder="(summary)">${Mech.notableTR}</textarea></p>
+    <div class="col-2">
+        <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
+        <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(summary)">${Mech.capabilitiesTR}</textarea></p>
+        <p><label>Battle History</label> <textarea id="txtHistory" placeholder="(summary)">${Mech.historyTR}</textarea></p>
+    </div>
+    <div class="col-2">
+        <p><label>Deployment</label> <textarea id="txtDeployment" placeholder="(summary)">${Mech.deploymentTR}</textarea></p>
+        <p><label>Variants</label> <textarea id="txtVariants" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
+        <p><label>Notable Units</label> <textarea id="txtNotable" placeholder="(summary)">${Mech.notableTR}</textarea></p>
+    </div>
     `, 
     
     // help
@@ -416,36 +383,31 @@ const sReadout = new SectionPanel(
 
 // Side Bar content
 const sideBar = (`
-    <div class="sidebar-baseinfo">
+    <div class="col-2">
         <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
         <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
         <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output id="outWeightClass">${weightClass(Mech.mass)}</output></p>
         <p><label>Tech</label> <input type="radio" name="selTechnology" id="radioT1" value="0" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input type="radio" name="selTechnology" id="radioT2" value="1" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
         <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
     </div>
-    <hr>
-    <div class="sidebar-results">
+    <div class="col-2">
         <p><label>Mass</label> <output id="outCurrentMass">${Mech.totalMass}</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
         <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
         <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
-    </div>
-    <div class="sidebar-results">
         <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
         <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> (<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton)</p>
         <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
-    <hr>
-    <div class="sidebar-buttons">
+    <menu class="sidebar-buttons">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
         <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
         <hr>
         <p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p>
-    </div>
+    </menu>
 `);
 
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
-    //sectionTemplate(sectionTech.id, sectionTech.title, sectionTech.size, sectionTech.body, sectionTech.help, sectionTech.footer) + 
     sectionTemplate(sEngine.id, sEngine.title, sEngine.size, sEngine.body, sEngine.help, sEngine.footer) +
     sectionTemplate(sJumpjets.id, sJumpjets.title, sJumpjets.size, sJumpjets.body, sJumpjets.help, sJumpjets.footer) +
     sectionTemplate(sHeatSinks.id, sHeatSinks.title, sHeatSinks.size, sHeatSinks.body, sHeatSinks.help, sHeatSinks.footer) +
@@ -589,7 +551,9 @@ const autoFillArmor = v => {
     elID('stepArmorLA').value = (Mech.ISA * 2) * v;
     elID('stepArmorRA').value = (Mech.ISA * 2) * v;
     elID('stepArmorLL').value = (Mech.ISL * 2) * v;
-	elID('stepArmorRL').value = (Mech.ISL * 2) * v;
+    elID('stepArmorRL').value = (Mech.ISL * 2) * v;
+    
+    updateForm();
 };
 
 // Populate the complete weapons table
@@ -634,16 +598,6 @@ function completeWeaponsTable() {
     return tr;
 }
 
-// onload: Populate the Crit Location Diagram 
-compactListCritsbyLoc('LA');
-compactListCritsbyLoc('LT');
-compactListCritsbyLoc('H');
-compactListCritsbyLoc('RT');
-compactListCritsbyLoc('RA');
-compactListCritsbyLoc('LL');
-compactListCritsbyLoc('CT');
-compactListCritsbyLoc('RL');
-
 // Display Compact Weapons List
 function compactWeaponsTable() {
     let li = "", damage;
@@ -667,6 +621,103 @@ function compactWeaponsTable() {
 
     return li;    
 }
+
+// Location List
+function locationList(n, v) {    
+    let s = (`
+    <section>
+        <h5>${n}</h5>`);
+    
+    // If location is one of the arms
+    if (v == 'LA' || v == 'RA') {
+        s += (`
+        <ul>
+            <li><input type="checkbox" id="chkLowerArm_${v}" onclick="checkActuator()" checked disabled><label for="chkLowerArm_${v}">Lower Arm</label></li>
+            <li><input type="checkbox" id="chkHand_${v}" onclick="checkActuator()" checked><label for="chkHand_${v}">Hand</label></li>
+        </ul>`);
+    }
+    s += (`
+        <ul id="critList_${v}">
+        </ul>
+        <p>Crits Available <output id="outCrits_${v}"></output></p>
+    </section>`);
+
+    return s;
+} 
+
+// onload: Populate the Crit Location Diagram 
+compactListCritsbyLoc('LA');
+compactListCritsbyLoc('LT');
+compactListCritsbyLoc('H');
+compactListCritsbyLoc('RT');
+compactListCritsbyLoc('RA');
+compactListCritsbyLoc('LL');
+compactListCritsbyLoc('CT');
+compactListCritsbyLoc('RL');
+
+// List the contents of a crit location array in a compact list
+function compactListCritsbyLoc(v) {
+    let id = `critList_${v}`,
+        max = Mech[`maxcrits_${v}`],
+        loc = Mech[`assigned_${v}`],
+        li = "",
+        w;
+
+    // Increment through selected location array 
+    for (let i = 0; i < max; i++) {
+        // Check if location array has contents
+        w = weaponTable.weapon[loc[i]];
+
+        // Populate slot
+        if (loc[i] >= 0) {
+
+            // Check if item is a a weapon or a hardpoint
+            if (w.tons > 0) {
+                // Weapon
+                li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
+            }
+        }
+    }
+
+    elID(id).innerHTML = li;
+    elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
+
+    updateForm();
+}
+
+// Add weapon (id) to assigned location (v)
+function addWeapon(v, id) {
+    let loc = Mech[`assigned_${v}`],
+        max = Mech[`maxcrits_${v}`],
+        w = weaponTable.weapon[id].crits;
+
+    // Check if item id can fit in v
+    if (Mech[`crits_${v}`] + w <= max) {
+        // Add to crits_v
+        Mech[`crits_${v}`] += w;
+        // Add to assigned_v
+        loc.push(id);
+        // List location contents
+        //listCritsbyLoc(v);
+        compactListCritsbyLoc(v);
+    }
+}
+
+// Remove weapon (id) from assigned location (v)
+function removeWeapon(v, id) {
+    let a = Mech[`assigned_${v}`].indexOf(id),
+        w = weaponTable.weapon[id].crits;
+    
+    // Remove from crits_v
+    Mech[`crits_${v}`] -= w;
+
+    // Remove item
+    Mech[`assigned_${v}`].pop(a);
+    //listCritsbyLoc(v);
+    compactListCritsbyLoc(v);
+}
+
+
 
 // onload: Populate the Crit Location Diagram 
 //listCritsbyLoc('LA');
@@ -720,63 +771,3 @@ function listCritsbyLoc(v) {
     elID(id).innerHTML = li;
 }
 */
-
-// List the contents of a crit location array in a compact list
-function compactListCritsbyLoc(v) {
-    let id = `critList_${v}`,
-        max = Mech[`maxcrits_${v}`],
-        loc = Mech[`assigned_${v}`],
-        li = "",
-        w;
-
-    // Increment through selected location array 
-    for (let i = 0; i < max; i++) {
-        // Check if location array has contents
-        w = weaponTable.weapon[loc[i]];
-
-        // Populate slot
-        if (loc[i] >= 0) {
-
-            // Check if item is a a weapon or a hardpoint
-            if (w.tons > 0) {
-                // Weapon
-                li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
-            }
-        }
-    }
-
-    elID(id).innerHTML = li;
-    elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
-}
-
-// Add weapon (id) to assigned location (v)
-function addWeapon(v, id) {
-    let loc = Mech[`assigned_${v}`],
-        max = Mech[`maxcrits_${v}`],
-        w = weaponTable.weapon[id].crits;
-
-    // Check if item id can fit in v
-    if (Mech[`crits_${v}`] + w <= max) {
-        // Add to crits_v
-        Mech[`crits_${v}`] += w;
-        // Add to assigned_v
-        loc.push(id);
-        // List location contents
-        //listCritsbyLoc(v);
-        compactListCritsbyLoc(v);
-    }
-}
-
-// Remove weapon (id) from assigned location (v)
-function removeWeapon(v, id) {
-    let a = Mech[`assigned_${v}`].indexOf(id),
-        w = weaponTable.weapon[id].crits;
-    
-    // Remove from crits_v
-    Mech[`crits_${v}`] -= w;
-
-    // Remove item
-    Mech[`assigned_${v}`].pop(a);
-    //listCritsbyLoc(v);
-    compactListCritsbyLoc(v);
-}

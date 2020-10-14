@@ -30,7 +30,7 @@ body {
 /* Header */
 
 .page-header {
-    height: 8em;
+    height: 9em;
 }
 
 .page-title {
@@ -68,6 +68,11 @@ body {
     height: 30em;
 }
 
+.page-sidebar input[type="text"],
+.page-sidebar menu button {
+    width: 95%;
+}
+
 /* Cards */
 
 .page-grid {
@@ -89,6 +94,16 @@ body {
 
 .section-body {
     min-height: 12em;
+}
+
+.section-body p label:first-of-type {
+    min-width: 5em;
+}
+
+.section-body textarea {
+    display: block;
+    width: 100%;
+    height: 8em;
 }
 
 .section-footer ul {
@@ -136,25 +151,30 @@ body {
     filter: invert(60%);
 }
 
-/* Armor card */
+/* Card Columns */
 
-.section-card .col-1 {
+.section-card .col-3:first-of-type {
     float: left;
     width: 50%
 }
 
-.section-card .col-2 {
+.section-card .col-3:nth-last-of-type(2) {
     float: left;
     width: 36%;
 }
 
-.section-card .col-3 {
+.section-card .col-3:last-of-type {
     float: left;
     width: 14%;
 }
 
-.section-card .col-3 button {
+.section-card .col-3:last-of-type button {
     width: 100%;
+}
+
+.section-card .col-2 {
+    width: 50%;
+    float: left;
 }
 
 /* Weapons card */
@@ -171,17 +191,27 @@ body {
 .list-weapons {
     height: 30em;
     overflow-y: scroll;
-    border: 1px solid #000;
+    border: 1px solid #eee;
 }
 
 .list-weapons ol {
     list-style: none;
     padding: 0;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
-.list-weapons h6 {
-    margin: 0;
+.list-weapons li {
+    margin: 8px 0;
+    padding: 5px 8px;
+}
+
+.list-weapons span {
+    display: block;
+}
+
+.list-weapons span:first-of-type {
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .tbllocation-remove {
@@ -231,6 +261,10 @@ body {
 	background: #aaa;
 }
 
+
+.select-list {
+    height: 10em !important;
+}
 
 
 /************************

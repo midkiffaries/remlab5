@@ -68,21 +68,19 @@ main {
 	display: block;
 }
 
-header,
-footer,
-hr {
+header::after,
+footer::before {
+	content: "";
 	clear: both;
+	display: table;
 }
 
 hr {
 	margin: 1rem 0;
 	background-color: #999;
 	border: 0;
-	opacity: 0.6;
-}
-
-hr {
 	height: 1px;
+	clear: both;
 }
 
 blockquote {
