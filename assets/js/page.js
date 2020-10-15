@@ -576,7 +576,7 @@ function completeWeaponsTable() {
             <tr data-id="${i}">
                 <td>
                     <button class="tblweapons-add" onclick="addWeapon('LA', ${i})">+</button>
-                    <button class="tblweapons-info" onclick="infoWeapon(${i}),'infoWeapons'">?</button>
+                    <button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})">?</button>
                 </td>
                 <td>${w.name}</td>
                 <td>${w.heat}</td>
@@ -612,7 +612,7 @@ function compactWeaponsTable() {
             li += (`
             <li data-id="${i}">
                 <span class="weapon-name">${w.name}</span>
-                <span><button class="tblweapons-info" onclick="infoWeapon(${i},'infoWeapons')">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></span>
+                <span><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></span>
                 <span>${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</span>
             </li>
             `);

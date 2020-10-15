@@ -27,6 +27,7 @@ const AboutModal = () => (`
 </ul>
 `);
 
+
 // Help modal content
 const HelpModal = () => (`
 <h2>Help with REMLAB</h2>
@@ -52,8 +53,112 @@ const HelpModal = () => (`
 <p>The latest version of the big four browsers (Edge, Chrome, Firefox, and Safari) should work correctly with REMLAB.</p>
 `);
 
+
 // Weapon Info modal content
-const WeaponInfoModal = () => (`
+const WeaponInfoModal = (id) => (`
+<div class="wi-body">
+    <header class="wi-header">
+        <h2>${weaponTable.weapon[id].name}</h2>
+        <h3>${a_WeaponClass[weaponTable.weapon[id].type]}</h3>
+        <p>${a_RuleSet[weaponTable.weapon[id].rules]} Ruleset</p>
+    </header>
+
+    <p>${weaponTable.weapon[id].desc}</p>
+
+    <table class="wi-info">
+        <tr>
+            <th>Year of Introduction</th>
+            <th>Technology Rating</th>
+            <th>Availability</th>
+        </tr>
+        <tr>
+            <td>${weaponTable.weapon[id].year}</td>
+            <td>${a_TechRating[weaponTable.weapon[id].techRating]}</td>
+            <td>${a_AvailabilityRating[weaponTable.weapon[id].availability]}</td>
+        </tr>
+    </table>
+
+    <table class="wi-economy">
+        <caption>Economy</caption>
+        <tr>
+            <th>Tons</th>
+            <th>Critical Slots</th>
+            <th>Cost</th>
+            <th>Battle Value</th>
+        </tr>
+        <tr>
+            <td>${addDecimal(weaponTable.weapon[id].tons)}</td>
+            <td>${weaponTable.weapon[id].crits}</td>
+            <td class="cbills">${addComma(weaponTable.weapon[id].cost)}</td>
+            <td>${weaponTable.weapon[id].bv}</td>
+        </tr>
+    </table>
+
+    <table class="wi-combat">
+        <caption>Combat</caption>
+        <tr>
+            <th>Heat</th>
+            <th>Damage</th>
+            <th>Shots per Ton</th>
+            <th>Delay <small>(Solaris)</small></th>
+        </tr>
+        <tr>
+            <td>${weaponTable.weapon[id].heat}</td>
+            <td>${weaponTable.weapon[id].damage}</td>
+            <td>${zeroToDash(weaponTable.weapon[id].ammo)}</td>
+            <td>${weaponTable.weapon[id].delay}</td>
+        </tr>
+    </table>
+
+    <table class="wi-ranges">
+        <caption>Ranges</caption>
+        <tr>
+            <th>Min</th>
+            <th>Short</th>
+            <th>Medium</th>
+            <th>Long</th>
+            <th>Extreme</th>
+        </tr>
+        <tr>
+            <td>${zeroToDash(weaponTable.weapon[id].rangeMin)}</td>
+            <td>${zeroToDash(weaponTable.weapon[id].rangeShort)}</td>
+            <td>${zeroToDash(weaponTable.weapon[id].rangeMedium)}</td>
+            <td>${zeroToDash(weaponTable.weapon[id].rangeLong)}</td>
+            <td>${zeroToDash(weaponTable.weapon[id].rangeExtreme)}</td>
+        </tr>
+    </table>
+
+    <footer class="wi-footer">
+        <button onclick="${id}">Add Weapon</button>
+    </footer>
+</div>
+
+<style>
+.wi-header h3 {
+    font-size: 1.4em;
+    margin: 0;
+    float: left;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.wi-header p {
+    float: right;
+    margin-top: -3em;
+    color: #666;
+}
+
+table caption {
+    font-size: 1.3em;
+}
+
+.wi-footer button {
+    margin: 12px;
+}
+</style>
+`);
+/*
+const WeaponInfoModal = (id) => (`
 <div class="WeaponInfo-body">
     <h2 id="Info-name"></h2>
 
@@ -122,21 +227,23 @@ const WeaponInfoModal = () => (`
             <td id="Info-rangeShort">0</td>
             <td id="Info-rangeMedium">0</td>
             <td id="Info-rangeLong">0</td>
-            <td id="Info-rangeExtreme">0</td>
+            <td id="Info-rangeExtreme">${zeroToDash(weaponTable.weapon[id].rangeExtreme)}</td>
         </tr>
     </table>
 
-    <div class="WeaponInfo-footer">
+    <footer class="WeaponInfo-footer">
         <button id="Info-btnAdd" onclick="addWeapon(0)">Add</button>
-    </div>
+    </footer>
 </div>
 `);
+*/
 
 // Display Weapon Info Modal and populate it
+/*
 function infoWeapon(id) {
     let w = weaponTable.weapon[id];
 
-    HtmlModal(WeaponInfoModal);
+    HtmlModal(WeaponInfoModal, id);
 
     elID('Info-name').textContent = w.name;
     elID('Info-rules').textContent = `${a_RuleSet[w.rules]} Ruleset`;
@@ -159,3 +266,4 @@ function infoWeapon(id) {
     elID('Info-rangeLong').textContent = zeroToDash(w.rangeLong);
     elID('Info-rangeExtreme').textContent = zeroToDash(w.rangeExtreme);
 }
+*/

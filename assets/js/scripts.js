@@ -292,7 +292,7 @@ function HtmlModal(JsVar, c) {
 	
     // Append to page body
     document.body.appendChild(aDialog.dialog);
-    document.getElementById("HTML_Frame").innerHTML = JsVar();
+    document.getElementById("HTML_Frame").innerHTML = JsVar(c);
 
     // Display Dialog
     setTimeout(() => { 
