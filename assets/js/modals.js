@@ -55,15 +55,18 @@ const HelpModal = () => (`
 
 
 // Weapon Info modal content
-const WeaponInfoModal = (id) => (`
+const WeaponInfoModal = (id) => {
+    let w = weaponTable.weapon[id];
+    
+    return `
 <div class="wi-body">
     <header class="wi-header">
-        <h2>${weaponTable.weapon[id].name}</h2>
-        <h3>${a_WeaponClass[weaponTable.weapon[id].type]}</h3>
-        <p>${a_RuleSet[weaponTable.weapon[id].rules]} Ruleset</p>
+        <h2>${w.name}</h2>
+        <h3>${a_WeaponClass[w.type]}</h3>
+        <p>${a_RuleSet[w.rules]} Ruleset</p>
     </header>
 
-    <p>${weaponTable.weapon[id].desc}</p>
+    <p>${w.desc}</p>
 
     <table class="wi-info">
         <tr>
@@ -72,9 +75,9 @@ const WeaponInfoModal = (id) => (`
             <th>Availability</th>
         </tr>
         <tr>
-            <td>${weaponTable.weapon[id].year}</td>
-            <td>${a_TechRating[weaponTable.weapon[id].techRating]}</td>
-            <td>${a_AvailabilityRating[weaponTable.weapon[id].availability]}</td>
+            <td>${w.year}</td>
+            <td>${a_TechRating[w.techRating]}</td>
+            <td>${a_AvailabilityRating[w.availability]}</td>
         </tr>
     </table>
 
@@ -87,10 +90,10 @@ const WeaponInfoModal = (id) => (`
             <th>Battle Value</th>
         </tr>
         <tr>
-            <td>${addDecimal(weaponTable.weapon[id].tons)}</td>
-            <td>${weaponTable.weapon[id].crits}</td>
-            <td class="cbills">${addComma(weaponTable.weapon[id].cost)}</td>
-            <td>${weaponTable.weapon[id].bv}</td>
+            <td>${addDecimal(w.tons)}</td>
+            <td>${w.crits}</td>
+            <td class="cbills">${addComma(w.cost)}</td>
+            <td>${w.bv}</td>
         </tr>
     </table>
 
@@ -103,10 +106,10 @@ const WeaponInfoModal = (id) => (`
             <th>Delay <small>(Solaris)</small></th>
         </tr>
         <tr>
-            <td>${weaponTable.weapon[id].heat}</td>
-            <td>${weaponTable.weapon[id].damage}</td>
-            <td>${zeroToDash(weaponTable.weapon[id].ammo)}</td>
-            <td>${weaponTable.weapon[id].delay}</td>
+            <td>${w.heat}</td>
+            <td>${w.damage}</td>
+            <td>${zeroToDash(w.ammo)}</td>
+            <td>${w.delay}</td>
         </tr>
     </table>
 
@@ -120,11 +123,11 @@ const WeaponInfoModal = (id) => (`
             <th>Extreme</th>
         </tr>
         <tr>
-            <td>${zeroToDash(weaponTable.weapon[id].rangeMin)}</td>
-            <td>${zeroToDash(weaponTable.weapon[id].rangeShort)}</td>
-            <td>${zeroToDash(weaponTable.weapon[id].rangeMedium)}</td>
-            <td>${zeroToDash(weaponTable.weapon[id].rangeLong)}</td>
-            <td>${zeroToDash(weaponTable.weapon[id].rangeExtreme)}</td>
+            <td>${zeroToDash(w.rangeMin)}</td>
+            <td>${zeroToDash(w.rangeShort)}</td>
+            <td>${zeroToDash(w.rangeMedium)}</td>
+            <td>${zeroToDash(w.rangeLong)}</td>
+            <td>${zeroToDash(w.rangeExtreme)}</td>
         </tr>
     </table>
 
@@ -156,7 +159,7 @@ table caption {
     margin: 12px;
 }
 </style>
-`);
+`};
 /*
 const WeaponInfoModal = (id) => (`
 <div class="WeaponInfo-body">

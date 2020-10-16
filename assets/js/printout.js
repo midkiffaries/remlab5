@@ -87,7 +87,7 @@ const listCritsLocation = (v) => {
 };
 
 // Record Sheet: List weapons
-const listPrintWeapons = (v) => {
+const rs_WeaponsList = (v) => {
 	let w = weaponTable.weapon,
 		loc = Mech[`assigned_${v}`],
 		l = loc.length,
@@ -328,14 +328,14 @@ const RecordSheetModal = () => (`
 						</tr>
 					</thead>
 					<tbody class="print-weaponslist">
-					${listPrintWeapons('LA')}
-					${listPrintWeapons('RA')}
-					${listPrintWeapons('LT')}
-					${listPrintWeapons('RT')}
-					${listPrintWeapons('CT')}
-					${listPrintWeapons('H')}
-					${listPrintWeapons('LL')}
-					${listPrintWeapons('RL')}
+					${rs_WeaponsList('LA')}
+					${rs_WeaponsList('RA')}
+					${rs_WeaponsList('LT')}
+					${rs_WeaponsList('RT')}
+					${rs_WeaponsList('CT')}
+					${rs_WeaponsList('H')}
+					${rs_WeaponsList('LL')}
+					${rs_WeaponsList('RL')}
 					</tbody>
 				</table>
 			</div>
@@ -405,9 +405,58 @@ body {
 `);
 
 
+// Record Sheet: List weapons
+const tr_WeaponsList = (v) => {
+	let w = weaponTable.weapon,
+		loc = Mech[`assigned_${v}`],
+		l = loc.length,
+		tr = ``;
+
+	for (let i = 0; i < l; i++ ) {
+		if (w[loc[i]].type > 0) {
+			tr += `<tr>`;
+			tr += `<td>${w[loc[i]].name}</td>`;
+			tr += `<td>${v}</td>`;
+			tr += `<td>${w[loc[i]].crits}</td>`;
+			tr += `<td>${addDecimal(w[loc[i]].tons)}</td>`;
+			tr += `</tr>`;
+		}
+	}
+
+	return tr;
+};
+
+// Record Sheet: List weapons
+const tr_ArmamentList = (v) => {
+	let w = weaponTable.weapon,
+		loc = Mech[`assigned_${v}`],
+		l = loc.length,
+		tr = ``;
+
+	for (let i = 0; i < l; i++ ) {
+		if (w[loc[i]].type > 0) {
+			tr += `<li>${w[loc[i]].name}</li>`;
+		}
+	}
+
+	return tr;
+};
 
 // Technical Readout print modal content
-const TechReadoutModal = () => (`
+const TechReadoutModal = () => {
+	// Clean up the appearance of the jumpjet stats
+	let jjtype, jjcap;
+
+	if (Mech.jumpingMP == 0) {
+		jjtype = 'none';
+		jjcap = 'none';
+	} else {
+		jjtype = a_JJType[Mech.jumpjetsType];
+		jjcap = mp2Meters(Mech.jumpingMP) + ' meters';
+	}
+
+
+	return `
 <div class="print-container">
     <div class="print-sheet">
         <div class="print-body">
@@ -424,12 +473,12 @@ const TechReadoutModal = () => (`
                 <p><b>Power Plant:</b> ${Mech.engineRating} ${Mech.engineBrand}</p>
                 <p><b>Cruising Speed:</b> ${mp2Kph[Mech.walkingMP]} kph</p>
                 <p><b>Maxiumum Speed:</b> ${mp2Kph[Mech.runningMP]} kph</p>
-                <p><b>Jump Jets:</b> ${a_JJType[Mech.jumpjetsType]}</p>
-                <p class="indent"><b>Jump Capacity:</b> ${mp2Meters(Mech.jumpingMP)} meters</p>
+                <p><b>Jump Jets:</b> ${jjtype}</p>
+                <p class="indent"><b>Jump Capacity:</b> ${jjcap}</p>
                 <p><b>Armor:</b> ${a_ArmorType[Mech.armorType]}</p>
                 <p><b>Armament:</b></p>
 				<ul>
-				
+					${tr_ArmamentList('LA')}
                 </ul>
                 <p><b>Manufacturer:</b> Unknown</p> 
                 <p class="indent"><b>Primary Factory:</b> Unknown</p>
@@ -491,17 +540,17 @@ const TechReadoutModal = () => (`
                         <td>${addDecimal(Mech.engineMass)}</td>
                     </tr>
                     <tr>
-                        <td class="indent">Walking MP:</td>
+                        <td class="indent2">Walking MP:</td>
                         <td>${Mech.walkingMP}</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td class="indent">Running MP:</td>
+                        <td class="indent2">Running MP:</td>
                         <td>${Mech.runningMP}</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td class="indent">Jumping MP:</td>
+                        <td class="indent2">Jumping MP:</td>
                         <td>${Mech.jumpingMP}</td>
                         <td></td>
                     </tr>
@@ -526,44 +575,44 @@ const TechReadoutModal = () => (`
                         <td>${addDecimal(Mech.armorMass)}</td>
                     </tr>
                     <tr>
+                        <th></th>
+                        <th class="center"><i>Internal Structure</i></th>
+                        <th class="center"><i>Armor Value</i></th>
+                    </tr>
+                    <tr >
+                        <td class="indent2">Head</td>
+                        <td class="center">${Mech.ISH}</td>
+                        <td class="center">${Mech.AH}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent2">Center Torso</td>
+                        <td class="center">${Mech.ISC}</td>
+                        <td class="center">${Mech.ACT}</td>
+                    </tr>
+                    <tr>
+                        <td class="indent2">Center Torso (rear)</td>
                         <td></td>
-                        <td><i>Internal Structure</i></td>
-                        <td><i>Armor Value</i></td>
+                        <td class="center">${Mech.ACTR}</td>
                     </tr>
                     <tr>
-                        <td class="indent">Head</td>
-                        <td>${Mech.ISH}</td>
-                        <td>${Mech.AH}</td>
+                        <td class="indent2">L/R Torso</td>
+						<td class="center">${Mech.IST}/${Mech.IST}</td>
+                        <td class="center">${Mech.ALT}/${Mech.ART}</td>
                     </tr>
                     <tr>
-                        <td class="indent">Center Torso</td>
-                        <td>${Mech.ISC}</td>
-                        <td>${Mech.ACT}</td>
-                    </tr>
-                    <tr>
-                        <td class="indent">Center Torso (rear)</td>
+                        <td class="indent2">L/R Torso (rear)</td>
                         <td></td>
-                        <td>${Mech.ACTR}</td>
+                        <td class="center">${Mech.ARTR}/${Mech.ALTR}</td>
                     </tr>
                     <tr>
-                        <td class="indent">L/R Torso</td>
-						<td>${Mech.IST}/${Mech.IST}</td>
-                        <td>${Mech.ALT}/${Mech.ART}</td>
+                        <td class="indent2">L/R Arms</td>
+						<td class="center">${Mech.ISA}/${Mech.ISA}</td>
+                        <td class="center">${Mech.ALA}/${Mech.ARA}</td>
                     </tr>
                     <tr>
-                        <td class="indent">L/R Torso (rear)</td>
-                        <td></td>
-                        <td>${Mech.ARTR}/${Mech.ALTR}</td>
-                    </tr>
-                    <tr>
-                        <td class="indent">L/R Arms</td>
-						<td>${Mech.ISA}/${Mech.ISA}</td>
-                        <td>${Mech.ALA}/${Mech.ARA}</td>
-                    </tr>
-                    <tr>
-                        <td class="indent">L/R Legs</td>
-						<td>${Mech.ISL}/${Mech.ISL}</td>
-                        <td>${Mech.ALL}/${Mech.ARL}</td>
+                        <td class="indent2">L/R Legs</td>
+						<td class="center">${Mech.ISL}/${Mech.ISL}</td>
+                        <td class="center">${Mech.ALL}/${Mech.ARL}</td>
                     </tr>
                 </table>
                 
@@ -577,13 +626,19 @@ const TechReadoutModal = () => (`
                         </tr>
                     </thead>
                     <tbody>
-                        
+						${tr_WeaponsList('RA')}
+						${tr_WeaponsList('RT')}
+						${tr_WeaponsList('CT')}
+						${tr_WeaponsList('LT')}
+						${tr_WeaponsList('LA')}
+						${tr_WeaponsList('H')}
+						${tr_WeaponsList('RL')}
+						${tr_WeaponsList('LL')}
                     </tbody>
                 </table>
-                <p><b>Notes:</b> </p>
+                <p><b>Notes:</b> Design Quirks</p>
             </div>
         </div>
-        
 		<footer class="print-footer">
 			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${RemlabVersion}</span></a> on <span>${TodaysDate.getFullYear()}</span>. Please recycle this document.</p>
 		</footer>
@@ -596,6 +651,7 @@ body {
     overflow: hidden !important;
 	width: 100wh;
 	height: 90vh;
+	line-height: 1;
 }
 
 .dialog-body {
@@ -605,6 +661,18 @@ body {
 
 .indent {
 	margin-left: 2em;
+}
+
+.indent2 {
+	padding-left: 2.5em;
+}
+
+.center {
+	text-align: center;
+}
+
+.tr-leftside ul {
+	list-style: none;
 }
 
 @media only print {
@@ -634,4 +702,4 @@ body {
 	}
 }
 </style>
-`);
+`};

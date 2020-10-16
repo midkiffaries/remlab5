@@ -342,7 +342,7 @@ const sReadout = new SectionPanel(
     // body
     `
     <p>
-        <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:4em" list="List-Year">
+        <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:5em" list="List-Year">
         <datalist id="List-Year">
             <option value="2750">
             <option value="3025">
@@ -401,8 +401,7 @@ const sideBar = (`
     <menu class="sidebar-buttons">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
         <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
-        <hr>
-        <p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p>
+        <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->
     </menu>
 `);
 
