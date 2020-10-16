@@ -651,11 +651,11 @@ body {
     overflow: hidden !important;
 	width: 100wh;
 	height: 90vh;
-	line-height: 1;
 }
 
 .dialog-body {
 	margin: 1em;
+	line-height: 1;
 	max-width: 100%;
 }
 
