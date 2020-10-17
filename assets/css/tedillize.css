@@ -382,27 +382,26 @@ svg:not(:root) {
 Interactive elements
 *********************/
 
+:focus-visible {
+	outline: 5px auto -webkit-focus-ring-color
+}
+
+:focus:not(:focus-visible),
+[tabindex='-1']:focus:not(:focus-visible) {
+	outline: none;
+}
+
 a[href],
 button,
 input,
 label,
 select,
 textarea,
-summary,
 [role='button'],
-[contenteditable],
 [tabindex] {
 	touch-action: manipulation;
 }
 
-[tabindex="-1"]:focus:not(:focus-visible) {
-	outline: none !important;
-}
-/*
-:focus {
-    outline: auto 5px -webkit-focus-ring-color;
-}
-*/
 a[href] {
 	color: #000;
 	background-color: transparent;
@@ -491,7 +490,6 @@ input:not(:focus):invalid {
 ::placeholder {
 	color: #888;
 }
-
 
 [disabled],
 [disabled] + label[for],

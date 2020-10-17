@@ -59,7 +59,6 @@
         border-top: 1px solid #eee;
         font-size: 1.2em;
         line-height: 1em;
-        outline: none;
         padding: 0.55em;
     }
     .accordion > button::before {

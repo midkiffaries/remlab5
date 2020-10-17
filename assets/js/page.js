@@ -14,7 +14,7 @@ function SectionPanel(id, title, size, body, help, footer) {
 
 // Section HTML Template
 const sectionTemplate = (id, title, size, body, help, footer) => (`
-    <section class="section-card width-${size} section-${id}">
+    <section class="section-card width-${size} card-${id}">
         <header class="section-header">
             <h2>${title}</h2>
         </header>
@@ -218,26 +218,31 @@ const sWeapons = new SectionPanel(
     
     // body
     `
-    <table class="table-weapons sortable">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Type</th>
-                <th>Heat</th>
-                <th>Damage</th>
-                <th>Min</th>
-                <th>Short</th>
-                <th>Medium</th>
-                <th>Long</th>
-                <th>Tons</th>
-                <th>Crits</th>
-                <th>Ammo</th>
-                <th>Cost</th>
-                <th>BV</th>
-            </tr>
-        </thead>
-        <tbody id="tblWeapons">${completeWeaponsTable()}</tbody>
-    </table>
+    <section class="accordion" role="tablist">
+        <button role="tab">Weapons Table</button>
+        <section role="tabpanel">
+            <table class="table-weapons sortable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Type</th>
+                        <th>Heat</th>
+                        <th>Damage</th>
+                        <th>Min</th>
+                        <th>Short</th>
+                        <th>Medium</th>
+                        <th>Long</th>
+                        <th>Tons</th>
+                        <th>Crits</th>
+                        <th>Ammo</th>
+                        <th>Cost</th>
+                        <th>BV</th>
+                    </tr>
+                </thead>
+                <tbody id="tblWeapons">${completeWeaponsTable()}</tbody>
+            </table>
+        </section>
+    </section>
 
     <div class="list-weapons col-2">
         <ol>
@@ -247,12 +252,12 @@ const sWeapons = new SectionPanel(
 
     <div class="locations-list col-2">
         ${locationList('Left Arm', 'LA')}
-        ${locationList('Left Torso', 'LT')}
         ${locationList('Head', 'H')}
-        ${locationList('Right Torso', 'RT')}
         ${locationList('Right Arm', 'RA')}
-        ${locationList('Left Leg', 'LL')}
+        ${locationList('Left Torso', 'LT')}
         ${locationList('Center Torso','CT')}
+        ${locationList('Right Torso', 'RT')}
+        ${locationList('Left Leg', 'LL')}
         ${locationList('Right Leg','RL')}
     </div>
     `, 
