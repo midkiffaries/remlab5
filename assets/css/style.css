@@ -27,7 +27,7 @@ body {
 
 }
 
-/* Header */
+/* Page Header */
 
 .page-header {
     height: 9em;
@@ -57,7 +57,13 @@ body {
 
 }
 
-/* Sidebar */
+.page-grid {
+    width: 75vw;
+    float: right;
+}
+
+
+/* Page Sidebar */
 
 .page-sidebar {
     width: 25vw;
@@ -73,62 +79,8 @@ body {
     width: 95%;
 }
 
-/* Cards */
 
-.page-grid {
-    width: 75vw;
-    float: right;
-}
-
-/* Default Section Cards style */
-
-.section-card {
-    position: relative;
-    width: 50%;
-    float: left;
-}
-
-.section-card.width-full {
-    width: 100%;
-}
-
-.section-body {
-    min-height: 12em;
-}
-
-.section-body p label:first-of-type {
-    min-width: 5em;
-}
-
-.section-body textarea {
-    display: block;
-    width: 100%;
-    height: 8em;
-}
-
-.section-footer ul {
-    padding: 0;
-}
-
-.section-footer li {
-    float: left;
-    list-style: none;
-    width: 35%;
-}
-
-.section-footer li:nth-of-type(2) {
-    width: 20%;
-}
-
-/* Hide section-totals on certain panels */
-.section-Technology .section-totals,
-.section-Quirks .section-totals,
-.section-Warrior .section-totals,
-.section-Readout .section-totals {
-    display: none;
-}
-
-/* Footer */
+/* Page Footer */
 
 .page-footer {
 
@@ -155,30 +107,80 @@ body {
     filter: invert(60%);
 }
 
+
+/* Default Cards style */
+
+.card {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+.card.width-full {
+    width: 100%;
+}
+
+.card-body {
+    min-height: 12em;
+}
+
+.card-body p label:first-of-type {
+    min-width: 6em;
+}
+
+.card-body p [type='text'] {
+    width: calc(90% - 7em);
+}
+
+.card-body textarea {
+    display: block;
+    width: 100%;
+    height: 8em;
+}
+
+.card-footer ul {
+    padding: 0;
+}
+
+.card-footer li {
+    float: left;
+    list-style: none;
+    width: 35%;
+}
+
+.card-footer li:nth-of-type(2) {
+    width: 20%;
+}
+
 /* Card Columns */
 
-.section-card .col-3:first-of-type {
+.card .col-3:first-of-type {
     float: left;
     width: 50%
 }
 
-.section-card .col-3:nth-last-of-type(2) {
+.card .col-3:nth-last-of-type(2) {
     float: left;
     width: 36%;
 }
 
-.section-card .col-3:last-of-type {
+.card .col-3:last-of-type {
     float: left;
     width: 14%;
 }
 
-.section-card .col-3:last-of-type button {
+.card .col-3:last-of-type button {
     width: 100%;
 }
 
-.section-card .col-2 {
+.card .col-2 {
     width: 50%;
     float: left;
+}
+
+
+.card-Armor .card-body p label {
+    min-width: 3.5em;
 }
 
 /* Weapons card */
@@ -203,7 +205,7 @@ body {
 .list-weapons {
     height: 30em;
     overflow-y: scroll;
-    border: 1px solid #eee;
+    border: 1px solid #bbb;
 }
 
 .list-weapons::-webkit-scrollbar {
@@ -263,22 +265,34 @@ body {
 
 
 
+/* Hide section-totals on certain panels */
+.card-Technology .card-totals,
+.card-Quirks .card-totals,
+.card-Warrior .card-totals,
+.card-Readout .card-totals {
+    display: none;
+}
+
 /* Panel Switch Component */
 
-.section-body {
-    position: relative;
-}	
-	
 .panelswitch-button {
     float: right;
-    margin: -3.5em 1em 0 0;
+    margin: -3.8em 1em 0 0;
 }
-	
-.section-main {
+
+.panel-button-active {
+	background: #aaa;
+}
+
+.card-body {
+    position: relative;
+}	
+
+.card-main {
 	top: 0;
 }	
-	
-.section-help {
+
+.card-help {
 	position: absolute;
 	top: -0.8em;
 	background: #fafafa;
@@ -290,16 +304,12 @@ body {
     height: 100%;
     padding: 0 1em;
 }
-	
+
 .panel-active {
     transition: all 0.3s ease-in-out;
 	opacity: 1;
 	transform: scale(1,1);
 	transform-origin: top right;
-}
-
-.panel-button-active {
-	background: #aaa;
 }
 
 
@@ -317,6 +327,11 @@ Elements
 /* Section list */
 .select-list {
     height: 10em !important;
+}
+
+/* Stepper Container */
+.stepper-container {
+    border: 1px solid #aaa;
 }
 
 /************************
@@ -492,8 +507,8 @@ Responsive elements
 /* Phone (Portrait) and narrow screen */
 @media only screen and (min-width: 320px) and (max-width: 920px) {
     .page-sidebar, 
-    .section-card,
     .page-grid,
+    .card,
     .col-2,
     .col-3 {
         position: relative;

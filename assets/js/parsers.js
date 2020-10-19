@@ -149,7 +149,7 @@
     }
     .stepper {
         vertical-align: top;
-        width: 3em;
+        width: 2em;
         height: 100%;
         font-size: 1.2em;
         text-align: center;
@@ -277,13 +277,13 @@
 
 // Panel Switch Element block, use class="panelswitch"
 (function(){
-    const panelswitch = document.getElementsByClassName("panelswitch"), 
-		l = panelswitch.length;
+    const ps = document.getElementsByClassName("panelswitch"), 
+		l = ps.length;
 	
     for (let i = 0; i < l; i++) {
-		panelswitch[i].firstChild.nextElementSibling.addEventListener("click", () => {
-			panelswitch[i].firstChild.nextElementSibling.classList.toggle("panel-button-active");
-			panelswitch[i].lastChild.previousSibling.classList.toggle("panel-active");
+		ps[i].firstChild.nextElementSibling.addEventListener("click", () => {
+			ps[i].firstChild.nextElementSibling.classList.toggle("panel-button-active");
+			ps[i].lastChild.previousSibling.classList.toggle("panel-active");
 		},true);
     }
 }());

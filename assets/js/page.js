@@ -14,22 +14,22 @@ function SectionPanel(id, title, size, body, help, footer) {
 
 // Section HTML Template
 const sectionTemplate = (id, title, size, body, help, footer) => (`
-    <section class="section-card width-${size} card-${id}">
-        <header class="section-header">
+    <section class="card width-${size} card-${id}">
+        <header class="card-header">
             <h2>${title}</h2>
         </header>
-        <div role="tablist" class="panelswitch section-body">
-            <button class="panelswitch-button">Info</button>
-            <div role="tabpanel" class="section-main">
+        <div role="tablist" class="panelswitch card-body">
+            <button role="switch" class="panelswitch-button">Info</button>
+            <div role="tabpanel" class="card-main">
                 ${body}
             </div>
-            <div role="tabpanel" class="section-help">
+            <div role="tabpanel" class="card-help">
                 ${help}
             </div>
         </div>
-        <footer class="section-footer">
+        <footer class="card-footer">
             ${footer}
-            <ul class="section-totals">
+            <ul class="card-totals">
                 <li>Mass <output id="out${id}Mass"></output> tons</li>
                 <li>Crits <output id="out${id}Crits"></output></li>
                 <li>Cost <output id="out${id}Cost" class="cbills"></output></li>
@@ -258,6 +258,13 @@ const sWeapons = new SectionPanel(
         ${locationList('Center Torso','CT')}
         ${locationList('Right Torso', 'RT')}
         ${locationList('Left Leg', 'LL')}
+        <section>
+            <h5>Mandatory</h5>
+            <ul>
+                <li>Heat Sinks (0)</li>
+                <li>Jump Jets (0)</li>
+            </ul>
+        </section>
         ${locationList('Right Leg','RL')}
     </div>
     `, 
@@ -285,7 +292,7 @@ const sWarrior = new SectionPanel(
     <div class="col-2">
         <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
         <p><label>Race</label> <input type="radio" name="radRace" id="radioR1" value="Human" class="radio-button" checked><label for="radioR1" role="button">Human</label><input type="radio" name="radRace" id="radioR2" value="Clanner" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
-        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button id="btnAffiliation" class="change-input">+</button></p>
+        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"> <button role="switch" id="btnAffiliation" class="switch change-input">+</button></p>
         <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     </div>
     <div class="col-2">
