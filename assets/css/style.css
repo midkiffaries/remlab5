@@ -163,14 +163,19 @@ Cards Styling
 
 /* Card Columns */
 
-.card .col-3:first-of-type {
+.card .col-2 {
+    width: 50%;
     float: left;
-    width: 50%
 }
 
-.card .col-3:nth-last-of-type(2) {
+.card .col-3:first-of-type {
     float: left;
-    width: 36%;
+    width: 54%;
+}
+
+.card .col-3:nth-of-type(2) {
+    float: left;
+    width: auto;
 }
 
 .card .col-3:last-of-type {
@@ -182,10 +187,6 @@ Cards Styling
     width: 100%;
 }
 
-.card .col-2 {
-    width: 50%;
-    float: left;
-}
 
 /* Panel Switch Component and Button */
 
