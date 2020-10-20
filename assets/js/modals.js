@@ -12,15 +12,18 @@ const AboutModal = () => (`
 <img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy" style="width:25%;float:right">
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
-<h3>History</h3>
-<p>Starting way back in 2004...</p>
+<h3>Disclaimer</h3>
+<p>REMLAB is more of a personal programming project than anything else. I work on the development of this web app on a sporadic basis in my free time. It has honestly been awhile since I personally played Battletech, so some of my nuances may be a little dated.</p>
 
-<h3>Future</h3>
-<p>???</p>
+<h3>History</h3>
+<p>The first version of REMLAB dates back to <time>2005</time> when it was created as an early <abbr title="Asynchronous JavaScript And XML">AJAX</abbr> and PHP powered web app.</p>
+<p>The second version I release in <time>2007</time> and it was built upon that same codebase, however with that version I expanded upon the game rules and features.</p>
+<p>The Third version, released in <time>2010</time>, was never finished, but it too was based upon the same codebase, but I had intended to redesign the interface.</p>
+<p>For the fourth version, I chose to go back to the drawing board and I rewrote the entire codebase from scratch and in the process I moved from PHP to JavaScript for the main logic. This version was never entirely complete, but it was hosted on my website in <time>2017</time>.</p>
 
 <h3>References &amp; Resources</h3>
 <ul>
-    <li><a href="https://bg.battletech.com" target="_blank">BattleTech.com</a></li>
+    <li><a href="https://www.battletech.com" target="_blank">Official BattleTech Site</a></li>
     <li><a href="http://www.sarna.net" target="_blank">Sarna BattleTechWiki</a></li>
     <li><a href="http://www.battletechgame.com" target="_blank">BattleTech Computer Game</a></li>
     <li><i>...And of course all the source books.</i></li>
@@ -30,27 +33,26 @@ const AboutModal = () => (`
 
 // Help modal content
 const HelpModal = () => (`
-<h2>Help with REMLAB</h2>
-<p>Here are some tips for using REMLAB:</p>
+<h2>Help with REMLAB ${RemlabVersion}</h2>
+<p>Below are some tips for using REMLAB. As a web app there may be some inconsistencies from one browser to the next especially when it comes to printing.</p>
 
 <h3>Limitations</h3>
-<p>Rules base - <em>Level 1 / 3025 / Succession Wars</em></p>
+<p>Ruleset: <i>Level 1 / 3025 / Succession Wars</i></p>
 
 <h3>Printing</h3>
-<p>Printing results will vary some what from browser-to-browser.</p>
+<p>Printing results will vary somewhat from browser-to-browser.</p>
 <p>Tips to improve printing results:</p>
 <ol>
     <li>Cut margin down as much as possible, 0.5in (1.3cm) should be good.</li>
-    <li>Disable the <i>header</i> and <i>footer</i> information.</li>
-    <li>Turn on <b>Print Backgrounds</b>, this is not that important.</li>
+    <li>Disable the <code>header</code> and <code>footer</code> information.</li>
+    <li>Turn on <code>Print Backgrounds</code>, this is not that important.</li>
 </ol>
-<p>Right now, REMLAB uses the your base operating system's default system font.</p>
 
-<h3>Saving</h3>
-<p>Currently, there is no way to save Mechs in REMLAB. The only thing you can do is <b>Print/Save to a <abbr>PDF</abbr> file</b>, a feature most mordern web browsers have built into them.</p>
+<h3>Saving Data</h3>
+<p>Currently, there is no way to save Mechs in REMLAB. The only thing you can do is <code>Print/Save to a <abbr>PDF</abbr> file</code>, a feature most modern web browsers have built into them.</p>
 
-<h3>Browser Compatablility</h3>
-<p>The latest version of the big four browsers (Edge, Chrome, Firefox, and Safari) should work correctly with REMLAB.</p>
+<h3>Browser Compatibility</h3>
+<p>The latest versions of the big four browsers (<i>Edge, Chrome, Firefox, &amp; Safari</i>) should work correctly with REMLAB. Older browsers may run into compatibility complications.</p>
 `);
 
 

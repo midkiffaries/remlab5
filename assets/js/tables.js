@@ -340,8 +340,8 @@ const a_SpeedFac = [0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63
 /**************************
  * JSON Tables
  **************************/
-// Spreadsheet: https://docs.google.com/spreadsheets/d/1j4kh83VdzD2SbhHTBsUDTIhraINZ4W9-QzQ6T3m-cm8/edit?usp=sharing
-// JSON converter: https://csvjson.com/csv2json
+// Spreadsheet on Google: https://docs.google.com/spreadsheets/d/1j4kh83VdzD2SbhHTBsUDTIhraINZ4W9-QzQ6T3m-cm8/edit?usp=sharing
+// JSON converter used: https://csvjson.com/csv2json
 
 // Weapons and Equipment
 const tableArsenal = `
@@ -2276,9 +2276,7 @@ const tableIS = `
 }
 `;
 
-// Parse JSON tables
+// Parse above JSON tables
 const weaponTable = JSON.parse(tableArsenal);
-
 const engineTable = JSON.parse(tableEngine);
-
 const isTable = JSON.parse(tableIS);

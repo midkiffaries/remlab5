@@ -1,8 +1,8 @@
 /**************************
- * Section Panels Constructor
+ * Page Cards Content & Logic
 **************************/
 
-// Section Panel Data Constructor
+// Section Card Data Constructor
 function SectionPanel(id, title, size, body, help, footer) {
     this.id = id; // Section ID
     this.title = title; // Section Title
@@ -12,7 +12,10 @@ function SectionPanel(id, title, size, body, help, footer) {
     this.footer = footer; // Footer Content
 }
 
-// Section HTML Template
+/************************
+ * Card HTML Template 
+ ************************/
+
 const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="card width-${size} card-${id}">
         <header class="card-header">
@@ -38,7 +41,11 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
     </section>
 `);
 
-// Section : Engine and Movement
+
+/************************
+ * Card: Engine & Movement 
+ ************************/
+
 const sEngine = new SectionPanel(
     // id
     "Engine", 
@@ -63,55 +70,11 @@ const sEngine = new SectionPanel(
     ``,
 );
 
-// Section : Jump Jets
-const sJumpjets = new SectionPanel(
-    // id
-    "JumpJets", 
-    
-    // title
-    "Jump Jets",
-    
-    // size
-    "half",
-    
-    // body
-    `
-    <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="${Mech.walkingMP}" step="1" readonly></span></p>
-    <p><label>Type</label> <select id="selJumpJets" class="select" data-list="a_JJType" disabled></select></p>
-    `, 
-    
-    // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
-    
-    // footer
-    ``,
-);
 
-// Section : Heat Sinks
-const sHeatSinks = new SectionPanel(
-    // id
-    "HeatSinks", 
-    
-    // title
-    "Heat Sinks",
-    
-    // size
-    "half",
-    
-    // body
-    `
-    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinksBase}" min="10" max="40" step="1" readonly></span></p>
-    <p><label>Type</label> <select id="selHeatSinks" class="select" data-list="a_HSType" disabled></select></p>
-    `, 
-    
-    // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
-    
-    // footer
-    ``,
-);
+/************************
+ * Card: Internal Components 
+ ************************/
 
-// Section : Internal Components
 const sComponents = new SectionPanel(
     // id
     "Internal", 
@@ -137,7 +100,67 @@ const sComponents = new SectionPanel(
     ``,
 );
 
-// Section : Armor
+
+/************************
+ * Card: Jump Jets 
+ ************************/
+
+ const sJumpjets = new SectionPanel(
+    // id
+    "JumpJets", 
+    
+    // title
+    "Jump Jets",
+    
+    // size
+    "half",
+    
+    // body
+    `
+    <p><label>Jumping <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepJumping" class="stepper" value="${Mech.jumpingMP}" min="0" max="${Mech.walkingMP}" step="1" readonly></span></p>
+    <p><label>Type</label> <select id="selJumpJets" class="select" data-list="a_JJType" disabled></select></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    ``,
+);
+
+
+/************************
+ * Card: Heat Sinks 
+ ************************/
+
+const sHeatSinks = new SectionPanel(
+    // id
+    "HeatSinks", 
+    
+    // title
+    "Heat Sinks",
+    
+    // size
+    "half",
+    
+    // body
+    `
+    <p><label>Heat Sinks</label> <span class="stepper-container"><input type="number" id="stepHeatSinks" class="stepper" value="${Mech.heatsinksBase}" min="10" max="40" step="1" readonly></span></p>
+    <p><label>Type</label> <select id="selHeatSinks" class="select" data-list="a_HSType" disabled></select></p>
+    `, 
+    
+    // help
+    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    
+    // footer
+    ``,
+);
+
+
+/************************
+ * Card: Armor 
+ ************************/
+
 const sArmor = new SectionPanel(
     // id
     "Armor", 
@@ -205,7 +228,11 @@ const sArmor = new SectionPanel(
     ``,
 );
 
-// Section : Weapons and Equipment
+
+/************************
+ * Card: Weapons & Equip 
+ ************************/
+
 const sWeapons = new SectionPanel(
     // id
     "Weapons", 
@@ -276,7 +303,11 @@ const sWeapons = new SectionPanel(
     ``,
 );
 
-// Section : Warrior
+
+/************************
+ * Card: Warrior/Pilot/Crew 
+ ************************/
+
 const sWarrior = new SectionPanel(
     // id
     "Warrior", 
@@ -310,7 +341,11 @@ const sWarrior = new SectionPanel(
     `<p></p>`,
 );
 
-// Section : Design Quirks
+
+/************************
+ * Card: Design Quirks 
+ ************************/
+
 const sQuirks = new SectionPanel(
     // id
     "Quirks", 
@@ -324,11 +359,11 @@ const sQuirks = new SectionPanel(
     // body
     `
     <div class="col-2">
-        <p><label>Positive</label></p>
+        <p><label><b>Positive</b></label></p>
         <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
     </div>
     <div class="col-2">
-        <p><label>Negative</label></p>
+        <p><label><b>Negative</b></label></p>
         <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
     </div>
     `, 
@@ -340,7 +375,11 @@ const sQuirks = new SectionPanel(
     `<p>The number of <i>Positive</i> and <i>Negative</i> quirks should be equal.</p>`,
 );
 
-// Section : Technical Readout
+
+/************************
+ * Card: Technical Readout 
+ ************************/
+
 const sReadout = new SectionPanel(
     // id
     "Readout", 
@@ -393,36 +432,49 @@ const sReadout = new SectionPanel(
 );
 
 
-// Side Bar content
-const sideBar = (`
-    <div class="col-2">
-        <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
-        <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
-        <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output id="outWeightClass">${weightClass(Mech.mass)}</output></p>
-        <p><label>Tech</label> <input type="radio" name="selTechnology" id="radioT1" value="0" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input type="radio" name="selTechnology" id="radioT2" value="1" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
-        <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
+/************************
+ * Card: Side Bar Totals 
+ ************************/
+
+const sideBarTotals = (`
+    <div class="sticky">
+        <div class="col-3">
+            <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
+            <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
+            <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <output id="outWeightClass">${weightClass(Mech.mass)}</output></p>
+            <p><label>Tech</label> <input type="radio" name="selTechnology" id="radioT1" value="0" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input type="radio" name="selTechnology" id="radioT2" value="1" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
+            <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
+        </div>
+        <div class="col-3">
+            <p><label>Mass</label> <output id="outCurrentMass">${Mech.totalMass}</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
+            <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
+            <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
+            <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
+            <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> (<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton)</p>
+            <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
+        </div>
+        <menu class="col-3 sidebar-buttons">
+            <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
+            <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
+            <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->
+        </menu>
     </div>
-    <div class="col-2">
-        <p><label>Mass</label> <output id="outCurrentMass">${Mech.totalMass}</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
-        <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
-        <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
-        <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
-        <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> (<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton)</p>
-        <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
-    </div>
-    <menu class="sidebar-buttons">
-        <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
-        <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
-        <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->
-    </menu>
 `);
+
+
+/************************
+ * Append to Page 
+ ************************/
+
+// Populate the side bar
+document.getElementById("SideBar").innerHTML = sideBarTotals;
 
 // Populate the grid
 document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sEngine.id, sEngine.title, sEngine.size, sEngine.body, sEngine.help, sEngine.footer) +
+    sectionTemplate(sComponents.id, sComponents.title, sComponents.size, sComponents.body, sComponents.help, sComponents.footer) +
     sectionTemplate(sJumpjets.id, sJumpjets.title, sJumpjets.size, sJumpjets.body, sJumpjets.help, sJumpjets.footer) +
     sectionTemplate(sHeatSinks.id, sHeatSinks.title, sHeatSinks.size, sHeatSinks.body, sHeatSinks.help, sHeatSinks.footer) +
-    sectionTemplate(sComponents.id, sComponents.title, sComponents.size, sComponents.body, sComponents.help, sComponents.footer) +
     sectionTemplate(sArmor.id, sArmor.title, sArmor.size, sArmor.body, sArmor.help, sArmor.footer) +
     sectionTemplate(sWeapons.id, sWeapons.title, sWeapons.size, sWeapons.body, sWeapons.help, sWeapons.footer) +
     sectionTemplate(sWarrior.id, sWarrior.title, sWarrior.size, sWarrior.body, sWarrior.help, sWarrior.footer) +
@@ -430,11 +482,13 @@ document.getElementById("SectionsGrid").innerHTML = (
     sectionTemplate(sReadout.id, sReadout.title, sReadout.size, sReadout.body, sReadout.help, sReadout.footer)
 );
 
-// Populate the side bar
-document.getElementById("SideBar").innerHTML = sideBar;
-
 // Footer Info
 document.getElementById("AppVersion").textContent = RemlabVersion;
+
+
+/************************
+ * Page Logic 
+ ************************/
 
 // Update form based on user input
 const updateForm = () => {
@@ -543,29 +597,10 @@ const updateForm = () => {
     Warrior.autoeject = elID('chkAutoEject').checked;
 };
 
-// Armor auto fill buttons logic
-const autoFillArmor = v => {
-	// Balance the front and rear armor of the torsos
-    let CTfront = parseInt((Mech.ISC * 2) * 0.8),
-        CTrear = (Mech.ISC * 2) - CTfront,
-        STfront = parseInt((Mech.IST * 2) * 0.8),
-        STrear = (Mech.IST * 2) - STfront;
 
-	// Post data
-    elID('stepArmorH').value = parseInt(9 * v);
-	elID('stepArmorLT').value = parseInt(STfront * v);
-    elID('stepArmorLTR').value = parseInt(STrear * v);
-	elID('stepArmorCT').value = parseInt(CTfront * v);
-    elID('stepArmorCTR').value = parseInt(CTrear * v);
-	elID('stepArmorRT').value = parseInt(STfront * v);
-    elID('stepArmorRTR').value = parseInt(STrear * v);
-    elID('stepArmorLA').value = (Mech.ISA * 2) * v;
-    elID('stepArmorRA').value = (Mech.ISA * 2) * v;
-    elID('stepArmorLL').value = (Mech.ISL * 2) * v;
-    elID('stepArmorRL').value = (Mech.ISL * 2) * v;
-    
-    updateForm();
-};
+/************************
+ * Weapons Card Logic 
+ ************************/
 
 // Populate the complete weapons table
 function completeWeaponsTable() {
@@ -729,56 +764,30 @@ function removeWeapon(v, id) {
 }
 
 
+/************************
+ * Armor Card Logic 
+ ************************/
 
-// onload: Populate the Crit Location Diagram 
-//listCritsbyLoc('LA');
-//listCritsbyLoc('LT');
-//listCritsbyLoc('H');
-//listCritsbyLoc('RT');
-//listCritsbyLoc('RA');
-//listCritsbyLoc('LL');
-//listCritsbyLoc('CT');
-//listCritsbyLoc('RL');
+// Armor auto fill buttons logic
+const autoFillArmor = v => {
+	// Balance the front and rear armor of the torsos
+    let CTfront = parseInt((Mech.ISC * 2) * 0.8),
+        CTrear = (Mech.ISC * 2) - CTfront,
+        STfront = parseInt((Mech.IST * 2) * 0.8),
+        STrear = (Mech.IST * 2) - STfront;
 
-// List the contents of a crit location array in a list
-/*
-function listCritsbyLoc(v) {
-    let id = `fullCritList_${v}`,
-        max = Mech[`maxcrits_${v}`],
-        loc = Mech[`assigned_${v}`],
-        li = "",
-        w;
-
-    // Increment through selected location array 
-    for (let i = 0; i < max; i++) {
-        // Check if location array has contents
-        w = weaponTable.weapon[loc[i]];
-
-        // Populate slot
-        if (loc[i] >= 0) {
-
-            // Check if item is a a weapon or a hardpoint
-            if (w.tons > 0) {
-                // Weapon
-                li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
-            } else {
-                // Hardpoint
-                li += `<li>${w.name}</li>`;
-            }
-
-            // If weapon takes up more than 1 crit
-            if (w.crits > 1) {
-                for (let j = 1; j < w.crits; j++) {
-                    li += `<li>${w.name}</li>`;
-                    max--;
-                }
-            }
-        } else {
-            // Empty slot
-            li += `<li>–</li>`;
-        }
-    }
-
-    elID(id).innerHTML = li;
-}
-*/
+	// Post data
+    elID('stepArmorH').value = parseInt(9 * v);
+	elID('stepArmorLT').value = parseInt(STfront * v);
+    elID('stepArmorLTR').value = parseInt(STrear * v);
+	elID('stepArmorCT').value = parseInt(CTfront * v);
+    elID('stepArmorCTR').value = parseInt(CTrear * v);
+	elID('stepArmorRT').value = parseInt(STfront * v);
+    elID('stepArmorRTR').value = parseInt(STrear * v);
+    elID('stepArmorLA').value = (Mech.ISA * 2) * v;
+    elID('stepArmorRA').value = (Mech.ISA * 2) * v;
+    elID('stepArmorLL').value = (Mech.ISL * 2) * v;
+    elID('stepArmorRL').value = (Mech.ISL * 2) * v;
+    
+    updateForm();
+};

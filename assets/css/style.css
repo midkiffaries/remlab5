@@ -67,11 +67,14 @@ body {
 
 .page-sidebar {
     width: 25vw;
+    height: 300vh;
     float: left;
+}
+
+.sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    height: 30em;
 }
 
 .page-sidebar input[type="text"],
@@ -108,7 +111,9 @@ body {
 }
 
 
-/* Default Cards style */
+/************************
+Cards Styling
+*************************/
 
 .card {
     position: relative;
@@ -152,6 +157,10 @@ body {
     width: 20%;
 }
 
+.width-full .card-footer li {
+    width: 33%;
+}
+
 /* Card Columns */
 
 .card .col-3:first-of-type {
@@ -178,9 +187,71 @@ body {
     float: left;
 }
 
+/* Panel Switch Component and Button */
+
+.panelswitch-button {
+    float: right;
+    margin: -3.8em 1em 0 0;
+}
+
+.width-full .panelswitch-button {
+    margin-top: -2.8em;
+}
+
+.panel-button-active {
+	background: #aaa;
+}
+
+.card-body {
+    position: relative;
+}	
+
+.card-main {
+	top: 0;
+}	
+
+.card-help {
+	position: absolute;
+	top: -0.8em;
+	background: #fafafa;
+	overflow-y: scroll;
+	opacity: 0;
+	transform: scale(1,0);
+    transform-origin: top right;
+    width: 100%;
+    height: 100%;
+    padding: 0 1em;
+}
+
+.panel-active {
+    transition: all 0.3s ease-in-out;
+	opacity: 1;
+	transform: scale(1,1);
+	transform-origin: top right;
+}
+
+
+/************************
+Specific Card Styling
+*************************/
+
+/* Jump Jets card */
+
+.card-JumpJets .card-body,
+.card-HeatSinks .card-body {
+    min-height: 7em;
+}
+
+/* Armor card */
 
 .card-Armor .card-body p label {
     min-width: 3.5em;
+}
+
+/* Tech Readout card */
+
+.card-Readout .panelswitch-button {
+    margin-top: -4em;
 }
 
 /* Weapons card */
@@ -193,6 +264,7 @@ body {
     width: 25%;
 }
 
+/* full table */
 .table-weapons {
     font-size: 0.85em;
 }
@@ -202,6 +274,7 @@ body {
     overflow: hidden;
 }
 
+/* weapons list */
 .list-weapons {
     height: 30em;
     overflow-y: scroll;
@@ -252,6 +325,7 @@ body {
     border: 0;
 }
 
+/* locations table */
 .locations-list section {
     float: left;
     width: 33%;
@@ -264,54 +338,14 @@ body {
 }
 
 
+/* Hide card-totals on certain cards */
 
-/* Hide section-totals on certain panels */
 .card-Technology .card-totals,
 .card-Quirks .card-totals,
 .card-Warrior .card-totals,
 .card-Readout .card-totals {
     display: none;
 }
-
-/* Panel Switch Component */
-
-.panelswitch-button {
-    float: right;
-    margin: -3.8em 1em 0 0;
-}
-
-.panel-button-active {
-	background: #aaa;
-}
-
-.card-body {
-    position: relative;
-}	
-
-.card-main {
-	top: 0;
-}	
-
-.card-help {
-	position: absolute;
-	top: -0.8em;
-	background: #fafafa;
-	overflow-y: scroll;
-	opacity: 0;
-	transform: scale(1,0);
-    transform-origin: top right;
-    width: 100%;
-    height: 100%;
-    padding: 0 1em;
-}
-
-.panel-active {
-    transition: all 0.3s ease-in-out;
-	opacity: 1;
-	transform: scale(1,1);
-	transform-origin: top right;
-}
-
 
 
 /************************
@@ -334,15 +368,16 @@ Elements
     border: 1px solid #aaa;
 }
 
+
 /************************
 Radio and Checkbox style
 *************************/
 
 /* Custom Radio and Checkbox input */
-:focus-visible  + label[for]:before, 
-.check-button:focus-visible  + label, 
-.radio-button:focus-visible  + label,
-[type="checkbox"]:focus-visible  + label.switch {
+:focus-visible + label[for]:before, 
+.check-button:focus-visible + label, 
+.radio-button:focus-visible + label,
+[type="checkbox"]:focus-visible + label.switch {
     outline: auto 5px -webkit-focus-ring-color;
 }
 
@@ -473,27 +508,6 @@ Radio and Checkbox style
 	vertical-align: -1px;
 }
 
-/* Phone (Portrait) and narrow screen */
-@media only screen and (min-width: 320px) and (max-width: 812px)  {
-    [type="checkbox"] + label.switch::before {
-        margin-top: 0;
-    }
-}
-    
-/* Printing */
-@media only print {
-    [type="radio"] + label::before, 
-    [type="checkbox"] + label::before {
-        border: 2px solid #999;
-    }
-
-    [type="radio"]:checked + label::before, 
-    [type="checkbox"]:checked + label::before {
-        content: "✖";
-        line-height: 0.8em;
-    }
-}
-
 
 /*********************
 Responsive elements
@@ -520,9 +534,20 @@ Responsive elements
 
 /* Phone (Portrait) and narrow screen */
 @media only screen and (min-width: 320px) and (max-width: 812px) {
-
+    [type="checkbox"] + label.switch::before {
+        margin-top: 0;
+    }
 }
 /* Printing */
 @media print {
+    [type="radio"] + label::before, 
+    [type="checkbox"] + label::before {
+        border: 2px solid #999;
+    }
 
+    [type="radio"]:checked + label::before, 
+    [type="checkbox"]:checked + label::before {
+        content: "✖";
+        line-height: 0.8em;
+    }
 }

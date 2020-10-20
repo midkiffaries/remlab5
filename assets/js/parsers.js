@@ -275,19 +275,6 @@
     }
 }());
 
-// Panel Switch Element block, use class="panelswitch"
-(function(){
-    const ps = document.getElementsByClassName("panelswitch"), 
-		l = ps.length;
-	
-    for (let i = 0; i < l; i++) {
-		ps[i].firstChild.nextElementSibling.addEventListener("click", () => {
-			ps[i].firstChild.nextElementSibling.classList.toggle("panel-button-active");
-			ps[i].lastChild.previousSibling.classList.toggle("panel-active");
-		},true);
-    }
-}());
-
 // TableSort: Sort any table with class="sortable"
 (function(){
     const table = document.querySelector("table.sortable"),
@@ -341,3 +328,16 @@
     `);
     document.body.appendChild(st); 	
 }()); 
+
+// Panel Switch Element block, use class="panelswitch"
+(function(){
+    const ps = document.getElementsByClassName("panelswitch"), 
+		l = ps.length;
+	
+    for (let i = 0; i < l; i++) {
+		ps[i].firstChild.nextElementSibling.addEventListener("click", () => {
+			ps[i].firstChild.nextElementSibling.classList.toggle("panel-button-active");
+			ps[i].lastChild.previousSibling.classList.toggle("panel-active");
+		},true);
+    }
+}());

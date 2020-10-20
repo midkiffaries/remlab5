@@ -1,6 +1,7 @@
 /**************************
  * Base JavaScript
 **************************/
+
 "use strict";    
 
 // REMLAB version
