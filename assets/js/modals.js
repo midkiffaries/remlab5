@@ -13,7 +13,7 @@ const AboutModal = () => (`
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
 <h3>Disclaimer</h3>
-<p>REMLAB is more of a personal programming project than anything else. I work on the development of this web app on a sporadic basis in my free time. It has honestly been awhile since I personally played Battletech, so some of my nuances may be a little dated.</p>
+<p>REMLAB is first and for most a personal programming project more so than a final working product. My ultimate goal is to produce something that is presentable in a portfolio or at a job interview. Development of this web app is on a sporadic basis and in my free time. If I do find time to continue development of this app, and expand on the features and lore I will do so... otherwise the code in its entirety on GitHub.</p>
 
 <h3>History</h3>
 <p>The first version of REMLAB dates back to <time>2005</time> when it was created as an early <abbr title="Asynchronous JavaScript And XML">AJAX</abbr> and PHP powered web app.</p>
@@ -24,8 +24,8 @@ const AboutModal = () => (`
 <h3>References &amp; Resources</h3>
 <ul>
     <li><a href="https://www.battletech.com" target="_blank">Official BattleTech Site</a></li>
-    <li><a href="http://www.sarna.net" target="_blank">Sarna BattleTechWiki</a></li>
-    <li><a href="http://www.battletechgame.com" target="_blank">BattleTech Computer Game</a></li>
+    <li><a href="https://www.sarna.net" target="_blank">Sarna BattleTechWiki</a></li>
+    <li><a href="https://www.battletechgame.com" target="_blank">BattleTech Computer Game</a></li>
     <li><i>...And of course all the source books.</i></li>
 </ul>
 `);
