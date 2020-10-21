@@ -15,11 +15,9 @@ REMLAB is first and for most a personal programming project more so than a final
 
 These are links to some of the resources I used as source material for REMLAB:
 
-[Official Battletech Website](https://www.battletech.com)
-
-[Sarna BattleTechWiki](https://www.sarna.net)
-
-[BattleTech Computer Game](https://www.battletechgame.com)
+* [Official Battletech Website](https://www.battletech.com)
+* [Sarna BattleTechWiki](https://www.sarna.net)
+* [BattleTech Computer Game](https://www.battletechgame.com)
 
 ## Legal
 
