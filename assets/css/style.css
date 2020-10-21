@@ -5,8 +5,8 @@ Base REMLAB Style
 /* Variables */
 :root {
     --base-gold: #e9c500;
-    --dark-gold: #cfaf00;
-    --light-gold: #ffe75e;
+    --dark-gold: #8C7700;
+    --light-gold: #FFF16B;
 }
 
 ::-moz-selection {
@@ -30,85 +30,104 @@ body {
 /* Page Header */
 
 .page-header {
-    height: 9em;
+    width: 25vw;
+    height: 100%;
+    float: left;
+    position: fixed;
+    background-color: #f8f8f8;
+    padding: 0.5em 1em;
 }
 
 .page-title {
-    float: left;
+    padding: 0 0 0.2em;
+    text-align: center;
 }
 
 .page-title img {
-    width: 8em;
+    width: 100%;
+    max-width: 8em;
 }
 
 .page-header-menu {
-    float: right;
+    position: fixed;
+    bottom: 0;
+    padding: 0 0.5em;
 }
 
 .page-header-menu li {
     float: left;
-    margin-right: 1em;;
+    margin-right: 0.8em;
 }
+
+.page-header-menu button {
+    padding: 0.3em 0.7em;
+}
+
+/* Page Sidebar */
+
+.page-sidebar {
+
+}
+
+.page-sidebar input[type="text"],
+.page-sidebar menu button {
+    width: 100%;
+}
+
+.version {
+    font-size: 0.8em;
+    color: #444;
+}
+
 
 
 /* Main content */
 
 .page-main {
-
+    width: 75vw;
+    float: right;
+    padding: 1em;
 }
 
 .page-grid {
-    width: 75vw;
-    float: right;
-}
 
-
-/* Page Sidebar */
-
-.page-sidebar {
-    width: 25vw;
-    height: 300vh;
-    float: left;
-}
-
-.sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-
-.page-sidebar input[type="text"],
-.page-sidebar menu button {
-    width: 95%;
 }
 
 
 /* Page Footer */
 
 .page-footer {
-
+    text-align: center;
+    margin-bottom: 1em;
 }
 
-.icon-github::before {
+.social-links {
+    text-align: center;
+    width: 100%;
+}
+
+/* Icons */
+
+[class^="icon-"]::before {
     content: " ";
+    margin: 1px 4px;
     width: 1.5em;
 	background: no-repeat 50% 50% / 1.3em;
 	background-color: inherit;
+}
+
+.icon-github::before {
 	background-image: url(../images/github.svg);
 }
 
+.icon-facebook::before {
+	background-image: url(../images/facebook.svg);
+}
+
 .icon-m20::before {
-    content: " ";
-    width: 1.5em;
-	background: no-repeat 50% 50% / 1.2em;
-	background-color: inherit;
 	background-image: url(../images/m20-logo.svg);
 }
 
-.icon-m20:hover, 
-.icon-m20:hover::before {
-    filter: invert(60%);
-}
 
 
 /************************
@@ -521,8 +540,10 @@ Responsive elements
 
 /* Phone (Portrait) and narrow screen */
 @media only screen and (min-width: 320px) and (max-width: 920px) {
+    .page-header,
+    .page-header-menu,
     .page-sidebar, 
-    .page-grid,
+    .page-main,
     .card,
     .col-2,
     .col-3 {
