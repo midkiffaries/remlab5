@@ -22,7 +22,7 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
             <h2>${title}</h2>
         </header>
         <div role="tablist" class="panelswitch card-body">
-            <button role="switch" class="panelswitch-button">Info</button>
+            <!--button role="switch" class="panelswitch-button">Info</button-->
             <div role="tabpanel" class="card-main">
                 ${body}
             </div>

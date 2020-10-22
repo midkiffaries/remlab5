@@ -67,11 +67,11 @@ main {
 	display: block;
 }
 
-header::after,
-footer::before {
-	content: "";
+header,
+footer {
 	clear: both;
 	display: table;
+	width: 100%;
 }
 
 hr {
@@ -549,7 +549,6 @@ select {
 select:not([multiple]):not([size]) {
 	padding-right: 1.4em;
 	background: no-repeat 100% 50% / 1em;
-	background-color: inherit;
 	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
 }
 

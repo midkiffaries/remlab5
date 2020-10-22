@@ -4,8 +4,8 @@ Base REMLAB Style
 
 /* Variables */
 :root {
-    --base-gold: #e9c500;
-    --dark-gold: #8C7700;
+    --base-gold: #eac500;
+    --dark-gold: #6B6020;
     --light-gold: #FFF16B;
 }
 
@@ -24,7 +24,7 @@ Page Layout
 *************************/
 
 body {
-
+    background-color: #fbfbfb
 }
 
 /* Page Header */
@@ -34,7 +34,7 @@ body {
     height: 100%;
     float: left;
     position: fixed;
-    background-color: #f8f8f8;
+    background-color: #f7f7f7;
     padding: 0.5em 1em;
 }
 
@@ -61,6 +61,12 @@ body {
 
 .page-header-menu button {
     padding: 0.3em 0.7em;
+}
+
+.page-header input,
+.page-header .stepper-container,
+.page-header select {
+    background-color: #fff;
 }
 
 /* Page Sidebar */
@@ -135,35 +141,43 @@ Cards Styling
 *************************/
 
 .card {
+    background-color: #fefefe;
     position: relative;
-    width: 50%;
+    width: calc(50% - 0.4em);
     float: left;
+    border: 1px solid #eee;
+    border-top: 3px solid #eac500;
+    margin: 0.2em;
 }
 
 .card.width-full {
-    width: 100%;
+    width: calc(100% - 0.4em);;
+}
+
+.card-header h2 {
+    margin: 0 0.2em;
 }
 
 .card-body {
     min-height: 12em;
+    position: relative;
+    padding: 0 0.5em;
 }
 
 .card-body p label:first-of-type {
     min-width: 6em;
 }
 
-.card-body p [type='text'] {
-    width: calc(90% - 7em);
+.card-footer {
+    background-color: #eee;
+    padding: 0.3em 0.4em;
+    white-space: nowrap;
 }
 
-.card-body textarea {
-    display: block;
-    width: 100%;
-    height: 8em;
-}
-
-.card-footer ul {
+.card-footer ul,
+.card-footer p {
     padding: 0;
+    margin: 0;
 }
 
 .card-footer li {
@@ -180,7 +194,7 @@ Cards Styling
     width: 33%;
 }
 
-/* Card Columns */
+/* Columns in the card */
 
 .card .col-2 {
     width: 50%;
@@ -210,25 +224,18 @@ Cards Styling
 /* Panel Switch Component and Button */
 
 .panelswitch-button {
-    float: right;
-    margin: -3.8em 1em 0 0;
-}
-
-.width-full .panelswitch-button {
-    margin-top: -2.8em;
+    position: absolute;
+    top: -3.4em;
+    right: 0.2em;
 }
 
 .panel-button-active {
 	background: #aaa;
 }
 
-.card-body {
-    position: relative;
-}	
-
 .card-main {
-	top: 0;
-}	
+
+}
 
 .card-help {
 	position: absolute;
@@ -262,16 +269,16 @@ Specific Card Styling
     min-height: 7em;
 }
 
+/* Internal Struct Card */
+
+.card-Internal .card-body p label {
+    min-width: 8em;
+}
+
 /* Armor card */
 
 .card-Armor .card-body p label {
     min-width: 3.5em;
-}
-
-/* Tech Readout card */
-
-.card-Readout .panelswitch-button {
-    margin-top: -4em;
 }
 
 /* Weapons card */
@@ -355,6 +362,20 @@ Specific Card Styling
     list-style: none;
     padding-left: 0.3em;
     margin: 0;
+}
+
+/* Warrior Card */
+
+.card-Warrior p [type='text'] {
+    width: calc(82% - 7em);
+}
+
+/* Tech Readout card */
+
+.card-Readout textarea {
+    display: block;
+    width: 100%;
+    height: 8em;
 }
 
 

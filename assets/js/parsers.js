@@ -159,7 +159,7 @@
     }
     .stepper-button {
         width: 1.3em;
-        height: 1.2em;
+        height: 1.1em;
         line-height: 0.2em;
         font-size: 1.5em;
         padding: 0.2em;
@@ -330,6 +330,7 @@
 }()); 
 
 // Panel Switch Element block, use class="panelswitch"
+/*
 (function(){
     const ps = document.getElementsByClassName("panelswitch"), 
 		l = ps.length;
@@ -341,3 +342,4 @@
 		},true);
     }
 }());
+*/
