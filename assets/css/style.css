@@ -9,6 +9,16 @@ Base REMLAB Style
     --light-gold: #FFF16B;
 }
 
+@font-face {
+    font-family: 'icons';
+    src: 
+        url('data:font/woff2;base64,d09GMgABAAAAAAVUAAsAAAAACNwAAAUIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAVBEICooAiC4BNgIkAygLFgAEIAWDBgcgGzEHyI7URnXJr3z4d9M/N4FKglQlNYPa5lWjFmCdwlpKnamx52HmQp9q5Inp395oQACgmX/sNysPDxGuayNlWnKTSEhcxxPb0t+aaqPRZilumF7iQN49AzR9k2yCGqB2U28ibMx3Ib9gJBABKxIExHLgJzXt9XlxGs0DIDMyDito5IgDgTJ6BRsiqTAeAIMAUGE9AfeT2ve/z7dP9xPqBPF9E6laLcQSMmLzpccyBt4VBiAYIPsBqhhggpUFIKDgl6spOrhtgjY42MAw2p7CwIiwMAL+0nLt9VFwE7LmTcbWxnom3JbyzmNN/jlx/C0m3Wz33Meue6lEc+JODJm6Yw9x740k0/bezSBdgggSSzwKccvLb4hR17d9KO+skiDLvO6mFH1t/C0x91zuGTlRUcz2G8XXjvuC8ffKvSJ3KEmqGJVa3jJLVkVpfcd60XhRSThgkCuflxtft5y4wUy5KWWekhPdD1lteQ/eI8XtE8cKsvHsG+xygRfF6KeAWZLMb5mP7yVud4wokwt3yJ2b5PooGVUy9l6MvDH2hmy4QNxKzg65yC2ZTyqsR0pTFHJZDDstQe45sfha8fbPco4J785QrO8gzl/MFlmGBmZ53nENO/TQDGEP45yBRMAIXsTyDLWDKw+yXEsxpKfDycygWWpN5ilGJ2SfIWp3zllWC41qsVVDWT+cgLh9uZckbO7Eg8aj97fzWpp/2yIjeF90qHdNyrcpBEDKlhRDxO7Ikv++q2jU68cUQ59/6Lv/SgYNNdURKd/lln36D3SMP4J/D3c5tVpnFz3nyPgOJM+f2N4+MT4ESkymkpIWE4q7T4e2Z/U+XLy4uuSDF6d4AhpS/Cv6ZlcTYQiehhpi3yCZDqhwfqsag/flG3x8ryNPbmszujwr3tDUlZQ4bX/+WaNtDmpVm9Rbxv7xR07liTiNdkZZmSa08tklA9ZHv1YxhfMiNkS2JTaf2dOSqI5Ojo6z1XAHFf7BqA1XUzqS2Fc6I9qS28YuzXg+Hhx9dWB6xowMQcjI3APm6ObwqNNXlRseN0Wl/MUEGvT9ERXTEDuCjF50zEXMdL+uccGnj+3dVzGu1NSQHVv93AS2vhqVVH3Bj+UBXFIs/rBkt9JQzdZnLZ35RHZjqali7N59xz42pRajScP+VdQUVW58PGPVJRp+4FbLdEFILskYQDnxDmRMz5whCNPbwidxJo48YON4zjz/aVOOKXearnfttrVzbf291uz6QKyqMBYk2DZEbF3cO01nyjXlzH+aM3O8DWndOdnZll2HD9+Nrtr1QWe2JTt59+5kPvXZZ1MTTqeMxyuv2u28JTZ/llYbMluyd+wIbjLmtpJsbVzNzFFHb3zu0tfBDwBon0w/ok8DvrdVoK86j4t23fti0iz95P8CWBWZ++Tupq25xuddZ/MidySHK+O5Nnkrp6jsRgBgVA05NS9pxBKaKRDDGtmDXXYGc58mOLsLduhwAQYJ/HGPhKpxNqBxY0GFW0hRg0U4xQ/+aEJmEAMBNIgqEAQp/CFQOCfQuBJQ4VZQ1IgAR/GDDh0PZFCMY/3drmGXawT96IYLw3CFDx2xOObN73eNcAWGfFjgwDzMRz8GzwwOBTAgf0fvgf/d4XAuHLLPQwcccGIhhmDHvFUPrHWNLOCcjhHHPPsCRw83eynX0O1qETYDau+VLOAxJxwYeQ2jHQvgQE/ubCwFh4ZzsC2LwwAaAQA=') format('woff2'),
+        url('icons.woff?93u5fl') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
 ::-moz-selection {
 	text-shadow: none;
 	background-color: var(--light-gold);
@@ -111,29 +121,6 @@ body {
     text-align: center;
     width: 100%;
 }
-
-/* Icons */
-
-[class^="icon-"]::before {
-    content: " ";
-    margin: 1px 4px;
-    width: 1.5em;
-	background: no-repeat 50% 50% / 1.3em;
-	background-color: inherit;
-}
-
-.icon-github::before {
-	background-image: url(../images/github.svg);
-}
-
-.icon-facebook::before {
-	background-image: url(../images/facebook.svg);
-}
-
-.icon-m20::before {
-	background-image: url(../images/m20-logo.svg);
-}
-
 
 
 /************************
@@ -393,10 +380,60 @@ Specific Card Styling
 Elements
 *************************/
 
+
+
 /* Add the c-bill symbol before the price */
+
 .cbills::before {
+    font-family: 'icons' !important;
+    content: "\e900";
+    font-size: 0.9rem;
+}
+
+/* Link Icons */
+
+.icon-m20::before {
+    font-family: 'icons' !important;
+    content: "\e901";
+    padding-right: 2px;
+    font-size: 1.1rem;
     vertical-align: -2px;
-	content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='17'%3E%3Cpath d='M6 0h6.3a1.5 1.5 0 011.3 1.5c0 .8-.7 1.2-1.5 1.2l-5 .4-1 1h.4c2.7 0 4.3 2 4.3 4.4 0 2.3-1.6 4.4-4.3 4.4l-.4-.2L7 14l5.4.4c.8 0 1.3.4 1.3 1.3a1.5 1.5 0 01-1.3 1.4H5.9a1.5 1.5 0 01-1.1-.8l-4-7a1.5 1.5 0 010-1.5l4-7A1.5 1.5 0 015.9 0zm.5 6.2a2.3 2.3 0 000 4.6c1.4 0 2.3-1 2.3-2.3s-1-2.3-2.3-2.3z' fill='grey'/%3E%3C/svg%3E");
+}
+
+.icon-github::before {
+    font-family: 'icons' !important;
+    content: "\e902";
+    padding-right: 2px;
+    font-size: 1.4rem;
+    vertical-align: -3px;
+}
+
+.icon-facebook::before {
+    font-family: 'icons' !important;
+    content: "\e903";
+    color: #1877f2;
+    padding-right: 2px;
+    font-size: 1.4rem;
+    vertical-align: -3px;
+}
+
+/* Link: External Link and New Tab */ 
+p [target="_blank"]::after,
+li [target="_blank"]::after {
+    font-family: 'icons' !important;
+    content: "\e904";
+    padding-left: 2px;
+    font-size: 1em;
+}
+
+/* Other Icons */
+
+.button-flip::before {
+    font-family: 'icons' !important;
+    content: "\e905";
+    font-size: 1.5rem;
+    line-height: 0.6;
+    vertical-align: -4px;
 }
 
 /* Section list */

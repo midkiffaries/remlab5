@@ -18,7 +18,7 @@ Tedilize 2.0 - Normalization and Base Styling
 *::after {
 	text-decoration: inherit;
     white-space: pre;
-	speak: none;
+	speak: never;
 }
 
 /* Default system sans-serif font */
@@ -382,7 +382,7 @@ Interactive elements
 *********************/
 
 :focus-visible {
-	outline: 5px auto -webkit-focus-ring-color
+	outline: 5px auto -webkit-focus-ring-color;
 }
 
 :focus:not(:focus-visible),

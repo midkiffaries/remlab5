@@ -99,7 +99,7 @@ const a_Experience = [
 // Warrior Affiliation
 const a_Affiliation = [
     '(blank line)',
-    'INNER SPHERE |—————',
+    'INNER SPHERE |————',
     'Capellan Confederation',
     'ComStar',
     'Draconis Combine',
@@ -136,7 +136,7 @@ const a_Affiliation = [
     'Rim Collection',
     'Taurian Concordat',
     'Tortuga Dominions',
-    'GENERIC |—————',
+    'GENERIC |———————',
     'Unaffiliated',
     'Explorer Corps',
     'Mercenary',
