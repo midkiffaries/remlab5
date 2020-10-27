@@ -29,7 +29,6 @@ html {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	-webkit-overflow-scrolling: touch;
 	scrollbar-width: thin;
 	line-height: 1.5;
 	text-rendering: auto;
@@ -548,7 +547,7 @@ select {
 
 select:not([multiple]):not([size]) {
 	padding-right: 1.4em;
-	background: no-repeat 100% 50% / 1em;
+	background: transparent no-repeat 100% 50% / 1em;
 	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
 }
 
@@ -595,7 +594,7 @@ output {
 }
 
 fieldset {
-	padding: 0.35em 0.75em 0.625em;
+	padding: 0.2em 0.75em 0.6em;
 	border: 1px solid #bbb;
 }
 

@@ -4,9 +4,12 @@ Base REMLAB Style
 
 /* Variables */
 :root {
-    --base-gold: #eac500;
-    --dark-gold: #6B6020;
-    --light-gold: #FFF16B;
+    --base-gold: #eac600;
+    --dark-gold: #ba9d00;
+    --light-gold: #ffe55a;
+    --pale-gold: #fffae1;
+
+    --input-bg: #fefefe;
 }
 
 @font-face {
@@ -28,6 +31,15 @@ Base REMLAB Style
 	text-shadow: none;
 	background-color: var(--light-gold);
 }
+
+aside *:focus,
+main *:focus {
+    outline: none;
+    box-shadow: 0 0 1px 2px var(--base-gold);
+    border-color: var(--dark-gold);
+    background-color: var(--pale-gold) !important;
+}
+
 
 /************************
 Page Layout
@@ -73,28 +85,54 @@ body {
     padding: 0.3em 0.7em;
 }
 
-.page-header input,
-.page-header .stepper-container,
-.page-header select {
-    background-color: #fff;
-}
-
-/* Page Sidebar */
-
-.page-sidebar {
-
-}
-
-.page-sidebar input[type="text"],
-.page-sidebar menu button {
-    width: 100%;
-}
-
-.version {
+.page-header-menu .version {
     font-size: 0.8em;
     color: #444;
 }
 
+/* Page Sidebar */
+
+.sidebar-input input,
+.sidebar-input .stepper-container,
+.sidebar-input select:not([multiple]):not([size]) {
+    background-color: var(--input-bg);
+}
+
+.sidebar-input label {
+    min-width: 3.8em;
+}
+
+.sidebar-input input[type="text"],
+.sidebar-print button {
+    width: 100%;
+}
+
+.sidebar-totals {
+    background: #eee;
+    font-size: 1em;
+    padding: 0.1em 1em;
+    border-radius: 0.3em;
+}
+
+.sidebar-totals p {
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.sidebar-print button {
+    background-color: var(--base-gold);
+    border-color: var(--base-gold);
+    padding: 0.6em;
+    font-weight: 500;
+}
+
+.sidebar-print button:hover {
+    background-color: var(--light-gold);
+}
+
+.sidebar-print button:active {
+    background-color: var(--dark-gold);
+}
 
 
 /* Main content */
@@ -128,12 +166,12 @@ Cards Styling
 *************************/
 
 .card {
-    background-color: #fefefe;
+    background-color: var(--input-bg);
     position: relative;
     width: calc(50% - 0.4em);
     float: left;
     border: 1px solid #eee;
-    border-top: 3px solid #eac500;
+    border-top: 3px solid var(--base-gold);
     margin: 0.2em;
 }
 
@@ -149,6 +187,10 @@ Cards Styling
     min-height: 12em;
     position: relative;
     padding: 0 0.5em;
+}
+
+.card-body {
+    line-height: 1.4;
 }
 
 .card-body p label:first-of-type {
@@ -377,10 +419,23 @@ Specific Card Styling
 
 
 /************************
-Elements
+Modals and Dialogs Style
 *************************/
 
+.dialog-body {
+    background-color: #fcfcfc;
+}
 
+.helpModal {}
+.aboutModal {}
+.recordsheetModal {}
+.techreadoutModal {}
+
+
+
+/************************
+Elements
+*************************/
 
 /* Add the c-bill symbol before the price */
 
@@ -455,7 +510,8 @@ Radio and Checkbox style
 :focus-visible + label[for]:before, 
 .check-button:focus-visible + label, 
 .radio-button:focus-visible + label,
-[type="checkbox"]:focus-visible + label.switch {
+[type="checkbox"]:focus-visible + label.switch,
+.file_download:focus-visible + label {
     outline: auto 5px -webkit-focus-ring-color;
 }
 
@@ -551,13 +607,15 @@ Radio and Checkbox style
 .radio-button + label {
     margin: 0;
 	text-align: center;
-    background: #fafafa;
+    background: #fff;
     min-width: 3em;
+    border-color: #ddd;
 }	
 
 .check-button:checked + label, 
 .radio-button:checked + label {
-    background: #aaa;
+    background: var(--light-gold);
+    border-color: var(--light-gold);
 }
 
 .check-button + label::before, 
@@ -571,10 +629,6 @@ Radio and Checkbox style
     width: 0 !important;
 	padding: 0;
 	overflow: hidden;
-}
-
-.file_download:focus-visible + label {
-	outline: auto 5px -webkit-focus-ring-color;
 }
 
 .file_download + label::before {

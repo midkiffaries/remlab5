@@ -323,7 +323,7 @@ const sWarrior = new SectionPanel(
     <div class="col-2">
         <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
         <p><label>Race</label> <input type="radio" name="radRace" id="radioR1" value="Human" class="radio-button" checked><label for="radioR1" role="button">Human</label><input type="radio" name="radRace" id="radioR2" value="Clanner" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
-        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"><button role="switch" id="btnAffiliation" class="button-flip" aria-label="Switch to manual input or list input"></button></p>
+        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"><button role="switch" id="btnAffiliation" class="button-flip" aria-label="Switch to manual input or list input" disabled></button></p>
         <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     </div>
     <div class="col-2">
@@ -437,22 +437,22 @@ const sReadout = new SectionPanel(
  ************************/
 
 const sideBarTotals = (`
-    <div class="col-3">
+    <div class="sidebar-input">
         <p><input id="txtType" type="text" maxlength="40" placeholder="Mech Type" value="${Mech.type}" spellcheck="false" autocorrect="off" autofocus></p>
         <p><label>Chassis</label> <select id="selChassis" class="select" data-list="a_ChassisType"></select></p>
         <p><label>Mass</label> <span class="stepper-container"><input type="number" id="stepMass" value="${Mech.mass}" min="10" max="100" step="5" class="stepper" readonly></span> tons <small><output id="outWeightClass">${weightClass(Mech.mass)}</output></small></p>
         <p><label>Tech</label> <input type="radio" name="selTechnology" id="radioT1" value="0" class="radio-button" checked><label for="radioT1" role="button">Inner Sphere</label><input type="radio" name="selTechnology" id="radioT2" value="1" class="radio-button" disabled><label for="radioT2" role="button">Clan</label></p>
         <p><label>Ruleset</label> <select id="selRuleset" class="select" data-list="a_RuleSet" disabled></select></p>
     </div>
-    <div class="col-3">
+    <div class="sidebar-totals">
         <p><label>Mass</label> <output id="outCurrentMass">${Mech.totalMass}</output> / <output id="outTotalMass">${Mech.mass}</output> tons</p>
         <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
         <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
         <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
-        <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> (<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton)</p>
+        <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> <small>[<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton]</small></p>
         <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
-    <menu class="col-3 sidebar-buttons">
+    <menu class="sidebar-print">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
         <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
         <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->

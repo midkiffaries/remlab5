@@ -144,17 +144,17 @@
 	let st = document.createElement("style");
     st.textContent = (`
     .stepper-container {
-        height: 2em;
+        height: 1.9em;
         display: inline-block;
     }
     .stepper {
         vertical-align: top;
         width: 2em;
         height: 100%;
-        font-size: 1.2em;
+        font-size: 1.1em;
         text-align: center;
         border: none;
-        background: transparent;
+        background-color: transparent;
         padding: 0;
     }
     .stepper-button {
@@ -163,7 +163,7 @@
         line-height: 0.2em;
         font-size: 1.5em;
         padding: 0.2em;
-        background: transparent;
+        background-color: transparent;
         border: none;
     }
     `);
