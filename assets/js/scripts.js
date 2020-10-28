@@ -37,7 +37,6 @@ function AlertModal(text, bgColor) {
     dialog.setAttribute("class", "dialog-alert");
     dialog.setAttribute("role", "alertdialog");
     dialog.setAttribute("onclick", `closeModals('dialog-alert')`);
-    //dialog.setAttribute("style", `background-color: ${bgColor}`);
     dialog.appendChild(document.createTextNode(text));
 
     // Append style
@@ -294,7 +293,18 @@ function HtmlModal(JsVar, c) {
     // Append to page body
     document.body.appendChild(aDialog.dialog);
     document.getElementById("HTML_Frame").innerHTML = JsVar(c);
+/*
+    const test = (`
+        <div class="dialog-top">
+            <button onclick="closeModals('dialog-html')" class="dialog-html-close" aria-label="Close dialog box" autofocus></button>
+        </div>
+        <div class="dialog-body">
+            <div id="HTML_Frame">${JsVar(c)}</div>
+        </div>
+    `);
 
+    document.body.appendChild(test);
+*/
     // Display Dialog
     setTimeout(() => { 
         aDialog.dialog.classList.toggle("dialog-open");

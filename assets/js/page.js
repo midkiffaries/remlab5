@@ -210,7 +210,7 @@ const sArmor = new SectionPanel(
     </div>
 
     <div class="col-3">
-        <fieldset>
+        <fieldset class="autofill-buttons">
             <legend>Auto Fill</legend>
             <p><button id="btnArmorFill-100" onclick="autoFillArmor(1)">Max</button></p>
             <p><button id="btnArmorFill-75" onclick="autoFillArmor(0.75)">75%</button></p>
@@ -359,11 +359,11 @@ const sQuirks = new SectionPanel(
     // body
     `
     <div class="col-2">
-        <p><label><b>Positive</b></label></p>
+        <label>Positive</label>
         <ol role="listbox" class="select-list" id="selDQPositive" data-list="a_DQPositive" style="height:6em"></ol>
     </div>
     <div class="col-2">
-        <p><label><b>Negative</b></label></p>
+        <label>Negative</label>
         <ol role="listbox" class="select-list" id="selDQNegative" data-list="a_DQNegative" style="height:6em"></ol>
     </div>
     `, 
@@ -678,6 +678,7 @@ function locationList(n, v) {
         <ul>
             <li><input type="checkbox" id="chkLowerArm_${v}" onclick="checkActuator()" checked disabled><label for="chkLowerArm_${v}">Lower Arm</label></li>
             <li><input type="checkbox" id="chkHand_${v}" onclick="checkActuator()" checked><label for="chkHand_${v}">Hand</label></li>
+            <li><input type="checkbox" id="chkHatchet_${v}" onclick="checkActuator()" disabled><label for="chkHatchet_${v}">Hatchet</label></li>
         </ul>`);
     }
     s += (`

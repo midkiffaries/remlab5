@@ -38,6 +38,7 @@ main *:focus {
     box-shadow: 0 0 1px 2px var(--base-gold);
     border-color: var(--dark-gold);
     background-color: var(--pale-gold) !important;
+    caret-color: var(--dark-gold);
 }
 
 
@@ -60,8 +61,11 @@ body {
     padding: 0.5em 1em;
 }
 
+.page-header p {
+    margin: 0.7em 0;
+}
+
 .page-title {
-    padding: 0 0 0.2em;
     text-align: center;
 }
 
@@ -168,11 +172,11 @@ Cards Styling
 .card {
     background-color: var(--input-bg);
     position: relative;
-    width: calc(50% - 0.4em);
+    width: calc(50% - 0.6em);
     float: left;
     border: 1px solid #eee;
     border-top: 3px solid var(--base-gold);
-    margin: 0.2em;
+    margin: 0.3em;
 }
 
 .card.width-full {
@@ -180,17 +184,17 @@ Cards Styling
 }
 
 .card-header h2 {
-    margin: 0 0.2em;
+    margin: 1px 0.3em;
 }
 
 .card-body {
-    min-height: 12em;
+    min-height: 11em;
     position: relative;
     padding: 0 0.5em;
 }
 
-.card-body {
-    line-height: 1.4;
+.card-body p {
+    margin: 0.7em 0.3em;
 }
 
 .card-body p label:first-of-type {
@@ -310,6 +314,14 @@ Specific Card Styling
     min-width: 3.5em;
 }
 
+.card-Armor .autofill-buttons button {
+    padding: 0.22em;
+}
+
+.card-Armor fieldset {
+    margin-bottom: 0.3em;
+}
+
 /* Weapons card */
 
 .card-Weapons .col-2 {
@@ -397,6 +409,11 @@ Specific Card Styling
 
 .card-Warrior p [type='text'] {
     width: calc(82% - 7em);
+}
+
+.card-Quirks ol, 
+.card-Quirks label {
+    margin-top: 0.3em;
 }
 
 /* Tech Readout card */
