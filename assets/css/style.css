@@ -128,6 +128,7 @@ body {
     border-color: var(--base-gold);
     padding: 0.6em;
     font-weight: 500;
+    border-width: 3px;
 }
 
 .sidebar-print button:hover {
@@ -136,6 +137,7 @@ body {
 
 .sidebar-print button:active {
     background-color: var(--dark-gold);
+    border-color: var(--dark-gold);
 }
 
 
@@ -234,23 +236,9 @@ Cards Styling
     float: left;
 }
 
-.card .col-3:first-of-type {
-    float: left;
-    width: 54%;
-}
-
-.card .col-3:nth-of-type(2) {
-    float: left;
+.card .col-3 {
     width: auto;
-}
-
-.card .col-3:last-of-type {
     float: left;
-    width: 14%;
-}
-
-.card .col-3:last-of-type button {
-    width: 100%;
 }
 
 
@@ -314,12 +302,30 @@ Specific Card Styling
     min-width: 3.5em;
 }
 
-.card-Armor .autofill-buttons button {
-    padding: 0.22em;
-}
-
 .card-Armor fieldset {
     margin-bottom: 0.3em;
+}
+
+.card-Armor .col-3:last-of-type {
+    min-width: 8em;
+}
+
+.autofill-buttons button {
+    width: 100%;
+    padding: 0.1em;
+    background-color: #fff;
+    color: #555;
+    font-weight: 600;
+    border: 3px solid #555;
+}
+
+.autofill-buttons button:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.autofill-buttons button:active {
+    background-color: #333;
 }
 
 /* Weapons card */
@@ -334,6 +340,7 @@ Specific Card Styling
 
 /* full table */
 .table-weapons {
+    margin-left: -0.9em;
     font-size: 0.85em;
 }
 
@@ -342,11 +349,21 @@ Specific Card Styling
     overflow: hidden;
 }
 
+.table-weapons button {
+    padding: 0 0.1em;
+    width: 1.6em;
+}
+
+.table-weapons button img {
+    height: 0.8em;
+}
+
 /* weapons list */
 .list-weapons {
     height: 30em;
     overflow-y: scroll;
     border: 1px solid #bbb;
+    margin: 0.4em 0;
 }
 
 .list-weapons::-webkit-scrollbar {
@@ -368,11 +385,14 @@ Specific Card Styling
 .list-weapons ol {
     list-style: none;
     padding: 0;
+    margin: 0;
     line-height: 1.4;
 }
 
 .list-weapons li {
-    margin: 8px 0;
+    border: 1px solid #000;
+    background-color: #eee;
+    margin: 2px 1px;
     padding: 5px 8px;
 }
 
@@ -380,9 +400,25 @@ Specific Card Styling
     display: block;
 }
 
-.list-weapons span:first-of-type {
+.list-weapons .weapon-name {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1em;
+}
+
+.list-weapons .weapon-buttons {
+    float: right;
+    width: 1.4em;
+}
+
+.list-weapons button {
+    padding: 0.1em;
+    border: none;
+    background: transparent;
+    margin-bottom: 0.5em;
+}
+
+.list-weapons button img {
+    height: 1.2em;
 }
 
 .tbllocation-remove {
@@ -394,6 +430,10 @@ Specific Card Styling
 }
 
 /* locations table */
+.locations-list {
+    padding: 0 0.4em;
+}
+
 .locations-list section {
     float: left;
     width: 33%;
@@ -403,6 +443,15 @@ Specific Card Styling
     list-style: none;
     padding-left: 0.3em;
     margin: 0;
+}
+
+.locations-mandatory button {
+    padding: 0.1em 0.2em;
+    line-height: 1;
+}
+
+.locations-mandatory button img {
+    height: 1em;
 }
 
 /* Warrior Card */

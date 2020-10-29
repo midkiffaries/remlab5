@@ -285,11 +285,11 @@ const sWeapons = new SectionPanel(
         ${locationList('Center Torso','CT')}
         ${locationList('Right Torso', 'RT')}
         ${locationList('Left Leg', 'LL')}
-        <section>
+        <section class="locations-mandatory">
             <h5>Mandatory</h5>
             <ul>
-                <li>Heat Sinks (0)</li>
-                <li>Jump Jets (0)</li>
+                <li><button aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button> Heat Sinks (0)</li>
+                <li><button aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button> Jump Jets (0)</li>
             </ul>
         </section>
         ${locationList('Right Leg','RL')}
@@ -490,11 +490,11 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Update form based on user input
 const updateForm = () => {
-    // Totals Side Bar
-        // Get
+    // Totals Side Bar -------
+    // Post data to form
     Mech.type = elID('txtType').value;
     Mech.mass = elID('stepMass').value;
-        // Post
+    // Post data to array
     elID('outWeightClass').value = weightClass(Mech.mass);
     elID('outTotalMass').value = addDecimal(Mech.mass);
     elID('outCurrentMass').value = addDecimal(Mech.totalMass);
@@ -503,48 +503,48 @@ const updateForm = () => {
     elID('outTotalCost').value = addComma(Mech.totalCost);
     elID('outTotalBV').value = addComma(Mech.totalBV);
 
-    // Engine Section
-        // Get
+    // Engine Section -------
+    // Post data to form
     Mech.walkingMP = elID('stepWalking').value;
     Mech.engineType = elID('selEngine').value;
-        // Post
+    // Post data to array
     elID('outRunning').value = Mech.runningMP;
     elID('outEngineRating').value = `${Mech.engineRating} ${Mech.engineBrand}`;
     elID('outEngineMass').value = addDecimal(Mech.engineMass);
     elID('outEngineCrits').value = Mech.engineCrits;
     elID('outEngineCost').value = addComma(Mech.engineCost);
 
-    // Jump Jets Section
-        // Get
+    // Jump Jets Section -------
+    // Post data to form
     Mech.jumpingMP = parseInt(elID('stepJumping').value);
     Mech.jumpjetsType = elID('selJumpJets').value;
-        // Post
+    // Post data to array
     elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass);
     elID('outJumpJetsCrits').value = Mech.jumpjetsCrits;
     elID('outJumpJetsCost').value = addComma(Mech.jumpjetsCost);
 
-    // Heat Sinks Section
-        // Get
+    // Heat Sinks Section -------
+    // Post data to form
     Mech.heatsinks = elID('stepHeatSinks').value;
     Mech.heatsinkType = elID('selHeatSinks').value;
-        // Post
+    // Post data to array
     elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass);
     elID('outHeatSinksCrits').value = Mech.heatsinksCrits;
     elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
-    // Internal Comp Section
-        // Get
+    // Internal Comp Section -------
+    // Post data to form
     Mech.isType = elID('selInternalSruct').value;
     Mech.gyroType = elID('selGyro').value;
     Mech.cockpitType = elID('selCockpit').value;
     Mech.targetingType = elID('selTargeting').value;
-        // Post
+    // Post data to array
     elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass);
     elID('outInternalCrits').value = Mech.internalComponentsCrits;
     elID('outInternalCost').value = addComma(Mech.internalComponentsCost);    
 
-    // Armor Secton
-        // Get
+    // Armor Secton -------
+    // Post data to form
     Mech.armorType = elID('selArmor').value;
     Mech.AH = parseInt(elID('stepArmorH').value);
     Mech.ALT = parseInt(elID('stepArmorLT').value);
@@ -557,7 +557,7 @@ const updateForm = () => {
     Mech.ARA = parseInt(elID('stepArmorRA').value);
     Mech.ALL = parseInt(elID('stepArmorLL').value);
     Mech.ARL = parseInt(elID('stepArmorRL').value);
-        // Post
+    // Post data to array
     elID('outArmorTotal').value = Mech.armorTotal;
     elID('outArmorTotalMax').value = Mech.armorTotalMax;
     elID('outArmorMass').value = addDecimal(Mech.armorMass);
@@ -571,19 +571,20 @@ const updateForm = () => {
     elID('outMaxLL').value = Mech.ISL * 2;
     elID('outMaxRL').value = Mech.ISL * 2;
 
-    // Weapons Section
-        // Post
+    // Weapons Section -------
+    // Post data to array
     elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
     // Design Quirks Section
-        // Get
+    // Post data to form
     //Mech.positiveDQ = document.forms[0];
-        // Post
+    // Post data to array
 
-    // Warrior Section
-        // Get
+
+    // Warrior Section -------
+    // Post data to form
     Warrior.name = elID('txtPilotName').value;
     Warrior.race = document.forms[0].radRace.value;
     Warrior.affiliation = elID('selAffiliation').value;
@@ -618,10 +619,7 @@ function completeWeaponsTable() {
             // Generate each table row
             tr += (`
             <tr data-id="${i}">
-                <td>
-                    <button class="tblweapons-add" onclick="addWeapon('LA', ${i})">+</button>
-                    <button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})">?</button>
-                </td>
+                <td><button class="tblweapons-add" onclick="addWeapon('LA', ${i})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button></td>
                 <td>${w.name}</td>
                 <td>${w.heat}</td>
                 <td>${displayDamage(w.minDamage, w.damage)}</td>
@@ -655,9 +653,9 @@ function compactWeaponsTable() {
             // Generate each table row
             li += (`
             <li data-id="${i}">
+                <span class="weapon-buttons"><button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/more.svg" alt="i"></button></span>
                 <span class="weapon-name">${w.name}</span>
-                <span><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})">Info</button> <button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})">Add</button></span>
-                <span>${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</span>
+                <span class="weapon-data">${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</span>
             </li>
             `);
         }
@@ -775,7 +773,7 @@ const autoFillArmor = v => {
         STfront = parseInt((Mech.IST * 2) * 0.8),
         STrear = (Mech.IST * 2) - STfront;
 
-	// Post data
+	// Post data to form
     elID('stepArmorH').value = parseInt(9 * v);
 	elID('stepArmorLT').value = parseInt(STfront * v);
     elID('stepArmorLTR').value = parseInt(STrear * v);
@@ -788,5 +786,18 @@ const autoFillArmor = v => {
     elID('stepArmorLL').value = (Mech.ISL * 2) * v;
     elID('stepArmorRL').value = (Mech.ISL * 2) * v;
     
+    // Post data to array
+    Mech.AH = parseInt(elID('stepArmorH').value);
+    Mech.ALT = parseInt(elID('stepArmorLT').value);
+    Mech.ACT = parseInt(elID('stepArmorCT').value);
+    Mech.ART = parseInt(elID('stepArmorRT').value);
+    Mech.ALTR = parseInt(elID('stepArmorLTR').value);
+    Mech.ACTR = parseInt(elID('stepArmorCTR').value);
+    Mech.ARTR = parseInt(elID('stepArmorRTR').value);
+    Mech.ALA = parseInt(elID('stepArmorLA').value);
+    Mech.ARA = parseInt(elID('stepArmorRA').value);
+    Mech.ALL = parseInt(elID('stepArmorLL').value);
+    Mech.ARL = parseInt(elID('stepArmorRL').value);
+
     updateForm();
 };
