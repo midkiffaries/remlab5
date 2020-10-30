@@ -331,11 +331,11 @@ Specific Card Styling
 /* Weapons card */
 
 .card-Weapons .col-2 {
-    width: 75%;
+    width: 72%;
 }
 
 .card-Weapons .col-2:first-of-type {
-    width: 25%;
+    width: 28%;
 }
 
 /* full table */
@@ -360,14 +360,14 @@ Specific Card Styling
 
 /* weapons list */
 .list-weapons {
-    height: 30em;
+    height: 36em;
     overflow-y: scroll;
-    border: 1px solid #bbb;
+    border: 2px solid #aaa;
     margin: 0.4em 0;
 }
 
 .list-weapons::-webkit-scrollbar {
-    width: 0.8em;
+    width: 0.5em;
 }
 
 .list-weapons::-webkit-scrollbar-track {
@@ -390,10 +390,11 @@ Specific Card Styling
 }
 
 .list-weapons li {
-    border: 1px solid #000;
-    background-color: #eee;
+    border: 1px solid #bbb;
+    background-color: #f6f6f6;
     margin: 2px 1px;
     padding: 5px 8px;
+    position: relative;
 }
 
 .list-weapons span {
@@ -406,7 +407,9 @@ Specific Card Styling
 }
 
 .list-weapons .weapon-buttons {
-    float: right;
+    position: absolute;
+    right: 3px;
+    top: 1px;
     width: 1.4em;
 }
 
@@ -414,11 +417,16 @@ Specific Card Styling
     padding: 0.1em;
     border: none;
     background: transparent;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+    opacity: 0.4;
 }
 
 .list-weapons button img {
     height: 1.2em;
+}
+
+.list-weapons button:hover {
+    opacity: 1;
 }
 
 .tbllocation-remove {
@@ -585,7 +593,9 @@ Radio and Checkbox style
 [type="checkbox"] {
     opacity: 0 !important;
     width: 0 !important;
-	overflow: hidden;
+    height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
     z-index: -1;
 }
 

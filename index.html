@@ -42,32 +42,34 @@
 
 <body class="body" onload="updateForm()">
 
-<!-- Header / Side Bar -->
-<header class="page-header" id="Header">
-    <h1 class="page-title"><img src="assets/images/logo.svg" alt="REMLAB Web Mech Designer"></h1>
+<form id="frmMain" name="form" onchange="updateForm()" onsubmit="event.preventDefault()">
 
-    <!-- Side Bar -->
-    <aside id="SideBar" class="page-sidebar"></aside>
+    <!-- Header / Side Bar -->
+    <header class="page-header" id="Header">
+        <h1 class="page-title"><img src="assets/images/logo.svg" alt="REMLAB Web Mech Designer"></h1>
 
-    <!-- Side Bar Menu -->
-    <menu class="page-header-menu">
-        <ul>
-            <li><button id="btnHelp" aria-label="Help">Help</button></li>
-            <li><button id="btnAbout" aria-label="About">About</button></li>
-        </ul>
-        <div class="version">Version <span id="AppVersion">5.0</span> - 2020</div>
-    </menu>
-</header>
+        <!-- Side Bar -->
+        <aside id="SideBar" class="page-sidebar"></aside>
 
-<!-- Page Content -->
-<main class="page-main">
-    <form id="frmMain" name="form" onchange="updateForm()" onsubmit="event.preventDefault()">
-        
+        <!-- Side Bar Menu -->
+        <menu class="page-header-menu">
+            <ul>
+                <li><button id="btnHelp" aria-label="Help">Help</button></li>
+                <li><button id="btnAbout" aria-label="About">About</button></li>
+            </ul>
+            <div class="version">Version <span id="AppVersion">5.0</span> - 2020</div>
+        </menu>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-main">
+
         <!-- Main Grid -->
         <div id="SectionsGrid" class="page-grid"></div>
 
-    </form>
-</main>
+    </main>
+
+</form>
 
 <!-- Footer -->
 <footer class="page-footer" role="contentinfo">

@@ -113,17 +113,18 @@ const rs_WeaponsList = (v) => {
 };
 
 // Record Sheet print modal content
-const RecordSheetModal = () => (`
+const RecordSheetModal = () => {
+	return `
 <div class="print-container">
 	<div class="print-sheet">
 		<div class="print-body">
 			<div class="print-leftside">
 				<header class="print-header">
                     <h2>
-                    <img src="assets/images/btech2010.svg" alt="Battletech">
-                    <span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
+						<img src="assets/images/btech2010.svg" alt="Battletech">
+						<span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
 					</h2>
-					<div class="print-header-right">Miniature<br><b>${Warrior.miniature}</b></div>
+					<div class="print-header-right">Miniature<br><b class="dotted">${Warrior.miniature}</b></div>
 				</header>
 
 				<div class="print-armordiagram">
@@ -258,7 +259,7 @@ const RecordSheetModal = () => (`
 			<aside class="print-rightside">
 				<div class="print-data">
 					<h3>Mech Data</h3>
-					<p><b>${Mech.type}</b></p>
+					<p><b class="dotted">${Mech.type}</b></p>
 					<p>Tonnage: <b>${Mech.mass}</b></p>
 					<p>Technology: <b>${a_TechBase[Mech.techbase]}</b></p>
 					<p>Ruleset: <b>${a_RuleSet[Mech.rules]}</b></p>
@@ -271,8 +272,8 @@ const RecordSheetModal = () => (`
 				</div>
 				<div class="print-warrior">
 					<h3>Warrior</h3>
-					<p>Name: <span>${Warrior.name}</span></p>
-					<p>Affiliation: <span>${a_Affiliation[Warrior.affiliation]}</span></p>
+					<p>Name: <span class="dotted">${Warrior.name}</span></p>
+					<p>Affiliation: <span class="dotted">${a_Affiliation[Warrior.affiliation]}</span></p>
 					<p>Gunnery: <b>${Warrior.gunnery}</b> &nbsp; Piloting: <b>${Warrior.piloting}</b> &nbsp;&nbsp; <i>${a_Experience[Warrior.experience]}</i></p>
 					<table class="print-warriorstats">
 						<tr>
@@ -303,7 +304,7 @@ const RecordSheetModal = () => (`
 				</div>
 				<div class="print-heatscale">
 					<h3>Heat Scale</h3>
-					<table class="print-heatscale">
+					<table class="print-heatscale" style="border-top:0">
 						${generateHeatScale()}
 					</table>
 				</div>
@@ -372,8 +373,357 @@ body {
 
 .dialog-body {
 	margin: 1em;
+	line-height: 1.1;
 	max-width: 100%;
 }
+
+.cbills::before {
+	font-size: 0.5em;
+}
+
+
+/* Display underline on empty elements */
+.dotted:empty {
+    width: 80%;
+    height: 1em;
+    border-bottom: 1pt dotted #bbb;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.print-container {
+	margin-top: 2em;
+}
+
+.print-sheet {
+	font-size: 0.7em;
+}
+
+.print-sheet .indent {
+    text-indent: 2.6em;
+}
+
+.print-header h2 {
+    margin: 0;
+    font-size: 2.25em;
+	letter-spacing: 0;
+}
+
+.print-header img {
+	height: 1.5em;
+}
+
+.print-header-right {
+    float: right;
+    margin: -4em 8px 0 0;
+    font-size: 0.9em;
+    width: 10em;
+    overflow: hidden;
+}
+
+.print-subtitle {
+    display: block;
+    font-size: 0.55em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.print-body h3, .print-bottom h3 {
+    margin: 2px 0 6px 0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+    
+.print-leftside {
+    float: left;
+    width: 73%;
+    border-right: 2pt solid #aaa;
+    margin-bottom: 2px;
+}
+
+.print-rightside {
+    float: right;
+    width: 27%;
+    padding-left: 2px;
+}
+
+.print-rightside p {
+    margin: 5px 0;
+    font-size: 0.8em;
+}
+
+.print-data {
+    padding-left: 3px;
+}
+
+.print-data ul {
+    list-style: none;
+    padding: 0 15px;
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.print-data ul label {
+    width: 5em;
+}
+
+.print-warrior {
+    border-top: 3pt solid #aaa;
+    margin-top: 4px;
+    padding-left: 3px;
+}
+
+.print-warriorstats td, .print-warriorstats th {
+    border: 1pt solid #aaa;
+    width: 10%;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.print-warriorstats tr th:first-of-type {
+    text-align: left;
+    background: #eee;
+    width: 90px;
+}
+
+.print-heat {
+    border-top: 3pt solid #aaa;
+    margin-top: 4px;
+    padding-left: 3px;
+}
+
+.print-heatscale {
+    border-top: 3pt solid #aaa;
+    margin-top: 4px;  
+    padding-left: 2px;
+}
+
+.print-heatscale table {
+    font-size: 0.8em !important;
+    margin-bottom: 5px;
+}
+
+.print-heatscale table th {
+    text-align: center;
+    padding: 1px 6px;
+    margin: 0;
+    line-height: 0.9em;
+    border: 1pt solid #bbb;
+    color: #555;
+    width: 2.7em;
+}
+
+.print-heatscale table td {
+    line-height: 0.9em;
+}
+
+.print-hs-box {
+    width: 1.8em;
+    height: 1.1em;
+}
+
+.print-armordiagram {
+    min-height: 18em;
+    padding-top: 8px;
+}
+
+.print-armordiagram h4 {
+    font-weight: bold;
+	letter-spacing: -0.5px;
+}
+
+.print-armordiagram h4 span {
+    font-size: 0.6em;
+}
+
+.print-armor-col {
+    float: left;
+    width: 20%;
+    padding: 2px 3px;
+    font-size: 0.9em;
+}
+
+.print-armorbox {
+    margin-bottom: 4px;
+}
+
+.print-armorbox h4 {
+    font-size: 1em;
+    margin: 0 0 1px 2px;
+}
+
+.print-armorbox h4 span {
+    font-weight: 400;
+    font-size: 7px !important;
+    color: #555;
+}
+
+.print-armorbox div {
+    border: 1pt solid #ccc;
+    border-radius: 2pt;
+}
+
+.print-armorbox div span {
+    display: block;
+    padding-left: 2px;
+}
+
+.print-isbox {
+    background: #eee;
+    color: #666;
+    border-top: 1pt solid #ccc;
+    border-radius: 0 0 1pt 1pt;
+}
+
+.print-reararmor:not(:empty) {
+    border-top: 1pt solid #ccc;
+}
+
+.print-center {
+    text-align: center;
+    margin-top: 2.5em;
+}
+
+.print-center div {
+    border: 2pt solid #555;
+    border-radius: 4pt;
+    margin-bottom: 1em;
+}
+
+.print-critstable {
+    clear: both;
+    padding: 5px 0 0 0;
+    position: relative;
+    border-top: 3pt solid #aaa;
+    margin-right: 2px;
+}
+
+.print-critstable > div {
+    font-size: 0.8em;
+    margin: 0 10px 3px 12px;
+    width: 29%;
+    float: left;
+}
+
+.print-critstable h4 {
+    text-align: left;
+    padding: 5px 0 0 0;
+	margin: 0;
+	font-size: 1.2em;
+}
+
+.print-critstable ol {
+    margin: 0 1px 4px -5px;
+    padding: 0 5px 0 20px;
+    font-size: 0.9em;
+}
+
+.print-critstable i {
+    color: #aaa;
+}
+
+.print-critstable .high::before {
+    content: "1-3";
+    color: #777;
+    font-size: 0.9em;
+    position: absolute;
+    margin: 26px 0 0 -29px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.print-critstable .low::before {
+    content: "4-6";
+    color: #777;
+    font-size: 0.9em;
+    position: absolute;
+    margin: 24px 0 0 -29px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.print-hitboxes {
+    margin-top: 1.5em;
+    border: 2pt solid #333;
+    border-radius: 6pt;
+    width: 12em;
+}
+
+.print-hitboxes p {
+    text-align: left;
+    margin: 8px;
+}
+
+.print-hitboxes label {
+    width: 6em;
+    display: inline-block;
+    text-align: right;
+}
+
+.print-crits-roll {
+    float: left;
+    transform: rotate(-90deg);
+    margin: 30px 0 0 -10px;
+    font-size: 0.9em;
+    color: gray;
+}
+
+.print-bottom {
+    border-top: 3pt solid #aaa;
+    clear: both;
+}
+
+.print-weapons {
+    width: 62%;
+    float: left;
+    margin-top: 2px;
+    border-right: 2pt solid #aaa;
+    min-height: 11em;
+}
+
+.print-weapons table {
+    font-size: 0.8em;
+}
+
+.print-weapons th, .print-weapons td {
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.print-weapons tr th:nth-of-type(2), .print-weapons tr td:nth-of-type(2) {
+    text-align: left;
+}
+
+.print-ammo {
+    width: 38%;
+    float: right;
+    margin-top: 2px;
+}
+
+.print-ammo table {
+    font-size: 0.8em;
+}
+
+.print-ammo table tbody tr td:last-of-type {
+    font-size: 5pt;
+}
+
+.print-footer {
+    clear: both;
+    color: #888 !important;
+    text-align: right;
+    padding: 0 10px 0 0;
+    margin: 0;
+    font-size: 0.75em;
+}
+
+.print-footer a {
+    color: #888;
+    text-decoration: none;
+}
+
 
 @media only print {
     /* Hide the interface */    
@@ -400,9 +750,14 @@ body {
 		box-shadow: none !important;
 		overflow: visible;
 	}
+
+	.print-container {
+		margin-top: 2em !important;
+	}
+
 }
 </style>
-`);
+`};
 
 
 // Record Sheet: List weapons
@@ -460,14 +815,14 @@ const TechReadoutModal = () => {
 <div class="print-container">
     <div class="print-sheet">
         <div class="print-body">
-			<h2>
-				<img src="assets/images/btech2010.svg" alt="Battletech">
+			<h2 class="print-header">
+				<img src="assets/images/btech2010.svg" alt="BattleTech">
 				<span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
 			</h2>
 
-            <h1 id="P-MechType">${Mech.type}</h1>
+            <h3>${Mech.type}</h3>
             
-            <div class="tr-leftside">
+            <div class="print-leftside">
                 <p><b>Mass:</b> ${Mech.mass} tons</p>
                 <p><b>Chassis:</b> ${a_ChassisType[Mech.chassis]}</p>
                 <p><b>Power Plant:</b> ${Mech.engineRating} ${Mech.engineBrand}</p>
@@ -486,19 +841,19 @@ const TechReadoutModal = () => {
                 <p><b>Targeting &amp; Tracking System:</b> ${a_TargetType[Mech.targetingType]}</p>
 				
                 <p>${Mech.overviewTR}</p>
-                <h3>Capabilities</h3>
+                <h4>Capabilities</h4>
                 <p>${Mech.capabilitiesTR}</p>
-                <h3>Battle History</h3>
+                <h4>Battle History</h4>
                 <p>${Mech.historyTR}</p>
-                <h3>Deployment</h3>
+                <h4>Deployment</h4>
                 <p>${Mech.deploymentTR}</p>
-                <h3>Variants</h3>
+                <h4>Variants</h4>
                 <p>${Mech.variantsTR}</p>
-                <h3>Notable Units</h3>
+                <h4>Notable Units</h4>
                 <p>${Mech.notableTR}</p>
             </div>
             
-            <div class="tr-rightside">
+            <div class="print-rightside">
                 <table class="tr-stats">
                     <tr>
                         <td>Type:</td>
@@ -579,7 +934,7 @@ const TechReadoutModal = () => {
                         <th class="center"><i>Internal Structure</i></th>
                         <th class="center"><i>Armor Value</i></th>
                     </tr>
-                    <tr >
+                    <tr>
                         <td class="indent2">Head</td>
                         <td class="center">${Mech.ISH}</td>
                         <td class="center">${Mech.AH}</td>
@@ -659,8 +1014,47 @@ body {
 	max-width: 100%;
 }
 
+.cbills::before {
+	font-size: 1em;
+}
+
+.print-body {
+	font-size: 0.9em;
+}
+
+.print-header img {
+	height: 1.5em;
+}
+
+.print-header span {
+	display: block;
+	font-size: 0.8em;
+}
+
+.print-body p {
+	margin: 0.5em 0;
+}
+
+.print-leftside {
+	width: 50%;
+	float: left;
+}
+
+.print-rightside {
+	width: 50%;
+	float: right;
+}
+
+.print-leftside ul {
+	margin: 0;
+}
+
+.print-leftside li {
+	list-style: none;
+}
+
 .indent {
-	margin-left: 2em;
+	margin-left: 2em !important;
 }
 
 .indent2 {
@@ -669,10 +1063,6 @@ body {
 
 .center {
 	text-align: center;
-}
-
-.tr-leftside ul {
-	list-style: none;
 }
 
 @media only print {
