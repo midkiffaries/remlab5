@@ -214,7 +214,7 @@ function HtmlModal(JsVar, c) {
     .dialog-body {
         max-width: 70vw;
         min-height: 16em;
-        max-height: calc(85vh - 15vh);
+        max-height: calc(85vh - 5vh);
         margin: 1vh auto 0 auto;
         padding: 1em;
         background-color: #fdfdfd;

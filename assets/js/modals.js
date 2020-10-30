@@ -9,7 +9,7 @@ document.getElementById('btnAbout').onclick = () => HtmlModal(AboutModal, 'about
 // About modal content
 const AboutModal = () => (`
 <h2>About REMLAB ${RemlabVersion}</h2>
-<img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy" style="width:25%;float:right">
+<figure style="width:25%;float:right;margin:10px"><img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy"></figure>
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
 <h3>Disclaimer</h3>

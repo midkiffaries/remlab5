@@ -115,6 +115,10 @@ const rs_WeaponsList = (v) => {
 // Record Sheet print modal content
 const RecordSheetModal = () => {
 	return `
+<div class="print-options">
+	<button onclick="window.print()"><img src="/assets/images/print.svg" alt=""> Print...</button>
+</div>
+
 <div class="print-container">
 	<div class="print-sheet">
 		<div class="print-body">
@@ -381,7 +385,6 @@ body {
 	font-size: 0.5em;
 }
 
-
 /* Display underline on empty elements */
 .dotted:empty {
     width: 80%;
@@ -389,6 +392,27 @@ body {
     border-bottom: 1pt dotted #bbb;
     display: inline-block;
     white-space: nowrap;
+}
+
+.print-options {
+	background: #eee;
+	border: 1px solid #ddd;
+	padding: 0.5em 1em;
+	width: 100%;
+	margin-top: 2em;
+}
+
+.print-options button {
+	padding: 0.5em 1.5em;
+	vertical-align: baseline;
+	font-weight: 500;
+	background-color: var(--base-gold);
+	border-color: var(--base-gold);
+}
+
+.print-options button img {
+	height: 1.2em;
+	vertical-align: -3px;
 }
 
 .print-container {
@@ -730,7 +754,7 @@ body {
 	.page-header, 
 	.page-main, 
 	.page-footer, 
-	.print-settings, 
+	.print-options, 
 	.dialog-top {
 		display: none !important;
 	}
@@ -812,6 +836,10 @@ const TechReadoutModal = () => {
 
 
 	return `
+<div class="print-options">
+	<button onclick="window.print()"><img src="/assets/images/print.svg" alt=""> Print...</button>
+</div>
+
 <div class="print-container">
     <div class="print-sheet">
         <div class="print-body">
@@ -1018,6 +1046,27 @@ body {
 	font-size: 1em;
 }
 
+.print-options {
+	background: #eee;
+	border: 1px solid #ddd;
+	padding: 0.5em 1em;
+	width: 100%;
+	margin-top: 2em;
+}
+
+.print-options button {
+	padding: 0.5em 1.5em;
+	vertical-align: baseline;
+	font-weight: 500;
+	background-color: var(--base-gold);
+	border-color: var(--base-gold);
+}
+
+.print-options button img {
+	height: 1.2em;
+	vertical-align: -3px;
+}
+
 .print-body {
 	font-size: 0.9em;
 }
@@ -1070,7 +1119,7 @@ body {
 	.page-header, 
 	.page-main, 
 	.page-footer, 
-	.print-settings, 
+	.print-options, 
 	.dialog-top {
 		display: none !important;
 	}
