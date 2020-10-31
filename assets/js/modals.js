@@ -134,7 +134,7 @@ const WeaponInfoModal = (id) => {
     </table>
 
     <footer class="wi-footer">
-        <button onclick="${id}">Add Weapon</button>
+        <button onclick="${id}" class="button-gold">Add ${w.name}</button>
     </footer>
 </div>
 
@@ -158,7 +158,7 @@ table caption {
 }
 
 .wi-footer button {
-    margin: 12px;
+    margin: 12px 4px;
 }
 </style>
 `};

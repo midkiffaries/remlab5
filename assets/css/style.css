@@ -123,23 +123,6 @@ body {
     white-space: nowrap;
 }
 
-.sidebar-print button {
-    background-color: var(--base-gold);
-    border-color: var(--base-gold);
-    padding: 0.6em;
-    font-weight: 500;
-    border-width: 3px;
-}
-
-.sidebar-print button:hover {
-    background-color: var(--light-gold);
-}
-
-.sidebar-print button:active {
-    background-color: var(--dark-gold);
-    border-color: var(--dark-gold);
-}
-
 
 /* Main content */
 
@@ -213,6 +196,7 @@ Cards Styling
 .card-footer p {
     padding: 0;
     margin: 0;
+    color: #444;
 }
 
 .card-footer li {
@@ -317,6 +301,7 @@ Specific Card Styling
     color: #555;
     font-weight: 600;
     border: 3px solid #555;
+    transition: background-color 0.4s;
 }
 
 .autofill-buttons button:hover {
@@ -359,15 +344,8 @@ Specific Card Styling
 }
 
 /* weapons list */
-.list-weapons {
-    height: 36em;
-    overflow-y: scroll;
-    border: 2px solid #aaa;
-    margin: 0.4em 0;
-}
-
 .list-weapons::-webkit-scrollbar {
-    width: 0.5em;
+    width: 0.4em;
 }
 
 .list-weapons::-webkit-scrollbar-track {
@@ -382,16 +360,23 @@ Specific Card Styling
     background: #666; 
 }
 
+.list-weapons {
+    height: 36em;
+    overflow-y: scroll;
+    border: 2px solid #bbb;
+    margin: 0.4em 0;
+}
+
 .list-weapons ol {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0.1em 0 0;
     line-height: 1.4;
 }
 
 .list-weapons li {
-    border: 1px solid #bbb;
-    background-color: #f6f6f6;
+    border-bottom: 1px solid #eee;
+    background-color: #fcfcfc;
     margin: 2px 1px;
     padding: 5px 8px;
     position: relative;
@@ -417,7 +402,7 @@ Specific Card Styling
     padding: 0.1em;
     border: none;
     background: transparent;
-    margin-bottom: 1em;
+    margin-bottom: 1.3em;
     opacity: 0.4;
 }
 
@@ -429,28 +414,49 @@ Specific Card Styling
     opacity: 1;
 }
 
-.tbllocation-remove {
-    padding: 6px 4px;
-    line-height: 0.5;
-    background-color: #d00;
-    color: #fff;
-    border: 0;
-}
 
 /* locations table */
 .locations-list {
+    margin-top: -1.5em;
     padding: 0 0.4em;
 }
 
 .locations-list section {
     float: left;
     width: 33%;
+    min-height: 12em;
 }
 
 .locations-list ul {
     list-style: none;
-    padding-left: 0.3em;
+    padding-left: 0.2em;
     margin: 0;
+}
+
+.locations-list p {
+    margin: 0;
+    font-size: 0.9em;
+    background-color: #fafafa;
+    display: inline-block;
+    padding: 2px 3px;
+}
+
+.locations-list .btn-remove {
+    padding: 6px 4px;
+    line-height: 0.5;
+    background-color: #d00;
+    color: #fff;
+    border: 0;
+    font-weight: 600;
+    border-radius: 0.2em;
+}
+
+.locations-list .btn-remove:hover {
+    background-color: #555;
+}
+
+.locations-list .btn-remove:active {
+    background-color: #000;
 }
 
 .locations-mandatory button {
@@ -459,8 +465,9 @@ Specific Card Styling
 }
 
 .locations-mandatory button img {
-    height: 1em;
+    height: 0.9em;
 }
+
 
 /* Warrior Card */
 
@@ -510,6 +517,26 @@ Modals and Dialogs Style
 /************************
 Elements
 *************************/
+
+/* Gold Buttons */
+
+.button-gold {
+    background-color: var(--base-gold);
+    border-color: var(--base-gold);
+    padding: 0.6em 1em;
+    font-weight: 500;
+    border-width: 3px;
+    transition: background-color 0.4s;
+}
+
+.button-gold:hover {
+    background-color: var(--light-gold);
+}
+
+.button-gold:active {
+    background-color: var(--dark-gold);
+    border-color: var(--dark-gold);
+}
 
 /* Add the c-bill symbol before the price */
 
@@ -723,7 +750,10 @@ Responsive elements
 
 /* Mobile Devices */
 @media only screen and (min-device-width: 320px) and (max-device-height: 1080px) and (-webkit-min-device-pixel-ratio: 2) {
-
+    [type="radio"], 
+    [type="checkbox"]{
+        display: none;
+    }
 }
 
 /* Phone (Portrait) and narrow screen */

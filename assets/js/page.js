@@ -338,7 +338,7 @@ const sWarrior = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p></p>`,
+    `<p>On the final printout, <i>(blank line)</i> will display a dotted line.</p>`,
 );
 
 
@@ -453,8 +453,8 @@ const sideBarTotals = (`
         <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
     <menu class="sidebar-print">
-        <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')">Create Record Sheet</button></p>
-        <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')">Create Technical Readout</button></p>
+        <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')" class="button-gold">Create Record Sheet</button></p>
+        <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')" class="button-gold">Create Technical Readout</button></p>
         <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->
     </menu>
 `);
@@ -673,7 +673,7 @@ function locationList(n, v) {
     // If location is one of the arms
     if (v == 'LA' || v == 'RA') {
         s += (`
-        <ul>
+        <ul data-id="${v}">
             <li><input type="checkbox" id="chkLowerArm_${v}" onclick="checkActuator()" checked disabled><label for="chkLowerArm_${v}">Lower Arm</label></li>
             <li><input type="checkbox" id="chkHand_${v}" onclick="checkActuator()" checked><label for="chkHand_${v}">Hand</label></li>
             <li><input type="checkbox" id="chkHatchet_${v}" onclick="checkActuator()" disabled><label for="chkHatchet_${v}">Hatchet</label></li>
@@ -682,7 +682,7 @@ function locationList(n, v) {
     s += (`
         <ul id="critList_${v}">
         </ul>
-        <p>Crits Available <output id="outCrits_${v}"></output></p>
+        <p><output id="outCrits_${v}"></output> Crits Available</p>
     </section>`);
 
     return s;
@@ -717,7 +717,7 @@ function compactListCritsbyLoc(v) {
             // Check if item is a a weapon or a hardpoint
             if (w.tons > 0) {
                 // Weapon
-                li += `<li>${w.name} <button class="tbllocation-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button></li>`;
+                li += `<li><button class="btn-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button> ${w.name}</li>`;
             }
         }
     }

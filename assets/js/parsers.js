@@ -158,13 +158,22 @@
         padding: 0;
     }
     .stepper-button {
+        color: #444;
         width: 1.3em;
-        height: 1.1em;
+        height: 1.15em;
         line-height: 0.2em;
         font-size: 1.5em;
         padding: 0.2em;
         background-color: transparent;
         border: none;
+        transition: background-color 0.2s;
+    }
+    .stepper-button:hover {
+        color: #666;
+        background-color: #f4f4f4;
+    }
+    .stepper-button:active {
+        color: #111;
     }
     `);
     document.body.appendChild(st); 	
@@ -212,10 +221,13 @@
         -webkit-user-select: none;
         user-select: none;
         height: 12em;
+        padding-top: 0;
     }
     .select-list li {
         list-style: none;
-        line-height: 0.9em;
+        line-height: 0.9;
+        font-size: 0.9em;
+        height: 1.8em;
     }    
     .select-list input {
         opacity: 0 !important;

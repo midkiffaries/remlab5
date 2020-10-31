@@ -115,8 +115,14 @@ const rs_WeaponsList = (v) => {
 // Record Sheet print modal content
 const RecordSheetModal = () => {
 	return `
-<div class="print-options">
-	<button onclick="window.print()"><img src="/assets/images/print.svg" alt=""> Print...</button>
+<div class="print-options" role="header">
+	<button onclick="window.print()" class="button-gold"><img src="/assets/images/print.svg" alt=""> Print...</button>
+	<label>Logo style</label>
+	<select id="selChangeLogo" disabled>
+		<option selected>2010s</option>
+		<option>1990s</option>
+		<option>1980s</option>
+	</select>
 </div>
 
 <div class="print-container">
@@ -375,9 +381,10 @@ body {
 	height: 90vh;
 }
 
-.dialog-body {
+.dialog-body, 
+.dialog-top {
 	margin: 1em;
-	line-height: 1.1;
+	line-height: 1;
 	max-width: 100%;
 }
 
@@ -397,17 +404,9 @@ body {
 .print-options {
 	background: #eee;
 	border: 1px solid #ddd;
-	padding: 0.5em 1em;
+	padding: 0.5em 0.6em;
 	width: 100%;
 	margin-top: 2em;
-}
-
-.print-options button {
-	padding: 0.5em 1.5em;
-	vertical-align: baseline;
-	font-weight: 500;
-	background-color: var(--base-gold);
-	border-color: var(--base-gold);
 }
 
 .print-options button img {
@@ -836,8 +835,14 @@ const TechReadoutModal = () => {
 
 
 	return `
-<div class="print-options">
-	<button onclick="window.print()"><img src="/assets/images/print.svg" alt=""> Print...</button>
+<div class="print-options" role="header">
+	<button onclick="window.print()" class="button-gold"><img src="/assets/images/print.svg" alt=""> Print...</button>
+	<label>Logo style</label>
+	<select id="selChangeLogo" disabled>
+		<option selected>2010s</option>
+		<option>1990s</option>
+		<option>1980s</option>
+	</select>
 </div>
 
 <div class="print-container">
@@ -1036,7 +1041,8 @@ body {
 	height: 90vh;
 }
 
-.dialog-body {
+.dialog-body, 
+.dialog-top {
 	margin: 1em;
 	line-height: 1;
 	max-width: 100%;
@@ -1049,17 +1055,9 @@ body {
 .print-options {
 	background: #eee;
 	border: 1px solid #ddd;
-	padding: 0.5em 1em;
+	padding: 0.5em 0.6em;
 	width: 100%;
 	margin-top: 2em;
-}
-
-.print-options button {
-	padding: 0.5em 1.5em;
-	vertical-align: baseline;
-	font-weight: 500;
-	background-color: var(--base-gold);
-	border-color: var(--base-gold);
 }
 
 .print-options button img {
