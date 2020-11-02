@@ -327,10 +327,10 @@ const sWarrior = new SectionPanel(
         <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     </div>
     <div class="col-2">
-        <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button id="btnRandom" aria-label="Randomize Skills">Randomize</button></p>
-        <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting">${Warrior.piloting}</output></p>
-        <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery">${Warrior.gunnery}</output></p>
-        <p><label>Auto-Eject</label> <label for="chkAutoEject">Disabled</label><input type="checkbox" id="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject">Enabled</label></p>
+        <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button aria-label="Randomize Skills" onclick="rndWarriorStats()">Randomize</button></p>
+        <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting" id="outPiloting">${Warrior.piloting}</output></p>
+        <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery" id="outGunnery">${Warrior.gunnery}</output></p>
+        <p><label>Auto-Eject</label> <label for="chkAutoEject"><b>Disabled</b></label><input type="checkbox" id="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject"><b>Enabled</b></label></p>
     </div>
     `, 
     
@@ -590,9 +590,9 @@ const updateForm = () => {
     Warrior.affiliation = elID('selAffiliation').value;
     Warrior.affiliationUser = elID('txtAffiliation').value;
     Warrior.miniature = elID('txtPilotName').value;
-    Warrior.experience = elID('selExperience').value;
-    Warrior.piloting = elID('rngPiloting').value;
-    Warrior.gunnery = elID('rngGunnery').value;
+    Warrior.experience = parseInt(elID('selExperience').value);
+    Warrior.piloting = parseInt(elID('rngPiloting').value);
+    Warrior.gunnery = parseInt(elID('rngGunnery').value);
     Warrior.autoeject = elID('chkAutoEject').checked;
 };
 
@@ -801,3 +801,37 @@ const autoFillArmor = v => {
 
     updateForm();
 };
+
+
+// Randomly Generate the Warrior's Piloting and Gunnery Skills
+function rndWarriorStats() {
+    let min = 0, max = 0;
+
+    // Min/max range based on warrior experience
+    switch (Warrior.experience) {
+        case 1: // Regular
+            min = 3;
+            max = 6;
+            break;
+        case 2: // Veteran
+            min = 2;
+            max = 6;
+            break;
+        case 3: // Elite
+            min = 1;
+            max = 5;
+            break;
+        default: // Green
+            min = 4;
+            max = 7;
+    }
+    
+    Warrior.piloting = getRandomNum(min, max);
+    Warrior.gunnery = getRandomNum(min, max);
+
+    // Post to screen
+    elID('rngPiloting').value = Warrior.piloting;
+    elID('outPiloting').value = Warrior.piloting;
+    elID('rngGunnery').value = Warrior.gunnery;
+    elID('outGunnery').value = Warrior.gunnery;
+}

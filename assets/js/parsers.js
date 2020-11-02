@@ -221,7 +221,8 @@
         -webkit-user-select: none;
         user-select: none;
         height: 12em;
-        padding-top: 0;
+        padding: 0 0.3em;
+        margin: 0.3em 0.2em 0.8em;
     }
     .select-list li {
         list-style: none;
@@ -251,7 +252,7 @@
         white-space: nowrap;
     }
     .select-list::-webkit-scrollbar {
-        width: 0.8em;
+        width: 0.9em;
     }
     .select-list::-webkit-scrollbar-track {
         background: #eee; 

@@ -198,7 +198,7 @@ function HtmlModal(JsVar, c) {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        background-color: rgba(240,240,240,0.8);
+        background-color: rgba(240,240,240,0.9);
         border: none;
         opacity: 0;
         transition: opacity 0.15s ease-in-out 0s;
@@ -237,6 +237,16 @@ function HtmlModal(JsVar, c) {
         border: none;
         background: no-repeat center center / 1.4em;
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 24l-9-9 9-9-6-6-9 9-9-9-6 6 9 9-9 9 6 6 9-9 9 9z'/%3E%3C/svg%3E");
+    }
+    .dialog-html-close:focus {
+        background-color: transparent !important;
+        box-shadow: none;
+    }
+    .dialog-html-close:hover {
+        filter: invert();
+    }
+    .dialog-html-close:active {
+        opacity: 0.5;
     }
     .dialog-open {
         opacity: 1;
