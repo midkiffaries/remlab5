@@ -5,7 +5,7 @@
 "use strict";    
 
 // REMLAB version
-const RemlabVersion = "4.9.2010 DEV";
+const RemlabVersion = "4.9.2011 DEV";
 const TodaysDate = new Date();
 
 // Declare Global Variables and settings
