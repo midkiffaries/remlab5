@@ -7,7 +7,7 @@ Base REMLAB Style
     --base-gold: #eac600;
     --dark-gold: #ba9d00;
     --light-gold: #ffe55a;
-    --pale-gold: #fffae1;
+    --pale-gold: #fffdf2;
 
     --input-bg: #fefefe;
 }
@@ -42,6 +42,12 @@ dialog *:focus {
     caret-color: var(--dark-gold);
 }
 
+[type="text"]:hover,
+select:hover,
+textarea:hover,
+.stepper-container:hover {
+    border-color: var(--base-gold);
+}
 
 /************************
 Page Layout
@@ -544,6 +550,19 @@ Elements
     border-color: var(--dark-gold);
 }
 
+.button-gray {
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.button-gray:hover {
+    background-color: #ddd;
+}
+
+.button-gray:active {
+    background-color: #bbb;
+}
+
 /* Add the c-bill symbol before the price */
 
 .cbills::before {
@@ -606,6 +625,107 @@ li [target="_blank"]::after {
 /* Stepper Container */
 .stepper-container {
     border: 1px solid #aaa;
+}
+
+
+/************************
+Dark Mode
+*************************/
+
+:root {
+    color-scheme: light dark;
+}
+
+.dark-mode ::-moz-selection {
+    color: #000;
+    background-color: #ddd;
+}
+
+.dark-mode ::selection { 
+    color: #000;
+    background-color: #ddd;
+}    
+
+body.dark-mode,
+.dark-mode .dialog-body,
+.dark-mode .card,
+.dark-mode .page-header {
+    color: #eee;
+    background-color: #121212;
+    border-color: #555;
+    font-weight: 350;
+}
+
+.dark-mode dialog {
+    background-color: rgba(0,0,0,0.9);
+}
+
+.dark-mode .dialog-html-close {
+    filter: invert();
+}
+
+.dark-mode .sidebar-totals,
+.dark-mode .card-footer {
+    background-color: #222;
+}
+
+.dark-mode img {
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.dark-mode a[href] {
+    color: #fff;
+}
+
+.dark-mode code, 
+.dark-mode kbd {
+    background-color: #444;
+}
+
+.dark-mode select:not([multiple]):not([size]),
+.dark-mode select, 
+.dark-mode input, 
+.dark-mode textarea {
+    color: #fff;
+    background-color: #333;
+    caret-color: #fff;
+}
+
+.dark-mode [type='range'] {
+    background: transparent;
+}
+
+.dark-mode button,
+.dark-mode [role='button'],
+.dark-mode [type='button'],
+.dark-mode [type='reset'],
+.dark-mode [type='submit'],
+.dark-mode input::-webkit-file-upload-button {
+    background-color: #555;
+    color: #fff;
+}
+
+/* The Light Switch */
+
+.light-switch {
+    background: #eee no-repeat 50% 50% / 2em;
+    width: 2.2em;
+}
+
+body .light-switch {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M349 242c0 242 165 438 370 438 51 0 99-12 143-34a378 378 0 11-507-480c-4 25-6 50-6 76z' fill='black'/%3E%3C/svg%3E");
+}
+
+body .light-switch:hover {
+    /* box-shadow: 0 0 5px #333; */
+}
+
+body.dark-mode .light-switch {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M257 528a240 240 0 10480 0 240 240 0 00-480 0zm240-408l-67 135h135zm288 119l-143 47 96 96zm-433 47l-143-47 47 143zM223 459L88 527l135 67zm546 138l135-68-135-67zM497 936l67-135H429zm145-166l143 47-47-143zm-433 47l143-47-96-96z' fill='white'/%3E%3C/svg%3E");
+}
+
+body.dark-mode .light-switch:hover {
+    /* box-shadow: 0 0 5px #fff; */
 }
 
 
@@ -673,8 +793,9 @@ Radio and Checkbox style
 }
 
 [type="checkbox"]:checked + label::before {
-    background: no-repeat 50% 50% / 1em;   
-    background-color: #666;
+    background: no-repeat 50% 50% / 1em;
+    border-color: var(--base-gold);   
+    background-color: var(--base-gold);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15'%3E%3Cpath d='M12 2L5 8 2 5 0 7l5 6 9-9z' fill='white'/%3E%3C/svg%3E");
 }
 
@@ -716,13 +837,13 @@ Radio and Checkbox style
 	text-align: center;
     background: #fff;
     min-width: 3em;
-    border-color: #ddd;
+    border-color: #999;
 }	
 
 .check-button:checked + label, 
 .radio-button:checked + label {
     background: var(--light-gold);
-    border-color: var(--light-gold);
+    border-color: var(--dark-gold);
 }
 
 .check-button + label::before, 

@@ -337,6 +337,43 @@ function closeModals(c) {
     }
 }
 
+// Dark mode switch
+(function(){
+	let buttonText, theme;
+	const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)"),
+		modeButton = document.querySelector(".light-switch"),
+		currentTheme = localStorage.getItem("theme");	
+	
+	// Get locally saved moode
+	if (currentTheme == 'dark') {
+        document.body.classList.toggle("dark-mode");
+	} else if (currentTheme == 'light') {
+        document.body.classList.toggle("light-mode");
+	}
+	
+	// Set initial button title
+	buttonText = (document.body.classList.contains('dark-mode')) ? 'light':'dark';
+	modeButton.setAttribute("title", `Switch to ${buttonText} mode`);
+	
+	// Generate button switch logic
+	modeButton.onclick = () => {
+		if (isDarkMode.matches) {
+			document.body.classList.toggle("light-mode");
+			document.body.classList.toggle("dark-mode");
+			theme = document.body.classList.contains("light-mode") ? "light":"dark";
+		} else {
+			document.body.classList.toggle("dark-mode");
+			theme = document.body.classList.contains("dark-mode") ? "dark":"light";
+		}
+		
+		// Set button title
+		buttonText = (document.body.classList.contains('dark-mode')) ? 'light':'dark';
+		modeButton.setAttribute("title", `Switch to ${buttonText} mode`);
+		
+		// Store last used state
+        localStorage.setItem("theme", theme);
+	}	
+}());
 
 /**************************
 * Global REMLAB Functions

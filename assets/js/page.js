@@ -288,8 +288,8 @@ const sWeapons = new SectionPanel(
         <section class="locations-mandatory">
             <h5>Mandatory</h5>
             <ul>
-                <li><button aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button> Heat Sinks (0)</li>
-                <li><button aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button> Jump Jets (0)</li>
+                <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> (0)</li>
+                <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> (0)</li>
             </ul>
         </section>
         ${locationList('Right Leg','RL')}
@@ -323,11 +323,11 @@ const sWarrior = new SectionPanel(
     <div class="col-2">
         <p><label>Name</label> <input type="text" id="txtPilotName" maxlength="40" placeholder="(blank line)" spellcheck="false" autocorrect="off" value="${Warrior.name}"></p>
         <p><label>Race</label> <input type="radio" name="radRace" id="radioR1" value="Human" class="radio-button" checked><label for="radioR1" role="button">Human</label><input type="radio" name="radRace" id="radioR2" value="Clanner" class="radio-button"><label for="radioR2" role="button">Clanner</label></p>
-        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"><button role="switch" id="btnAffiliation" class="button-flip" aria-label="Switch to manual input or list input" disabled></button></p>
+        <p><label>Affiliation</label> <select id="selAffiliation" class="select" data-list="a_Affiliation"></select><input type="text" id="txtAffiliation" maxlength="35" placeholder="(blank line)" spellcheck="false" autocorrect="off" style="display:none" value="${Warrior.affiliationUser}"><button role="switch" id="btnAffiliation" class="button-flip button-gray" aria-label="Switch to manual input or list input" disabled></button></p>
         <p><label>Miniature</label> <input id="txtMiniature" type="text" maxlength="24" placeholder="(blank line)" spellcheck="false" autocorrect="off"></p>
     </div>
     <div class="col-2">
-        <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button aria-label="Randomize Skills" onclick="rndWarriorStats()">Randomize</button></p>
+        <p><label>Experience</label> <select id="selExperience" class="select" data-list="a_Experience"></select> <button aria-label="Randomize Skills" class="button-gray" onclick="rndWarriorStats()">Randomize</button></p>
         <p><label>Piloting Skill</label> <input type="range" id="rngPiloting" value="${Warrior.piloting}" min="0" max="7"><output for="rngPiloting" id="outPiloting">${Warrior.piloting}</output></p>
         <p><label>Gunnery Skill</label> <input type="range" id="rngGunnery" value="${Warrior.gunnery}" min="0" max="7"><output for="rngGunnery" id="outGunnery">${Warrior.gunnery}</output></p>
         <p><label>Auto-Eject</label> <label for="chkAutoEject"><b>Disabled</b></label><input type="checkbox" id="chkAutoEject" checked><label for="chkAutoEject" class="switch" role="switch"></label><label for="chkAutoEject"><b>Enabled</b></label></p>

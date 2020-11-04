@@ -170,7 +170,7 @@
     }
     .stepper-button:hover {
         color: #666;
-        background-color: #f4f4f4;
+        background-color: var(--light-gold);
     }
     .stepper-button:active {
         color: #111;
