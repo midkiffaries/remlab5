@@ -643,6 +643,7 @@ legend {
 	background: transparent;
 	font: 1.1em/1 arial, sans-serif;
 	border: none;
+	cursor: pointer;
 }
 
 [type='range']::-webkit-slider-runnable-track {

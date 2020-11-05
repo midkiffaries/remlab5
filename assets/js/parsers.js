@@ -77,6 +77,7 @@
         padding: 0 1em;
         max-height: 0;
         overflow: hidden;
+        overflow-x: scroll;
         transition: max-height 0.2s ease-out;
         border-bottom: 1px solid #eee;
         will-change: auto;
@@ -224,6 +225,9 @@
         padding: 0 0.3em;
         margin: 0.3em 0.2em 0.8em;
     }
+    .select-list:hover {
+        border-color: var(--base-gold);
+    }
     .select-list li {
         list-style: none;
         line-height: 0.9;
@@ -238,10 +242,10 @@
         position: absolute;
     }
     .select-list input + label:hover {
-        background-color: #fafafa;
+        background-color: var(--lighter-gold);
     }
     .select-list input:checked + label {
-        background-color: #eee;
+        background-color: var(--base-gold);
         font-weight: bold;
     }
     .select-list label {

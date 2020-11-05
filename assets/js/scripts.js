@@ -217,7 +217,7 @@ function HtmlModal(JsVar, c) {
         max-height: calc(85vh - 5vh);
         margin: 1vh auto 0 auto;
         padding: 1em;
-        background-color: #fdfdfd;
+        background-color: #fcfcfc;
         box-shadow: 0px 10px 14px -7px rgba(0,0,0,0.7), 5px 5px 16px 5px rgba(0,0,0,0);
         transform: scale(0.8);
         transition: transform 0.15s ease-in-out 0s;
@@ -235,6 +235,7 @@ function HtmlModal(JsVar, c) {
         right: 0;
         top: 0;
         border: none;
+        filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
         background: no-repeat center center / 1.4em;
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 24l-9-9 9-9-6-6-9 9-9-9-6 6 9 9-9 9 6 6 9-9 9 9z'/%3E%3C/svg%3E");
     }
@@ -243,7 +244,7 @@ function HtmlModal(JsVar, c) {
         box-shadow: none;
     }
     .dialog-html-close:hover {
-        filter: invert();
+        filter: invert() drop-shadow(0 0 4px rgba(0,0,0,0.3));
     }
     .dialog-html-close:active {
         opacity: 0.5;
