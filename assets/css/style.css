@@ -33,22 +33,28 @@ Base REMLAB Style
 	background-color: var(--light-gold);
 }
 
+[type="text"]:hover,
+select:hover,
+textarea:hover,
+[role="button"]:hover,
+.stepper-container:hover {
+    box-shadow: 0 0 1px 2px var(--lighter-gold);
+    border-color: var(--base-gold);
+    transition: border-color 0.6s;
+}
+
 aside *:focus,
 main *:focus,
 dialog *:focus {
     outline: none;
-    box-shadow: 0 0 1px 2px var(--base-gold);
+    box-shadow: 0 0 1px 2px var(--base-gold) !important;
     border-color: var(--dark-gold);
     background-color: var(--pale-gold) !important;
     caret-color: var(--dark-gold);
 }
 
-[type="text"]:hover,
-select:hover,
-textarea:hover,
-.stepper-container:hover {
-    border-color: var(--base-gold);
-    transition: border-color 0.6s;
+a:hover {
+    text-decoration: none;
 }
 
 
@@ -522,6 +528,10 @@ Specific Card Styling
 Modals and Dialogs Style
 *************************/
 
+dialog a:hover {
+    color: var(--dark-gold);
+}
+
 .helpModal {}
 .aboutModal {}
 .recordsheetModal {}
@@ -553,6 +563,8 @@ Elements
     border-color: var(--dark-gold);
 }
 
+/* gray button */
+
 .button-gray {
     background-color: #eee;
     border-color: #ddd;
@@ -567,20 +579,18 @@ Elements
     background-color: #bbb;
 }
 
+/* Range */
+
 [type='range']::-webkit-slider-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
 	transition: box-shadow 0.2s;
 }
 
-[type='range']::-moz-range-thumb {
+[type='range']::-moz-range-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
     transition: box-shadow 0.2s;
 }
 
-[type='range']::-ms-thumb {
-	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-    transition: box-shadow 0.2s;
-}
 
 /* Add the c-bill symbol before the price */
 

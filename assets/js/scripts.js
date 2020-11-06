@@ -430,7 +430,7 @@ function displayRange(l, h) {
 function displayTicks(v, r) {
     let a = '';
     for (let i = 0; i < v; i++) {
-        if (i % r === 0 && i != 0) a += `<br>\n`;
+        if (i % r === 0 && i != 0) a += "<br>\n";
         a += theCircle;
     }
     return a;

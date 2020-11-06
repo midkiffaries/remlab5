@@ -129,13 +129,13 @@ const RecordSheetModal = () => {
 	<div class="print-sheet">
 		<div class="print-body">
 			<div class="print-leftside">
-				<header class="print-header">
+				<div class="print-header">
                     <h2>
 						<img src="assets/images/btech2010.svg" alt="Battletech">
 						<span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
 					</h2>
 					<div class="print-header-right">Miniature<br><b class="dotted">${Warrior.miniature}</b></div>
-				</header>
+				</div>
 
 				<div class="print-armordiagram">
 					<h3>Armor Diagram</h3>
@@ -143,8 +143,8 @@ const RecordSheetModal = () => {
 						<div class="print-armorbox">
 							<h4>Left Arm <small>[10,11]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ALA)}</span>
-								<span class="print-isbox">${displayTicks(Mech.ISA)}</span>
+								<span>${displayTicks(Mech.ALA, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISA, 10)}</span>
 							</div>
 						</div>
 						<div class="print-center">
@@ -156,16 +156,16 @@ const RecordSheetModal = () => {
 						<div class="print-armorbox">
 							<h4>Left Torso <small>[8]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ALT)}</span>
-								<span class="print-isbox">${displayTicks(Mech.IST)}</span>
-								<span class="print-reararmor">${displayTicks(Mech.ALTR)}</span>
+								<span>${displayTicks(Mech.ALT, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.IST, 10)}</span>
+								<span class="print-reararmor">${displayTicks(Mech.ALTR, 10)}</span>
 							</div>
 						</div>
 						<div class="print-armorbox">
 							<h4>Left Leg <small>[9]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ALL)}</span>
-								<span class="print-isbox">${displayTicks(Mech.ISL)}</span>
+								<span>${displayTicks(Mech.ALL, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISL, 10)}</span>
 							</div>
 						</div>
 					</div>
@@ -173,16 +173,16 @@ const RecordSheetModal = () => {
 						<div class="print-armorbox">
 							<h4>Head <small>[12]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.AH)}</span>
-								<span class="print-isbox">${displayTicks(Mech.ISH)}</span>
+								<span>${displayTicks(Mech.AH, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISH, 10)}</span>
 							</div>
 						</div>
 						<div class="print-armorbox">
 							<h4>Center Torso <small>[2,7]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ACT)}</span>
-								<span class="print-isbox">${displayTicks(Mech.ISC)}</span>
-								<span class="print-reararmor">${displayTicks(Mech.ACTR)}</span>
+								<span>${displayTicks(Mech.ACT, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISC, 10)}</span>
+								<span class="print-reararmor">${displayTicks(Mech.ACTR, 10)}</span>
 							</div>
 						</div>
 					</div>
@@ -190,16 +190,16 @@ const RecordSheetModal = () => {
 						<div class="print-armorbox">
 							<h4>Right Torso <small>[6]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ART)}</span>
-								<span class="print-isbox">${displayTicks(Mech.IST)}</span>
-								<span class="print-reararmor">${displayTicks(Mech.ARTR)}</span>
+								<span>${displayTicks(Mech.ART, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.IST, 10)}</span>
+								<span class="print-reararmor">${displayTicks(Mech.ARTR, 10)}</span>
 							</div>
 						</div>
 						<div class="print-armorbox">
 							<h4>Right Leg <small>[5]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ARL)}</span>
-								<span class="print-isbox">${displayTicks(Mech.ISL)}</span>
+								<span>${displayTicks(Mech.ARL, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISL, 10)}</span>
 							</div>
 						</div>
 					</div>
@@ -207,8 +207,8 @@ const RecordSheetModal = () => {
 						<div class="print-armorbox">
 							<h4>Right Arm <small>[3,4]</small></h4>
 							<div>
-								<span>${displayTicks(Mech.ARA)}</span>
-								<span class="print-isbox">${displayTicks(Mech.ISA)}</span>
+								<span>${displayTicks(Mech.ARA, 10)}</span>
+								<span class="print-isbox">${displayTicks(Mech.ISA, 10)}</span>
 							</div>
 						</div>
 						<div class="print-center">
@@ -309,8 +309,8 @@ const RecordSheetModal = () => {
 				</div>
 				<div class="print-heat">
 					<h3>Heat Data</h3>
-					<p><b>${Mech.heatsinks}</b> | <span>${a_HSType[Mech.heatsinkType]}</span> Heat Sinks</p>
-					<p><span>${displayTicks(Mech.heatsinks)}</span></p>
+					<p><b>${Mech.heatsinks}</b> | ${a_HSType[Mech.heatsinkType]} Heat Sinks</p>
+					<p style="font-size:1.1em">${displayTicks(Mech.heatsinks, 15)}</p>
 				</div>
 				<div class="print-heatscale">
 					<h3>Heat Scale</h3>
