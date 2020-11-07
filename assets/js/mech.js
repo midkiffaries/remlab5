@@ -10,7 +10,6 @@ const Mech = {
 	chassis: 0,
 	techbase: 0,
 	rules: 0,
-	era: 1,
 	
 	// Movement
 	walkingMP: 1,
@@ -87,6 +86,7 @@ const Mech = {
 	
 	// Technical Readout
 	year: 3025,
+	era: 2,
 	overviewTR: ``,
 	capabilitiesTR: ``,
 	historyTR: ``,

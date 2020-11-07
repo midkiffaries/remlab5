@@ -9,17 +9,20 @@ document.getElementById('btnAbout').onclick = () => HtmlModal(AboutModal, 'about
 // About modal content
 const AboutModal = () => (`
 <h2>About REMLAB ${RemlabVersion}</h2>
-<figure style="width:25%;float:right;margin:10px"><img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy"></figure>
+<figure><img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy"></figure>
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
 <h3>Disclaimer</h3>
 <p>REMLAB is first and for most a personal programming project more so than a final working product. My ultimate goal is to produce something that is presentable in a portfolio or at a job interview. Development of this web app is on a sporadic basis and in my free time. If I do find time to continue development of this app, and expand on the features and lore I will do so... otherwise the code in its entirety on GitHub.</p>
 
+<h3>Limitations</h3>
+<p>REMLAB's current ruleset: <i>Basic / Level 1 / 3025 / Succession Wars</i></p>
+
 <h3>History</h3>
-<p>The first version of REMLAB dates back to <time>2005</time> when it was created as an early <abbr title="Asynchronous JavaScript And XML">AJAX</abbr> and PHP powered web app.</p>
+<p>The first version of REMLAB dates back to <time>2005</time> when it was created as an early <abbr title="Asynchronous JavaScript And XML">AJAX</abbr> and <abbr>PHP</abbr> powered web app.</p>
 <p>The second version I release in <time>2007</time> and it was built upon that same codebase, however with that version I expanded upon the game rules and features.</p>
 <p>The Third version, released in <time>2010</time>, was never finished, but it too was based upon the same codebase, but I had intended to redesign the interface.</p>
-<p>For the fourth version, I chose to go back to the drawing board and I rewrote the entire codebase from scratch and in the process I moved from PHP to JavaScript for the main logic. This version was never entirely complete, but it was hosted on my website in <time>2017</time>.</p>
+<p>For the fourth version, I chose to go back to the drawing board and I rewrote the entire codebase from scratch and in the process I moved from <abbr>PHP</abbr> to JavaScript for the main logic. This version was never entirely complete, but it was hosted on my website in <time>2017</time>.</p>
 
 <h3>References &amp; Resources</h3>
 <ul>
@@ -28,6 +31,19 @@ const AboutModal = () => (`
     <li><a href="https://www.battletechgame.com" target="_blank">BattleTech Computer Game</a></li>
     <li><i>...And of course all the source books.</i></li>
 </ul>
+
+<style>
+.aboutModal figure {
+    width: 23%;
+    float: right;
+    margin: 0.7em;
+}
+
+.aboutModal img {
+    border-radius: 0.3em;
+    background-color: #fff;
+}
+</style>
 `);
 
 
@@ -35,9 +51,6 @@ const AboutModal = () => (`
 const HelpModal = () => (`
 <h2>Help with REMLAB ${RemlabVersion}</h2>
 <p>Below are some tips for using REMLAB. As a web app there may be some inconsistencies from one browser to the next especially when it comes to printing.</p>
-
-<h3>Limitations</h3>
-<p>Ruleset: <i>Level 1 / 3025 / Succession Wars</i></p>
 
 <h3>Printing</h3>
 <p>Printing results will vary somewhat from browser-to-browser.</p>

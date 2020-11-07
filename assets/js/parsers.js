@@ -274,7 +274,7 @@
     document.body.appendChild(st);
 }());
 
-// Populate <select> with class="select" id="(id)" data-list="(arrayname)"
+// Populate <select> with class="select" id="(id)" data-list="(arrayname)" data-value="(int)"
 (function(){
     const inc = document.getElementsByClassName("select"), l = inc.length;
     
@@ -282,7 +282,8 @@
     for (let i = 0; i < l; i++) {
         let id = inc[i].getAttribute("id"),
             el = document.getElementById(id),
-            list = document.getElementById(id).getAttribute("data-list"),
+            list = el.getAttribute("data-list"),
+            v = el.getAttribute("data-value"),
             lgth = eval(list).length;
         
         // Create each <option> element
@@ -291,6 +292,13 @@
             opt.value = j;
             opt.textContent = eval(list + "[" + j + "]");
             el.appendChild(opt);
+        }
+
+        // Set a default select value 
+        if (v) {
+            el.value = v;
+        } else {
+            el.value = 0;
         }
     }
 }());

@@ -283,7 +283,7 @@ const RecordSheetModal = () => {
 				<div class="print-warrior">
 					<h3>Warrior</h3>
 					<p>Name: <span class="dotted">${Warrior.name}</span></p>
-					<p>Affiliation: <span class="dotted">${a_Affiliation[Warrior.affiliation]}</span></p>
+					<p>Affiliation: <span class="dotted">${toUnderline(a_Affiliation[Warrior.affiliation])}</span></p>
 					<p>Gunnery: <b>${Warrior.gunnery}</b> &nbsp; Piloting: <b>${Warrior.piloting}</b> &nbsp;&nbsp; <i>${a_Experience[Warrior.experience]}</i></p>
 					<table class="print-warriorstats">
 						<tr>
@@ -894,7 +894,11 @@ const TechReadoutModal = () => {
                     </tr>
                     <tr>
                         <td>Technology Base:</td>
-                        <td colspan="2">${a_TechBase[Mech.techbase]}</td>
+                        <td colspan="2">${a_TechBase[Mech.techbase]} (${a_RuleSet[Mech.rules]})</td>
+					</tr>
+                    <tr>
+                        <td>Introduction:</td>
+                        <td colspan="2">${a_Era[Mech.era]} (${Mech.year})</td>
                     </tr>
                     <tr>
                         <td>Ruleset:</td>

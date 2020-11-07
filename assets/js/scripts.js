@@ -239,12 +239,12 @@ function HtmlModal(JsVar, c) {
         background: no-repeat center center / 1.4em;
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 24l-9-9 9-9-6-6-9 9-9-9-6 6 9 9-9 9 6 6 9-9 9 9z'/%3E%3C/svg%3E");
     }
-    .dialog-html-close:focus {
-        background-color: transparent !important;
-        box-shadow: none;
-    }
     .dialog-html-close:hover {
-        filter: invert() drop-shadow(0 0 4px rgba(0,0,0,0.3));
+        background-color: transparent;
+        filter: invert() drop-shadow(0 0 10px rgba(0,0,0,0.3));
+    }
+    .dialog-html-close:focus:hover {
+        filter: none;
     }
     .dialog-html-close:active {
         opacity: 0.5;
@@ -402,7 +402,7 @@ const zeroToDash = v => (v == 0 || v == null) ? "–" : v;
 const addDecimal = v => (isNumber(v)) ? parseFloat(v).toFixed(1) : v;
 
 // Convert null entries into underlines for the printout
-const toUnderline = v => (v == null || v == "(blank line)") ? null : v;
+const toUnderline = v => (v == "(blank line)") ? "" : v;
 
 // Convert tons into Kg
 const tons2Kg = v => v * 907;

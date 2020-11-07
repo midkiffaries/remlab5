@@ -410,7 +410,7 @@ const sReadout = new SectionPanel(
             <option value="3145">
             <option value="3150">
         </datalist>
-        <label>Era</label> <select id="selEra" class="select" data-list="a_Era"></select>
+        <label>Era</label> <select id="selEra" class="select" data-list="a_Era" data-value="${Mech.era}"></select>
     </p>
     <div class="col-2">
         <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
@@ -428,7 +428,7 @@ const sReadout = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p>Note: This content only appears on the technical readout.</p>`,
+    `<p>Note: This content only appears on the Technical Readout.</p>`,
 );
 
 
@@ -465,10 +465,10 @@ const sideBarTotals = (`
  ************************/
 
 // Populate the side bar
-document.getElementById("SideBar").innerHTML = sideBarTotals;
+elID("SideBar").innerHTML = sideBarTotals;
 
 // Populate the grid
-document.getElementById("SectionsGrid").innerHTML = (
+elID("SectionsGrid").innerHTML = (
     sectionTemplate(sEngine.id, sEngine.title, sEngine.size, sEngine.body, sEngine.help, sEngine.footer) +
     sectionTemplate(sComponents.id, sComponents.title, sComponents.size, sComponents.body, sComponents.help, sComponents.footer) +
     sectionTemplate(sJumpjets.id, sJumpjets.title, sJumpjets.size, sJumpjets.body, sJumpjets.help, sJumpjets.footer) +
@@ -481,7 +481,7 @@ document.getElementById("SectionsGrid").innerHTML = (
 );
 
 // Footer Info
-document.getElementById("AppVersion").textContent = RemlabVersion;
+elID("AppVersion").textContent = RemlabVersion;
 
 
 /************************
@@ -490,7 +490,8 @@ document.getElementById("AppVersion").textContent = RemlabVersion;
 
 // Update form based on user input
 const updateForm = () => {
-    // Totals Side Bar -------
+
+    // Side Bar -------
     // Post data to form
     Mech.type = elID('txtType').value;
     Mech.mass = elID('stepMass').value;
@@ -503,7 +504,7 @@ const updateForm = () => {
     elID('outTotalCost').value = addComma(Mech.totalCost);
     elID('outTotalBV').value = addComma(Mech.totalBV);
 
-    // Engine Section -------
+    // Engine Card -------
     // Post data to form
     Mech.walkingMP = elID('stepWalking').value;
     Mech.engineType = elID('selEngine').value;
@@ -514,7 +515,7 @@ const updateForm = () => {
     elID('outEngineCrits').value = Mech.engineCrits;
     elID('outEngineCost').value = addComma(Mech.engineCost);
 
-    // Jump Jets Section -------
+    // Jump Jets Card -------
     // Post data to form
     Mech.jumpingMP = parseInt(elID('stepJumping').value);
     Mech.jumpjetsType = elID('selJumpJets').value;
@@ -523,7 +524,7 @@ const updateForm = () => {
     elID('outJumpJetsCrits').value = Mech.jumpjetsCrits;
     elID('outJumpJetsCost').value = addComma(Mech.jumpjetsCost);
 
-    // Heat Sinks Section -------
+    // Heat Sinks Card -------
     // Post data to form
     Mech.heatsinks = elID('stepHeatSinks').value;
     Mech.heatsinkType = elID('selHeatSinks').value;
@@ -532,7 +533,7 @@ const updateForm = () => {
     elID('outHeatSinksCrits').value = Mech.heatsinksCrits;
     elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
-    // Internal Comp Section -------
+    // Internal Comp Card -------
     // Post data to form
     Mech.isType = elID('selInternalSruct').value;
     Mech.gyroType = elID('selGyro').value;
@@ -543,7 +544,7 @@ const updateForm = () => {
     elID('outInternalCrits').value = Mech.internalComponentsCrits;
     elID('outInternalCost').value = addComma(Mech.internalComponentsCost);    
 
-    // Armor Secton -------
+    // Armor Card -------
     // Post data to form
     Mech.armorType = elID('selArmor').value;
     Mech.AH = parseInt(elID('stepArmorH').value);
@@ -571,7 +572,7 @@ const updateForm = () => {
     elID('outMaxLL').value = Mech.ISL * 2;
     elID('outMaxRL').value = Mech.ISL * 2;
 
-    // Weapons Section -------
+    // Weapons Card -------
     // Post data to array
     elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
@@ -582,8 +583,18 @@ const updateForm = () => {
     //Mech.positiveDQ = document.forms[0];
     // Post data to array
 
+    // Tech Readout Card -------
+    // Post data to form
+    Mech.year = elID('txtYear').value;
+    Mech.era = elID('selEra').value;
+    Mech.overviewTR = elID('txtOverview').value;
+    Mech.capabilitiesTR = elID('txtCapabilities').value;
+    Mech.historyTR = elID('txtHistory').value;
+    Mech.deploymentTR = elID('txtDeployment').value;
+    Mech.variantsTR = elID('txtVariants').value;
+    Mech.notableTR = elID('txtNotable').value;
 
-    // Warrior Section -------
+    // Warrior Card -------
     // Post data to form
     Warrior.name = elID('txtPilotName').value;
     Warrior.race = document.forms[0].radRace.value;
@@ -802,6 +813,10 @@ const autoFillArmor = v => {
     updateForm();
 };
 
+
+/************************
+ * Warrior Card Logic 
+ ************************/
 
 // Randomly Generate the Warrior's Piloting and Gunnery Skills
 function rndWarriorStats() {
