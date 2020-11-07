@@ -4,7 +4,7 @@
 
 ### The new REMLAB development repository.
 
-### [REMLAB Deployed on Netlify](https://remlab.netlify.app)
+### [Working Demo of REMLAB](https://remlab.netlify.app)
 
 REMLAB Web Mech Designer is a web application for creating BattleTech&reg; Mechs for use in the board game. REMLAB is the fifth version of this app that I have written. It is written entirely in JavaScript.
 
