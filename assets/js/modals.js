@@ -34,14 +34,9 @@ const AboutModal = () => (`
 
 <style>
 .aboutModal figure {
-    width: 23%;
+    width: 24%;
     float: right;
-    margin: 0.7em;
-}
-
-.aboutModal img {
-    border-radius: 0.3em;
-    background-color: #fff;
+    margin: 0.6em;
 }
 </style>
 `);

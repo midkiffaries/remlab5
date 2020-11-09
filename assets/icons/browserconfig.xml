@@ -3,7 +3,8 @@
     <msapplication>
         <tile>
             <square150x150logo src="https://remlab.netlify.app/assets/icons/mstile-150x150.png"/>
-            <TileColor>#444444</TileColor>
+            <square310x310logo src="https://remlab.netlify.app/assets/icons/mstile-310x310.png"/>
+            <TileColor>#ffcc00</TileColor>
         </tile>
     </msapplication>
 </browserconfig>
