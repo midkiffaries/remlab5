@@ -173,14 +173,6 @@ function ConfirmModal(text, action) {
     }, 150);
 }
 
-// Include pages.js
-/*
-(function(){
-    const script = document.createElement('script');
-    script.src = 'assets/js/pages.js';
-    document.head.appendChild(script);
-}());
-*/
 // Load an external JS document and display it in a modal window
 function HtmlModal(JsVar, c) {
     let aDialog = {

@@ -173,11 +173,12 @@
         transition: background-color 0.2s;
     }
     .stepper-button:hover {
-        color: #666;
+        color: #444;
         background-color: var(--light-gold);
     }
     .stepper-button:active {
-        color: #111;
+        color: #eee;
+        background-color: var(--dark-gold);
     }
     `);
     document.body.appendChild(st); 	
