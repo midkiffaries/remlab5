@@ -285,7 +285,6 @@ function HtmlModal(JsVar, c) {
     aDialog.button.setAttribute("onclick", "closeModals('dialog-html')");
     aDialog.button.setAttribute("class", "dialog-html-close");
     aDialog.button.setAttribute("aria-label", "Close dialog box");
-    aDialog.button.setAttribute("autofocus", "autofocus");	
 	
 	// Inner Element
 	aDialog.dialog.appendChild(aDialog.inner);
@@ -296,18 +295,7 @@ function HtmlModal(JsVar, c) {
     // Append to page body
     document.body.appendChild(aDialog.dialog);
     document.getElementById("HTML_Frame").innerHTML = JsVar(c);
-/*
-    const test = (`
-        <div class="dialog-top">
-            <button onclick="closeModals('dialog-html')" class="dialog-html-close" aria-label="Close dialog box" autofocus></button>
-        </div>
-        <div class="dialog-body">
-            <div id="HTML_Frame">${JsVar(c)}</div>
-        </div>
-    `);
 
-    document.body.appendChild(test);
-*/
     // Display Dialog
     setTimeout(() => { 
         aDialog.dialog.classList.toggle("dialog-open");

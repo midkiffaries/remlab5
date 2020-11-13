@@ -165,7 +165,7 @@
         color: #444;
         width: 1.3em;
         height: 1.15em;
-        line-height: 0.2em;
+        line-height: 0.3em;
         font-size: 1.5em;
         padding: 0.2em;
         background-color: transparent;

@@ -664,7 +664,7 @@ function compactWeaponsTable() {
             // Generate each table row
             li += (`
             <li data-id="${i}">
-                <span class="weapon-buttons"><button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/more.svg" alt="i"></button></span>
+                <span class="weapon-buttons"><button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
                 <span class="weapon-name">${w.name}</span>
                 <span class="weapon-data">${w.heat} | ${displayDamage(w.minDamage, w.damage)} | ${rangeClass(w.rangeLong)}<br>${addDecimal(w.tons)}t | ${w.crits} crits</span>
             </li>
