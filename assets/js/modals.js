@@ -21,15 +21,14 @@ const AboutModal = () => (`
 <h3>History</h3>
 <p>The first version of REMLAB dates back to <time>2005</time> when it was created as an early <abbr title="Asynchronous JavaScript And XML">AJAX</abbr> and <abbr>PHP</abbr> powered web app.</p>
 <p>The second version I release in <time>2007</time> and it was built upon that same codebase, however with that version I expanded upon the game rules and features.</p>
-<p>The Third version, released in <time>2010</time>, was never finished, but it too was based upon the same codebase, but I had intended to redesign the interface.</p>
-<p>For the fourth version, I chose to go back to the drawing board and I rewrote the entire codebase from scratch and in the process I moved from <abbr>PHP</abbr> to JavaScript for the main logic. This version was never entirely complete, but it was hosted on my website in <time>2017</time>.</p>
+<p>The Third version, released in <time>2010</time>, was never finished, but it too was based upon the same PHP codebase, however I had intended to completely redesign the interface. This version would have been the most comprehensive version of REMLAB. It featured more unit types beyond Mechs.  It can still be found on <a href="http://remlab.sourceforge.net" target="_blank">SourceForge</a>.</p>
+<p>For the fourth version, I chose to go back to the drawing board and I rewrote the entire codebase from scratch, back in <time>2017</time>. In doing so, I moved from <abbr>PHP</abbr> to JavaScript for the main logic and an <abbr>XML</abbr> database. This version was never entirely complete, but it did mostly work correctly.</p>
 
 <h3>References &amp; Resources</h3>
 <ul>
     <li><a href="https://www.battletech.com" target="_blank">Official BattleTech Site</a></li>
     <li><a href="https://www.sarna.net" target="_blank">Sarna BattleTechWiki</a></li>
-    <li><a href="https://www.battletechgame.com" target="_blank">BattleTech Computer Game</a></li>
-    <li><i>...And of course all the source books.</i></li>
+    <li><a href="https://docs.google.com/document/d/12ynqpNhOIcBqit8aGiwcOVje6Hscs9Ns5KAVNdJCw04/edit?usp=sharing" target="_blank">REMLAB development document on Google Docs</a></li>
 </ul>
 
 <style>

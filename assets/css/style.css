@@ -165,11 +165,11 @@ body {
     float: right;
     padding: 1em;
 }
-
+/*
 .page-grid {
 
 }
-
+*/
 
 /* Page Footer */
 
@@ -227,7 +227,6 @@ Cards Styling
 .card-footer {
     background-color: #eee;
     padding: 0.3em 0.4em;
-    white-space: nowrap;
 }
 
 .card-footer ul,
@@ -275,11 +274,11 @@ Cards Styling
 .panel-button-active {
 	background: #aaa;
 }
-
+/*
 .card-main {
 
 }
-
+*/
 .card-help {
 	position: absolute;
 	top: -0.8em;
@@ -312,7 +311,7 @@ Specific Card Styling
     min-height: 7em;
 }
 
-/* Internal Struct Card */
+/* Internal Components Card */
 
 .card-Internal .card-body p label {
     min-width: 8em;
@@ -332,7 +331,7 @@ Specific Card Styling
     min-width: 8em;
 }
 
-.card-Armor output {
+.card-Armor fieldset output {
     min-width: 1.4em;
 }
 
@@ -365,7 +364,7 @@ Specific Card Styling
     width: 28%;
 }
 
-/* full table */
+/* Weapons list -- Full table */
 .table-weapons {
     margin-left: -0.9em;
     font-size: 0.85em;
@@ -394,7 +393,7 @@ Specific Card Styling
     height: 0.8em;
 }
 
-/* weapons list */
+/* Weapons list -- Simplified list  */
 .list-weapons::-webkit-scrollbar {
     width: 0.4em;
 }
@@ -599,7 +598,7 @@ Elements
     border-color: var(--dark-gold);
 }
 
-/* gray button */
+/* Gray buttons */
 
 .button-gray {
     background-color: #eee;
@@ -615,7 +614,7 @@ Elements
     background-color: #bbb;
 }
 
-/* Range */
+/* Range style */
 
 [type='range']::-webkit-slider-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
@@ -781,19 +780,19 @@ body.dark-mode,
 body .light-switch {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M349 242c0 242 165 438 370 438 51 0 99-12 143-34a378 378 0 11-507-480c-4 25-6 50-6 76z' fill='black'/%3E%3C/svg%3E");
 }
-
+/*
 body .light-switch:hover {
-    /* box-shadow: 0 0 5px #333; */
+    box-shadow: 0 0 5px #333;
 }
-
+*/
 body.dark-mode .light-switch {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M257 528a240 240 0 10480 0 240 240 0 00-480 0zm240-408l-67 135h135zm288 119l-143 47 96 96zm-433 47l-143-47 47 143zM223 459L88 527l135 67zm546 138l135-68-135-67zM497 936l67-135H429zm145-166l143 47-47-143zm-433 47l143-47-96-96z' fill='white'/%3E%3C/svg%3E");
 }
-
+/*
 body.dark-mode .light-switch:hover {
-    /* box-shadow: 0 0 5px #fff; */
+    box-shadow: 0 0 5px #fff;
 }
-
+*/
 
 /************************
 Radio and Checkbox style
@@ -964,6 +963,10 @@ Responsive elements
         float: none !important;
         width: 100% !important;
         height: auto;
+    }
+    .card-footer,
+    .card-footer output::before {
+        font-size: 0.8em;
     }
 }
 
