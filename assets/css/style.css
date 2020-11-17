@@ -16,7 +16,7 @@ Base REMLAB Style
 @font-face {
     font-family: 'icons';
     src: 
-        url('data:font/woff2;base64,d09GMgABAAAAAAVUAAsAAAAACNwAAAUIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAVBEICooAiC4BNgIkAygLFgAEIAWDBgcgGzEHyI7URnXJr3z4d9M/N4FKglQlNYPa5lWjFmCdwlpKnamx52HmQp9q5Inp395oQACgmX/sNysPDxGuayNlWnKTSEhcxxPb0t+aaqPRZilumF7iQN49AzR9k2yCGqB2U28ibMx3Ib9gJBABKxIExHLgJzXt9XlxGs0DIDMyDito5IgDgTJ6BRsiqTAeAIMAUGE9AfeT2ve/z7dP9xPqBPF9E6laLcQSMmLzpccyBt4VBiAYIPsBqhhggpUFIKDgl6spOrhtgjY42MAw2p7CwIiwMAL+0nLt9VFwE7LmTcbWxnom3JbyzmNN/jlx/C0m3Wz33Meue6lEc+JODJm6Yw9x740k0/bezSBdgggSSzwKccvLb4hR17d9KO+skiDLvO6mFH1t/C0x91zuGTlRUcz2G8XXjvuC8ffKvSJ3KEmqGJVa3jJLVkVpfcd60XhRSThgkCuflxtft5y4wUy5KWWekhPdD1lteQ/eI8XtE8cKsvHsG+xygRfF6KeAWZLMb5mP7yVud4wokwt3yJ2b5PooGVUy9l6MvDH2hmy4QNxKzg65yC2ZTyqsR0pTFHJZDDstQe45sfha8fbPco4J785QrO8gzl/MFlmGBmZ53nENO/TQDGEP45yBRMAIXsTyDLWDKw+yXEsxpKfDycygWWpN5ilGJ2SfIWp3zllWC41qsVVDWT+cgLh9uZckbO7Eg8aj97fzWpp/2yIjeF90qHdNyrcpBEDKlhRDxO7Ikv++q2jU68cUQ59/6Lv/SgYNNdURKd/lln36D3SMP4J/D3c5tVpnFz3nyPgOJM+f2N4+MT4ESkymkpIWE4q7T4e2Z/U+XLy4uuSDF6d4AhpS/Cv6ZlcTYQiehhpi3yCZDqhwfqsag/flG3x8ryNPbmszujwr3tDUlZQ4bX/+WaNtDmpVm9Rbxv7xR07liTiNdkZZmSa08tklA9ZHv1YxhfMiNkS2JTaf2dOSqI5Ojo6z1XAHFf7BqA1XUzqS2Fc6I9qS28YuzXg+Hhx9dWB6xowMQcjI3APm6ObwqNNXlRseN0Wl/MUEGvT9ERXTEDuCjF50zEXMdL+uccGnj+3dVzGu1NSQHVv93AS2vhqVVH3Bj+UBXFIs/rBkt9JQzdZnLZ35RHZjqali7N59xz42pRajScP+VdQUVW58PGPVJRp+4FbLdEFILskYQDnxDmRMz5whCNPbwidxJo48YON4zjz/aVOOKXearnfttrVzbf291uz6QKyqMBYk2DZEbF3cO01nyjXlzH+aM3O8DWndOdnZll2HD9+Nrtr1QWe2JTt59+5kPvXZZ1MTTqeMxyuv2u28JTZ/llYbMluyd+wIbjLmtpJsbVzNzFFHb3zu0tfBDwBon0w/ok8DvrdVoK86j4t23fti0iz95P8CWBWZ++Tupq25xuddZ/MidySHK+O5Nnkrp6jsRgBgVA05NS9pxBKaKRDDGtmDXXYGc58mOLsLduhwAQYJ/HGPhKpxNqBxY0GFW0hRg0U4xQ/+aEJmEAMBNIgqEAQp/CFQOCfQuBJQ4VZQ1IgAR/GDDh0PZFCMY/3drmGXawT96IYLw3CFDx2xOObN73eNcAWGfFjgwDzMRz8GzwwOBTAgf0fvgf/d4XAuHLLPQwcccGIhhmDHvFUPrHWNLOCcjhHHPPsCRw83eynX0O1qETYDau+VLOAxJxwYeQ2jHQvgQE/ubCwFh4ZzsC2LwwAaAQA=') format('woff2'),
+        url('data:font/woff2;base64,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') format('woff2'),
         url('icons.woff?93u5fl') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -420,7 +420,7 @@ Specific Card Styling
 .list-weapons ol {
     list-style: none;
     padding: 0;
-    margin: 0 0.15em 0 0;
+    margin: 0 0.2em 0 0;
     line-height: 1.4;
 }
 
@@ -432,13 +432,16 @@ Specific Card Styling
     position: relative;
 }
 
-.list-weapons span {
-    display: block;
-}
-
 .list-weapons .weapon-name {
     font-weight: bold;
     font-size: 1em;
+    display: block;
+}
+
+.list-weapons .weapon-data span {
+    background-color: rgba(0,0,0,0.05);
+    padding: 1px 5px;
+    border-radius: 6px;
 }
 
 .list-weapons .weapon-buttons {
@@ -634,6 +637,23 @@ Elements
     content: "\e900";
     font-size: 0.9rem;
 }
+
+/* Add icons to the heat and damage in weapons list */
+
+.heat::before {
+    font-family: 'icons' !important;
+    content: "\e906";
+    font-size: 0.9rem;
+    margin-right: 1px;
+}
+
+.damage::before {
+    font-family: 'icons' !important;
+    content: "\e905";
+    font-size: 0.9rem;
+    margin-right: 1px;
+}
+
 
 /* Link Icons */
 
