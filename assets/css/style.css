@@ -16,7 +16,7 @@ Base REMLAB Style
 @font-face {
     font-family: 'icons';
     src: 
-        url('data:font/woff2;base64,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') format('woff2'),
+        url('data:font/woff2;base64,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') format('woff2'),
         url('icons.woff?93u5fl') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -90,7 +90,7 @@ body {
     height: 100%;
     float: left;
     position: fixed;
-    background-color: #f7f7f7;
+    background-color: rgba(0,0,0,0.03);
     padding: 0.5em 1em;
 }
 
@@ -146,7 +146,7 @@ body {
 }
 
 .sidebar-totals {
-    background: #eee;
+    background-color: rgba(0,0,0,0.05);
     font-size: 1em;
     padding: 0.1em 1em;
     border-radius: 0.3em;
@@ -225,7 +225,7 @@ Cards Styling
 }
 
 .card-footer {
-    background-color: #eee;
+    background-color: rgba(0,0,0,0.05);
     padding: 0.3em 0.4em;
 }
 
@@ -338,7 +338,7 @@ Specific Card Styling
 .autofill-buttons button {
     width: 100%;
     padding: 0.1em;
-    background-color: #fff;
+    background-color: transparent;
     color: #555;
     font-weight: 600;
     border: 3px solid #555;
@@ -426,10 +426,11 @@ Specific Card Styling
 
 .list-weapons li {
     border-bottom: 1px solid #eee;
-    background-color: #fcfcfc;
+    background-color: rgba(0,0,0,0.01);
     margin: 0 1px;
     padding: 5px 8px;
     position: relative;
+    transition: background-color 0.4s;
 }
 
 .list-weapons .weapon-name {
@@ -442,6 +443,7 @@ Specific Card Styling
     background-color: rgba(0,0,0,0.05);
     padding: 1px 5px;
     border-radius: 6px;
+    line-height: 1.5;
 }
 
 .list-weapons .weapon-buttons {
@@ -497,9 +499,10 @@ Specific Card Styling
 .locations-list p {
     margin: 0;
     font-size: 0.9em;
-    background-color: #fafafa;
+    background-color: rgba(0,0,0,0.05);
     display: inline-block;
     padding: 2px 3px;
+    border-radius: 8px;
 }
 
 .locations-list .btn-remove {
@@ -581,6 +584,21 @@ Modals and Dialogs Style
 Elements
 *************************/
 
+/* The Light Switch */
+
+.light-switch {
+    background: no-repeat 50% 50% / 2em;
+    width: 2.2em;
+}
+
+body .light-switch {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M349 242c0 242 165 438 370 438 51 0 99-12 143-34a378 378 0 11-507-480c-4 25-6 50-6 76z' fill='black'/%3E%3C/svg%3E");
+}
+
+body.dark-mode .light-switch {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M257 528a240 240 0 10480 0 240 240 0 00-480 0zm240-408l-67 135h135zm288 119l-143 47 96 96zm-433 47l-143-47 47 143zM223 459L88 527l135 67zm546 138l135-68-135-67zM497 936l67-135H429zm145-166l143 47-47-143zm-433 47l143-47-96-96z' fill='white'/%3E%3C/svg%3E");
+}
+
 /* Gold Buttons */
 
 .button-gold {
@@ -604,17 +622,17 @@ Elements
 /* Gray buttons */
 
 .button-gray {
-    background-color: #eee;
+    background-color: rgba(0,0,0,0.15);
     border-color: #ddd;
     transition: background-color 0.4s;
 }
 
 .button-gray:hover {
-    background-color: #ddd;
+    background-color: rgba(0,0,0,0.04);
 }
 
 .button-gray:active {
-    background-color: #bbb;
+    background-color: rgba(0,0,0,0.2);
 }
 
 /* Range style */
@@ -654,6 +672,15 @@ Elements
     margin-right: 1px;
 }
 
+/* Warrior affiliation swap button */
+
+.button-flip::before {
+    font-family: 'icons' !important;
+    content: "\e907";
+    font-size: 1.5rem;
+    line-height: 0.6;
+    vertical-align: -4px;
+}
 
 /* Link Icons */
 
@@ -689,16 +716,6 @@ li [target="_blank"]::after {
     content: "\e904";
     padding-left: 2px;
     font-size: 1em;
-}
-
-/* Other Icons */
-
-.button-flip::before {
-    font-family: 'icons' !important;
-    content: "\e905";
-    font-size: 1.5rem;
-    line-height: 0.6;
-    vertical-align: -4px;
 }
 
 /* Section list */
@@ -740,6 +757,12 @@ body.dark-mode,
     font-weight: 350;
 }
 
+.dark-mode .sidebar-input input,
+.dark-mode .sidebar-input .stepper-container,
+.dark-mode .sidebar-input select:not([multiple]):not([size]) {
+    background-color: rgba(0,0,0,0.2);
+}
+
 .dark-mode dialog {
     background-color: rgba(0,0,0,0.9);
 }
@@ -747,12 +770,12 @@ body.dark-mode,
 .dark-mode .dialog-html-close {
     filter: invert();
 }
-
+/*
 .dark-mode .sidebar-totals,
 .dark-mode .card-footer {
     background-color: #222;
 }
-
+*/
 .dark-mode header img,
 .dark-mode figure img {
     filter: brightness(0.8) contrast(1.2);
@@ -764,7 +787,7 @@ body.dark-mode,
 
 .dark-mode code, 
 .dark-mode kbd {
-    background-color: #444;
+    xbackground-color: #444;
 }
 
 .dark-mode select:not([multiple]):not([size]),
@@ -772,7 +795,7 @@ body.dark-mode,
 .dark-mode input, 
 .dark-mode textarea {
     color: #fff;
-    background-color: #333;
+    xbackground-color: #333;
     caret-color: #fff;
 }
 
@@ -783,36 +806,10 @@ body.dark-mode,
 .dark-mode button,
 .dark-mode [role='button'],
 .dark-mode [type='button'],
-.dark-mode [type='reset'],
-.dark-mode [type='submit'],
 .dark-mode input::-webkit-file-upload-button {
-    background-color: #555;
     color: #fff;
 }
 
-/* The Light Switch */
-
-.light-switch {
-    background: #eee no-repeat 50% 50% / 2em;
-    width: 2.2em;
-}
-
-body .light-switch {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M349 242c0 242 165 438 370 438 51 0 99-12 143-34a378 378 0 11-507-480c-4 25-6 50-6 76z' fill='black'/%3E%3C/svg%3E");
-}
-/*
-body .light-switch:hover {
-    box-shadow: 0 0 5px #333;
-}
-*/
-body.dark-mode .light-switch {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cpath d='M257 528a240 240 0 10480 0 240 240 0 00-480 0zm240-408l-67 135h135zm288 119l-143 47 96 96zm-433 47l-143-47 47 143zM223 459L88 527l135 67zm546 138l135-68-135-67zM497 936l67-135H429zm145-166l143 47-47-143zm-433 47l143-47-96-96z' fill='white'/%3E%3C/svg%3E");
-}
-/*
-body.dark-mode .light-switch:hover {
-    box-shadow: 0 0 5px #fff;
-}
-*/
 
 /************************
 Radio and Checkbox style

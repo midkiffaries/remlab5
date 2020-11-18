@@ -112,12 +112,14 @@ const WeaponInfoModal = (id) => {
             <th>Heat</th>
             <th>Damage</th>
             <th>Shots per Ton</th>
+            <th>Modifier</th>
             <th>Delay <small>(Solaris)</small></th>
         </tr>
         <tr>
             <td>${w.heat}</td>
             <td>${w.damage}</td>
             <td>${zeroToDash(w.ammo)}</td>
+            <td>${w.modifier}</td>
             <td>${w.delay}</td>
         </tr>
     </table>
