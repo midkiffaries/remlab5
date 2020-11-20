@@ -10,7 +10,9 @@ Base REMLAB Style
     --lighter-gold: #fff1a1;
     --pale-gold: #fffdf2;
 
-    --input-bg: #fefefe;
+    --input-bg: rgba(255,255,255,0.9);
+    --input-dark-bg: rgba(100,100,100,0.5);
+    --card-bg: rgba(60,60,60,0.02);
 }
 
 @font-face {
@@ -31,6 +33,15 @@ Base REMLAB Style
 ::selection {
 	text-shadow: none;
 	background-color: var(--light-gold);
+}
+
+textarea,
+select:not([multiple]):not([size]),
+[type="text"],
+[type="number"],
+[role="button"],
+.stepper-container {
+    background-color: var(--input-bg);
 }
 
 [type="text"]:hover,
@@ -193,7 +204,7 @@ Cards Styling
 *************************/
 
 .card {
-    background-color: var(--input-bg);
+    background-color: var(--card-bg);
     position: relative;
     width: calc(50% - 0.6em);
     float: left;
@@ -425,12 +436,18 @@ Specific Card Styling
 }
 
 .list-weapons li {
+    position: relative;
+}
+
+.list-weapons .weapon-add {
     border-bottom: 1px solid #eee;
     background-color: rgba(0,0,0,0.01);
     margin: 0 1px;
     padding: 5px 8px;
-    position: relative;
     transition: background-color 0.4s;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
 
 .list-weapons .weapon-name {
@@ -446,14 +463,17 @@ Specific Card Styling
     line-height: 1.5;
 }
 
-.list-weapons .weapon-buttons {
+.list-weapons .weapon-info {
     position: absolute;
     right: 5px;
-    top: 2px;
+    bottom: -10px;
     width: 1.4em;
+    display: block;
 }
 
 .list-weapons li:hover {
+	background: transparent no-repeat 95% 10% / 1em;
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M512 192H320V0H192v192H0v128h192v192h128V320h192z' fill='dimgray'/%3E%3C/svg%3E");
     background-color: var(--light-gold);
 }
 
@@ -748,19 +768,19 @@ Dark Mode
 }    
 
 body.dark-mode,
-.dark-mode .dialog-body,
-.dark-mode .card,
-.dark-mode .page-header {
+.dark-mode .dialog-body {
     color: #eee;
-    background-color: #121212;
+    background-color: #222;
     border-color: #555;
     font-weight: 350;
 }
 
-.dark-mode .sidebar-input input,
-.dark-mode .sidebar-input .stepper-container,
-.dark-mode .sidebar-input select:not([multiple]):not([size]) {
-    background-color: rgba(0,0,0,0.2);
+.dark-mode textarea,
+.dark-mode [type='text'],
+.dark-mode [type='number'],
+.dark-mode .stepper-container,
+.dark-mode select:not([multiple]):not([size]) {
+    background-color: var(--input-dark-bg);
 }
 
 .dark-mode dialog {

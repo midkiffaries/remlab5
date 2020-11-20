@@ -65,8 +65,14 @@ const HelpModal = () => (`
 
 // Weapon Info modal content
 const WeaponInfoModal = (id) => {
-    let w = weaponTable.weapon[id];
+    let w = weaponTable.weapon[id], 
+        ammo = "";
     
+    // If weapon has ammo display 'Add ammo' button
+    if (w.ammo > 0) {
+        ammo = `<button onclick="${id}" class="button-gold">Add Ammo</button>`;
+    }
+
     return `
 <div class="wi-body">
     <header class="wi-header">
@@ -144,6 +150,7 @@ const WeaponInfoModal = (id) => {
 
     <footer class="wi-footer">
         <button onclick="${id}" class="button-gold">Add ${w.name}</button>
+        ${ammo}
     </footer>
 </div>
 

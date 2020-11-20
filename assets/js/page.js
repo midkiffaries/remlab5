@@ -664,11 +664,22 @@ function compactWeaponsTable() {
             // Generate each table row
             li += (`
             <li data-id="${i}">
-                <span class="weapon-buttons"><button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
+                <span class="weapon-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add Weapon" role="button">
+                    <span class="weapon-name">${w.name}</span>
+                    <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span><br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span></span>
+                </span>
+                <span class="weapon-info"><button onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
+            </li>
+            `);
+            /*
+            li += (`
+            <li data-id="${i}" role="button" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add Weapon">
+                <span class="weapon-buttons"><!--button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button--><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
                 <span class="weapon-name">${w.name}</span>
                 <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span><br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span></span>
             </li>
             `);
+            */
         }
     }
 
