@@ -249,7 +249,7 @@
         background-color: var(--lighter-gold);
     }
     .select-list input:checked + label {
-        background-color: var(--base-gold);
+        background-color: var(--light-gold);
         font-weight: bold;
     }
     .select-list label {

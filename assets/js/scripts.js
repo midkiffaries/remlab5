@@ -338,14 +338,14 @@ function closeModals(c) {
 	
 	// Generate button switch logic
 	modeButton.onclick = () => {
-		if (isDarkMode.matches) {
-			document.body.classList.toggle("light-mode");
-			document.body.classList.toggle("dark-mode");
-			theme = document.body.classList.contains("light-mode") ? "light":"dark";
-		} else {
+		//if (isDarkMode.matches) {
+		//	document.body.classList.toggle("light-mode");
+		//	document.body.classList.toggle("dark-mode");
+		//	theme = document.body.classList.contains("light-mode") ? "light":"dark";
+		//} else {
 			document.body.classList.toggle("dark-mode");
 			theme = document.body.classList.contains("dark-mode") ? "dark":"light";
-		}
+		//}
 		
 		// Set button title
 		buttonText = (document.body.classList.contains('dark-mode')) ? 'light':'dark';

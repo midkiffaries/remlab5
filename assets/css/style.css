@@ -12,7 +12,9 @@ Base REMLAB Style
 
     --input-bg: rgba(255,255,255,0.9);
     --input-dark-bg: rgba(100,100,100,0.5);
+    --input-dark-focus: rgba(50,50,50,0.5);
     --card-bg: rgba(60,60,60,0.02);
+    --card-border: rgba(200,200,200,0.4);
 }
 
 @font-face {
@@ -35,15 +37,18 @@ Base REMLAB Style
 	background-color: var(--light-gold);
 }
 
+/* Input elements background color */
 textarea,
 select:not([multiple]):not([size]),
 [type="text"],
 [type="number"],
 [role="button"],
+[role="listbox"],
 .stepper-container {
     background-color: var(--input-bg);
 }
 
+/* Input elements hover style */
 [type="text"]:hover,
 select:hover,
 textarea:hover,
@@ -54,26 +59,12 @@ textarea:hover,
     transition: border-color 0.6s;
 }
 
-aside *:focus,
-main *:focus,
-dialog *:focus {
+/* Input elements focus style */
+:focus {
     outline: none;
     box-shadow: 0 0 1px 2px var(--base-gold) !important;
     border-color: var(--dark-gold);
     background-color: var(--pale-gold) !important;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #333;
-}
-
-dialog a:hover {
-    color: var(--dark-gold);
-}
-
-input,
-textarea {
     caret-color: var(--dark-gold);
 }
 
@@ -85,13 +76,18 @@ textarea {
 	color: var(--base-gold);
 }
 
+/* Modal hyperlink style */
+dialog a:hover {
+    color: var(--dark-gold);
+}
+
 
 /************************
 Page Layout
 *************************/
 
 body {
-    background-color: #fbfbfb
+    background-color: #fcfcfc;
 }
 
 /* Page Header */
@@ -101,7 +97,7 @@ body {
     height: 100%;
     float: left;
     position: fixed;
-    background-color: rgba(0,0,0,0.03);
+    background-color: rgba(40,40,40,0.05);
     padding: 0.5em 1em;
 }
 
@@ -151,13 +147,17 @@ body {
     min-width: 3.8em;
 }
 
+.sidebar-input small {
+    letter-spacing: -0.05rem;
+}
+
 .sidebar-input input[type="text"],
 .sidebar-print button {
     width: 100%;
 }
 
 .sidebar-totals {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0,0,0,0.1);
     font-size: 1em;
     padding: 0.1em 1em;
     border-radius: 0.3em;
@@ -176,13 +176,13 @@ body {
     float: right;
     padding: 1em;
 }
-/*
-.page-grid {
-
-}
-*/
 
 /* Page Footer */
+
+.page-footer a:hover {
+    text-decoration: none;
+    color: #333;
+}
 
 .page-footer a:hover::before {
     opacity: 0.9;
@@ -208,7 +208,7 @@ Cards Styling
     position: relative;
     width: calc(50% - 0.6em);
     float: left;
-    border: 1px solid #eee;
+    border: 1px solid var(--card-border);
     border-top: 3px solid var(--base-gold);
     margin: 0.3em;
 }
@@ -346,25 +346,6 @@ Specific Card Styling
     min-width: 1.4em;
 }
 
-.autofill-buttons button {
-    width: 100%;
-    padding: 0.1em;
-    background-color: transparent;
-    color: #555;
-    font-weight: 600;
-    border: 3px solid #555;
-    transition: background-color 0.4s;
-}
-
-.autofill-buttons button:hover {
-    background-color: #555;
-    color: #fff;
-}
-
-.autofill-buttons button:active {
-    background-color: #333;
-}
-
 /* Weapons card */
 
 .card-Weapons .col-2 {
@@ -382,7 +363,7 @@ Specific Card Styling
 }
 
 .table-weapons tr:nth-of-type(even) {
-    background-color: #f8f8f8;
+    background-color: #f2f2f2;
 }
 
 .table-weapons td {
@@ -394,6 +375,7 @@ Specific Card Styling
     padding: 0.1em;
     width: 1.7em;
     border: none;
+    background-color: #ddd;
 }
 
 .table-weapons button:hover {
@@ -440,7 +422,6 @@ Specific Card Styling
 }
 
 .list-weapons .weapon-add {
-    border-bottom: 1px solid #eee;
     background-color: rgba(0,0,0,0.01);
     margin: 0 1px;
     padding: 5px 8px;
@@ -448,6 +429,15 @@ Specific Card Styling
     width: 100%;
     border: none;
     border-bottom: 1px solid #ddd;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.list-weapons .weapon-add:hover {
+	background: transparent no-repeat 95% 10% / 1em;
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M512 192H320V0H192v192H0v128h192v192h128V320h192z' fill='black'/%3E%3C/svg%3E");
+    background-color: var(--light-gold);
+    box-shadow: none;
 }
 
 .list-weapons .weapon-name {
@@ -471,17 +461,7 @@ Specific Card Styling
     display: block;
 }
 
-.list-weapons li:hover {
-	background: transparent no-repeat 95% 10% / 1em;
-	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M512 192H320V0H192v192H0v128h192v192h128V320h192z' fill='dimgray'/%3E%3C/svg%3E");
-    background-color: var(--light-gold);
-}
-
-.list-weapons li:hover button {
-    opacity: 0.5;
-}
-
-.list-weapons button {
+.weapon-info button {
     padding: 0.1em;
     border: none;
     background: transparent;
@@ -489,12 +469,12 @@ Specific Card Styling
     opacity: 0.1;
 }
 
-.list-weapons button img {
-    height: 1.4em;
+.weapon-info button:hover {
+    opacity: 0.9;
 }
 
-.list-weapons li button:hover {
-    opacity: 0.9;
+.weapon-info button img {
+    height: 1.4em;
 }
 
 
@@ -504,20 +484,24 @@ Specific Card Styling
     padding: 0 0.4em;
 }
 
-.locations-list section {
-    float: left;
+.locations-list h5 {
+    margin: 0;
+}
+
+.locations-list .col-3 {
     width: 33%;
-    min-height: 12em;
+    margin-top: 2em;
 }
 
 .locations-list ul {
     list-style: none;
     padding-left: 0.2em;
     margin: 0;
+    min-height: 3em;
 }
 
 .locations-list p {
-    margin: 0;
+    margin: 0 0 1em;
     font-size: 0.9em;
     background-color: rgba(0,0,0,0.05);
     display: inline-block;
@@ -544,12 +528,16 @@ Specific Card Styling
 }
 
 .locations-mandatory button {
-    padding: 0.1em 0.2em;
+    padding: 0.3em 0.4em;
     line-height: 1;
+    min-width: 7em;
+    margin: 0.3em 0;
 }
 
 .locations-mandatory button img {
     height: 0.9em;
+    margin-right: 2px;
+    vertical-align: 0;
 }
 
 
@@ -648,11 +636,32 @@ body.dark-mode .light-switch {
 }
 
 .button-gray:hover {
-    background-color: rgba(0,0,0,0.04);
+    background-color: rgba(0,0,0,0.1);
 }
 
 .button-gray:active {
     background-color: rgba(0,0,0,0.2);
+}
+
+/* Hollow buttons */
+
+.button-hollow {
+    width: 100%;
+    padding: 0.1em;
+    background-color: transparent;
+    color: #555;
+    font-weight: 600;
+    border: 3px solid #555;
+    transition: background-color 0.4s;
+}
+
+.button-hollow:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.button-hollow:active {
+    background-color: #333;
 }
 
 /* Range style */
@@ -778,9 +787,15 @@ body.dark-mode,
 .dark-mode textarea,
 .dark-mode [type='text'],
 .dark-mode [type='number'],
+.dark-mode [role='button'],
+.dark-mode [role='listbox'],
 .dark-mode .stepper-container,
 .dark-mode select:not([multiple]):not([size]) {
     background-color: var(--input-dark-bg);
+}
+
+.dark-mode :focus {
+    background-color: var(--input-dark-focus) !important;
 }
 
 .dark-mode dialog {
@@ -790,12 +805,7 @@ body.dark-mode,
 .dark-mode .dialog-html-close {
     filter: invert();
 }
-/*
-.dark-mode .sidebar-totals,
-.dark-mode .card-footer {
-    background-color: #222;
-}
-*/
+
 .dark-mode header img,
 .dark-mode figure img {
     filter: brightness(0.8) contrast(1.2);
@@ -988,10 +998,9 @@ Responsive elements
 }
 
 /* Phone (Portrait) and narrow screen */
-@media only screen and (min-width: 320px) and (max-width: 920px) {
+@media only screen and (min-width: 320px) and (max-width: 1000px) {
     .page-header,
     .page-header-menu,
-    .page-sidebar, 
     .page-main,
     .card,
     .col-2,
@@ -1001,18 +1010,17 @@ Responsive elements
         width: 100% !important;
         height: auto;
     }
+
     .card-footer,
     .card-footer output::before {
         font-size: 0.8em;
     }
-}
 
-/* Phone (Portrait) and narrow screen */
-@media only screen and (min-width: 320px) and (max-width: 812px) {
     [type="checkbox"] + label.switch::before {
         margin-top: 0;
     }
 }
+
 /* Printing */
 @media print {
     [type="radio"] + label::before, 

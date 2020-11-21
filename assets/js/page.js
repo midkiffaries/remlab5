@@ -212,11 +212,11 @@ const sArmor = new SectionPanel(
     <div class="col-3">
         <fieldset class="autofill-buttons">
             <legend>Auto Fill</legend>
-            <p><button id="btnArmorFill-100" onclick="autoFillArmor(1)">Max</button></p>
-            <p><button id="btnArmorFill-75" onclick="autoFillArmor(0.75)">75%</button></p>
-            <p><button id="btnArmorFill-50" onclick="autoFillArmor(0.5)">50%</button></p>
-            <p><button id="btnArmorFill-25" onclick="autoFillArmor(0.25)">25%</button></p>
-            <p><button id="btnArmorFill-0" onclick="autoFillArmor(0)">None</button></p>
+            <p><button id="btnArmorFill-100" onclick="autoFillArmor(1)" class="button-hollow">Max</button></p>
+            <p><button id="btnArmorFill-75" onclick="autoFillArmor(0.75)" class="button-hollow">75%</button></p>
+            <p><button id="btnArmorFill-50" onclick="autoFillArmor(0.5)" class="button-hollow">50%</button></p>
+            <p><button id="btnArmorFill-25" onclick="autoFillArmor(0.25)" class="button-hollow">25%</button></p>
+            <p><button id="btnArmorFill-0" onclick="autoFillArmor(0)" class="button-hollow">None</button></p>
         </fieldset>
     </div>
     `, 
@@ -278,21 +278,27 @@ const sWeapons = new SectionPanel(
     </div>
 
     <div class="locations-list col-2">
-        ${locationList('Left Arm', 'LA')}
-        ${locationList('Head', 'H')}
-        ${locationList('Right Arm', 'RA')}
-        ${locationList('Left Torso', 'LT')}
-        ${locationList('Center Torso','CT')}
-        ${locationList('Right Torso', 'RT')}
-        ${locationList('Left Leg', 'LL')}
-        <section class="locations-mandatory">
-            <h5>Mandatory</h5>
-            <ul>
-                <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> (0)</li>
-                <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> (0)</li>
-            </ul>
-        </section>
-        ${locationList('Right Leg','RL')}
+        <div class="col-3">
+            ${locationList('Left Arm', 'LA')}
+            ${locationList('Left Torso', 'LT')}
+            ${locationList('Left Leg', 'LL')}
+        </div>
+        <div class="col-3">
+            ${locationList('Head', 'H')}
+            ${locationList('Center Torso','CT')}
+            <section class="locations-mandatory">
+                <h5>Mandatory</h5>
+                <ul>
+                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> (0)</li>
+                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> (0)</li>
+                </ul>
+            </section>
+        </div>
+        <div class="col-3">
+            ${locationList('Right Arm', 'RA')}       
+            ${locationList('Right Torso', 'RT')}
+            ${locationList('Right Leg','RL')}
+        </div>
     </div>
     `, 
     
@@ -338,7 +344,7 @@ const sWarrior = new SectionPanel(
     `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
     
     // footer
-    `<p>On the final printout, <i>(blank line)</i> will display a dotted line.</p>`,
+    `<p>On the Record Sheet, <i>(blank line)</i> will display a dotted line.</p>`,
 );
 
 
@@ -666,7 +672,8 @@ function compactWeaponsTable() {
             <li data-id="${i}">
                 <span class="weapon-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add Weapon" role="button">
                     <span class="weapon-name">${w.name}</span>
-                    <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span><br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span></span>
+                    <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span>
+                    <br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span> <span class="cbills">${w.cost/1000}k</span></span>
                 </span>
                 <span class="weapon-info"><button onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
             </li>
