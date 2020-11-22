@@ -289,8 +289,8 @@ const sWeapons = new SectionPanel(
             <section class="locations-mandatory">
                 <h5>Mandatory</h5>
                 <ul>
-                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> (0)</li>
-                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> (0)</li>
+                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> <output id="outMandatoryHS">10</output></li>
+                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> <output id="outMandatoryJJ">0</output></li>
                 </ul>
             </section>
         </div>
@@ -767,10 +767,11 @@ function addWeapon(v, id) {
     if (Mech[`crits_${v}`] + w <= max) {
         // Add to crits_v
         Mech[`crits_${v}`] += w;
+
         // Add to assigned_v
         loc.push(id);
+
         // List location contents
-        //listCritsbyLoc(v);
         compactListCritsbyLoc(v);
     }
 }
@@ -780,12 +781,13 @@ function removeWeapon(v, id) {
     let a = Mech[`assigned_${v}`].indexOf(id),
         w = weaponTable.weapon[id].crits;
     
-    // Remove from crits_v
+    // Remove item from assigned_(v)
+    Mech[`assigned_${v}`].splice(a, 1);
+
+    // Remove crits from crits_(v)
     Mech[`crits_${v}`] -= w;
 
-    // Remove item
-    Mech[`assigned_${v}`].pop(a);
-    //listCritsbyLoc(v);
+    // List location contents
     compactListCritsbyLoc(v);
 }
 
