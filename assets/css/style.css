@@ -517,6 +517,7 @@ Specific Card Styling
     border: 0;
     font-weight: 600;
     border-radius: 0.2em;
+    transition: background-color 0.3s;
 }
 
 .locations-list .btn-remove:hover {

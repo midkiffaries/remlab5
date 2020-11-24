@@ -491,7 +491,7 @@ elID("AppVersion").textContent = RemlabVersion;
 
 
 /************************
- * Page Logic 
+ * Page in/out Logic
  ************************/
 
 // Update form based on user input

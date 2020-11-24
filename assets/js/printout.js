@@ -54,13 +54,14 @@ const generateHeatScale = () => {
 const listCritsLocation = (v) => {
     let max = Mech[`maxcrits_${v}`],
         loc = Mech[`assigned_${v}`],
-        li = `<ol class="high">`,
+		li = `<ol class="high">`,
+		bracket = ['┐', '│', '┘'],
         w;
 
     // Increment through selected location array 
     for (let i = 0; i < max; i++) {
 		// Split the crits list if its more than 6
-		if (i == 6) li += `</ol><ol class="low">`
+		if (i == 6) li += `</ol><ol class="low">`;
 
         w = weaponTable.weapon[loc[i]];
 
@@ -68,18 +69,23 @@ const listCritsLocation = (v) => {
         if (loc[i] >= 0) {
 
 			// Populate single line
-			li += `<li>${w.name}</li>`;
-
-            // If weapon takes up more than 1 crit
-            if (w.crits > 1) {
-                for (let j = 1; j < w.crits; j++) {
-                    li += `<li>${w.name}</li>`;
-                    max--;
+			if (w.crits == 1) {
+				li += `<li>${w.name}</li>`;
+			} else {
+           		// If weapon takes up more than 1 crit
+                for (let j = 0; j < w.crits; j++) {
+					li += `<li>${w.name}</li>`;
+					//if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
+					//else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
+					//else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
+					max--;
+					//i = i + (w.crits - 1);
+					//if (i == 6) li += `</ol><ol class="low">`;
                 }
             }
         } else {
             // Empty slot
-            li += `<li>–</li>`;
+            li += `<li><i>Roll Again</i></li>`;
         }
 	}
 
