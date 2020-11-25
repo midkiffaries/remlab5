@@ -74,17 +74,17 @@ const listCritsLocation = (v) => {
 			} else {
            		// If weapon takes up more than 1 crit
                 for (let j = 0; j < w.crits; j++) {
-					li += `<li>${w.name}</li>`;
-					//if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
-					//else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
-					//else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
-					max--;
-					//i = i + (w.crits - 1);
-					//if (i == 6) li += `</ol><ol class="low">`;
-                }
+					// Split the crits list if its more than 6
+					if (i+j == 6) li += `</ol><ol class="low">`;
+
+					if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
+					else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
+					else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
+				}
+				max = max - (w.crits - 1);
             }
         } else {
-            // Empty slot
+            // Populate empty slot
             li += `<li><i>Roll Again</i></li>`;
         }
 	}
@@ -394,7 +394,7 @@ body {
 	max-width: 100%;
 }
 
-.cbills::before {
+.dialog-body .cbills::before {
 	font-size: 0.5em;
 }
 
@@ -422,6 +422,7 @@ body {
 
 .print-container {
 	margin-top: 2em;
+	font-family: arial;
 }
 
 .print-sheet {
@@ -1058,8 +1059,8 @@ body {
 	max-width: 100%;
 }
 
-.cbills::before {
-	font-size: 1em;
+.dialog-body .cbills::before {
+	font-size: 0.9em;
 }
 
 .print-options {
@@ -1077,6 +1078,7 @@ body {
 
 .print-body {
 	font-size: 0.9em;
+	font-family: arial;
 }
 
 .print-header img {

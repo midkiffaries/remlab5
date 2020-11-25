@@ -930,7 +930,7 @@ const tableArsenal = `
         "rangeMedium": 2,
         "rangeLong": 3,
         "rangeExtreme": 4,
-        "tons": 1,
+        "tons": 0.5,
         "crits": 1,
         "ammo": 0,
         "cost": 11250,
