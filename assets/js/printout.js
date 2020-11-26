@@ -55,14 +55,17 @@ const listCritsLocation = (v) => {
     let max = Mech[`maxcrits_${v}`],
         loc = Mech[`assigned_${v}`],
 		li = `<ol class="high">`,
-		bracket = ['┐', '│', '┘'],
+		bracket = ['┓', '┃', '┛'],
+		isLow = false,
         w;
+
+	// If location has only 6 slots
+	if (max < 12) li = `<ol>`;
 
     // Increment through selected location array 
     for (let i = 0; i < max; i++) {
-		// Split the crits list if its more than 6
-		if (i == 6) li += `</ol><ol class="low">`;
 
+		// Get weapon data from table
         w = weaponTable.weapon[loc[i]];
 
         // Populate slot
@@ -70,12 +73,21 @@ const listCritsLocation = (v) => {
 
 			// Populate single line
 			if (w.crits == 1) {
+				// Split the crits list if there are more than 6 slots
+				if (i == 6 && isLow == false) {
+					isLow = true;
+					li += `</ol><ol class="low">`;
+				}
+
 				li += `<li>${w.name}</li>`;
 			} else {
            		// If weapon takes up more than 1 crit
                 for (let j = 0; j < w.crits; j++) {
-					// Split the crits list if its more than 6
-					if (i+j == 6) li += `</ol><ol class="low">`;
+					// Split the crits list if there are more than 6 slots
+					if (i+j == 6 && isLow == false) {
+						isLow = true;
+						li += `</ol><ol class="low">`;
+					}
 
 					if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
 					else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
@@ -84,6 +96,12 @@ const listCritsLocation = (v) => {
 				max = max - (w.crits - 1);
             }
         } else {
+			// Split the crits list if there are more than 6 slots
+			if (i == 6 && isLow == false) {
+				isLow = true;
+				li += `</ol><ol class="low">`;
+			}
+
             // Populate empty slot
             li += `<li><i>Roll Again</i></li>`;
         }
