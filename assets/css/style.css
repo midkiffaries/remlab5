@@ -408,6 +408,7 @@ Specific Card Styling
     overflow-y: scroll;
     border: 2px solid #bbb;
     margin: 0.4em 0;
+    box-shadow: inset -2px -8px 8px 1px rgba(50, 50, 50, 0.3);
 }
 
 .list-weapons ol {
@@ -1019,6 +1020,10 @@ Responsive elements
 
     [type="checkbox"] + label.switch::before {
         margin-top: 0;
+    }
+
+    .list-weapons {
+        height: 30em;
     }
 }
 

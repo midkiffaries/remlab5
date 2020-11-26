@@ -703,9 +703,9 @@ function locationList(n, v) {
     if (v == 'LA' || v == 'RA') {
         s += (`
         <ul data-id="${v}">
-            <li><input type="checkbox" id="chkLowerArm_${v}" onclick="checkActuator()" checked disabled><label for="chkLowerArm_${v}">Lower Arm</label></li>
-            <li><input type="checkbox" id="chkHand_${v}" onclick="checkActuator()" checked><label for="chkHand_${v}">Hand</label></li>
-            <li><input type="checkbox" id="chkHatchet_${v}" onclick="checkActuator()" disabled><label for="chkHatchet_${v}">Hatchet</label></li>
+            <li><input type="checkbox" id="chkLowerArm_${v}" onclick="checkActuator('${v}',2)" checked disabled><label for="chkLowerArm_${v}">Lower Arm</label></li>
+            <li><input type="checkbox" id="chkHand_${v}" onclick="checkActuator('${v}',3)" checked><label for="chkHand_${v}">Hand</label></li>
+            <li><input type="checkbox" id="chkHatchet_${v}" onclick="checkActuator('${v}',47)" disabled><label for="chkHatchet_${v}">Hatchet</label></li>
         </ul>`);
     }
     s += (`
@@ -755,6 +755,41 @@ function compactListCritsbyLoc(v) {
     elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
 
     updateForm();
+}
+
+// Add/remove arm actuators and melee weapons
+function checkActuator(v, id) {
+    let w = weaponTable.weapon[id],
+        max = Mech[`maxcrits_${v}`],
+        a = Mech[`assigned_${v}`].indexOf(id);
+
+    // Hand checked
+    if (elID(`chkHand_${v}`).checked) {
+        // Add hand
+        Mech[`assigned_${v}`].splice(3, 0, id);
+        Mech[`crits_${v}`]++;
+        elID(`chkLowerArm_${v}`).disabled = true;
+    } else {
+        // Remove hand
+        Mech[`assigned_${v}`].splice(a, 1);
+        Mech[`crits_${v}`]--;
+        elID(`chkLowerArm_${v}`).disabled = false;
+    }
+
+    // Lower Arm checked
+    if (elID(`chkLowerArm_${v}`).checked) {
+        // Add lower arm
+        Mech[`assigned_${v}`].splice(2, 0, id);
+        Mech[`crits_${v}`]++;
+        elID(`chkHand_${v}`).disabled = false;
+    } else {
+        // Remove lower arm
+        Mech[`assigned_${v}`].splice(a, 1);
+        Mech[`crits_${v}`]--;
+        elID(`chkHand_${v}`).disabled = true;
+    }
+
+    compactListCritsbyLoc(v);
 }
 
 // Add weapon (id) to assigned location (v)

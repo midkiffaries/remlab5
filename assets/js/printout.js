@@ -83,15 +83,16 @@ const listCritsLocation = (v) => {
 			} else {
            		// If weapon takes up more than 1 crit
                 for (let j = 0; j < w.crits; j++) {
-					// Split the crits list if there are more than 6 slots
-					if (i+j == 6 && isLow == false) {
-						isLow = true;
-						li += `</ol><ol class="low">`;
-					}
 
 					if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
 					else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
 					else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
+
+					// Split the crits list if there are more than 6 slots
+					if ((i+j) >= 5 && isLow == false) {
+						isLow = true;
+						li += `</ol><ol class="low">`;
+					}
 				}
 				max = max - (w.crits - 1);
             }
