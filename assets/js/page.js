@@ -705,7 +705,7 @@ function locationList(n, v) {
         <ul data-id="${v}">
             <li><input type="checkbox" id="chkLowerArm_${v}" onclick="checkActuator('${v}',2)" checked disabled><label for="chkLowerArm_${v}">Lower Arm</label></li>
             <li><input type="checkbox" id="chkHand_${v}" onclick="checkActuator('${v}',3)" checked><label for="chkHand_${v}">Hand</label></li>
-            <li><input type="checkbox" id="chkHatchet_${v}" onclick="checkActuator('${v}',47)" disabled><label for="chkHatchet_${v}">Hatchet</label></li>
+            <li><input type="checkbox" id="chkHatchet_${v}" onclick="checkActuator('${v}',19)" disabled><label for="chkHatchet_${v}">Hatchet</label></li>
         </ul>`);
     }
     s += (`
