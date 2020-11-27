@@ -346,7 +346,7 @@ const a_SpeedFac = [0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63
 // Weapons and Equipment
 const tableArsenal = `
 {
-"weapon": [
+    "weapon": [
     {
         "id": 0,
         "type": 0,
@@ -370,7 +370,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -397,7 +397,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -424,7 +424,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -451,7 +451,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -477,8 +477,8 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "c",
-        "availability": "a",
+        "techRating": "d",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -504,8 +504,8 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "c",
-        "availability": "a",
+        "techRating": "d",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -532,7 +532,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -559,7 +559,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -586,7 +586,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -613,7 +613,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -640,7 +640,7 @@ const tableArsenal = `
         "bv": 0,
         "modifier": 0,
         "techRating": "c",
-        "availability": "a",
+        "availability": "c",
         "year": "",
         "desc": ""
     },
@@ -720,7 +720,7 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "c",
+        "techRating": "a",
         "availability": "a",
         "year": "",
         "desc": ""
@@ -747,8 +747,8 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "d",
-        "availability": "c",
+        "techRating": "e",
+        "availability": "f",
         "year": "",
         "desc": ""
     },
@@ -774,8 +774,8 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "d",
-        "availability": "c",
+        "techRating": "e",
+        "availability": "d",
         "year": "",
         "desc": ""
     },
@@ -783,7 +783,7 @@ const tableArsenal = `
         "id": 16,
         "type": 0,
         "name": "XL Engine",
-        "nameShort": "XL Engine",
+        "nameShort": "XL",
         "rules": 0,
         "tech": 2,
         "heat": 0,
@@ -801,7 +801,7 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "d",
+        "techRating": "e",
         "availability": "c",
         "year": "",
         "desc": ""
@@ -810,7 +810,7 @@ const tableArsenal = `
         "id": 17,
         "type": 0,
         "name": "Jump Jet",
-        "nameShort": "Jump Jet",
+        "nameShort": "JJ",
         "rules": 0,
         "tech": 2,
         "heat": 0,
@@ -828,7 +828,7 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "c",
+        "techRating": "d",
         "availability": "b",
         "year": "",
         "desc": ""
@@ -837,7 +837,7 @@ const tableArsenal = `
         "id": 18,
         "type": 0,
         "name": "Heat Sink",
-        "nameShort": "Heat Sink",
+        "nameShort": "HS",
         "rules": 0,
         "tech": 2,
         "heat": 0,
@@ -855,13 +855,40 @@ const tableArsenal = `
         "cost": 0,
         "bv": 0,
         "modifier": 0,
-        "techRating": "c",
+        "techRating": "d",
         "availability": "b",
         "year": "",
         "desc": ""
     },
     {
         "id": 19,
+        "type": 0,
+        "name": "Hatchet",
+        "nameShort": "Hatchet",
+        "rules": 0,
+        "tech": 0,
+        "heat": 0,
+        "minDamage": 2,
+        "damage": 20,
+        "delay": 0,
+        "rangeMin": 0,
+        "rangeShort": 0,
+        "rangeMedium": 0,
+        "rangeLong": 0,
+        "rangeExtreme": 0,
+        "tons": 1,
+        "crits": 1,
+        "ammo": 0,
+        "cost": 5000,
+        "bv": 1.5,
+        "modifier": 0,
+        "techRating": "c",
+        "availability": "f",
+        "year": 3022,
+        "desc": "The Hatchet is a melee attack weapon equipped on BattleMechs. While most 'Mechs are equipped with ranged weaponry, melee weaponry is also both feasible and useful due to increased damage potential (over a punch) and a lack of heat buildup."
+    },
+    {
+        "id": 20,
         "type": 1,
         "name": "Large Laser",
         "nameShort": "LLaser",
@@ -888,7 +915,7 @@ const tableArsenal = `
         "desc": "Lasers cause damage by firing an intense beam of light at a target, flooding concentrated energy in the form of heat, which can melt material and overwhelm heat-sensitive electronics. The Large Laser differs from its smaller cousins by being a gamma-ray laser firing a much more powerful beam, allowing it to reach to further ranges and cause more damage."
     },
     {
-        "id": 20,
+        "id": 21,
         "type": 1,
         "name": "Medium Laser",
         "nameShort": "MLaser",
@@ -915,7 +942,7 @@ const tableArsenal = `
         "desc": "A free-electron laser, it is a device that focuses an amplified beam of light on a small surface area. The medium laser uses this intensified beam of light to damage targets by heating them to melting temperatures."
     },
     {
-        "id": 21,
+        "id": 22,
         "type": 1,
         "name": "Small Laser",
         "nameShort": "SLaser",
@@ -942,7 +969,7 @@ const tableArsenal = `
         "desc": "The compact size of the Small Laser allows it to be equipped and used efficiently on practically anything; however the reduced firepower means that Small Lasers are not usually used on heavier combat devices such as 'Mechs or tanks."
     },
     {
-        "id": 22,
+        "id": 23,
         "type": 1,
         "name": "PPC",
         "nameShort": "PPC",
@@ -969,7 +996,7 @@ const tableArsenal = `
         "desc": "The Particle Projector Cannon is an energy weapon, firing a concentrated stream of protons or ions at a target, with damage resulting from both thermal and kinetic energy. Despite being an energy weapon, it produces recoil."
     },
     {
-        "id": 23,
+        "id": 24,
         "type": 1,
         "name": "Flamer",
         "nameShort": "Flamer",
@@ -996,7 +1023,7 @@ const tableArsenal = `
         "desc": "The standard Flamer taps into a BattleMech's reactor to produce heat in the form of a plasma release. An extremely short-ranged weapon, the Flamer is devastating against infantry, however damage done against other Mechs and vehicles is negligible, though it can raise the enemy unit's heat levels."
     },
     {
-        "id": 24,
+        "id": 25,
         "type": 2,
         "name": "Autocannon/2",
         "nameShort": "AC/2",
@@ -1023,7 +1050,7 @@ const tableArsenal = `
         "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
     },
     {
-        "id": 25,
+        "id": 26,
         "type": 2,
         "name": "Autocannon/5",
         "nameShort": "AC/5",
@@ -1050,7 +1077,7 @@ const tableArsenal = `
         "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
     },
     {
-        "id": 26,
+        "id": 27,
         "type": 2,
         "name": "Autocannon/10",
         "nameShort": "AC/10",
@@ -1077,7 +1104,7 @@ const tableArsenal = `
         "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
     },
     {
-        "id": 27,
+        "id": 28,
         "type": 2,
         "name": "Autocannon/20",
         "nameShort": "AC/20",
@@ -1104,7 +1131,7 @@ const tableArsenal = `
         "desc": "The Autocannon is a direct-fire ballistic weapon, firing high-explosive armor-piercing rounds at targets either singly or in bursts."
     },
     {
-        "id": 28,
+        "id": 29,
         "type": 2,
         "name": "Machine Gun",
         "nameShort": "MG",
@@ -1131,7 +1158,7 @@ const tableArsenal = `
         "desc": "The Machine Gun is the quintessential anti-infantry weapon, issuing a stream of bullets at a high rate of fire to cut down opposing soldiers, while still being effective at damaging BattleMechs."
     },
     {
-        "id": 29,
+        "id": 30,
         "type": 2,
         "name": "Flamer (Vehicle)",
         "nameShort": "FlamerV",
@@ -1158,7 +1185,7 @@ const tableArsenal = `
         "desc": "The Vehicle Flamer performs the same as a Mech-mounted Flamer, venting superheated gases at a target to cause it to overheat/burn up. As most non-Mech combat units lack expensive nuclear fusion reactors, Vehicle Flamers instead draw from a pool of combusting ammunition and use that to generate the stream of hot gas."
     },
     {
-        "id": 30,
+        "id": 31,
         "type": 3,
         "name": "LRM-5",
         "nameShort": "LRM-5",
@@ -1185,7 +1212,7 @@ const tableArsenal = `
         "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
     },
     {
-        "id": 31,
+        "id": 32,
         "type": 3,
         "name": "LRM-10",
         "nameShort": "LRM-10",
@@ -1212,7 +1239,7 @@ const tableArsenal = `
         "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
     },
     {
-        "id": 32,
+        "id": 33,
         "type": 3,
         "name": "LRM-15",
         "nameShort": "LRM-15",
@@ -1239,7 +1266,7 @@ const tableArsenal = `
         "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
     },
     {
-        "id": 33,
+        "id": 34,
         "type": 3,
         "name": "LRM-20",
         "nameShort": "LRM-20",
@@ -1266,7 +1293,7 @@ const tableArsenal = `
         "desc": "Long Range Missiles have provided military units with a decent far-reaching punch for centuries."
     },
     {
-        "id": 34,
+        "id": 35,
         "type": 3,
         "name": "SRM-2",
         "nameShort": "SRM-2",
@@ -1293,7 +1320,7 @@ const tableArsenal = `
         "desc": "Short Range Missiles pack more power into the missile than almost any other kind. They lack sophisticated guidance systems, so they must deliver their punch at short range."
     },
     {
-        "id": 35,
+        "id": 36,
         "type": 3,
         "name": "SRM-4",
         "nameShort": "SRM-4",
@@ -1320,7 +1347,7 @@ const tableArsenal = `
         "desc": "Short Range Missiles pack more power into the missile than almost any other kind. They lack sophisticated guidance systems, so they must deliver their punch at short range."
     },
     {
-        "id": 36,
+        "id": 37,
         "type": 3,
         "name": "SRM-6",
         "nameShort": "SRM-6",
@@ -1347,7 +1374,7 @@ const tableArsenal = `
         "desc": "Short Range Missiles pack more power into the missile than almost any other kind. They lack sophisticated guidance systems, so they must deliver their punch at short range."
     },
     {
-        "id": 37,
+        "id": 38,
         "type": 4,
         "name": "Arrow IV",
         "nameShort": "ArrowIV",
@@ -1374,7 +1401,7 @@ const tableArsenal = `
         "desc": "The Arrow IV is a stand-alone, missile based, artillery system, designed to augment conventional systems such as the Long Tom and the Sniper."
     },
     {
-        "id": 38,
+        "id": 39,
         "type": 4,
         "name": "Long Tom",
         "nameShort": "LongTom",
@@ -1401,7 +1428,7 @@ const tableArsenal = `
         "desc": "The Long Tom Artillery Piece is the largest conventional artillery piece designed by Armstrong Industries. It was also the primary heavy artillery unit of the first Star League Defense Force."
     },
     {
-        "id": 39,
+        "id": 40,
         "type": 4,
         "name": "Sniper",
         "nameShort": "Sniper",
@@ -1428,7 +1455,7 @@ const tableArsenal = `
         "desc": "The Sniper Rifle Artillery Piece is the smaller cousin to the Long Tom Artillery Piece designed by Armstrong Industries. As the second most-powerful tube artillery in the Inner Sphere, the Sniper can cripple or destroy most light and medium BattleMechs with a single hit."
     },
     {
-        "id": 40,
+        "id": 41,
         "type": 4,
         "name": "Thumper",
         "nameShort": "Thumper",
@@ -1455,7 +1482,7 @@ const tableArsenal = `
         "desc": "The Thumper Artillery Piece is the smallest conventional artillery piece with an effective range of 10.5 kilometers."
     },
     {
-        "id": 41,
+        "id": 42,
         "type": 6,
         "name": "Cargo Pod",
         "nameShort": "Cargo",
@@ -1482,7 +1509,7 @@ const tableArsenal = `
         "desc": "Storage pod that houses troops, supplies, or other equipment."
     },
     {
-        "id": 42,
+        "id": 43,
         "type": 6,
         "name": "Combine",
         "nameShort": "Combine",
@@ -1509,7 +1536,7 @@ const tableArsenal = `
         "desc": "Created in the Pre-Flight Era, the Combine is a modern version of an agricultural tool used to cultivate food stocks grown from farms."
     },
     {
-        "id": 43,
+        "id": 44,
         "type": 6,
         "name": "Lift Hoist",
         "nameShort": "LiftHoist",
@@ -1536,7 +1563,7 @@ const tableArsenal = `
         "desc": "Lift Hoists allow Mechs, Support Vehicles, and other vehicle types to handle cargo via a lifting mechanism. This piece of equipment usually increases the speed of moving cargo."
     },
     {
-        "id": 44,
+        "id": 45,
         "type": 6,
         "name": "Chainsaw",
         "nameShort": "Chainsaw",
@@ -1563,7 +1590,7 @@ const tableArsenal = `
         "desc": "The Chainsaw is a piece of construction equipment that is rarely seen on the battlefield. Most commonly used by logging companies, the Chainsaw is also popular with construction and demolition companies."
     },
     {
-        "id": 45,
+        "id": 46,
         "type": 6,
         "name": "Wreaking Ball",
         "nameShort": "WreakingBall",
@@ -1590,7 +1617,7 @@ const tableArsenal = `
         "desc": "The Wrecking Ball is a piece of construction equipment that is rarely seen on the battlefield. Though it has been used by the arena fighters on Solaris, the lack of range and interference with other equipment mean it's not popular with the regular armies of the Inner Sphere."
     },
     {
-        "id": 46,
+        "id": 47,
         "type": 6,
         "name": "Spot Welder",
         "nameShort": "SpotWelder",

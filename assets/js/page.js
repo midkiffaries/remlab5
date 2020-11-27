@@ -764,29 +764,33 @@ function checkActuator(v, id) {
         a = Mech[`assigned_${v}`].indexOf(id);
 
     // Hand checked
-    if (elID(`chkHand_${v}`).checked) {
-        // Add hand
-        Mech[`assigned_${v}`].splice(3, 0, id);
-        Mech[`crits_${v}`]++;
-        elID(`chkLowerArm_${v}`).disabled = true;
-    } else {
-        // Remove hand
-        Mech[`assigned_${v}`].splice(a, 1);
-        Mech[`crits_${v}`]--;
-        elID(`chkLowerArm_${v}`).disabled = false;
+    if (id == 3) {
+        if (elID(`chkHand_${v}`).checked) {
+            // Add hand
+            Mech[`assigned_${v}`].splice(3, 0, id);
+            Mech[`crits_${v}`]++;
+            elID(`chkLowerArm_${v}`).disabled = true;
+        } else {
+            // Remove hand
+            Mech[`assigned_${v}`].splice(a, 1);
+            Mech[`crits_${v}`]--;
+            elID(`chkLowerArm_${v}`).disabled = false;
+        }
     }
 
     // Lower Arm checked
-    if (elID(`chkLowerArm_${v}`).checked) {
-        // Add lower arm
-        Mech[`assigned_${v}`].splice(2, 0, id);
-        Mech[`crits_${v}`]++;
-        elID(`chkHand_${v}`).disabled = false;
-    } else {
-        // Remove lower arm
-        Mech[`assigned_${v}`].splice(a, 1);
-        Mech[`crits_${v}`]--;
-        elID(`chkHand_${v}`).disabled = true;
+    if (id == 2) {
+        if (elID(`chkLowerArm_${v}`).checked) {
+            // Add lower arm
+            Mech[`assigned_${v}`].splice(2, 0, id);
+            Mech[`crits_${v}`]++;
+            elID(`chkHand_${v}`).disabled = false;
+        } else {
+            // Remove lower arm
+            Mech[`assigned_${v}`].splice(a, 1);
+            Mech[`crits_${v}`]--;
+            elID(`chkHand_${v}`).disabled = true;
+        }
     }
 
     compactListCritsbyLoc(v);
