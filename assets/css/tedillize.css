@@ -214,7 +214,8 @@ th {
 	line-height: 1.15;
 	text-align: left;
 	text-overflow: ellipsis;
-	vertical-align: top;
+	text-indent: -0.5em;
+	vertical-align: text-top;
 	font-variant-numeric: tabular-nums;
 	font-feature-settings: "tnum";
 }

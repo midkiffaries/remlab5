@@ -357,29 +357,33 @@ Specific Card Styling
 }
 
 /* Weapons list -- Full table */
+
 .table-weapons {
-    margin-left: -0.9em;
+    margin: 0.5em 0 0.5em -0.9em;
     font-size: 0.85em;
 }
 
 .table-weapons tr:nth-of-type(even) {
-    background-color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .table-weapons td {
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .table-weapons button {
-    padding: 0.1em;
-    width: 1.7em;
+    padding: 0 0 0.15em;
+    width: 2.2em;
     border: none;
-    background-color: #ddd;
+    background-color: #bbb;
 }
 
 .table-weapons button:hover {
     background-color: var(--light-gold);
+}
+
+.table-weapons button:active {
+    background-color: var(--dark-gold);
 }
 
 .table-weapons button img {
@@ -392,11 +396,11 @@ Specific Card Styling
 }
 
 .list-weapons::-webkit-scrollbar-track {
-    background: #eee; 
+    background: rgba(0, 0, 0, 0.05); 
 }
 
 .list-weapons::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #777; 
 }
 
 .list-weapons::-webkit-scrollbar-thumb:hover {
@@ -408,7 +412,8 @@ Specific Card Styling
     overflow-y: scroll;
     border: 2px solid #bbb;
     margin: 0.4em 0;
-    box-shadow: inset -2px -8px 8px 1px rgba(50, 50, 50, 0.3);
+    box-shadow: inset -1px -5px 8px 1px rgba(50, 50, 50, 0.2),
+                inset -1px 5px 8px 1px rgba(50, 50, 50, 0.2);
 }
 
 .list-weapons ol {
@@ -763,11 +768,11 @@ li [target="_blank"]::after {
 /************************
 Dark Mode
 *************************/
-
+/*
 :root {
     color-scheme: light dark;
 }
-
+*/
 .dark-mode ::-moz-selection {
     color: #000;
     background-color: #ddd;
@@ -819,7 +824,7 @@ body.dark-mode,
 
 .dark-mode code, 
 .dark-mode kbd {
-    xbackground-color: #444;
+    color: #666
 }
 
 .dark-mode select:not([multiple]):not([size]),
@@ -827,7 +832,6 @@ body.dark-mode,
 .dark-mode input, 
 .dark-mode textarea {
     color: #fff;
-    xbackground-color: #333;
     caret-color: #fff;
 }
 
