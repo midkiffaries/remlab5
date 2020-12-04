@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /********************************************
 Tedilize 2.0 - Normalization and Base Styling 
 *********************************************/
@@ -25,14 +26,12 @@ Tedilize 2.0 - Normalization and Base Styling
 
 html {
 	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scrollbar-width: thin;
 	line-height: 1.5;
 	text-rendering: auto;
-	font-size: 100%;
 	font-family:
 		system-ui,
 		-apple-system,
@@ -77,14 +76,17 @@ hr {
 	margin: 1rem 0;
 	background-color: #999;
 	border: 0;
-	height: 1px;
 	clear: both;
+}
+
+hr:not([size]) {
+	height: 1px;
 }
 
 blockquote {
 	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
 	hyphens: auto;
+	margin: 0 0 1rem;
 }
 
 address {
@@ -111,7 +113,7 @@ strong {
 
 sub,
 sup {
-	font-size: 75%;
+	font-size: 0.75em;
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
@@ -164,7 +166,7 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: 1.25;
+	line-height: 1.2;
 	margin-bottom: 0.4rem;
 	font-weight: 400;
 }
@@ -235,12 +237,12 @@ ol {
 	padding-left: 2rem;
 }
 
-dd {
-	margin-left: 2em;
-}
-
 dt {
 	font-weight: 700;
+}
+
+dd {
+	margin-left: 2em;
 }
 
 menu {
@@ -361,7 +363,7 @@ figure > a::after {
 	pointer-events: none;
 	position: absolute;
 	transform: translate(-1.5em, 0.5em);
-	content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cpath d='M15.6 15.6a1.5 1.5 0 01-2.2 0l-2.6-2.7a7 7 0 112.1-2.1l2.7 2.6a1.5 1.5 0 010 2.2zM7 2a5 5 0 100 10A5 5 0 007 2zm1 8H6V8H4V6h2V4h2v2h2v2H8z' fill='white'/%3E%3C/svg%3E");
+	content: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17'%3E%3Cpath d='M15.6 15.6a1.5 1.5 0 01-2.2 0l-2.6-2.7a7 7 0 112.1-2.1l2.7 2.6a1.5 1.5 0 010 2.2zM7 2a5 5 0 100 10A5 5 0 007 2zm1 8H6V8H4V6h2V4h2v2h2v2H8z' fill='white'/%3E%3C/svg%3E");
 	filter: drop-shadow(0 0 1px #111);
 }
 
@@ -547,7 +549,7 @@ select {
 select:not([multiple]):not([size]) {
 	padding-right: 1.4em;
 	background: transparent no-repeat 100% 50% / 1em;
-	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
 }
 
 button,
@@ -602,6 +604,25 @@ legend {
 	max-width: 100%;
 	white-space: normal;
 	margin-bottom: 0.2rem;
+	line-height: inherit;
+	font-size: 1.1em;
+}
+
+legend + * {
+	clear: left;
+}
+
+/* Special Fields */
+
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field,
+::-webkit-color-swatch-wrapper {
+	padding: 0;
 }
 
 /* Input Number */
@@ -610,8 +631,7 @@ legend {
 	-moz-appearance: textfield;
 }
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
+::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
 
@@ -622,6 +642,7 @@ legend {
 /* Input Search */
 
 [type='search'] {
+	outline-offset: -2px;
 	-webkit-appearance: textfield;
 	appearance: textfield;
 }
@@ -691,10 +712,6 @@ legend {
 	background: #eee;
 	border: 2px solid #aaa;
 	overflow: visible;
-}
-
-[type='range']::-ms-tooltip {
-	display: none;
 }
 
 /* Meter */

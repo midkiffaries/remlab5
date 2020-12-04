@@ -20,6 +20,7 @@ const Mech = {
 	engineType: 0,
 	engineMulti: 1,
 	engineCrits: 0,
+	engineMaxRating: 400,
 	
 	// Jumping
 	jumpingMP: 0,
@@ -123,6 +124,11 @@ const Mech = {
     crits_RA: 4,
     crits_LL: 4,
     crits_RL: 4,
+
+	// Calc: Max Walking MP
+	get maxWalkingMP() {
+		return this.engineMaxRating / this.mass
+	},
 
 	// Calc: Running MP
 	get runningMP() {

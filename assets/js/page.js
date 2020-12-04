@@ -512,10 +512,12 @@ const updateForm = () => {
 
     // Engine Card -------
     // Max walking based on Mech mass
-    elID('stepWalking').max = 400 / Mech.mass;
+    elID('stepWalking').max = Mech.maxWalkingMP;
+    if (Mech.walkingMP > Mech.maxWalkingMP) elID('stepWalking').value = 4;
     // Post data to form
     Mech.walkingMP = elID('stepWalking').value;
     Mech.engineType = elID('selEngine').value;
+
     // Post data to array
     elID('outRunning').value = Mech.runningMP;
     elID('outEngineRating').value = `${Mech.engineRating} ${Mech.engineBrand}`;
@@ -524,6 +526,9 @@ const updateForm = () => {
     elID('outEngineCost').value = addComma(Mech.engineCost);
 
     // Jump Jets Card -------
+    // Max jumping based on WalkingMP
+    elID('stepJumping').max = Mech.walkingMP;
+    if (Mech.jumpingMP > Mech.walkingMP) elID('stepJumping').value = Mech.walkingMP; 
     // Post data to form
     Mech.jumpingMP = parseInt(elID('stepJumping').value);
     Mech.jumpjetsType = elID('selJumpJets').value;
@@ -538,7 +543,7 @@ const updateForm = () => {
     Mech.heatsinkType = elID('selHeatSinks').value;
     // Post data to array
     elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass);
-    elID('outHeatSinksCrits').value = Mech.heatsinksCrits;
+    elID('outHeatSinksCrits').value = Mech.heatsinksCrits + Mech.heatsinksIntCrits;
     elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
     // Internal Comp Card -------
