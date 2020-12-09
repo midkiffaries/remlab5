@@ -413,8 +413,8 @@ Specific Card Styling
     overflow-y: scroll;
     border: 2px solid #bbb;
     margin: 0.4em 0;
-    box-shadow: inset -1px -5px 8px 1px rgba(50, 50, 50, 0.2),
-                inset -1px 5px 8px 1px rgba(50, 50, 50, 0.2);
+    box-shadow: inset 0 0 7px 1px rgba(50, 50, 50, 0.2),
+                inset 0 0 7px 1px rgba(50, 50, 50, 0.2);
 }
 
 .list-weapons ol {
@@ -978,14 +978,14 @@ Radio and Checkbox style
 }
 
 /* input="file" button */	
-.file_download {
+.file-download {
     opacity: 0 !important;
     width: 0 !important;
 	padding: 0;
 	overflow: hidden;
 }
 
-.file_download + label::before {
+.file-download + label::before {
 	content: "+";
 	font-size: 1.6em;
 	font-weight: bold;

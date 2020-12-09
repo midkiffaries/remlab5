@@ -149,21 +149,6 @@ const a_Affiliation = [
     'Civilian'
 ];
 
-// Warrior Special Abilities
-const a_SpecialAbilities = [
-    'No Special Abilities',
-    'Bulls-Eye Marksman',
-    'Dodge Maneuver',
-    'Edge',
-    'Maneuvering Ace',
-    'Melee Specialist',
-    'Pain Resistance',
-    'Sixth Sense',
-    'Speed Demon',
-    'Tactical Genius',
-    'Weapon Specialist'
-];
-
 // Weapon Tech Ratings
 const a_TechRating = {
     a: 'Primitive',

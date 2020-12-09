@@ -808,7 +808,6 @@ body {
 </style>
 `};
 
-
 // Record Sheet: List weapons
 const tr_WeaponsList = (v) => {
 	let w = weaponTable.weapon,
@@ -846,6 +845,8 @@ const tr_ArmamentList = (v) => {
 	return tr;
 };
 
+
+
 // Technical Readout print modal content
 const TechReadoutModal = () => {
 	// Clean up the appearance of the jumpjet stats
@@ -859,6 +860,20 @@ const TechReadoutModal = () => {
 		jjcap = mp2Meters(Mech.jumpingMP) + ' meters';
 	}
 
+	// Display Design Quirks
+	let designQuirks = "";
+	
+	for (let i = 0; i < Mech.positiveDQ.length; i++) {
+		if (Mech.positiveDQ[i] == true) {
+			designQuirks += a_DQPositive[i] + ", ";
+		}
+	}
+
+	for (let i = 0; i < Mech.negativeDQ.length; i++) {
+		if (Mech.negativeDQ[i] == true) {
+			designQuirks += a_DQNegative[i] + ", ";
+		}
+	}
 
 	return `
 <div class="print-options" role="header">
@@ -1054,7 +1069,7 @@ const TechReadoutModal = () => {
 						${tr_WeaponsList('LL')}
                     </tbody>
                 </table>
-                <p><b>Notes:</b> Design Quirks</p>
+                <p><b>Notes:</b> ${designQuirks}</p>
             </div>
         </div>
 		<footer class="print-footer">

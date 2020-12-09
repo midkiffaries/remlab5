@@ -207,6 +207,7 @@
             // Input Checkbox
             inp.setAttribute("type", "checkbox");
             inp.setAttribute("id", `${id}-${j}`);
+            inp.setAttribute("name", `${id}`);
             inp.setAttribute("value", j);
 
             // Label and text

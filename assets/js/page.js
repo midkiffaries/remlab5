@@ -591,10 +591,23 @@ const updateForm = () => {
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
-    // Design Quirks Section
+    // Design Quirks Card -------
     // Post data to form
-    //Mech.positiveDQ = document.forms[0];
-    // Post data to array
+    let positiveDQ = document.forms[0].selDQPositive,
+        negativeDQ = document.forms[0].selDQNegative;
+
+    // Clear arrays
+    Mech.positiveDQ = [];
+    Mech.negativeDQ = [];
+
+    // Positive DQ
+    for (let i = 0; i < positiveDQ.length; i++) {
+        Mech.positiveDQ.push(positiveDQ[i].checked);
+    }
+    // Negative DQ
+    for (let i = 0; i < negativeDQ.length; i++) {
+        Mech.negativeDQ.push(negativeDQ[i].checked);
+    }
 
     // Tech Readout Card -------
     // Post data to form
