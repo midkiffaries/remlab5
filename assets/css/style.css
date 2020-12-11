@@ -507,13 +507,23 @@ Specific Card Styling
     min-height: 3em;
 }
 
-.locations-list p {
+p.addto-button {
+    visibility: hidden;
+    margin: 0.2em;
+}
+
+p.addto-button button {
+    padding: 0 1.4em;
+    font-size: 0.95em;
+}
+
+p.location-crits {
     margin: 0 0 1em;
     font-size: 0.9em;
     background-color: rgba(0,0,0,0.05);
     display: inline-block;
-    padding: 2px 3px;
-    border-radius: 8px;
+    padding: 0.1em 0.4em;
+    border-radius: 0.4em;
 }
 
 .locations-list .btn-remove {

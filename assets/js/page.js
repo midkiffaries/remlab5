@@ -591,15 +591,25 @@ const updateForm = () => {
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
+    // Warrior Card -------
+    // Post data to form
+    Warrior.name = elID('txtPilotName').value;
+    Warrior.race = document.forms[0].radRace.value;
+    Warrior.affiliation = elID('selAffiliation').value;
+    Warrior.affiliationUser = elID('txtAffiliation').value;
+    Warrior.miniature = elID('txtPilotName').value;
+    Warrior.experience = parseInt(elID('selExperience').value);
+    Warrior.piloting = parseInt(elID('rngPiloting').value);
+    Warrior.gunnery = parseInt(elID('rngGunnery').value);
+    Warrior.autoeject = elID('chkAutoEject').checked;
+
     // Design Quirks Card -------
     // Post data to form
-    let positiveDQ = document.forms[0].selDQPositive,
-        negativeDQ = document.forms[0].selDQNegative;
-
+    let positiveDQ = document.forms[0].selDQPositive || 0,
+        negativeDQ = document.forms[0].selDQNegative || 0;
     // Clear arrays
     Mech.positiveDQ = [];
     Mech.negativeDQ = [];
-
     // Positive DQ
     for (let i = 0; i < positiveDQ.length; i++) {
         Mech.positiveDQ.push(positiveDQ[i].checked);
@@ -620,17 +630,7 @@ const updateForm = () => {
     Mech.variantsTR = elID('txtVariants').value;
     Mech.notableTR = elID('txtNotable').value;
 
-    // Warrior Card -------
-    // Post data to form
-    Warrior.name = elID('txtPilotName').value;
-    Warrior.race = document.forms[0].radRace.value;
-    Warrior.affiliation = elID('selAffiliation').value;
-    Warrior.affiliationUser = elID('txtAffiliation').value;
-    Warrior.miniature = elID('txtPilotName').value;
-    Warrior.experience = parseInt(elID('selExperience').value);
-    Warrior.piloting = parseInt(elID('rngPiloting').value);
-    Warrior.gunnery = parseInt(elID('rngGunnery').value);
-    Warrior.autoeject = elID('chkAutoEject').checked;
+
 };
 
 
@@ -731,7 +731,8 @@ function locationList(n, v) {
     s += (`
         <ul id="critList_${v}">
         </ul>
-        <p><output id="outCrits_${v}"></output> Crits Available</p>
+        <p class="addto-button"><button id="addTo_${v}">Add Here</button></p>
+        <p class="location-crits"><output id="outCrits_${v}"></output> Crits Available</p>
     </section>`);
 
     return s;
@@ -820,18 +821,27 @@ function checkActuator(v, id) {
 function addWeapon(v, id) {
     let loc = Mech[`assigned_${v}`],
         max = Mech[`maxcrits_${v}`],
-        w = weaponTable.weapon[id].crits;
+        w = weaponTable.weapon[id].crits,
+        btn = document.getElementsByClassName('addto-button');
 
-    // Check if item id can fit in v
-    if (Mech[`crits_${v}`] + w <= max) {
-        // Add to crits_v
-        Mech[`crits_${v}`] += w;
+    const arrLoc = ['LA','LT','LL','H','CT','RA','RT','RL'];
 
-        // Add to assigned_v
-        loc.push(id);
+    // Display Add Here button to all locations
+    for (let i = 0; i < btn.length; i++) {
 
-        // List location contents
-        compactListCritsbyLoc(v);
+        // Check if item id can fit in location
+        if (Mech[`crits_${arrLoc[i]}`] + w <= Mech[`maxcrits_${arrLoc[i]}`]) {
+            btn[i].style.visibility = 'visible';
+        }
+
+        // Add click event to add here buttons
+        btn[i].addEventListener("click", (e) => {
+            Mech[`crits_${arrLoc[i]}`] += w; // Add crits
+            Mech[`assigned_${arrLoc[i]}`].push(id); // Add assigned
+            compactListCritsbyLoc(arrLoc[i]); // List location contents
+        });
+
+        //btn[i].removeEventListener("click", function());
     }
 }
 
