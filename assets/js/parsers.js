@@ -305,6 +305,12 @@
     }
 }());
 
+// Disable certain selAffiliation options
+elID("selAffiliation").options[1].disabled = true;
+elID("selAffiliation").options[14].disabled = true;
+elID("selAffiliation").options[24].disabled = true;
+elID("selAffiliation").options[38].disabled = true;
+
 // TableSort: Sort any table with class="sortable"
 (function(){
     const table = document.querySelector("table.sortable"),

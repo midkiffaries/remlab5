@@ -630,7 +630,6 @@ const updateForm = () => {
     Mech.variantsTR = elID('txtVariants').value;
     Mech.notableTR = elID('txtNotable').value;
 
-
 };
 
 
@@ -656,7 +655,7 @@ function completeWeaponsTable() {
             // Generate each table row
             tr += (`
             <tr data-id="${i}">
-                <td><button class="tblweapons-add" onclick="addWeapon('LA', ${i})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button></td>
+                <td><button class="tblweapons-add" onclick="addWeapon(${i})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button></td>
                 <td>${w.name}</td>
                 <td>${w.heat}</td>
                 <td>${displayDamage(w.minDamage, w.damage)}</td>
@@ -690,7 +689,7 @@ function compactWeaponsTable() {
             // Generate each table row
             li += (`
             <li data-id="${i}">
-                <span class="weapon-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add Weapon" role="button">
+                <span class="weapon-add" onclick="addWeapon(${weaponTable.weapon[i].id})" aria-label="Add Weapon" role="button">
                     <span class="weapon-name">${w.name}</span>
                     <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span>
                     <br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span> <span class="cbills">${w.cost/1000}k</span></span>
@@ -698,15 +697,6 @@ function compactWeaponsTable() {
                 <span class="weapon-info"><button onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
             </li>
             `);
-            /*
-            li += (`
-            <li data-id="${i}" role="button" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add Weapon">
-                <span class="weapon-buttons"><!--button class="tblweapons-add" onclick="addWeapon('LA',${weaponTable.weapon[i].id})" aria-label="Add"><img src="assets/images/plus.svg" alt="+"></button--><button class="tblweapons-info" onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
-                <span class="weapon-name">${w.name}</span>
-                <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span><br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span></span>
-            </li>
-            `);
-            */
         }
     }
 
@@ -767,14 +757,16 @@ function compactListCritsbyLoc(v) {
             // Check if item is a a weapon or a hardpoint
             if (w.tons > 0) {
                 // Weapon
-                li += `<li><button class="btn-remove" data-id="${w.id}" onclick="removeWeapon('LA',${w.id})" aria-label="Delete weapon">✕</button> ${w.name}</li>`;
+                li += `<li><button class="btn-remove" data-id="${w.id}" onclick="removeWeapon('${v}',${w.id})" aria-label="Delete weapon">✕</button> ${w.name}</li>`;
             }
         }
     }
 
+    // Display location content
     elID(id).innerHTML = li;
     elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
 
+    // Update the form info
     updateForm();
 }
 
@@ -814,17 +806,20 @@ function checkActuator(v, id) {
         }
     }
 
+    // List this location's contents
     compactListCritsbyLoc(v);
 }
 
 // Add weapon (id) to assigned location (v)
-function addWeapon(v, id) {
-    let loc = Mech[`assigned_${v}`],
-        max = Mech[`maxcrits_${v}`],
-        w = weaponTable.weapon[id].crits,
-        btn = document.getElementsByClassName('addto-button');
+function addWeapon(id) {
+    let w = weaponTable.weapon[id].crits,
+        btn = document.getElementsByClassName('addto-button'),
+        list = document.querySelector(".list-weapons").classList;
 
     const arrLoc = ['LA','LT','LL','H','CT','RA','RT','RL'];
+
+    // Disabled weapons list while user selects a location
+    list.toggle("disabled");
 
     // Display Add Here button to all locations
     for (let i = 0; i < btn.length; i++) {
@@ -834,14 +829,19 @@ function addWeapon(v, id) {
             btn[i].style.visibility = 'visible';
         }
 
-        // Add click event to add here buttons
-        btn[i].addEventListener("click", (e) => {
+        btn[i].onclick = () => {
             Mech[`crits_${arrLoc[i]}`] += w; // Add crits
             Mech[`assigned_${arrLoc[i]}`].push(id); // Add assigned
             compactListCritsbyLoc(arrLoc[i]); // List location contents
-        });
 
-        //btn[i].removeEventListener("click", function());
+            // Hide the Add Here buttons from all locations
+            for (let j = 0; j < btn.length; j++) {
+                btn[j].removeAttribute("onclick");
+                btn[j].style.visibility = 'hidden';
+            }
+            // Enable weapons list while user selects a location
+            list.toggle("disabled");
+        };
     }
 }
 
@@ -856,7 +856,7 @@ function removeWeapon(v, id) {
     // Remove crits from crits_(v)
     Mech[`crits_${v}`] -= w;
 
-    // List location contents
+    // List this location's contents
     compactListCritsbyLoc(v);
 }
 

@@ -484,6 +484,11 @@ Specific Card Styling
     height: 1.4em;
 }
 
+.list-weapons.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 
 /* Locations table */
 .locations-list {
