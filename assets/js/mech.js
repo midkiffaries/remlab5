@@ -106,7 +106,7 @@ const Mech = {
     maxcrits_RT: 12,
 
 	// Assigned Items by location
-	assigned_H:  [11,12,10,13,12,11], 
+	assigned_H:  [11,12,10,12,11], 
     assigned_LT: [], 
     assigned_CT: [4,4,4,5,5,5,5,4,4,4], 
     assigned_RT: [],

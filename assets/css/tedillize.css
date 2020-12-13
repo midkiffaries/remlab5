@@ -475,10 +475,6 @@ input:not(:focus):invalid {
 
 /* Input Placeholder Color */
 
-:-ms-input-placeholder {
-	color: #888;
-}
-
 ::-webkit-input-placeholder {
 	color: #888;
 }
@@ -528,6 +524,7 @@ button,
 input,
 select,
 textarea {
+	background-color: #fff;
 	display: inline-block;
 	border: 1px solid #999;
 	color: inherit;
@@ -828,10 +825,6 @@ abbr {
 Browser Hacks
 *********************/
 
-::-ms-expand {
-	display: none;
-}
-
 ::-moz-focus-inner {
 	border-style: none;
 	padding: 0;
@@ -846,10 +839,6 @@ Browser Hacks
 	abbr[title] {
 		text-decoration: none;
 		border-bottom: 1px dotted #999;
-	}
-
-	ins {
-		text-decoration: none;
 	}
 }
 

@@ -53,7 +53,7 @@ const generateHeatScale = () => {
 // Record Sheet: List the contents of a crit location array in a list
 const listCritsLocation = (v) => {
     let max = Mech[`maxcrits_${v}`],
-        loc = Mech[`assigned_${v}`],
+        loc = [...Mech[`assigned_${v}`]],
 		li = `<ol class="high">`,
 		bracket = ['┓', '┃', '┛'],
 		isLow = false,
@@ -61,6 +61,13 @@ const listCritsLocation = (v) => {
 
 	// If location has only 6 slots
 	if (max < 12) li = `<ol>`;
+
+	// Swap around slots in the head
+	if (v == 'H') {
+		if (loc.length < 6) loc.push(13);	
+		loc.splice(5, 1);
+		loc.splice(3, 0, loc[5]);
+	}
 
     // Increment through selected location array 
     for (let i = 0; i < max; i++) {
@@ -136,6 +143,7 @@ const rs_WeaponsList = (v) => {
 
 	return tr;
 };
+
 
 // Record Sheet print modal content
 const RecordSheetModal = () => {

@@ -194,8 +194,8 @@ function HtmlModal(JsVar, c) {
         border: none;
         opacity: 0;
         transition: opacity 0.15s ease-in-out 0s;
-        -webkit-backdrop-filter: grayscale(40%);
-        backdrop-filter: grayscale(40%);
+        -webkit-backdrop-filter: grayscale(40%) blur(1px);
+        backdrop-filter: grayscale(40%) blur(1px);
     }
     .dialog-top {
         max-width: 70vw;

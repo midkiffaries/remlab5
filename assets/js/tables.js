@@ -687,7 +687,7 @@ const tableArsenal = `
         "id": 13,
         "type": 0,
         "name": "-",
-        "nameShort": "empty head slot",
+        "nameShort": "empty slot",
         "rules": 0,
         "tech": 2,
         "heat": 0,
