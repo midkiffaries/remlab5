@@ -37,6 +37,9 @@ const AboutModal = () => (`
     float: right;
     margin: 0.6em;
 }
+.aboutModal li::marker {
+	color: goldenrod;
+}
 </style>
 `);
 

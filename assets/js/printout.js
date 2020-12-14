@@ -677,6 +677,10 @@ body {
     font-size: 0.9em;
 }
 
+.print-critstable li::marker {
+	font-weight: bold;
+}
+
 .print-critstable i {
     color: #aaa;
 }

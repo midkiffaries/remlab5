@@ -707,7 +707,9 @@ function compactWeaponsTable() {
 function locationList(n, v) {    
     let s = (`
     <section>
-        <h5>${n}</h5>`);
+        <h5>${n}</h5>
+        <p class="location-crits"><output id="outCrits_${v}"></output> Crits Available</p>   
+    `);
     
     // If location is one of the arms
     if (v == 'LA' || v == 'RA') {
@@ -721,8 +723,7 @@ function locationList(n, v) {
     s += (`
         <ul id="critList_${v}">
         </ul>
-        <p class="addto-button"><button id="addTo_${v}">Add Here</button></p>
-        <p class="location-crits"><output id="outCrits_${v}"></output> Crits Available</p>
+        <p class="addto-button"><button id="addTo_${v}" class="button-gray">Add Weapon</button></p>
     </section>`);
 
     return s;
