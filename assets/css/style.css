@@ -153,7 +153,8 @@ body {
     min-width: 3.8em;
 }
 
-.sidebar-input small {
+.sidebar-input small,
+.sidebar-totals small {
     letter-spacing: -0.05rem;
 }
 

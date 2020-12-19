@@ -121,21 +121,27 @@
         Minus.appendBefore(el);
         Plus.appendAfter(el);
 
-        // Button step down
+        // Button -- step down
         el.previousElementSibling.onmousedown = function () {
             let x = this.nextElementSibling;
             if (parseInt(x.value) > parseInt(x.min)) {
                 x.value = parseInt(x.value) - parseInt(x.step);
                 el.dispatchEvent(new Event('change'));
+                x.nextElementSibling.disabled = false;
+            } else {
+                this.disabled = true;
             }
         };
 
-        // Button step up
+        // Button -- step up
         el.nextElementSibling.onmousedown = function () {
             let x = this.previousElementSibling;
             if (parseInt(x.value) < parseInt(x.max)) {
                 x.value = parseInt(x.value) + parseInt(x.step);
                 el.dispatchEvent(new Event('change'));
+                x.previousElementSibling.disabled = false;
+            } else {
+                this.disabled = true;
             }
         };
 
