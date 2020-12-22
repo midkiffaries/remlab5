@@ -159,7 +159,7 @@ const WeaponInfoModal = (id) => {
 
 <style>
 .wi-header h3 {
-    font-size: 1.4em;
+    font-size: 1.3em;
     margin: 0;
     float: left;
     color: #777;
