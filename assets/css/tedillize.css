@@ -631,7 +631,7 @@ legend + * {
 [type='search'] {
 	outline-offset: -2px;
 	-webkit-appearance: textfield;
-	appearance: textfield;
+	appearance: none;
 }
 
 [type='search']::-webkit-search-decoration, 
@@ -770,7 +770,7 @@ Accessibility
 ********************/
 
 abbr {
-	speak: spell-out;
+	speak-as: spell-out;
 }
 
 [aria-busy='true'] {
