@@ -43,7 +43,7 @@
 <body class="body" onload="updateForm()">
 
 <!-- Dev notice -->
-<div style="position: fixed; left: 0; background: #000; color: #fff; padding: 0.4em; z-index: 100">Remlab is still in active development.</div>
+<div role="alert" style="position: fixed; left: 0; background: #000; color: #fff; padding: 0.4em; z-index: 100">Remlab is still in active development.</div>
 
 <form id="frmMain" name="form" onchange="updateForm()" onsubmit="event.preventDefault()">
 
@@ -55,14 +55,14 @@
         <aside id="SideBar" class="page-sidebar"></aside>
 
         <!-- Side Bar Menu -->
-        <menu class="page-header-menu">
+        <nav class="page-header-menu" role="menu">
             <ul>
                 <li><button id="btnHelp" aria-label="Help Page" class="button-gray">Help</button></li>
                 <li><button id="btnAbout" aria-label="About Page" class="button-gray">About</button></li>
                 <li><button id="btnDarkMode" aria-label="Dark mode switch" class="button-gray light-switch">&nbsp;</button></li>
             </ul>
             <div class="version">Version <span id="AppVersion">5.0</span></div>
-        </menu>
+        </nav>
     </header>
 
     <!-- Page Content -->
@@ -77,7 +77,7 @@
 </form>
 
 <!-- Footer -->
-<footer class="page-footer" role="contentinfo">
+<footer class="page-footer">
     <blockquote class="quote"><q>Life is cheap. BattleMechs are expensive.</q> - <cite>Irain BattleMechs Ltd.</cite></blockquote>
     <div class="social-links">
         <a href="https://github.com/midkiffaries/remlab5" target="_blank" class="icon-github">GitHub Project</a>

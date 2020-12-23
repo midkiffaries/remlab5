@@ -458,11 +458,11 @@ const sideBarTotals = (`
         <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> <small>[<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton]</small></p>
         <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
-    <menu class="sidebar-print">
+    <div class="sidebar-print" role="menu">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')" class="button-gold">Create Record Sheet</button></p>
         <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')" class="button-gold">Create Technical Readout</button></p>
         <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->
-    </menu>
+    </div>
 `);
 
 
