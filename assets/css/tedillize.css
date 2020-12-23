@@ -838,7 +838,7 @@ Responsive elements
 *********************/
 
 /* Mobile Devices */
-@media only screen and (min-width: 300px) and (max-height: 1080px) and (-webkit-min-device-pixel-ratio: 2) {
+@media (-webkit-min-device-pixel-ratio: 2) {
 	body {
 		min-height: 100vh;
 		min-height: -webkit-fill-available;
@@ -855,7 +855,7 @@ Responsive elements
 }
 
 /* Phone (Portrait) and narrow screen */
-@media only screen and (min-width: 300px) and (max-width: 812px) {
+@media only screen and (max-width: 812px) {
 	body {
 		font-size: 0.96em;
 	}

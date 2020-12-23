@@ -1026,12 +1026,6 @@ Radio and Checkbox style
 Responsive elements
 *********************/
 
-/* Mobile Devices */
-/*
-@media only screen and (min-device-width: 320px) and (max-device-height: 1080px) and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-*/
 /* Screen less than 1000px */
 @media only screen and (min-width: 951px) and (max-width: 1100px) {
     .sidebar-input p label:first-of-type {
@@ -1066,7 +1060,7 @@ Responsive elements
 }
 
 /* Phone (Portrait) and narrow screen */
-@media only screen and (min-width: 320px) and (max-width: 650px) {
+@media only screen and (max-width: 650px) {
     .page-header,
     .page-header-menu,
     .page-main,
