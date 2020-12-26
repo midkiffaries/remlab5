@@ -2,11 +2,10 @@
  * Base JavaScript
 **************************/
 
-"use strict";    
+"use strict";
 
 // REMLAB version
 const RemlabVersion = "4.9.2012 DEV";
-const TodaysDate = new Date();
 
 // Declare Global Variables and settings
 const HostName = window.location.host,
@@ -362,6 +361,9 @@ function closeModals(c) {
 
 // The record sheet circle - hash &#9675; or ○
 const theCircle = "○";
+
+// Get today's date
+const TodaysDate = new Date();
 
 // Abbriviate document element ID
 const elID = v => document.getElementById(v);
