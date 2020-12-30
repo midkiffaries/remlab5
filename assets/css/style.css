@@ -56,6 +56,7 @@ select:not([multiple]):not([size]),
 
 /* Input elements hover style */
 [type="text"]:hover,
+[type="number"]:hover,
 select:hover,
 textarea:hover,
 [role="button"]:hover,
@@ -480,6 +481,10 @@ Specific Card Styling
     bottom: -10px;
     width: 1.4em;
     display: block;
+}
+
+.list-weapons .cbills::before {
+    font-size: 0.8em;
 }
 
 .list-weapons .weapon-info button {
@@ -1093,6 +1098,14 @@ Responsive elements
 
 /* Printing */
 @media print {
+    .page-header,
+    .page-main,
+    .page-header-menu {
+        float: none;
+        width: 100%;
+        position: relative;
+    }
+
     [type="radio"] + label::before, 
     [type="checkbox"] + label::before {
         border: 2px solid #999;

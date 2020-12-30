@@ -55,6 +55,7 @@ const listCritsLocation = (v) => {
     let max = Mech[`maxcrits_${v}`],
         loc = [...Mech[`assigned_${v}`]],
 		li = `<ol class="high">`,
+		low = `</ol><ol class="low">`,
 		bracket = ['┓', '┃', '┛'],
 		isLow = false,
         w;
@@ -83,7 +84,7 @@ const listCritsLocation = (v) => {
 				// Split the crits list if there are more than 6 slots
 				if (i == 6 && isLow == false) {
 					isLow = true;
-					li += `</ol><ol class="low">`;
+					li += low;
 				}
 
 				li += `<li>${w.name}</li>`;
@@ -91,6 +92,7 @@ const listCritsLocation = (v) => {
            		// If weapon takes up more than 1 crit
                 for (let j = 0; j < w.crits; j++) {
 
+					// Add brackets to multi crit items
 					if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
 					else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
 					else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
@@ -98,7 +100,7 @@ const listCritsLocation = (v) => {
 					// Split the crits list if there are more than 6 slots
 					if ((i+j) >= 5 && isLow == false) {
 						isLow = true;
-						li += `</ol><ol class="low">`;
+						li += low;
 					}
 				}
 				max = max - (w.crits - 1);
@@ -107,7 +109,7 @@ const listCritsLocation = (v) => {
 			// Split the crits list if there are more than 6 slots
 			if (i == 6 && isLow == false) {
 				isLow = true;
-				li += `</ol><ol class="low">`;
+				li += low;
 			}
 
             // Populate empty slot

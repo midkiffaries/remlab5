@@ -143,6 +143,10 @@ u {
 	text-decoration: underline solid #ccc;
 }
 
+abbr {
+	speak-as: spell-out;
+}
+
 abbr[title],
 abbr[aria-label] {
 	-webkit-text-decoration: underline dotted;
@@ -479,8 +483,7 @@ input:not(:focus):invalid {
 }
 
 [disabled],
-[disabled] + label[for],
-[aria-disabled] {
+[disabled] + label[for] {
 	opacity: 0.4;
 	pointer-events: none;
 }
@@ -665,12 +668,6 @@ legend + * {
 	background: #ccc;
 }
 
-[type='range']::-ms-track {
-	border-radius: 0.3em;
-	height: 0.55em;
-	background: #ccc;
-}
-
 [type='range']::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	margin-top: -0.3em;
@@ -690,16 +687,6 @@ legend + * {
 	border: 2px solid #aaa;
 }
 
-[type='range']::-ms-thumb {
-	appearance: none;
-	margin-top: 0;
-	width: 1em;
-	height: 1em;
-	border-radius: 50%;
-	background: #eee;
-	border: 2px solid #aaa;
-	overflow: visible;
-}
 
 /* Meter */
 
@@ -769,10 +756,6 @@ progress[value]::-moz-progress-bar {
 Accessibility
 ********************/
 
-abbr {
-	speak-as: spell-out;
-}
-
 [aria-busy='true'] {
 	cursor: progress;
 }
@@ -824,14 +807,6 @@ Browser Hacks
 	box-shadow: none;
 }
 
-/* MS Edge 12-18 hack (Poor text-decoration support) */
-@supports (-ms-accelerator:true) or (-ms-ime-align:auto) {
-	abbr[title] {
-		text-decoration: none;
-		border-bottom: 1px dotted #999;
-	}
-}
-
 
 /*********************
 Responsive elements
@@ -855,7 +830,7 @@ Responsive elements
 }
 
 /* Phone (Portrait) and narrow screen */
-@media only screen and (max-width: 812px) {
+@media (max-width: 812px) {
 	body {
 		font-size: 0.96em;
 	}
@@ -946,7 +921,6 @@ Responsive elements
 	}
 
 	abbr {
-		border: none;
 		text-decoration: none !important;
 	}
 

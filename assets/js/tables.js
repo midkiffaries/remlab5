@@ -288,7 +288,8 @@ const a_TargetType = [
 // Heatsink types
 const a_HSType = [
     'Single',
-    'Double'
+    'Double',
+    'Compact'
 ];
 
 // Jump Jets types
