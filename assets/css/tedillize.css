@@ -327,8 +327,6 @@ img[src$='.gif'],
 img[src$='.svg'],
 canvas,
 svg {
-	image-rendering: -webkit-optimize-contrast;
-	image-rendering: -moz-crisp-edges;
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;
 }
@@ -398,7 +396,7 @@ textarea,
 }
 
 a[href] {
-	color: #000;
+	color: inherit;
 	background-color: transparent;
 	-webkit-tap-highlight-color: rgba(220,220,220,0.4);
 	-webkit-text-decoration-skip: ink;
@@ -817,7 +815,6 @@ Responsive elements
 	body {
 		min-height: 100vh;
 		min-height: -webkit-fill-available;
-		background-color: red;
 	}
 
 	a img {

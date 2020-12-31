@@ -851,10 +851,6 @@ body.dark-mode,
     filter: brightness(0.8) contrast(1.2);
 }
 
-.dark-mode a[href] {
-    color: #fff;
-}
-
 .dark-mode code, 
 .dark-mode kbd {
     color: #666
