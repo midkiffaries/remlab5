@@ -52,12 +52,13 @@ const generateHeatScale = () => {
 
 // Record Sheet: List the contents of a crit location array in a list
 const listCritsLocation = (v) => {
-    let max = Mech[`maxcrits_${v}`],
+	let max = Mech[`maxcrits_${v}`],
         loc = [...Mech[`assigned_${v}`]],
 		li = `<ol class="high">`,
 		low = `</ol><ol class="low">`,
 		bracket = ['┓', '┃', '┛'],
 		isLow = false,
+		halfCrits = 6,
         w;
 
 	// If location has only 6 slots
@@ -82,7 +83,7 @@ const listCritsLocation = (v) => {
 			// Populate single line
 			if (w.crits == 1) {
 				// Split the crits list if there are more than 6 slots
-				if (i == 6 && isLow == false) {
+				if (i == halfCrits && isLow == false) {
 					isLow = true;
 					li += low;
 				}
@@ -98,7 +99,7 @@ const listCritsLocation = (v) => {
 					else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
 
 					// Split the crits list if there are more than 6 slots
-					if ((i+j) >= 5 && isLow == false) {
+					if ((i+j) >= halfCrits && isLow == false) {
 						isLow = true;
 						li += low;
 					}
@@ -107,14 +108,20 @@ const listCritsLocation = (v) => {
             }
         } else {
 			// Split the crits list if there are more than 6 slots
-			if (i == 6 && isLow == false) {
+			if (i >= halfCrits && isLow == false) {
 				isLow = true;
 				li += low;
 			}
 
             // Populate empty slot
             li += `<li><i>Roll Again</i></li>`;
-        }
+		}
+
+		if (max > 6) {
+			halfCrits = parseInt(max / 2);
+		} else {
+			halfCrits = 6;
+		}
 	}
 
     return li + `</ol>`;
@@ -274,10 +281,10 @@ const RecordSheetModal = () => {
 						${listCritsLocation('CT')}
 
 						<div class="print-hitboxes">
-							<p><label>Engine Hits</label> ${displayTicks(3)}</p>
-							<p><label>Gyro Hits</label> ${displayTicks(2)}</p>
-							<p><label>Sensor Hits</label> ${displayTicks(2)}</p>
-							<p><label>Life Support</label> ${displayTicks(1)}</p>
+							<p><label>Engine Hits</label> <span>${displayTicks(3)}</span></p>
+							<p><label>Gyro Hits</label> <span>${displayTicks(2)}</span></p>
+							<p><label>Sensor Hits</label> <span>${displayTicks(2)}</span></p>
+							<p><label>Life Support</label> <span>${displayTicks(1)}</span></p>
 						</div>
 
 						<div class="print-costbv">
@@ -723,6 +730,11 @@ body {
     width: 6em;
     display: inline-block;
     text-align: right;
+}
+
+.print-hitboxes span {
+	font-size: 1.5em;
+	line-height: 0.6;
 }
 
 .print-crits-roll {

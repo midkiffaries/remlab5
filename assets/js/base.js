@@ -132,7 +132,7 @@ function ConfirmModal(text, action) {
         transition: opacity 0.15s ease-out 0s;
         opacity: 0;
     }
-    @media only screen and (min-width: 320px) and (max-width: 812px) {
+    @media (max-width: 812px) {
         .dialog-confirm div {
             max-width: 99%;
         }
@@ -254,7 +254,7 @@ function HtmlModal(JsVar, c) {
         overflow: hidden;
         height: auto;
     }
-    @media only screen and (min-width: 320px) and (max-width: 812px) {
+    @media (max-width: 812px) {
         .dialog-body {
             max-width: 99%;
             margin: 1vh auto;
