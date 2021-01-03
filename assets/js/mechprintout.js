@@ -58,11 +58,9 @@ const listCritsLocation = (v) => {
 		low = `</ol><ol class="low">`,
 		bracket = ['┓', '┃', '┛'],
 		isLow = false,
-		halfCrits = 6,
+		count = 0,
+		extra = 0,
         w;
-
-	// If location has only 6 slots
-	if (max < 12) li = `<ol>`;
 
 	// Swap around slots in the head
 	if (v == 'H') {
@@ -77,50 +75,49 @@ const listCritsLocation = (v) => {
 		// Get weapon data from table
         w = weaponTable.weapon[loc[i]];
 
-        // Populate slot
+        // Populate slot with item
         if (loc[i] >= 0) {
 
 			// Populate single line
 			if (w.crits == 1) {
 				// Split the crits list if there are more than 6 slots
-				if (i == halfCrits && isLow == false) {
+				if (count == 6 && isLow == false) {
 					isLow = true;
 					li += low;
 				}
 
 				li += `<li>${w.name}</li>`;
+
+				count++;
 			} else {
            		// If weapon takes up more than 1 crit
                 for (let j = 0; j < w.crits; j++) {
+					// Split the crits list if there are more than 6 slots
+					if (count == 6 && isLow == false) {
+						isLow = true;
+						li += low;
+					}
 
 					// Add brackets to multi crit items
 					if (j == 0) li += `<li>${w.name} ${bracket[0]}</li>`; // Start Bracket
 					else if (j == (w.crits - 1)) li += `<li>${w.name} ${bracket[2]}</li>`; // End Bracket
 					else li += `<li>${w.name} ${bracket[1]}</li>`; // Middle Bracket
-
-					// Split the crits list if there are more than 6 slots
-					if ((i+j) >= halfCrits && isLow == false) {
-						isLow = true;
-						li += low;
-					}
+					
+					count++;
 				}
-				max = max - (w.crits - 1);
-            }
-        } else {
+				extra += w.crits - 1;
+				max -= w.crits - 1;
+			}
+		// Fill in the blank slots
+        } else { 
 			// Split the crits list if there are more than 6 slots
-			if (i >= halfCrits && isLow == false) {
+			if (i == (6 - extra) && isLow == false) {
 				isLow = true;
 				li += low;
 			}
 
             // Populate empty slot
             li += `<li><i>Roll Again</i></li>`;
-		}
-
-		if (max > 6) {
-			halfCrits = parseInt(max / 2);
-		} else {
-			halfCrits = 6;
 		}
 	}
 

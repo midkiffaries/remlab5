@@ -439,19 +439,22 @@ Specific Card Styling
     position: relative;
 }
 
-.list-weapons .weapon-add {
+.list-weapons li .weapon-add {
     background-color: rgba(0,0,0,0.01);
-    margin: 0 1px;
+    margin: 0;
     padding: 5px 8px;
     transition: background-color 0.4s;
     width: 100%;
     border: none;
-    border-bottom: 1px solid #ddd;
     font-size: 0.9em;
     line-height: 1.6;
 }
 
-.list-weapons .weapon-add:hover {
+.list-weapons li:nth-of-type(even) .weapon-add {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.list-weapons li .weapon-add:hover {
 	background: transparent no-repeat 95% 10% / 1em;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M512 192H320V0H192v192H0v128h192v192h128V320h192z' fill='black'/%3E%3C/svg%3E");
     background-color: var(--light-gold);
@@ -614,18 +617,6 @@ p.location-crits {
 .card-Readout .card-totals {
     display: none;
 }
-
-
-/************************
-Modals and Dialogs Style
-*************************/
-
-/*
-.helpModal {}
-.aboutModal {}
-.recordsheetModal {}
-.techreadoutModal {}
-*/
 
 
 /************************
@@ -844,11 +835,6 @@ body.dark-mode,
 
 .dark-mode .dialog-html-close {
     filter: invert();
-}
-
-.dark-mode header img,
-.dark-mode figure img {
-    filter: brightness(0.8) contrast(1.2);
 }
 
 .dark-mode code, 
