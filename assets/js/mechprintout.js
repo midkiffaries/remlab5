@@ -54,13 +54,16 @@ const generateHeatScale = () => {
 const listCritsLocation = (v) => {
 	let max = Mech[`maxcrits_${v}`],
         loc = [...Mech[`assigned_${v}`]],
-		li = `<ol class="high">`,
-		low = `</ol><ol class="low">`,
 		bracket = ['┓', '┃', '┛'],
 		isLow = false,
 		count = 0,
 		extra = 0,
-        w;
+		low = `</ol><ol class="low">`,
+		li = `<ol>`,
+		w;
+	
+	// Check if crit location has more than 6 slots
+	if (max > 6) li = `<ol class="high">`; 
 
 	// Swap around slots in the head
 	if (v == 'H') {
@@ -349,7 +352,7 @@ const RecordSheetModal = () => {
 				<div class="print-heat">
 					<h3>Heat Data</h3>
 					<p><b>${Mech.heatsinks}</b> | ${a_HSType[Mech.heatsinkType]} Heat Sinks</p>
-					<p style="font-size:1.1em">${displayTicks(Mech.heatsinks, 15)}</p>
+					<p style="font-size:1.4em">${displayTicks(Mech.heatsinks, 15)}</p>
 				</div>
 				<div class="print-heatscale">
 					<h3>Heat Scale</h3>
@@ -422,13 +425,12 @@ body {
 
 .dialog-body, 
 .dialog-top {
-	margin: 1em;
 	line-height: 1;
 	max-width: 100%;
 }
 
 .dialog-body .cbills::before {
-	font-size: 0.5em;
+	font-size: 0.5em !important;
 }
 
 /* Display underline on empty elements */
@@ -734,6 +736,11 @@ body {
 	line-height: 0.6;
 }
 
+.print-costbv {
+	font-size: 1.2em;
+	line-height: 0.6;
+}
+
 .print-crits-roll {
     float: left;
     transform: rotate(-90deg);
@@ -826,7 +833,6 @@ body {
 	.print-container {
 		margin-top: 2em !important;
 	}
-
 }
 </style>
 `};
@@ -1111,7 +1117,6 @@ body {
 
 .dialog-body, 
 .dialog-top {
-	margin: 1em;
 	line-height: 1;
 	max-width: 100%;
 }
