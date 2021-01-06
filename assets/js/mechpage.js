@@ -498,10 +498,10 @@ elID("AppVersion").textContent = RemlabVersion;
 const updateForm = () => {
 
     // Side Bar -------
-    // Post data to form
+    // Get data from form
     Mech.type = elID('txtType').value;
     Mech.mass = elID('stepMass').value;
-    // Post data to array
+    // Return data to form
     elID('outWeightClass').value = weightClass(Mech.mass);
     elID('outTotalMass').value = addDecimal(Mech.mass);
     elID('outCurrentMass').value = addDecimal(Mech.totalMass);
@@ -514,7 +514,7 @@ const updateForm = () => {
     // Max walking based on Mech mass
     elID('stepWalking').max = Mech.maxWalkingMP;
     if (Mech.walkingMP > Mech.maxWalkingMP) elID('stepWalking').value = 4;
-    // Post data to form
+    // Return data to form
     Mech.walkingMP = elID('stepWalking').value;
     Mech.engineType = elID('selEngine').value;
 
@@ -529,36 +529,36 @@ const updateForm = () => {
     // Max jumping based on WalkingMP
     elID('stepJumping').max = Mech.walkingMP;
     if (Mech.jumpingMP > Mech.walkingMP) elID('stepJumping').value = Mech.walkingMP; 
-    // Post data to form
+    // Get data from form
     Mech.jumpingMP = parseInt(elID('stepJumping').value);
     Mech.jumpjetsType = elID('selJumpJets').value;
-    // Post data to array
+    // Return data to form
     elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass);
     elID('outJumpJetsCrits').value = Mech.jumpjetsCrits;
     elID('outJumpJetsCost').value = addComma(Mech.jumpjetsCost);
 
     // Heat Sinks Card -------
-    // Post data to form
+    // Get data from form
     Mech.heatsinks = elID('stepHeatSinks').value;
     Mech.heatsinkType = elID('selHeatSinks').value;
-    // Post data to array
+    // Return data to form
     elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass);
     elID('outHeatSinksCrits').value = Mech.heatsinksCrits + Mech.heatsinksIntCrits;
     elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
     // Internal Comp Card -------
-    // Post data to form
+    // Get data from form
     Mech.isType = elID('selInternalSruct').value;
     Mech.gyroType = elID('selGyro').value;
     Mech.cockpitType = elID('selCockpit').value;
     Mech.targetingType = elID('selTargeting').value;
-    // Post data to array
+    // Return data to form
     elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass);
     elID('outInternalCrits').value = Mech.internalComponentsCrits;
     elID('outInternalCost').value = addComma(Mech.internalComponentsCost);    
 
     // Armor Card -------
-    // Post data to form
+    // Get data from form
     Mech.armorType = elID('selArmor').value;
     Mech.AH = parseInt(elID('stepArmorH').value);
     Mech.ALT = parseInt(elID('stepArmorLT').value);
@@ -571,7 +571,7 @@ const updateForm = () => {
     Mech.ARA = parseInt(elID('stepArmorRA').value);
     Mech.ALL = parseInt(elID('stepArmorLL').value);
     Mech.ARL = parseInt(elID('stepArmorRL').value);
-    // Post data to array
+    // Return data to form
     elID('outArmorTotal').value = Mech.armorTotal;
     elID('outArmorTotalMax').value = Mech.armorTotalMax;
     elID('outArmorMass').value = addDecimal(Mech.armorMass);
@@ -586,13 +586,13 @@ const updateForm = () => {
     elID('outMaxRL').value = Mech.ISL * 2;
 
     // Weapons Card -------
-    // Post data to array
+    // Return data to form
     elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
     // Warrior Card -------
-    // Post data to form
+    // Get data from form
     Warrior.name = elID('txtPilotName').value;
     Warrior.race = document.forms[0].radRace.value;
     Warrior.affiliation = elID('selAffiliation').value;
@@ -604,7 +604,7 @@ const updateForm = () => {
     Warrior.autoeject = elID('chkAutoEject').checked;
 
     // Design Quirks Card -------
-    // Post data to form
+    // Get data from form
     let positiveDQ = document.forms[0].selDQPositive || 0,
         negativeDQ = document.forms[0].selDQNegative || 0;
     // Clear arrays
@@ -620,7 +620,7 @@ const updateForm = () => {
     }
 
     // Tech Readout Card -------
-    // Post data to form
+    // Get data from form
     Mech.year = elID('txtYear').value;
     Mech.era = elID('selEra').value;
     Mech.overviewTR = elID('txtOverview').value;
@@ -630,6 +630,15 @@ const updateForm = () => {
     Mech.variantsTR = elID('txtVariants').value;
     Mech.notableTR = elID('txtNotable').value;
 
+
+    // Disable print buttons if Mech is over-weight or over-flowed on crit slots
+    if (Mech.totalMass > Mech.mass || Mech.totalCrits > Mech.baseCrits) {
+        elID('btnCreateRS').disabled = true;
+        elID('btnCreateTR').disabled = true;
+    } else {
+        elID('btnCreateRS').disabled = false;
+        elID('btnCreateTR').disabled = false;
+    }
 };
 
 
