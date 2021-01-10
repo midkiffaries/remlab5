@@ -920,7 +920,7 @@ const TechReadoutModal = () => {
         <div class="print-body">
 			<h2 class="print-header">
 				<img src="assets/images/btech2010.svg" alt="BattleTech">
-				<span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Record Sheet</span>
+				<span class="print-subtitle">${weightClass(Mech.mass)} ${a_ChassisType[Mech.chassis]} Technical Readout</span>
 			</h2>
 
             <h3>${Mech.type}</h3>
@@ -1150,7 +1150,7 @@ body {
 
 .print-header span {
 	display: block;
-	font-size: 0.8em;
+	font-size: 0.7em;
 }
 
 .print-body p {
