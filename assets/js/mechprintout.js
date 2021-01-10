@@ -927,8 +927,8 @@ const TechReadoutModal = () => {
             
             <div class="print-leftside">
                 <p><b>Mass:</b> ${Mech.mass} tons</p>
-                <p><b>Chassis:</b> ${a_ChassisType[Mech.chassis]}</p>
-                <p><b>Power Plant:</b> ${Mech.engineRating} ${Mech.engineBrand}</p>
+                <p><b>Chassis:</b> ${a_ISType[Mech.isType]}</p>
+                <p><b>Power Plant:</b> ${Mech.engineBrand} ${Mech.engineRating} ${a_EngineType[Mech.engineType]}</p>
                 <p><b>Cruising Speed:</b> ${mp2Kph[Mech.walkingMP]} kph</p>
                 <p><b>Maxiumum Speed:</b> ${mp2Kph[Mech.runningMP]} kph</p>
                 <p><b>Jump Jets:</b> ${jjtype}</p>
@@ -971,10 +971,6 @@ const TechReadoutModal = () => {
                         <td colspan="2">${a_Era[Mech.era]} (${Mech.year})</td>
                     </tr>
                     <tr>
-                        <td>Ruleset:</td>
-                        <td colspan="2">${a_RuleSet[Mech.rules]}</td>
-                    </tr>
-                    <tr>
                         <td>Tonnage:</td>
                         <td colspan="2">${Mech.mass}</td>
                     </tr>
@@ -985,7 +981,10 @@ const TechReadoutModal = () => {
                     <tr>
                         <td>Battle Value:</td>
                         <td colspan="2">${addComma(Mech.totalBV)}</td>
-                    </tr>
+					</tr>
+					<tr>
+						<td colspan="3" style="height:1em"></td>
+					</tr>
                     <tr>
                         <th>Equipment</th>
                         <th></th>
@@ -993,12 +992,12 @@ const TechReadoutModal = () => {
                     </tr>
                     <tr>
                         <td>Internal Structure:</td>
-                        <td></td>
+                        <td>${a_ISType[Mech.isType]}</td>
                         <td>${addDecimal(Mech.isMass)}</td>
                     </tr>            
                     <tr>
                         <td>Engine:</td>
-                        <td></td>
+                        <td>${Mech.engineRating}</td>
                         <td>${addDecimal(Mech.engineMass)}</td>
                     </tr>
                     <tr>
@@ -1033,7 +1032,7 @@ const TechReadoutModal = () => {
                     </tr>
                     <tr>
                         <td>Armor Factor:</td>
-                        <td></td>
+                        <td>${Mech.armorTotal}</td>
                         <td>${addDecimal(Mech.armorMass)}</td>
                     </tr>
                     <tr>
@@ -1138,9 +1137,11 @@ body {
 	vertical-align: -3px;
 }
 
+/* Printout */
+
 .print-body {
-	font-size: 0.9em;
-	font-family: arial;
+	font-size: 0.86em;
+	font-family: arial, sans-serif !important;
 }
 
 .print-header img {
@@ -1174,16 +1175,39 @@ body {
 	list-style: none;
 }
 
-.indent {
+.print-body .indent {
 	margin-left: 2em !important;
 }
 
-.indent2 {
+.print-body .indent2 {
 	padding-left: 2.5em;
 }
 
-.center {
+.print-body .center {
 	text-align: center;
+}
+
+.print-body .cbills::before {
+	font-size: 0.7em;
+	vertical-align: middle;
+}
+
+.print-body h4 {
+	font-size: 1.2em;
+}
+
+.print-footer {
+    clear: both;
+    color: #888 !important;
+    text-align: right;
+    padding: 0 10px 0 0;
+    margin: 0;
+    font-size: 0.75em;
+}
+
+.print-footer a {
+    color: #888;
+    text-decoration: none;
 }
 
 @media only print {

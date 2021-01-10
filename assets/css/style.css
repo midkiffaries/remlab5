@@ -488,6 +488,7 @@ Specific Card Styling
 
 .list-weapons .cbills::before {
     font-size: 0.8em;
+	vertical-align: middle;
 }
 
 .list-weapons .weapon-info button {
