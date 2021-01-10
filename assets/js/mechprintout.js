@@ -488,7 +488,7 @@ body {
 
 .print-subtitle {
     display: block;
-    font-size: 0.55em;
+    font-size: 0.65em;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -1148,9 +1148,11 @@ body {
 	height: 1.5em;
 }
 
-.print-header span {
-	display: block;
-	font-size: 0.7em;
+.print-subtitle {
+    display: block;
+    font-size: 0.55em;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .print-body p {
