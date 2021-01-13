@@ -127,7 +127,7 @@ const Mech = {
 
 	// Tech Readout
 	factory: a_Factory[getRandomNum(1, a_Factory.length)],
-	manufacturer: 0, 
+	manufacturer: a_Manufacturer[getRandomNum(1, a_Manufacturer.length)], 
 
 	// Calc: Max Walking MP
 	get maxWalkingMP() {

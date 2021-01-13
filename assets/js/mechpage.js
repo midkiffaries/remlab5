@@ -174,7 +174,7 @@ const sArmor = new SectionPanel(
     // body
     `
     <p>
-        <label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> Armor Points <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
+        <label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> <label style="margin-left:0.8em">Armor Points</label> <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
         <input type="checkbox" id="chkBalance" disabled><label for="chkBalance">Balance Armor</label>
     </p> 
     
@@ -289,8 +289,8 @@ const sWeapons = new SectionPanel(
             <section class="locations-mandatory">
                 <h5>Mandatory</h5>
                 <ul>
-                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> <output id="outMandatoryHS">10</output></li>
-                    <li><button aria-label="Add" class="button-gray"><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> <output id="outMandatoryJJ">0</output></li>
+                    <li><button aria-label="Add Heat Sinks" class="button-gray" onclick="addWeapon(18)"><img src="assets/images/plus.svg" alt="+"> Heat Sinks</button> <output id="outMandatoryHS">${Mech.heatsinksIntCrits}</output></li>
+                    <li><button aria-label="Add Jump Jets" class="button-gray" onclick="addWeapon(17)" disabled><img src="assets/images/plus.svg" alt="+"> Jump Jets</button> <output id="outMandatoryJJ">${Mech.jumpingMP}</output></li>
                 </ul>
             </section>
         </div>
@@ -415,8 +415,8 @@ const sReadout = new SectionPanel(
             <option value="3135">
             <option value="3145">
             <option value="3150">
-        </datalist>
-        <label>Era</label> <select id="selEra" class="select" data-list="a_Era" data-value="${Mech.era}"></select>
+        </datalist> 
+        <label style="margin-left:0.8em">Era</label> <select id="selEra" class="select" data-list="a_Era" data-value="${Mech.era}"></select>
     </p>
     <div class="col-2">
         <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
@@ -587,6 +587,8 @@ const updateForm = () => {
 
     // Weapons Card -------
     // Return data to form
+    elID('outMandatoryHS').value = Mech.heatsinksCrits + Mech.heatsinksIntCrits;
+    elID('outMandatoryJJ').value = Mech.jumpingMP;
     elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 

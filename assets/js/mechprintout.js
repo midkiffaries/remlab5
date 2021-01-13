@@ -429,10 +429,6 @@ body {
 	max-width: 100%;
 }
 
-.dialog-body .cbills::before {
-	font-size: 0.5em !important;
-}
-
 /* Display underline on empty elements */
 .dotted:empty {
     width: 80%;
@@ -442,6 +438,7 @@ body {
     white-space: nowrap;
 }
 
+/* Print options strip */
 .print-options {
 	background: #eee;
 	border: 1px solid #ddd;
@@ -455,6 +452,7 @@ body {
 	vertical-align: -3px;
 }
 
+/* Print container */
 .print-container {
 	margin-top: 2em;
 	font-family: arial;
@@ -803,6 +801,9 @@ body {
     text-decoration: none;
 }
 
+.print-container .cbills::before {
+	font-size: 0.5em !important;
+}
 
 @media only print {
     /* Hide the interface */    
@@ -938,7 +939,7 @@ const TechReadoutModal = () => {
 				<ul>
 					${tr_ArmamentList('LA')}
                 </ul>
-                <p><b>Manufacturer:</b> Unknown</p> 
+                <p><b>Manufacturer:</b> ${Mech.manufacturer}</p> 
                 <p class="indent"><b>Primary Factory:</b> ${Mech.factory}</p>
                 <p><b>Communications System:</b> Standard</p>
                 <p><b>Targeting &amp; Tracking System:</b> ${a_TargetType[Mech.targetingType]}</p>
@@ -1120,10 +1121,7 @@ body {
 	max-width: 100%;
 }
 
-.dialog-body .cbills::before {
-	font-size: 0.9em;
-}
-
+/* Print options strip */
 .print-options {
 	background: #eee;
 	border: 1px solid #ddd;
@@ -1137,8 +1135,7 @@ body {
 	vertical-align: -3px;
 }
 
-/* Printout */
-
+/* Print container */
 .print-body {
 	font-size: 0.86em;
 	font-family: arial, sans-serif !important;
@@ -1189,11 +1186,6 @@ body {
 	text-align: center;
 }
 
-.print-body .cbills::before {
-	font-size: 0.7em;
-	vertical-align: middle;
-}
-
 .print-body h4 {
 	font-size: 1.2em;
 }
@@ -1210,6 +1202,11 @@ body {
 .print-footer a {
     color: #888;
     text-decoration: none;
+}
+
+.print-container .cbills::before {
+	font-size: 0.7em;
+	vertical-align: middle;
 }
 
 @media only print {
