@@ -623,12 +623,12 @@ legend + * {
 	-moz-appearance: textfield;
 }
 
-::-webkit-inner-spin-button {
-	-webkit-appearance: none;
+:out-of-range {
+	color: #d00;
 }
 
-[type='number']:out-of-range {
-	color: #d00;
+::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
 /* Input Search */
@@ -639,9 +639,7 @@ legend + * {
 	appearance: none;
 }
 
-[type='search']::-webkit-search-decoration, 
-[type='search']::-webkit-search-results-button, 
-[type='search']::-webkit-search-results-decoration {
+::-webkit-search-decoration {
 	-webkit-appearance: none;
 }
 
@@ -857,10 +855,6 @@ Responsive elements
 
 /* Printing */
 @media print {
-	@page {
-		size: a3;
-	}
-
 	*,
 	*::before,
 	*::after {

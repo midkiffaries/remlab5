@@ -88,12 +88,177 @@ const a_WeaponClass = [
     'Other' // 9
 ];
 
+// Weapon Tech Ratings
+const a_TechRating = {
+    a: 'Primitive',
+    b: 'Low-Tech',
+    c: 'Common Tech',
+    d: 'High-Tech',
+    e: 'Advanced',
+    f: 'Hyper-Advanced'
+};
+
+// Weapon Availability ratings
+const a_AvailabilityRating = {
+    a: 'Very Common',
+    b: 'Common',
+    c: 'Uncommon',
+    d: 'Rare',
+    e: 'Very Rare',
+    f: 'Unique',
+    x: 'Unavailable'
+};
+
+// Armor types
+const a_ArmorType = [
+    'Standard',
+    'Ferro-Fibrous',
+    'Light Ferro-Fibrous',
+    'Heavy Ferro-Fibrous',
+    'Stealth',
+    'Industrial',
+    'Commercial'
+];
+
+// Internal Structure types
+const a_ISType = [
+    'Standard',
+    'Endo Steel'
+];
+
+// Gyro types
+const a_GyroType = [
+    'Standard',
+    'Compact',
+    'Heavy-duty',
+    'Extra-Light'
+];
+
+// Cockpit types
+const a_CockpitType = [
+    'Standard',
+    'Small'
+];
+
+// Targeting System types
+const a_TargetType = [
+    'Standard',
+    'Targeting Computer'
+];
+
+// Heatsink types
+const a_HSType = [
+    'Single',
+    'Double',
+    'Compact'
+];
+
+// Jump Jets types
+const a_JJType = [
+    'Standard',
+    'Improved'
+];
+
+// Engine types
+const a_EngineType = [
+    'Fusion',
+    'ICE'
+];
+
+// Auto-Eject Modes
+const a_AutoEject = {
+    false: 'Disabled',
+    true: 'Enabled'
+};
+
 // Warrior Experience
 const a_Experience = [
     'Green',
     'Regular',
     'Veteran',
     'Elite'
+];
+
+// Factory name
+const a_Factory = [
+    'Unknown',
+    'Al Na`ir',
+    'Alarion',
+    'Alphard',
+    'Alpheratz',
+    'Alshain',
+    'Ascuncion',
+    'Bell',
+    'Bryant',
+    'Calloway VI',
+    'Capella',
+    'Caph',
+    'Carlisle',
+    'Connaught',
+    'Corey',
+    'Coventry',
+    'Crofton',
+    'Dieron',
+    'Emirs IV',
+    'Epsilon Eridani',
+    'Errai',
+    'Gibson',
+    'Graham IV',
+    'Hesperus',
+    'Hesperus II',
+    'Hun Ho',
+    'Inarcs',
+    'Irian',
+    'Kalidasa',
+    'Kathil',
+    'Kendall',
+    'Keystone',
+    'Keystone Plant #3',
+    'Krenice',
+    'Loburg',
+    'Loxley',
+    'Luthien',
+    'Marcus',
+    'Mars',
+    'Menke',
+    'Midway',
+    'Nanking',
+    'New Avalon',
+    'New Earth',
+    'New Samarkand',
+    'New Syrtis',
+    'New Valencia',
+    'Northwind',
+    'Oliver',
+    'Outreach',
+    'Ozawa',
+    'Panpour',
+    'Paradise',
+    'Perdition',
+    'Quentin',
+    'Robinson',
+    'Satalice',
+    'Savannah',
+    'Shiro III',
+    'Sian',
+    'Skye',
+    'Solaris VII',
+    'Son Hoa',
+    'Soul',
+    'St. Ives',
+    'Stewart',
+    'Storfors',
+    'Talon',
+    'Taurus',
+    'Tematagi',
+    'Terra',
+    'Terra Firma',
+    'Tharkad',
+    'Themopolis',
+    'Tikonov',
+    'Vendrell',
+    'Wallis',
+    'Wyatt'
 ];
 
 // Warrior Affiliation
@@ -148,27 +313,6 @@ const a_Affiliation = [
     'Gladiator',
     'Civilian'
 ];
-
-// Weapon Tech Ratings
-const a_TechRating = {
-    a: 'Primitive',
-    b: 'Low-Tech',
-    c: 'Common Tech',
-    d: 'High-Tech',
-    e: 'Advanced',
-    f: 'Hyper-Advanced'
-};
-
-// Weapon Availability ratings
-const a_AvailabilityRating = {
-    a: 'Very Common',
-    b: 'Common',
-    c: 'Uncommon',
-    d: 'Rare',
-    e: 'Very Rare',
-    f: 'Unique',
-    x: 'Unavailable'
-};
 
 // Design Quirk : Positive
 const a_DQPositive = [
@@ -247,68 +391,6 @@ const a_DQNegative = [
     'Weak Head Armor',
     'Weak Legs'
 ];
-
-// Armor types
-const a_ArmorType = [
-    'Standard',
-    'Ferro-Fibrous',
-    'Light Ferro-Fibrous',
-    'Heavy Ferro-Fibrous',
-    'Stealth',
-    'Industrial',
-    'Commercial'
-];
-
-// Internal Structure types
-const a_ISType = [
-    'Standard',
-    'Endo Steel'
-];
-
-// Gyro types
-const a_GyroType = [
-    'Standard',
-    'Compact',
-    'Heavy-duty',
-    'Extra-Light'
-];
-
-// Cockpit types
-const a_CockpitType = [
-    'Standard',
-    'Small'
-];
-
-// Targeting System types
-const a_TargetType = [
-    'Standard',
-    'Targeting Computer'
-];
-
-// Heatsink types
-const a_HSType = [
-    'Single',
-    'Double',
-    'Compact'
-];
-
-// Jump Jets types
-const a_JJType = [
-    'Standard',
-    'Improved'
-];
-
-// Engine types
-const a_EngineType = [
-    'Fusion',
-    'ICE'
-];
-
-// Auto-Eject Modes
-const a_AutoEject = {
-    false: 'Disabled',
-    true: 'Enabled'
-};
 
 // Teach Readout: Convert MP to KPH
 const mp2Kph = [0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 162, 172, 184, 194, 201, 216, 230, 248, 261, 275, 290, 305, 318, 329, 340, 351];

@@ -125,6 +125,10 @@ const Mech = {
     crits_LL: 4,
     crits_RL: 4,
 
+	// Tech Readout
+	factory: a_Factory[getRandomNum(1, a_Factory.length)],
+	manufacturer: 0, 
+
 	// Calc: Max Walking MP
 	get maxWalkingMP() {
 		return this.engineMaxRating / this.mass

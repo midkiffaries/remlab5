@@ -939,7 +939,7 @@ const TechReadoutModal = () => {
 					${tr_ArmamentList('LA')}
                 </ul>
                 <p><b>Manufacturer:</b> Unknown</p> 
-                <p class="indent"><b>Primary Factory:</b> Unknown</p>
+                <p class="indent"><b>Primary Factory:</b> ${Mech.factory}</p>
                 <p><b>Communications System:</b> Standard</p>
                 <p><b>Targeting &amp; Tracking System:</b> ${a_TargetType[Mech.targetingType]}</p>
 				

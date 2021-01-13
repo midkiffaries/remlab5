@@ -246,13 +246,13 @@ Cards Styling
 .card-footer {
     background-color: rgba(0,0,0,0.05);
     padding: 0.3em 0.4em;
+    color: #444;
 }
 
 .card-footer ul,
 .card-footer p {
     padding: 0;
     margin: 0;
-    color: #444;
 }
 
 .card-footer li {
@@ -791,79 +791,6 @@ li [target="_blank"]::after {
 
 
 /************************
-Dark Mode
-*************************/
-/*
-:root {
-    color-scheme: light dark;
-}
-*/
-.dark-mode ::-moz-selection {
-    color: #000;
-    background-color: #ddd;
-}
-
-.dark-mode ::selection { 
-    color: #000;
-    background-color: #ddd;
-}    
-
-body.dark-mode,
-.dark-mode .dialog-body {
-    color: #eee;
-    background-color: #222;
-    border-color: #555;
-    font-weight: 350;
-}
-
-.dark-mode textarea,
-.dark-mode [type='text'],
-.dark-mode [type='number'],
-.dark-mode [role='button'],
-.dark-mode [role='listbox'],
-.dark-mode .stepper-container,
-.dark-mode select:not([multiple]):not([size]) {
-    background-color: var(--input-dark-bg);
-}
-
-.dark-mode :focus {
-    background-color: var(--input-dark-focus) !important;
-}
-
-.dark-mode dialog {
-    background-color: rgba(0,0,0,0.9);
-}
-
-.dark-mode .dialog-html-close {
-    filter: invert();
-}
-
-.dark-mode code, 
-.dark-mode kbd {
-    color: #666
-}
-
-.dark-mode select:not([multiple]):not([size]),
-.dark-mode select, 
-.dark-mode input, 
-.dark-mode textarea {
-    color: #fff;
-    caret-color: #fff;
-}
-
-.dark-mode [type='range'] {
-    background: transparent;
-}
-
-.dark-mode button,
-.dark-mode [role='button'],
-.dark-mode [type='button'],
-.dark-mode input::-webkit-file-upload-button {
-    color: #fff;
-}
-
-
-/************************
 Radio and Checkbox style
 *************************/
 
@@ -1009,6 +936,99 @@ Radio and Checkbox style
 	vertical-align: -1px;
 }
 
+
+/************************
+Dark Mode
+*************************/
+/*
+:root {
+    color-scheme: light dark;
+}
+*/
+.dark-mode ::-moz-selection {
+    color: #000;
+    background-color: #ddd;
+}
+
+.dark-mode ::selection { 
+    color: #000;
+    background-color: #ddd;
+}    
+
+body.dark-mode,
+.dark-mode .dialog-body {
+    color: #eee;
+    background-color: #222;
+    border-color: #555;
+    font-weight: 350;
+}
+
+.dark-mode textarea,
+.dark-mode [type='text'],
+.dark-mode [type='number'],
+.dark-mode [role='button'],
+.dark-mode [role='listbox'],
+.dark-mode .stepper-container,
+.dark-mode select:not([multiple]):not([size]) {
+    background-color: var(--input-dark-bg);
+}
+
+.dark-mode :focus {
+    background-color: var(--input-dark-focus) !important;
+}
+
+.dark-mode dialog {
+    background-color: rgba(0,0,0,0.9);
+}
+
+.dark-mode .dialog-html-close {
+    filter: invert();
+}
+
+.dark-mode code, 
+.dark-mode kbd {
+    color: #666
+}
+
+.dark-mode select:not([multiple]):not([size]),
+.dark-mode select, 
+.dark-mode input, 
+.dark-mode textarea {
+    color: #fff;
+    caret-color: #fff;
+}
+
+.dark-mode [type='range'] {
+    background: transparent;
+}
+
+.dark-mode .card-footer,
+.dark-mode button,
+.dark-mode [role='button'],
+.dark-mode [type='button'] {
+    color: #fff;
+}
+
+.dark-mode .button-gold {
+    color: #333;
+}
+
+.dark-mode .select-list input + label:hover,
+.dark-mode .list-weapons li .weapon-add:hover  {
+    background-color: var(--dark-gold);
+}
+
+.dark-mode .select-list input:checked + label {
+    background-color: var(--base-gold);
+}
+
+.dark-mode .accordion > button:hover {
+    background-color: var(--dark-gold);
+}
+
+.dark-mode .accordion > button::before {
+    filter: invert();
+}
 
 /*********************
 Responsive elements
