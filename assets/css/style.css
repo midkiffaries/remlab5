@@ -1079,6 +1079,7 @@ Responsive elements
         float: none !important;
         width: 100% !important;
         height: auto;
+        margin-left: 0;
     }
 
     .page-title {

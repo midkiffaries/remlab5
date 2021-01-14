@@ -125,7 +125,7 @@ const Mech = {
     crits_LL: 4,
     crits_RL: 4,
 
-	// Tech Readout
+	// Tech Readout - Brands
 	factory: a_Factory[getRandomNum(1, a_Factory.length)],
 	manufacturer: a_Manufacturer[getRandomNum(1, a_Manufacturer.length)], 
 
@@ -199,7 +199,7 @@ const Mech = {
 
 	// Calc: Heat sinks Mass
 	get heatsinksMass() {
-		return 0 + (this.heatsinks - 10)
+		return 0 + (this.heatsinks - this.heatsinksBase)
 	},
 
 	// Calc: Internal Heat sinks Crits
@@ -214,7 +214,7 @@ const Mech = {
 
 	// Calc: Heat sinks Cost
 	get heatsinksCost() {
-        return parseInt(this.heatsinks * 2000)
+        return parseInt((this.heatsinks - this.heatsinksBase) * 2000)
 	},
 
 	// Calc: LAM Mass
@@ -254,32 +254,42 @@ const Mech = {
 
 	// Calc: Upper arm cost
 	get armupperCost() {
-		return this.mass * this.armupperMulti
+		return (this.mass * this.armupperMulti) * 2
 	},
 
-	// Calc: Lower arm cost
-	get armlowerCost() {
+	// Calc: LA Lower arm cost
+	get LAlowerCost() {
 		return this.mass * this.armlowerMulti
 	},
 
-	// Calc: Hand cost
-	get armhandCost() {
+	// Calc: RA Lower arm cost
+	get RAlowerCost() {
+		return this.mass * this.armlowerMulti
+	},
+
+	// Calc: LA Hand cost
+	get LAhandCost() {
+		return this.mass * this.armhandMulti
+	},
+
+	// Calc: RA Hand cost
+	get RAhandCost() {
 		return this.mass * this.armhandMulti
 	},
 
 	// Calc: Upper leg cost
 	get legupperCost() {
-		return this.mass * this.legupperMulti
+		return (this.mass * this.legupperMulti) * 2
 	},
 
 	// Calc: Lower leg cost
 	get leglowerCost() {
-		return this.mass * this.leglowerMulti
+		return (this.mass * this.leglowerMulti) * 2
 	},
 
 	// Calc: Foot cost
 	get legfootCost() {
-		return this.mass * this.legfootMulti
+		return (this.mass * this.legfootMulti) * 2
 	},
 	
 	// Calc: Total structure cost
@@ -291,10 +301,16 @@ const Mech = {
 		+ this.gyroCost 
 		+ this.engineCost 
 		+ this.jumpjetsCost 
-		+ this.isCost 
-		+ (this.legfootCost * 2) 
-		+ (this.leglowerCost * 2) 
-		+ (this.legupperCost * 2)
+		+ this.heatsinksCost
+		+ this.isCost
+		+ this.armupperCost
+		+ this.LAlowerCost
+		+ this.RAlowerCost
+		+ this.LAhandCost
+		+ this.RAhandCost
+		+ this.legfootCost 
+		+ this.leglowerCost
+		+ this.legupperCost
 	},
 
 	// Calc: IS Mass
@@ -584,15 +600,14 @@ const Mech = {
 		+ this.weaponsCrits
 	},
 
+	// Calc: Total cost multiplier
+	get costMultiplier() {
+		return (this.mass / 100) + 1
+	},
+
 	// Calc: Total cost with all components
 	get totalCost() {
-		return (this.internalComponentsCost 
-		+ this.engineCost 
-		+ this.armorCost 
-		+ this.jumpjetsCost 
-		+ this.heatsinksCost 
-		+ this.totalstructureCost 
-		+ this.weaponsCost) * parseInt(1 + (this.mass/100))
+		return parseInt((this.totalstructureCost + this.weaponsCost) * this.costMultiplier)
 	},
 
 	// Calc: BV with all components

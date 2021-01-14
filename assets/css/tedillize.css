@@ -18,7 +18,7 @@ Tedilize 2.0 - Normalization and Base Styling
 *::before,
 *::after {
 	text-decoration: inherit;
-    white-space: pre;
+	white-space: pre;
 	speak: none;
 }
 
@@ -388,7 +388,7 @@ Interactive elements
 	outline: none;
 }
 
-a[href],
+[href],
 button,
 input,
 label,
@@ -399,7 +399,7 @@ textarea,
 	touch-action: manipulation;
 }
 
-a[href] {
+[href] {
 	color: inherit;
 	background-color: transparent;
 	-webkit-tap-highlight-color: rgba(220,220,220,0.4);
@@ -407,15 +407,15 @@ a[href] {
 	text-decoration-skip: ink;
 }
 
-a[href]::before,
-a[href]::after {
+[href]::before,
+[href]::after {
 	display: inline-block;
 	text-decoration: none;
 }
 
 a:not([href]),
-a[href=''],
-a[href='#'] {
+[href=''],
+[href='#'] {
 	pointer-events: none;
 	text-decoration: none;
 	font-weight: inherit;
@@ -636,7 +636,6 @@ legend + * {
 [type='search'] {
 	outline-offset: -2px;
 	-webkit-appearance: textfield;
-	appearance: none;
 }
 
 ::-webkit-search-decoration {
@@ -656,19 +655,19 @@ legend + * {
 	cursor: pointer;
 }
 
-[type='range']::-webkit-slider-runnable-track {
+::-webkit-slider-runnable-track {
 	border-radius: 0.3em;
 	height: 0.5em;
 	background: #ccc;
 }
 
-[type='range']::-moz-range-track {
+::-moz-range-track {
 	border-radius: 0.3em;
 	height: 0.5em;
 	background: #ccc;
 }
 
-[type='range']::-webkit-slider-thumb {
+::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	margin-top: -0.3em;
 	width: 1.15em;
@@ -678,7 +677,7 @@ legend + * {
 	border: 2px solid #aaa;
 }
 
-[type='range']::-moz-range-thumb {
+::-moz-range-thumb {
 	-moz-appearance: none;
 	width: 1em;
 	height: 1em;
@@ -698,7 +697,7 @@ meter {
 ::-webkit-meter-bar {
 	background: #eee;
 	border-radius: 0;
-	height: 1.4em;
+	height: 1.35em;
 }
 
 ::-webkit-meter-optimum-value {
@@ -734,19 +733,19 @@ progress {
 	height: 1.2em;
 }
 
-progress[value] {
+[value] {
 	background-color: #eee;
 }
 
-progress[value]::-webkit-progress-bar {
+[value]::-webkit-progress-bar {
 	background-color: #eee;
 }
 
-progress[value]::-webkit-progress-value {
+[value]::-webkit-progress-value {
 	background-color: #777;
 }
 
-progress[value]::-moz-progress-bar {
+[value]::-moz-progress-bar {
 	background-color: #777;
 }
 
@@ -777,21 +776,6 @@ Accessibility
 	position: absolute;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-delay: -1ms !important;
-		animation-duration: 1ms !important;
-		animation-iteration-count: 1 !important;
-		background-attachment: initial !important;
-		transition-delay: 0s !important;
-		transition-duration: 0s !important;
-		scroll-behavior: auto !important;
-	}
-}
-
 
 /*********************
 Browser Hacks
@@ -810,6 +794,23 @@ Browser Hacks
 /*********************
 Responsive elements
 *********************/
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-delay: -1ms !important;
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		background-attachment: initial !important;
+		transition-delay: 0s !important;
+		transition-duration: 0s !important;
+	}
+	html {
+		scroll-behavior: auto !important;
+	}
+}
 
 /* Mobile Devices */
 @media (-webkit-min-device-pixel-ratio: 2) {
@@ -921,7 +922,7 @@ Responsive elements
 	abbr[title]::after {
 		content: " (" attr(title) ")";
 		font-size: 80%;
-		color: grey;
+		color: #888;
 	}
 
 	[href] {
@@ -931,7 +932,7 @@ Responsive elements
 	main [href]::after {
 		content: " (" attr(href) ")";
 		font-size: 70%;
-		color: grey;
+		color: #888;
 	}
 
 	[type='range'],

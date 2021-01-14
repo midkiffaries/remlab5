@@ -2,10 +2,12 @@
  * Base JavaScript
 **************************/
 
-"use strict";
+//"use strict";
 
 // REMLAB version
-const RemlabVersion = "4.9.2101 DEV";
+const RemlabVersion = "4.9.2101 DEV",
+    RemlabTitle = "REMLAB Web Mech Designer",
+    RemlabShort = "REMLAB";
 
 // Declare Global Variables and settings
 const HostName = window.location.host,
@@ -358,6 +360,9 @@ function closeModals(c) {
 /**************************
 * Global REMLAB Functions
 **************************/
+
+// Format the title bar text based on unit type - useful for saving as PDF
+const changeAppTitle = v => (v) ? `${v} - ${RemlabShort}` : RemlabTitle;
 
 // The record sheet circle - hash &#9675; or ○
 const theCircle = "○";

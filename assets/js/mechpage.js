@@ -501,6 +501,7 @@ const updateForm = () => {
     // Get data from form
     Mech.type = elID('txtType').value;
     Mech.mass = elID('stepMass').value;
+    document.title = changeAppTitle(Mech.type);
     // Return data to form
     elID('outWeightClass').value = weightClass(Mech.mass);
     elID('outTotalMass').value = addDecimal(Mech.mass);
