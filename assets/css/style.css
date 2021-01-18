@@ -698,12 +698,12 @@ body.dark-mode .light-switch {
 
 /* Range style */
 
-[type='range']::-webkit-slider-thumb:hover {
+::-webkit-slider-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
 	transition: box-shadow 0.2s;
 }
 
-[type='range']::-moz-range-thumb:hover {
+::-moz-range-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
     transition: box-shadow 0.2s;
 }
@@ -996,10 +996,6 @@ body.dark-mode,
 .dark-mode textarea {
     color: #fff;
     caret-color: #fff;
-}
-
-.dark-mode [type='range'] {
-    background: transparent;
 }
 
 .dark-mode .card-footer,

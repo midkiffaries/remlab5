@@ -61,6 +61,7 @@ const sEngine = new SectionPanel(
     <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="16" step="1" readonly></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
     <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineBrand} ${Mech.engineRating}</output></p>
     <p><label>Legs</label> <input type="radio" name="selLegs" id="radioM1" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input type="radio" name="selLegs" id="radioM2" class="radio-button" value="1"><label for="radioM2" role="button">4</label></p>
+    <p><label>Special</label> <select id="selSpecial" class="select" data-list="a_SpecialMovement" disabled></select></p>
     `, 
     
     // help

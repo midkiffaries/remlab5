@@ -347,7 +347,7 @@ const RecordSheetModal = () => {
 							<td>&times;</td>
 						</tr>
 					</table>
-					<p>Auto-Eject: <b>${Warrior.autoeject}</b></p>
+					<p>Auto-Eject: <b>${a_AutoEject[Warrior.autoeject]}</b></p>
 				</div>
 				<div class="print-heat">
 					<h3>Heat Data</h3>
@@ -943,7 +943,7 @@ const TechReadoutModal = () => {
                 <p class="indent"><b>Primary Factory:</b> ${Mech.factory}</p>
                 <p><b>Communications System:</b> Standard</p>
                 <p><b>Targeting &amp; Tracking System:</b> ${a_TargetType[Mech.targetingType]}</p>
-				
+				<hr size="0">
                 <p>${Mech.overviewTR}</p>
                 <h4>Capabilities</h4>
                 <p>${Mech.capabilitiesTR}</p>

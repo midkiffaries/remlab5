@@ -5,19 +5,19 @@
 // Convert total mass into a weight class
 const weightClass = t => {
     let c;
-    if (t < 20) c = 'Ultralight'; // 5-15
+    if (t < 20) c = 'Ultra-light'; // 5-15
     else if (t < 40) c = 'Light'; // 20-35
     else if (t < 60) c = 'Medium'; // 40-55
     else if (t < 80) c = 'Heavy'; // 60-75
     else if (t < 101) c = 'Assault'; // 80-100
-    else c = 'Superheavy'; // 100+
+    else c = 'Super-heavy'; // 100+
     return c;
 };
 
 // Present the maximum range in plain english
 const rangeClass = r => {
     let c;
-    if (r < 1) c = 'None'; // 0
+    if (r < 1) c = 'N/A'; // 0
     else if (r < 4) c = 'Point'; // 1-3
     else if (r < 10) c = 'Short'; // 4-9
     else if (r < 19) c = 'Medium'; // 10-18
@@ -26,11 +26,14 @@ const rangeClass = r => {
     return c;
 };
 
-// Display random quotes in the footer
-const a_Quotes = [
-    `<q>Life is cheap. BattleMechs are expensive.</q> <cite>Irain BattleMechs Ltd.</cite>`,
-    ``
+/*
+// Support Vehicle size class in tons
+const a_SizeClass = [
+    'Small', // wh = 1-4 | tr = 1-4 | hv = 1-4 | vt = 1-4 | wi = 1-4
+    'Medium', // wh = 5-80 | tr = 5-100 | hv 5-50 | vt = 5-30 | wi = 5-80
+    'Large' //  wh = 81-160 | tr 101-200 | hv 51-100 | vt = 31-60 | wi = 81-160
 ];
+*/
 
 // Btech Ruleset (aka Level)
 const a_RuleSet = [
@@ -162,7 +165,16 @@ const a_JJType = [
 // Engine types
 const a_EngineType = [
     'Fusion',
+    //'Fusion XL',
+    //'Fusion Light',
+    //'Fusion Compact',
     'ICE'
+];
+
+const a_SpecialMovement = [
+    'None',
+    'MASC',
+    'TSM'
 ];
 
 // Auto-Eject Modes
