@@ -36,5 +36,5 @@ These are links to some of the resources I used as source material for REMLAB:
 MechWarrior, BattleMech, BattleTech and AeroTech are registered trademarks of The Topps Company, Inc. All Rights Reserved.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/02e3fade-8caa-484e-b34f-ba88f0d45c9b/deploy-status)](https://app.netlify.com/sites/remlab/deploys)
-![GitHub last commit](https://img.shields.io/github/last-commit/remlab5/remlab5.svg?style=flat-square)
+![GitHub last commit]
 
