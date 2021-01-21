@@ -158,7 +158,7 @@ const rs_WeaponsList = (v) => {
 const RecordSheetModal = () => {
 	return `
 <div class="print-options" role="header">
-	<button onclick="window.print()" class="button-gold"><img src="/assets/images/print.svg" alt=""> Print...</button>
+	<button onclick="window.print()" class="button-gold" style="margin-right:1em"><img src="/assets/images/print.svg" alt=""> Print...</button>
 	<label>Logo style</label>
 	<select id="selChangeLogo" disabled>
 		<option selected>2010s</option>
@@ -907,7 +907,7 @@ const TechReadoutModal = () => {
 
 	return `
 <div class="print-options" role="header">
-	<button onclick="window.print()" class="button-gold"><img src="/assets/images/print.svg" alt=""> Print...</button>
+	<button onclick="window.print()" class="button-gold" style="margin-right:1em"><img src="/assets/images/print.svg" alt=""> Print...</button>
 	<label>Logo style</label>
 	<select id="selChangeLogo" disabled>
 		<option selected>2010s</option>
@@ -943,8 +943,7 @@ const TechReadoutModal = () => {
                 <p class="indent"><b>Primary Factory:</b> ${Mech.factory}</p>
                 <p><b>Communications System:</b> Standard</p>
                 <p><b>Targeting &amp; Tracking System:</b> ${a_TargetType[Mech.targetingType]}</p>
-				<hr size="0">
-                <p>${Mech.overviewTR}</p>
+                <p style="margin-top:1em">${Mech.overviewTR}</p>
                 <h4>Capabilities</h4>
                 <p>${Mech.capabilitiesTR}</p>
                 <h4>Battle History</h4>
@@ -1157,12 +1156,12 @@ body {
 }
 
 .print-leftside {
-	width: 50%;
+	width: 55%;
 	float: left;
 }
 
 .print-rightside {
-	width: 50%;
+	width: 45%;
 	float: right;
 }
 

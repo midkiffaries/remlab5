@@ -219,10 +219,11 @@ Cards Styling
     border: 1px solid var(--card-border);
     border-top: 3px solid var(--base-gold);
     margin: 0.3em;
+    box-shadow: 0 1px 3px 2px rgba(0,0,0,0.05);
 }
 
 .card.width-full {
-    width: calc(100% - 0.4em);;
+    width: calc(100% - 0.5em);
 }
 
 .card-header h2 {
