@@ -242,7 +242,7 @@
             user-select: none;
             height: 12em;
             padding: 0 0.3em;
-            margin: 0.3em 0.2em 0.8em;
+            margin: 0.3em 0.4em 0.8em 0;
         }
         .select-list:hover {
             border-color: var(--base-gold);

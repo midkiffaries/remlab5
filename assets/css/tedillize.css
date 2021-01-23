@@ -899,7 +899,7 @@ Responsive elements
 		max-width: 100%;
 	}
 
-	hr {
+	hr:not([size='0']) {
 		border-bottom: 1px solid #666;
 	}
 
