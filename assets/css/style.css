@@ -66,6 +66,11 @@ textarea:hover,
     transition: border-color 0.6s;
 }
 
+select:not([multiple]):not([size]) {
+    min-width: 6.4em;
+    max-width: 11em;
+}
+
 /* Input elements focus style */
 :focus {
     outline: none;
@@ -374,7 +379,7 @@ Specific Card Styling
 }
 
 .table-weapons tr:nth-of-type(even) {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .table-weapons td {
@@ -426,7 +431,7 @@ Specific Card Styling
 }
 
 .list-weapons::-webkit-scrollbar-thumb:hover {
-    background: #666; 
+    background: var(--dark-gold); 
 }
 
 .list-weapons ol {
@@ -780,16 +785,6 @@ li [target="_blank"]::after {
     font-size: 1em;
 }
 
-/* Section list */
-.select-list {
-    height: 10em !important;
-}
-
-/* Stepper Container */
-.stepper-container {
-    border: 1px solid #aaa;
-}
-
 
 /************************
 Radio and Checkbox style
@@ -884,6 +879,7 @@ Radio and Checkbox style
 
 [type="checkbox"]:checked + label.switch {
     background: var(--base-gold);
+    transition: background-color 0.3s ease-in-out;
 }
 
 [type="checkbox"]:checked + label.switch::before {

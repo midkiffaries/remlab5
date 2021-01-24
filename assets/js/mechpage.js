@@ -456,7 +456,7 @@ const sideBarTotals = (`
         <p><label>Crit Slots</label> <output id="outCurrentCrits">${Mech.totalCrits}</output> / <output id="outTotalCrits">${Mech.baseCrits}</output></p>
         <p><label>Total Cost</label> <output id="outTotalCost" class="cbills">${addComma(Mech.totalCost)}</output></p>
         <p><label>Battle Value</label> <output id="outTotalBV">${addComma(Mech.totalBV)}</output></p>
-        <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> <small>[<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon)}</output> per ton]</small></p>
+        <p><label>Alpha Strike</label> <output id="outAlphaStrike">${Mech.damageTotal}</output> <small>[<output id="outDamagePerTon">${addDecimal(Mech.damagePerTon,2)}</output> per ton]</small></p>
         <p><label>Heat Management</label> <output id="outTotalHeat">${Mech.heatTotal}</output> / <output id="outHeatSinks">${Mech.heatsinks + Mech.heatsinksBase}</output></p>
     </div>
     <div class="sidebar-print" role="menu">
@@ -505,12 +505,16 @@ const updateForm = () => {
     document.title = changeAppTitle(Mech.type);
     // Return data to form
     elID('outWeightClass').value = weightClass(Mech.mass);
-    elID('outTotalMass').value = addDecimal(Mech.mass);
-    elID('outCurrentMass').value = addDecimal(Mech.totalMass);
+    elID('outTotalMass').value = addDecimal(Mech.mass,1);
+    elID('outCurrentMass').value = addDecimal(Mech.totalMass,1);
     elID('outTotalCrits').value = Mech.baseCrits;
     elID('outCurrentCrits').value = Mech.totalCrits;
     elID('outTotalCost').value = addComma(Mech.totalCost);
     elID('outTotalBV').value = addComma(Mech.totalBV);
+    elID('outAlphaStrike').value = Mech.damageTotal;
+    elID('outDamagePerTon').value = addDecimal(Mech.damagePerTon,2);
+    elID('outTotalHeat').value = Mech.heatTotal;
+    elID('outHeatSinks').value = Mech.heatsinks;
 
     // Engine Card -------
     // Max walking based on Mech mass
@@ -523,7 +527,7 @@ const updateForm = () => {
     // Post data to array
     elID('outRunning').value = Mech.runningMP;
     elID('outEngineRating').value = `${Mech.engineBrand} ${Mech.engineRating}`;
-    elID('outEngineMass').value = addDecimal(Mech.engineMass);
+    elID('outEngineMass').value = addDecimal(Mech.engineMass,1);
     elID('outEngineCrits').value = Mech.engineCrits;
     elID('outEngineCost').value = addComma(Mech.engineCost);
 
@@ -535,7 +539,7 @@ const updateForm = () => {
     Mech.jumpingMP = parseInt(elID('stepJumping').value);
     Mech.jumpjetsType = elID('selJumpJets').value;
     // Return data to form
-    elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass);
+    elID('outJumpJetsMass').value = addDecimal(Mech.jumpjetsMass,1);
     elID('outJumpJetsCrits').value = Mech.jumpjetsCrits;
     elID('outJumpJetsCost').value = addComma(Mech.jumpjetsCost);
 
@@ -544,7 +548,7 @@ const updateForm = () => {
     Mech.heatsinks = elID('stepHeatSinks').value;
     Mech.heatsinkType = elID('selHeatSinks').value;
     // Return data to form
-    elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass);
+    elID('outHeatSinksMass').value = addDecimal(Mech.heatsinksMass,1);
     elID('outHeatSinksCrits').value = Mech.heatsinksCrits + Mech.heatsinksIntCrits;
     elID('outHeatSinksCost').value = addComma(Mech.heatsinksCost);
 
@@ -555,7 +559,7 @@ const updateForm = () => {
     Mech.cockpitType = elID('selCockpit').value;
     Mech.targetingType = elID('selTargeting').value;
     // Return data to form
-    elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass);
+    elID('outInternalMass').value = addDecimal(Mech.internalComponentsMass,1);
     elID('outInternalCrits').value = Mech.internalComponentsCrits;
     elID('outInternalCost').value = addComma(Mech.internalComponentsCost);    
 
@@ -576,7 +580,7 @@ const updateForm = () => {
     // Return data to form
     elID('outArmorTotal').value = Mech.armorTotal;
     elID('outArmorTotalMax').value = Mech.armorTotalMax;
-    elID('outArmorMass').value = addDecimal(Mech.armorMass);
+    elID('outArmorMass').value = addDecimal(Mech.armorMass,1);
     elID('outArmorCrits').value = Mech.armorCrits;
     elID('outArmorCost').value = addComma(Mech.armorCost);
     elID('outMaxLT').value = Mech.IST * 2;
@@ -591,7 +595,7 @@ const updateForm = () => {
     // Return data to form
     elID('outMandatoryHS').value = Mech.heatsinksCrits + Mech.heatsinksIntCrits;
     elID('outMandatoryJJ').value = Mech.jumpingMP;
-    elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass);
+    elID('outWeaponsMass').value = addDecimal(Mech.weaponsMass,1);
     elID('outWeaponsCrits').value = Mech.weaponsCrits;
     elID('outWeaponsCost').value = addComma(Mech.weaponsCost); 
 
@@ -676,7 +680,7 @@ function completeWeaponsTable() {
                 <td>${displayRange(1, sR)}</td>
                 <td>${displayRange(sR, sM)}</td>
                 <td>${displayRange(sM, sL)}</td>
-                <td>${addDecimal(w.tons)}</td>
+                <td>${addDecimal(w.tons,1)}</td>
                 <td>${w.crits}</td>
                 <td>${zeroToDash(w.ammo)}</td>
                 <td>${addComma(w.cost)}</td>
@@ -705,7 +709,7 @@ function compactWeaponsTable() {
                 <span class="weapon-add" onclick="addWeapon(${weaponTable.weapon[i].id})" aria-label="Add Weapon" role="button">
                     <span class="weapon-name">${w.name}</span>
                     <span class="weapon-data"><span class="heat">${w.heat}</span> <span class="damage">${displayDamage(w.minDamage, w.damage)}</span> <span>${rangeClass(w.rangeLong)}</span>
-                    <br><span>${addDecimal(w.tons)}t</span> <span>${w.crits} crits</span> <span class="cbills">${w.cost/1000}k</span></span>
+                    <br><span>${addDecimal(w.tons,1)}t</span> <span>${w.crits} crits</span> <span class="cbills">${w.cost/1000}k</span></span>
                 </span>
                 <span class="weapon-info"><button onclick="HtmlModal(WeaponInfoModal, ${i})" aria-label="More Info"><img src="assets/images/info.svg" alt="i"></button></span>
             </li>

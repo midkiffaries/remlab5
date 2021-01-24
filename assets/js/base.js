@@ -386,7 +386,7 @@ const addComma = v => (isNumber(v)) ? v.toString().replace(/\B(?=(\d{3})+(?!\d))
 const zeroToDash = v => (v == 0 || v == null) ? "–" : v;
 
 // Add an extra decimal place to a number
-const addDecimal = v => (isNumber(v)) ? parseFloat(v).toFixed(1) : v;
+const addDecimal = (v,p) => (isNumber(v)) ? parseFloat(v).toFixed(p) : v;
 
 // Convert null entries into underlines for the printout
 const toUnderline = v => (v == "(blank line)") ? "" : v;

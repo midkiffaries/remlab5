@@ -160,6 +160,7 @@
         st.textContent = (`
         .stepper-container {
             height: 1.9em;
+            border: 1px solid #aaa;
             display: inline-block;
         }
         .stepper {
@@ -240,7 +241,7 @@
             text-overflow: ellipsis;
             -webkit-user-select: none;
             user-select: none;
-            height: 12em;
+            height: 12em !important;
             padding: 0 0.3em;
             margin: 0.3em 0.4em 0.8em 0;
         }
@@ -284,7 +285,7 @@
             background: #888; 
         }
         .select-list::-webkit-scrollbar-thumb:hover {
-            background: #666; 
+            background: var(--dark-gold); 
         }
         `);
         document.body.appendChild(st);

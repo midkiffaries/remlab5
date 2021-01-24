@@ -76,11 +76,6 @@ const Mech = {
 	ALL: 0,
 	ARL: 0,
 
-	// Combat stats
-    damageTotal: 0,
-    damagePerTon: 0,
-	heatTotal: 0,
-
 	// Design Quirks
 	positiveDQ: [],
 	negativeDQ: [],
@@ -383,6 +378,73 @@ const Mech = {
 		+ ((this.IST * 2) * 2) 
 		+ ((this.ISA * 2) * 2) 
 		+ ((this.ISL * 2) * 2)
+	},
+
+	// Calc: Total weapon damage that can be inflicted
+	get damageTotal() {
+		let d = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_CT.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_LT.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_RT.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_LA.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_RA.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_LL.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		this.assigned_RL.forEach(e => {
+			if (w[e].damage > 0) d += w[e].damage
+		});
+		return d
+	},
+
+	// Calc: Damage per ton of Mech
+	get damagePerTon() {
+		let d = this.damageTotal / this.mass;
+		if (isFinite(d)) return d;
+		else return 0;
+	},
+
+	// Calc: Total weapon heat
+	get heatTotal() {
+		let h = 0, w = weaponTable.weapon;
+		this.assigned_H.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_CT.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_LT.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_RT.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_LA.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_RA.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_LL.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		this.assigned_RL.forEach(e => {
+			if (w[e].heat > 0) h += w[e].heat
+		});
+		return h
 	},
 
 	// Calc: Energy Weapons Mass

@@ -108,7 +108,7 @@ const WeaponInfoModal = (id) => {
             <th>Battle Value</th>
         </tr>
         <tr>
-            <td>${addDecimal(w.tons)}</td>
+            <td>${addDecimal(w.tons,2)}</td>
             <td>${w.crits}</td>
             <td class="cbills">${addComma(w.cost)}</td>
             <td>${w.bv}</td>
