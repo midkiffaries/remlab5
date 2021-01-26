@@ -423,10 +423,17 @@ body {
 	height: 90vh;
 }
 
+dialog {
+	background-color: #fff !important;
+}
+
 .dialog-body, 
 .dialog-top {
 	line-height: 1;
 	max-width: 100%;
+	max-height: 100%;
+	box-shadow: none;
+	background-color: #fff;
 }
 
 /* Display underline on empty elements */
@@ -444,12 +451,21 @@ body {
 	border: 1px solid #ddd;
 	padding: 0.5em 0.6em;
 	width: 100%;
-	margin-top: 2em;
+	margin-top: 1em;
 }
 
 .print-options button img {
 	height: 1.2em;
 	vertical-align: -3px;
+}
+
+.dialog-html-close {
+	right: 1em;
+	filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3)) !important;
+}
+
+.dialog-html-close:hover {
+	filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)) !important;
 }
 
 /* Print container */
@@ -570,16 +586,17 @@ body {
 
 .print-heatscale table th {
     text-align: center;
-    padding: 1px 6px;
-    margin: 0;
+	margin: 0;
+	padding: 1px 1px 1px 4px;
     line-height: 0.9em;
     border: 1pt solid #bbb;
     color: #555;
-    width: 2.7em;
+	width: 2.7em;
 }
 
 .print-heatscale table td {
-    line-height: 0.9em;
+	line-height: 0.9em;
+	padding-left: 1em;
 }
 
 .print-hs-box {
@@ -666,7 +683,7 @@ body {
 .print-critstable > div {
     font-size: 0.8em;
     margin: 0 10px 3px 12px;
-    width: 29%;
+    width: 28%;
     float: left;
 }
 
@@ -681,10 +698,6 @@ body {
     margin: 0 1px 4px -5px;
     padding: 0 5px 0 20px;
     font-size: 0.9em;
-}
-
-.print-critstable li::marker {
-	font-weight: bold;
 }
 
 .print-critstable i {
@@ -1114,24 +1127,41 @@ body {
 	height: 90vh;
 }
 
+dialog {
+	background-color: #fff !important;
+}
+
 .dialog-body, 
 .dialog-top {
 	line-height: 1;
 	max-width: 100%;
+	max-height: 100%;
+	box-shadow: none;
+	background-color: #fff;
 }
 
+/* Print options strip */
 /* Print options strip */
 .print-options {
 	background: #eee;
 	border: 1px solid #ddd;
 	padding: 0.5em 0.6em;
 	width: 100%;
-	margin-top: 2em;
+	margin-top: 1em;
 }
 
 .print-options button img {
 	height: 1.2em;
 	vertical-align: -3px;
+}
+
+.dialog-html-close {
+	right: 1em;
+	filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3)) !important;
+}
+
+.dialog-html-close:hover {
+	filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)) !important;
 }
 
 /* Print container */
