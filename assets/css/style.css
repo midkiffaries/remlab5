@@ -390,6 +390,9 @@ Specific Card Styling
 
 .table-weapons thead tr {
     border-bottom: 2px solid #ccc;
+    background: #fafafa;
+    position: sticky;
+    top: 0;
 }
 
 .table-weapons tbody tr:hover {
