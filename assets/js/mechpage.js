@@ -191,8 +191,8 @@ const sArmor = new SectionPanel(
                 Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1" onchange="elID('stepArmorRTR').value=this.value" readonly></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
             <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1" readonly></span> 
                 Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
-            <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
-                Rear <span class="stepper-container"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container" disabled><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
+                Rear <span class="stepper-container" disabled><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
         </fieldset>
     </div>
 
@@ -200,13 +200,13 @@ const sArmor = new SectionPanel(
         <fieldset>
             <legend>Arms</legend>
             <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1" onchange="elID('stepArmorRA').value=this.value" readonly></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
-            <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container" disabled><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
         </fieldset> 
 
         <fieldset>
             <legend>Legs</legend>
             <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1" onchange="elID('stepArmorRL').value=this.value" readonly></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
-            <p><label>Right</label> <span class="stepper-container"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container" disabled><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
         </fieldset> 
     </div>
 
@@ -252,7 +252,7 @@ const sWeapons = new SectionPanel(
             <table class="table-weapons sortable">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>ID</th>
                         <th>Type</th>
                         <th>Heat</th>
                         <th>Damage</th>
@@ -495,8 +495,8 @@ elID("AppVersion").textContent = RemlabVersion;
  * Page in/out Logic
  ************************/
 
-// Update form based on user input
-const updateForm = () => {
+// Update form based on user input | id = element that changed
+const updateForm = id => {
 
     // Side Bar -------
     // Get data from form
@@ -564,6 +564,21 @@ const updateForm = () => {
     elID('outInternalCost').value = addComma(Mech.internalComponentsCost);    
 
     // Armor Card -------
+    // if Total mass changes 
+    if (id == 'stepMass') {
+        // Clear armor values
+        elID('stepArmorH').value = 0;
+        elID('stepArmorLT').value = 0;
+        elID('stepArmorCT').value = 0;
+        elID('stepArmorRT').value = 0;
+        elID('stepArmorLTR').value = 0;
+        elID('stepArmorCTR').value = 0;
+        elID('stepArmorRTR').value = 0;
+        elID('stepArmorLA').value = 0;
+        elID('stepArmorRA').value = 0;
+        elID('stepArmorLL').value = 0;
+        elID('stepArmorRL').value = 0;
+    }
     // Get data from form
     Mech.armorType = elID('selArmor').value;
     Mech.AH = parseInt(elID('stepArmorH').value);
@@ -708,7 +723,7 @@ function compactWeaponsTable() {
         //}
 
         // Display everything but structure items (0) and only Basic ruleset (0)
-        if (w.type > 0 && w.rules == Mech.rules) {
+        if (w.type > 0 && w.type < 7 && w.rules == Mech.rules) {
             // Generate each table row
             li += (`
             <li data-id="${i}">
@@ -791,7 +806,7 @@ function compactListCritsbyLoc(v) {
     elID('outCrits_'+v).textContent = max - Mech[`crits_${v}`];
 
     // Update the form info
-    updateForm();
+    updateForm(id);
 }
 
 // Add/remove arm actuators and melee weapons
@@ -923,7 +938,7 @@ const autoFillArmor = v => {
     Mech.ALL = parseInt(elID('stepArmorLL').value);
     Mech.ARL = parseInt(elID('stepArmorRL').value);
 
-    updateForm();
+    updateForm(0);
 };
 
 

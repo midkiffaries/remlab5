@@ -130,9 +130,9 @@
             if (parseInt(x.value) > parseInt(x.min)) {
                 x.value = parseInt(x.value) - parseInt(x.step);
                 el.dispatchEvent(new Event('change'));
-                x.nextElementSibling.disabled = false;
+                //x.nextElementSibling.disabled = false;
             } else {
-                this.disabled = true;
+                //this.disabled = true;
             }
         };
 
@@ -142,15 +142,15 @@
             if (parseInt(x.value) < parseInt(x.max)) {
                 x.value = parseInt(x.value) + parseInt(x.step);
                 el.dispatchEvent(new Event('change'));
-                x.previousElementSibling.disabled = false;
+                //x.previousElementSibling.disabled = false;
             } else {
-                this.disabled = true;
+                //this.disabled = true;
             }
         };
 
         // Fire the onchange event for the input element
         el.addEventListener('change', () => {
-            updateForm();
+            updateForm(el.id);
         });
     }
 
@@ -372,11 +372,12 @@ elID("selAffiliation").options[38].disabled = true;
         let st = document.createElement("style");
         st.textContent = (`
         .sortable thead th {
-            cursor: pointer;
+            cursor: s-resize;
+            font-size: 0.9em;
         }
-        .sortable thead th:not(:empty)::after {
-            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14'%3E%3Cpath d='M4.235 0L0 5.928h8.47zm0 14l4.234-5.928H0z' fill='%23ccc'/%3E%3C/svg%3E");
-            padding-left: 3px;
+        .sortable thead th:hover {
+            opacity: 0.7;
+            background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='13'%3E%3Cpath d='M4.235 0L0 5.928h8.47zm0 14l4.234-5.928H0z' fill='%23ccc'/%3E%3C/svg%3E") no-repeat 100% 50%;
         }
         `);
         document.body.appendChild(st); 	

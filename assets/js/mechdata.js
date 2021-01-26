@@ -689,12 +689,13 @@ const Mech = {
 // Warrior: Stats for the warrior/pilot/crew
 const Warrior = {
 	name: "",
-    race: "Human",
+    race: 0,
     affiliation: 0,
     affiliationUser: "",
     miniature: "",
     experience: 0,
     piloting: 5,
-    gunnery: 4,
+	gunnery: 4,
+	crewSize: 1,
     autoeject: true
 };

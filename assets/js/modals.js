@@ -69,11 +69,15 @@ const HelpModal = () => (`
 // Weapon Info modal content
 const WeaponInfoModal = (id) => {
     let w = weaponTable.weapon[id], 
-        ammo = "";
+        ammoBtn = ``;
     
     // If weapon has ammo display 'Add ammo' button
     if (w.ammo > 0) {
-        ammo = `<button onclick="${id}" class="button-gold">Add Ammo</button>`;
+        ammoBtn = `<button onclick="addWeapon(${w.aId});closeModals('dialog-html')" class="button-gold">Add Ammo</button>`;
+        
+        // Machine Gun ID
+        if (w.id == 29) // Half ammo option
+            ammoBtn += `<button onclick="addWeapon(${w.aId+1});closeModals('dialog-html')" class="button-gold">Add Half Ammo</button>`;
     }
 
     return `
@@ -152,8 +156,8 @@ const WeaponInfoModal = (id) => {
     </table>
 
     <footer class="wi-footer">
-        <button onclick="${id}" class="button-gold">Add ${w.name}</button>
-        ${ammo}
+        <button onclick="addWeapon(${id});closeModals('dialog-html')" class="button-gold">Add ${w.name}</button>
+        ${ammoBtn}
     </footer>
 </div>
 

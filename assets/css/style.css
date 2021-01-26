@@ -372,8 +372,12 @@ Specific Card Styling
     width: 28%;
 }
 
+.card-Weapons .accordion {
+    background: rgba(255,255,255,0.35);
+}
+
 .card-Weapons .accordion section {
-    overflow: scroll;
+    overflow-y: scroll;
     height: 20em;
 }
 
@@ -973,7 +977,6 @@ body.dark-mode,
     color: #eee;
     background-color: #222;
     border-color: #555;
-    font-weight: 350;
 }
 
 .dark-mode textarea,
