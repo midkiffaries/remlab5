@@ -100,6 +100,7 @@ Page Layout
 
 body {
     background-color: #fcfcfc;
+    overflow-y: scroll;
 }
 
 /* Page Header */
@@ -371,6 +372,11 @@ Specific Card Styling
     width: 28%;
 }
 
+.card-Weapons .accordion section {
+    overflow: scroll;
+    height: 20em;
+}
+
 /* Weapons list -- Full table */
 
 .table-weapons {
@@ -378,8 +384,18 @@ Specific Card Styling
     font-size: 0.85em;
 }
 
+.table-weapons thead tr {
+    border-bottom: 2px solid #ccc;
+}
+
+.table-weapons tbody tr:hover {
+    background: rgba(255,255,255,0.7);
+    color: #000;
+    text-shadow: 0 0 2px #aaa;
+}
+
 .table-weapons tr:nth-of-type(even) {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(0,0,0,0.04);
 }
 
 .table-weapons td {

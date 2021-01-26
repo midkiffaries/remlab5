@@ -701,6 +701,12 @@ function compactWeaponsTable() {
     for (let i in weaponTable.weapon) {
         w = weaponTable.weapon[i];
 
+        //if (w.type == 2) {
+        //    li += (`
+        //        <li><hr></li>
+        //    `);
+        //}
+
         // Display everything but structure items (0) and only Basic ruleset (0)
         if (w.type > 0 && w.rules == Mech.rules) {
             // Generate each table row
