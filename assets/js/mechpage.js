@@ -59,9 +59,9 @@ const sEngine = new SectionPanel(
     // body
     `
     <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="16" step="1" readonly></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
-    <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType"></select> <output id="outEngineRating">${Mech.engineBrand} ${Mech.engineRating}</output></p>
+    <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType" disabled></select> <output id="outEngineRating">${Mech.engineBrand} ${Mech.engineRating}</output></p>
     <p><label>Legs</label> <input type="radio" name="selLegs" id="radioM1" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input type="radio" name="selLegs" id="radioM2" class="radio-button" value="1"><label for="radioM2" role="button">4</label></p>
-    <p><label>Special</label> <select id="selSpecial" class="select" data-list="a_SpecialMovement" disabled></select></p>
+    <p><label>Myomer</label> <select id="selSpecial" class="select" data-list="a_SpecialMovement" disabled></select></p>
     `, 
     
     // help
@@ -402,32 +402,19 @@ const sReadout = new SectionPanel(
     <p>
         <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:5em" list="List-Year">
         <datalist id="List-Year">
-            <option value="2750">
-            <option value="3025">
-            <option value="3028">
-            <option value="3039">
-            <option value="3050">
-            <option value="3055">
-            <option value="3058">
-            <option value="3060">
-            <option value="3067">
-            <option value="3075">
-            <option value="3085">
-            <option value="3135">
-            <option value="3145">
-            <option value="3150">
+            ${listYear()}
         </datalist> 
         <label style="margin-left:0.8em">Era</label> <select id="selEra" class="select" data-list="a_Era" data-value="${Mech.era}"></select>
     </p>
     <div class="col-2">
-        <p><label>Overview</label> <textarea id="txtOverview" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
-        <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(summary)">${Mech.capabilitiesTR}</textarea></p>
-        <p><label>Battle History</label> <textarea id="txtHistory" placeholder="(summary)">${Mech.historyTR}</textarea></p>
+        <p><label>Overview</label> <textarea id="txtOverview" placeholder="(A brief summary of the this particular Mech)">${Mech.overviewTR}</textarea></p>
+        <p><label>Capabilities</label> <textarea id="txtCapabilities" placeholder="(This Mech's unique capabilities)">${Mech.capabilitiesTR}</textarea></p>
+        <p><label>Battle History</label> <textarea id="txtHistory" placeholder="(The combat history of the particular Mech)">${Mech.historyTR}</textarea></p>
     </div>
     <div class="col-2">
-        <p><label>Deployment</label> <textarea id="txtDeployment" placeholder="(summary)">${Mech.deploymentTR}</textarea></p>
-        <p><label>Variants</label> <textarea id="txtVariants" placeholder="(summary)">${Mech.overviewTR}</textarea></p>
-        <p><label>Notable Units</label> <textarea id="txtNotable" placeholder="(summary)">${Mech.notableTR}</textarea></p>
+        <p><label>Deployment</label> <textarea id="txtDeployment" placeholder="(The factions that have been known to deploy this Mech)">${Mech.deploymentTR}</textarea></p>
+        <p><label>Variants</label> <textarea id="txtVariants" placeholder="(The different variants of this Mech chassis)">${Mech.overviewTR}</textarea></p>
+        <p><label>Notable Units</label> <textarea id="txtNotable" placeholder="(The notable unique units and thier warriors)">${Mech.notableTR}</textarea></p>
     </div>
     `, 
     

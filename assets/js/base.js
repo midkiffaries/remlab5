@@ -423,3 +423,12 @@ function displayTicks(v, r) {
     }
     return a;
 }
+
+// List the year for the datalist element
+function listYear() {
+    let option;
+    a_yearIntro.forEach(element => {
+        option += `<option value="${element}">`;
+    });
+    return option;
+}

@@ -55,26 +55,6 @@ const a_ChassisType = [
     //'OmniMech'
 ];
 
-// Names for the Eras
-const a_Era = [
-    'Age of War', // 2398
-    'Star League', // 2570
-    'Succession Wars', // 2781
-    'Clan Invasion', // 3049
-    'Civil War', // 3062
-    'Jihad', // 3068
-    'Republic', // 3081
-    'Dark Age' // 3132
-];
-
-// Names for the Eras Simplified
-const a_EraSimplified = [
-    'Star League', // 2570-2780
-    'Succession Wars', // 2781-3030
-    'Clan Invasion', // 3049-3052
-    'Dark Age' // 3132+
-];
-
 // Names for the types of Weapons
 const a_WeaponClass = [
     'Hardpoints', // 0
@@ -163,14 +143,17 @@ const a_JJType = [
 // Engine types
 const a_EngineType = [
     'Fusion',
-    //'Fusion XL',
-    //'Fusion Light',
-    //'Fusion Compact',
+    'Fusion XL',
+    'Fusion Light',
+    'Fusion Compact',
     'ICE'
+    //'Fusion XXL'
+    //'Fission'
+    //'Fuel Cell'
 ];
 
 const a_SpecialMovement = [
-    'None',
+    'Standard',
     'MASC',
     'TSM'
 ];
@@ -638,8 +621,29 @@ const a_Manufacturer = [
     "Yori 'Mech Works"
 ];
 
-// Teach Readout: Convert MP to KPH
-const mp2Kph = [0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 162, 172, 184, 194, 201, 216, 230, 248, 261, 275, 290, 305, 318, 329, 340, 351];
+// Names for the Eras
+const a_Era = [
+    'Age of War', // 2398
+    'Star League', // 2570
+    'Succession Wars', // 2781
+    'Clan Invasion', // 3049
+    'Civil War', // 3062
+    'Jihad', // 3068
+    'Republic', // 3081
+    'Dark Age', // 3132
+    'IlClan' // 3151
+];
+
+// Names for the Eras Simplified
+const a_EraSimplified = [
+    'Star League', // 2570-2780
+    'Succession Wars', // 2781-3030
+    'Clan Invasion', // 3049-3052
+    'Dark Age' // 3132+
+];
+
+// Year introduced list
+const a_yearIntro = [2750, 3025, 3028, 3039, 3050, 3055, 3058, 3060, 3067, 3075, 3085, 3135, 3145, 3150];
 
 // Calc BV: Defence Factor
 const a_DefenceFac = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7];
@@ -649,6 +653,9 @@ const a_TargetMod = [0, 0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
 
 // Calc BV: Speed Factor
 const a_SpeedFac = [0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63, 1.76, 1.89, 2.02, 2.16, 2.3, 2.44, 2.58, 2.72, 2.86, 3, 3.15, 3.29, 3.44, 3.59, 3.74, 4];
+
+// Teach Readout: Convert MP to KPH
+const mp2Kph = [0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 162, 172, 184, 194, 201, 216, 230, 248, 261, 275, 290, 305, 318, 329, 340, 351];
 
 
 /**************************
