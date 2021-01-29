@@ -5,12 +5,12 @@
 // Convert total mass into a weight class
 const weightClass = t => {
     let c;
-    if (t < 20) c = 'Ultra-light'; // 5-15
+    if (t < 20) c = 'Ultralight'; // 5-15
     else if (t < 40) c = 'Light'; // 20-35
     else if (t < 60) c = 'Medium'; // 40-55
     else if (t < 80) c = 'Heavy'; // 60-75
     else if (t < 101) c = 'Assault'; // 80-100
-    else c = 'Super-heavy'; // 100+
+    else c = 'Superheavy'; // 100+
     return c;
 };
 

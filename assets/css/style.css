@@ -1,5 +1,5 @@
 /************************
-Base REMLAB Style
+Default Page Style
 *************************/
 
 /* Variables */
@@ -390,13 +390,13 @@ Specific Card Styling
 
 .table-weapons thead tr {
     border-bottom: 2px solid #ccc;
-    background: #fafafa;
+    background: #eee;
     position: sticky;
     top: 0;
 }
 
 .table-weapons tbody tr:hover {
-    background: rgba(255,255,255,0.7);
+    background: var(--light-gold);
     color: #000;
     text-shadow: 0 0 2px #aaa;
 }
@@ -1043,6 +1043,10 @@ body.dark-mode,
 
 .dark-mode .accordion > button::before {
     filter: invert();
+}
+
+.dark-mode .table-weapons thead tr {
+    background: #666;
 }
 
 /*********************
