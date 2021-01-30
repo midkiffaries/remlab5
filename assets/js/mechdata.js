@@ -14,7 +14,7 @@ const Mech = {
 	// Movement
 	walkingMP: 1,
 	legs: 0,
-	masc: 0,
+	myomer: 0,
 	
 	// Engine
 	engineType: 0,

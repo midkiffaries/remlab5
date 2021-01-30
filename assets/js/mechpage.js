@@ -565,7 +565,8 @@ const updateForm = id => {
         elID('stepArmorRA').value = 0;
         elID('stepArmorLL').value = 0;
         elID('stepArmorRL').value = 0;
-    }
+    } 
+
     // Get data from form
     Mech.armorType = elID('selArmor').value;
     Mech.AH = parseInt(elID('stepArmorH').value);
@@ -579,6 +580,18 @@ const updateForm = id => {
     Mech.ARA = parseInt(elID('stepArmorRA').value);
     Mech.ALL = parseInt(elID('stepArmorLL').value);
     Mech.ARL = parseInt(elID('stepArmorRL').value);
+
+    // Front and rear torsos total armor max check
+    aLT = torsoArmorChk(Mech.ALT, Mech.ALTR, Mech.IST * 2);
+    aCT = torsoArmorChk(Mech.ACT, Mech.ACTR, Mech.ISC * 2);
+    aRT = torsoArmorChk(Mech.ART, Mech.ARTR, Mech.IST * 2); 
+    elID('stepArmorLT').max = aLT.front;
+    elID('stepArmorLTR').max = aLT.rear;
+    elID('stepArmorCT').max = aCT.front;
+    elID('stepArmorCTR').max = aCT.rear;
+    elID('stepArmorRT').max = aRT.front;
+    elID('stepArmorRTR').max = aRT.rear;
+    
     // Return data to form
     elID('outArmorTotal').value = Mech.armorTotal;
     elID('outArmorTotalMax').value = Mech.armorTotalMax;

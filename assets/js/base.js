@@ -13,7 +13,7 @@ const RemlabVersion = "4.9.2101 DEV",
 const HostName = window.location.host,
     OriginURL = `${window.location.protocol}//${HostName}/`,        
     PathName = window.location.pathname,
-    HrefURL = PathName + window.location.search,
+    HrefURL = `${PathName}${window.location.search}`,
     Locale = "en-US";
 
 // Keyup Events
@@ -398,8 +398,11 @@ const tons2Kg = v => v * 907;
 // Convert Jumping MP into meters
 const mp2Meters = v => v * 30;
 
-// Display damage as either m-d "min-max" or d "max"
+// Display damage as either (m-d) "min-max" or (d) "max"
 const displayDamage = (m, d) => (m > 0) ? `${m}-${d}` : d;
+
+// Torsos front and rear total armor check
+const torsoArmorChk = (f,r,m) => ((f + r) >= m) ? {front:f, rear:r} : {front:m, rear:m};
 
 // Display distance range or damage range as Low-High
 function displayRange(l, h) {
@@ -426,9 +429,9 @@ function displayTicks(v, r) {
 
 // List the year for the datalist element
 function listYear() {
-    let option;
-    a_yearIntro.forEach(element => {
-        option += `<option value="${element}">`;
+    let opt;
+    a_yearIntro.forEach(e => {
+        opt += `<option value="${e}">`;
     });
-    return option;
+    return opt;
 }
