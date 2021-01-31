@@ -39,7 +39,7 @@ const a_HeatScale = [
 
 // Record Sheet: Generate the Heat Scale for the Record Sheet
 const generateHeatScale = () => {
-	let t = `<tr><th class="print-hs-box"></th><td>OVERFLOW</td></tr>`;
+	let t = `<tr><th class="print-hs-box"></th><td><b>OVERFLOW</b></td></tr>`;
 		l = a_HeatScale.length - 1;
 
 	// Loop through the array
@@ -135,9 +135,9 @@ const rs_WeaponsList = (v) => {
 		tr = ``;
 
 	for (let i = 0; i < l; i++ ) {
-		if (w[loc[i]].type > 0) {
+		if (w[loc[i]].type > 0 && w[loc[i]].type < 7) {
 			tr += `<tr>`;
-			tr += `<td>${v}</td>`;
+			tr += `<td><b>${v}</b></td>`;
 			tr += `<td>${w[loc[i]].name}</td>`;
 			tr += `<td>${w[loc[i]].heat}</td>`;
 			tr += `<td>${w[loc[i]].damage}</td>`;
@@ -153,8 +153,31 @@ const rs_WeaponsList = (v) => {
 	return tr;
 };
 
+// Record Sheet: List ammo
+const rs_AmmoList = (v) => {
+	let w = weaponTable.weapon,
+		loc = Mech[`assigned_${v}`],
+		l = loc.length,
+		tr = ``;
 
-// Record Sheet print modal content
+	for (let i = 0; i < l; i++ ) {
+		if (w[loc[i]].type == 7) {
+			tr += `<tr>`;
+			tr += `<td><b>${v}</b></td>`;
+			tr += `<td>${w[loc[i]].name}</td>`;
+			tr += `<td>`;
+			if (w[loc[i]].ammo > 50) tr += w[loc[i]].ammo;
+			else tr += displayTicks(w[loc[i]].ammo, 25);
+			tr += `</td>`;
+			tr += `</tr>`;
+		}
+	}
+
+	return tr;
+};
+
+
+// Record Sheet: print modal content
 const RecordSheetModal = () => {
 	return `
 <div class="print-options" role="header">
@@ -369,7 +392,7 @@ const RecordSheetModal = () => {
 				<table>
 					<thead>
 						<tr>
-							<th></th>
+							<th>Loc</th>
 							<th>Type</th>
 							<th>Heat</th>
 							<th>Dmg</th>
@@ -398,12 +421,20 @@ const RecordSheetModal = () => {
 				<table>
 					<thead>
 						<tr>
-							<th></th>
+							<th>Loc</th>
 							<th>Type</th>
 							<th>Shots</th>
 						</tr>
 					</thead>
 					<tbody class="print-ammolist">
+					${rs_AmmoList('LA')}
+					${rs_AmmoList('RA')}
+					${rs_AmmoList('LT')}
+					${rs_AmmoList('RT')}
+					${rs_AmmoList('CT')}
+					${rs_AmmoList('H')}
+					${rs_AmmoList('LL')}
+					${rs_AmmoList('RL')}
 					</tbody>
 				</table>
 			</div>
@@ -471,7 +502,7 @@ dialog {
 /* Print container */
 .print-container {
 	margin-top: 2em;
-	font-family: arial;
+	font-family: Helvetica, arial !important;
 }
 
 .print-sheet {
@@ -580,14 +611,13 @@ dialog {
 }
 
 .print-heatscale table {
-    font-size: 0.8em !important;
-    margin-bottom: 5px;
+    font-size: 0.8em;
+	margin-bottom: 5px;
 }
 
 .print-heatscale table th {
     text-align: center;
-	margin: 0;
-	padding: 1px 1px 1px 4px;
+	padding: 0.1em;
     line-height: 0.9em;
     border: 1pt solid #bbb;
     color: #555;
@@ -597,11 +627,13 @@ dialog {
 .print-heatscale table td {
 	line-height: 0.9em;
 	padding-left: 1em;
+	vertical-align: baseline;
 }
 
 .print-hs-box {
     width: 1.8em;
-    height: 1.1em;
+	height: 1.3em;
+	border: 2px solid #444 !important;
 }
 
 .print-armordiagram {
@@ -798,6 +830,10 @@ dialog {
 
 .print-ammo table tbody tr td:last-of-type {
     font-size: 5pt;
+}
+
+.print-ammo tr th:nth-of-type(1), .print-ammo tr td:nth-of-type(1) {
+    text-align: center;
 }
 
 .print-footer {
@@ -1167,7 +1203,7 @@ dialog {
 /* Print container */
 .print-body {
 	font-size: 0.86em;
-	font-family: arial, sans-serif !important;
+	font-family: Helvetica, arial !important;
 }
 
 .print-header img {

@@ -375,7 +375,7 @@ const TodaysDate = new Date();
 const elID = v => document.getElementById(v);
 
 // Check if the value is a number and if not make it a 0
-const isNumber = v => (isNaN(v)) ? 0: v;
+const isNumber = v => (isNaN(v)) ? 0 : v;
 
 // Generate a random number between a min and max
 const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -401,7 +401,7 @@ const mp2Meters = v => v * 30;
 // Display damage as either (m-d) "min-max" or (d) "max"
 const displayDamage = (m, d) => (m > 0) ? `${m}-${d}` : d;
 
-// Torsos front and rear total armor check
+// Check that torsos (f) front and (r) rear total armor is less than the (m) max
 const torsoArmorChk = (f,r,m) => ((f + r) >= m) ? {front:f, rear:r} : {front:m, rear:m};
 
 // Display distance range or damage range as Low-High
@@ -421,7 +421,7 @@ function displayRange(l, h) {
 function displayTicks(v, r) {
     let a = '';
     for (let i = 0; i < v; i++) {
-        if (i % r === 0 && i != 0) a += "<br>\n";
+        if (i % r === 0 && i != 0) a += "<br/>\n";
         a += theCircle;
     }
     return a;

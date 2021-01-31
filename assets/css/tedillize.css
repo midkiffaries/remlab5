@@ -32,14 +32,10 @@ html {
 		-apple-system,
 		'Segoe UI',
 		Roboto,
-		'Oxygen-Sans',
-		'Noto Sans',
 		'Liberation Sans',
 		sans-serif,
 		'Apple Color Emoji',
-		'Segoe UI Emoji',
-		'Segoe UI Symbol',
-		'Noto Color Emoji';
+		'Segoe UI Emoji';
 }
 
 
@@ -51,9 +47,9 @@ body {
 	background-color: #fefefe;
 	color: #111;
 	font-weight: 400;
-	min-height: 100%;
 	font-size: 1rem;
 	margin: 0;
+	min-height: 100%;
 	line-height: 1.5;
 }
 
@@ -76,7 +72,7 @@ hr {
 }
 
 hr:not([size]) {
-	height: 1px;
+	height: 0.1em;
 }
 
 blockquote {
@@ -207,6 +203,7 @@ table {
 	border-spacing: 0;
 	width: 100%;
 	caption-side: top;
+	text-indent: 0;
 }
 
 td,
@@ -215,7 +212,6 @@ th {
 	line-height: 1.15;
 	text-align: left;
 	text-overflow: ellipsis;
-	text-indent: -0.5em;
 	vertical-align: text-top;
 	font-variant-numeric: tabular-nums;
 	font-feature-settings: "tnum";
@@ -265,11 +261,10 @@ pre {
 	font-family:
 		ui-monospace,
 		SFMono-Regular,
-		Menlo,
 		Consolas,
 		'Roboto Mono',
-		'Noto Mono',
 		'Liberation Mono',
+		Menlo,
 		monospace;
 }
 

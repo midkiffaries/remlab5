@@ -69,6 +69,7 @@ const HelpModal = () => (`
 // Weapon Info modal content
 const WeaponInfoModal = (id) => {
     let w = weaponTable.weapon[id], 
+        weaponIcon,
         ammoBtn = ``;
     
     // If weapon has ammo display 'Add ammo' button
@@ -80,15 +81,25 @@ const WeaponInfoModal = (id) => {
             ammoBtn += `<button onclick="addWeapon(${w.aId+1});closeModals('dialog-html')" class="button-gold">Add Half Ammo</button>`;
     }
 
+    // Select weapon icon
+    switch (w.type) {
+        case 1: weaponIcon = "1.svg"; break; // Energy
+        case 2: weaponIcon = "2.svg"; break; // Ballistic
+        case 3: weaponIcon = "3.svg"; break; // Missle
+        default: weaponIcon = "5.svg"; // Other
+    }
+
     return `
 <div class="wi-body">
     <header class="wi-header">
         <h2>${w.name}</h2>
-        <h3>${a_WeaponClass[w.type]}</h3>
+        <h3>${a_WeaponClass[w.type]} <img src="/assets/images/weapon-icon/${weaponIcon}" alt=""></h3>
         <p>${a_RuleSet[w.rules]} Ruleset</p>
     </header>
 
     <p>${w.desc}</p>
+
+    <hr>
 
     <table class="wi-info">
         <tr>
@@ -168,6 +179,11 @@ const WeaponInfoModal = (id) => {
     float: left;
     color: #777;
     text-transform: uppercase;
+}
+
+.wi-header h3 img {
+    height: 1.1em;
+    vertical-align: top;
 }
 
 .wi-header p {
