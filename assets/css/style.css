@@ -1001,7 +1001,7 @@ body.dark-mode,
 }
 
 .dark-mode .dialog-html-close {
-    filter: invert();
+    filter: invert(100%);
 }
 
 .dark-mode code, 
@@ -1042,7 +1042,7 @@ body.dark-mode,
 }
 
 .dark-mode .accordion > button::before {
-    filter: invert();
+    filter: invert(1000%);
 }
 
 .dark-mode .table-weapons thead tr {

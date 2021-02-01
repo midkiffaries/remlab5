@@ -916,7 +916,7 @@ const tr_ArmamentList = (v) => {
 		tr = ``;
 
 	for (let i = 0; i < l; i++ ) {
-		if (w[loc[i]].type > 0) {
+		if (w[loc[i]].type > 0 && w[loc[i]].type < 7) {
 			tr += `<li>${w[loc[i]].name}</li>`;
 		}
 	}
@@ -1253,6 +1253,7 @@ dialog {
 
 .print-body h4 {
 	font-size: 1.2em;
+    text-transform: uppercase;
 }
 
 .print-footer {

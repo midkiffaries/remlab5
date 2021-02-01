@@ -35,10 +35,11 @@ const a_SizeClass = [
 */
 // Btech Ruleset (aka Level)
 const a_RuleSet = [
-    'Basic', // Level 1
-    'Standard', // Level 2
-    'Advanced', // Level 2+
-    'Experimental' // Level 3
+    'Basic', // Level 1 (TL)
+    'Standard', // Level 2 (TL)
+    //'Standard (DA)', // Level 2 Dark Age (TL) 
+    'Advanced', // Level 3
+    'Experimental' // Level 3+
 ];
 
 // Technology Base
@@ -266,7 +267,7 @@ const a_DQPositive = [
     'Rumble Seat',
     'Searchlight',
     'Stable',
-    'Variable Range Targeting'
+    'Variable-Range Targeting'
 ];
 
 // Design Quirk : Negative
