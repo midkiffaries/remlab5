@@ -5,7 +5,7 @@
 //"use strict";
 
 // REMLAB version
-const RemlabVersion = "4.9.2101 DEV",
+const RemlabVersion = "4.9.2102 DEV",
     RemlabTitle = "REMLAB Web Mech Designer",
     RemlabShort = "REMLAB";
 

@@ -10,11 +10,11 @@ Default Page Style
     --lighter-gold: #fff1a1;
     --pale-gold: #fffdf2;
 
-    --input-bg: rgba(255,255,255,0.9);
-    --input-dark-bg: rgba(100,100,100,0.5);
-    --input-dark-focus: rgba(50,50,50,0.5);
-    --card-bg: rgba(60,60,60,0.02);
-    --card-border: rgba(200,200,200,0.4);
+    --input-bg: rgba(253,255,255,0.9);
+    --input-dark-bg: rgba(100,101,101,0.5);
+    --input-dark-focus: rgba(50,51,51,0.5);
+    --card-bg: rgba(60,61,61,0.02);
+    --card-border: rgba(200,202,202,0.4);
 }
 
 @font-face {
@@ -99,7 +99,7 @@ Page Layout
 *************************/
 
 body {
-    background-color: #fcfcfc;
+    background-color: #fbfcfc;
     overflow-y: scroll;
 }
 
@@ -110,7 +110,7 @@ body {
     height: 100%;
     float: left;
     position: fixed;
-    background-color: rgba(40,40,40,0.05);
+    background-color: rgba(40,42,42,0.05);
     padding: 0.5em 1em;
 }
 

@@ -99,8 +99,6 @@ const WeaponInfoModal = (id) => {
 
     <p>${w.desc}</p>
 
-    <hr>
-
     <table class="wi-info">
         <tr>
             <th>Year of Introduction</th>
