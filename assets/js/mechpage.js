@@ -20,14 +20,14 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="card width-${size} card-${id}">
         <header class="card-header">
             <h2>${title}</h2>
+            <!--button role="switch" class="info-button"><img src="/assets/images/info.svg" alt="i" aria-label="Info"></button-->
         </header>
-        <div role="tablist" class="panelswitch card-body">
-            <!--button role="switch" class="panelswitch-button">Info</button-->
-            <div role="tabpanel" class="card-main">
-                ${body}
-            </div>
-            <div role="tabpanel" class="card-help">
+        <div role="tablist" class="card-body">
+            <div class="card-help">
                 ${help}
+            </div>
+            <div class="card-main">
+                ${body}
             </div>
         </div>
         <footer class="card-footer">
@@ -65,7 +65,9 @@ const sEngine = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     ``,
@@ -95,7 +97,9 @@ const sComponents = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     ``,
@@ -123,7 +127,9 @@ const sComponents = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     ``,
@@ -151,7 +157,9 @@ const sHeatSinks = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     ``,
@@ -223,7 +231,9 @@ const sArmor = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     ``,
@@ -304,7 +314,9 @@ const sWeapons = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     ``,
@@ -342,7 +354,9 @@ const sWarrior = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     `<p>On the Record Sheet, <i>(blank line)</i> will display a dotted line.</p>`,
@@ -376,7 +390,9 @@ const sQuirks = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     `<p>The number of <i>Positive</i> and <i>Negative</i> quirks should be equal.</p>`,
@@ -419,7 +435,9 @@ const sReadout = new SectionPanel(
     `, 
     
     // help
-    `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>`,
+    `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    `,
     
     // footer
     `<p>Note: This content only appears on the Technical Readout.</p>`,

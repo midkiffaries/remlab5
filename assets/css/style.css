@@ -292,15 +292,24 @@ Cards Styling
 
 /* Panel Switch Component and Button */
 
-.panelswitch-button {
+.info-button {
     position: absolute;
-    top: -3.4em;
+    top: 0.2em;
     right: 0.2em;
+    border: none;
+    background: none;
 }
 
-.panel-button-active {
-	background: #aaa;
+.info-button img {
+    width: 1.6em;
+    opacity: 0.4;
+    transition: opacity 0.3s;
 }
+
+.info-button:hover img {
+    opacity: 1;
+}
+
 /*
 .card-main {
 
