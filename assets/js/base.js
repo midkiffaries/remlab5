@@ -435,3 +435,11 @@ function listYear() {
     });
     return opt;
 }
+
+// Display card id help info
+function displayHelp(id) {
+    elID(id).style.display = "block";
+    setTimeout(() => { 
+        elID(id).classList.toggle('card-help-show');
+    }, 200);
+}

@@ -20,15 +20,14 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="card width-${size} card-${id}">
         <header class="card-header">
             <h2>${title}</h2>
-            <!--button role="switch" class="info-button"><img src="/assets/images/info.svg" alt="i" aria-label="Info"></button-->
+            <button class="info-button" onclick="displayHelp('Help-${id}')"><img src="/assets/images/help.svg" alt="i" aria-label="Info"></button>
         </header>
-        <div role="tablist" class="card-body">
-            <div class="card-help">
-                ${help}
-            </div>
-            <div class="card-main">
-                ${body}
-            </div>
+        <div class="card-help" id="Help-${id}">
+            <!--p><b>Help</b></p-->
+            ${help}
+        </div>
+        <div class="card-body">
+            ${body}
         </div>
         <footer class="card-footer">
             ${footer}
@@ -66,7 +65,7 @@ const sEngine = new SectionPanel(
     
     // help
     `
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem eros. Proin ipsum neque, gravida rutrum felis a, porttitor luctus sem. Vivamus tincidunt sapien interdum tortor rhoncus ornare.</p>
+    <p><i>Walking MP</i> determines the average speed, and <i>running MP</i> is the top speed of this Mech. The <i>engine type</i> determines the kind of engine that powers this mech. This can have an affect on the size and cost of the engine. <i>Myomer</i> is the special movement speed and strength enhancements that are available to Mechs.</p>
     `,
     
     // footer
@@ -110,7 +109,7 @@ const sComponents = new SectionPanel(
  * Card: Jump Jets 
  ************************/
 
- const sJumpjets = new SectionPanel(
+const sJumpjets = new SectionPanel(
     // id
     "JumpJets", 
     

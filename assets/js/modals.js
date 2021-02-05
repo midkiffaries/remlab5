@@ -47,6 +47,7 @@ const AboutModal = () => (`
 // Help modal content
 const HelpModal = () => (`
 <h2>Help with REMLAB ${RemlabVersion}</h2>
+<figure><img src="assets/images/help.svg" alt="Help" loading="lazy"></figure>
 <p>Below are some tips for using REMLAB. As a web app there may be some inconsistencies from one browser to the next especially when it comes to printing.</p>
 
 <h3>Printing</h3>
@@ -63,6 +64,14 @@ const HelpModal = () => (`
 
 <h3>Browser Compatibility</h3>
 <p>The latest versions of the big four browsers (<i>Chrome, Edge, Firefox, &amp; Safari</i>) should work correctly with REMLAB. Older browsers may run into page formatting and compatibility complications.</p>
+<style>
+.helpModal figure {
+    width: 24%;
+    float: right;
+    margin: 0.3em;
+    transform: rotate(9deg);
+}
+</style>
 `);
 
 

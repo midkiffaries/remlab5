@@ -236,6 +236,23 @@ Cards Styling
     margin: 1px 0.3em;
 }
 
+.card-help {
+    position: absolute;
+    background-color: #fdfdfd;
+    z-index: 10;
+    padding: 0 0.8em;
+    font-size: 0.9em;
+    display: none;
+    opacity: 0;
+    box-shadow: 0 1px 3px 2px rgba(0,0,0,0.1);
+    transition: opacity 0.2s ease-in-out 0s;
+}
+
+.card-help-show {
+    transition: opacity 0.2s ease-in-out 0s;
+    opacity: 1;
+}
+
 .card-body {
     min-height: 11em;
     position: relative;
@@ -290,50 +307,31 @@ Cards Styling
 }
 
 
-/* Panel Switch Component and Button */
+/* Card Info Button */
 
 .info-button {
     position: absolute;
-    top: 0.2em;
-    right: 0.2em;
+    top: 0.1em;
+    right: 0.1em;
     border: none;
     background: none;
 }
 
 .info-button img {
-    width: 1.6em;
+    width: 1.4em;
     opacity: 0.4;
-    transition: opacity 0.3s;
+    transition: all 0.3s;
 }
 
 .info-button:hover img {
     opacity: 1;
+    transform: scale(1.2);
 }
 
-/*
-.card-main {
-
-}
-*/
-.card-help {
-	position: absolute;
-	top: -0.8em;
-	background: #fafafa;
-	overflow-y: scroll;
-	opacity: 0;
-	transform: scale(1,0);
-    transform-origin: top right;
-    width: 100%;
-    height: 100%;
-    padding: 0 1em;
+.info-button:active img {
+    transform: scale(0.9);
 }
 
-.panel-active {
-    transition: all 0.3s ease-in-out;
-	opacity: 1;
-	transform: scale(1,1);
-	transform-origin: top right;
-}
 
 
 /************************
