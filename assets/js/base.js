@@ -2,7 +2,7 @@
  * Base JavaScript
 **************************/
 
-//"use strict";
+"use strict";
 
 // REMLAB version
 const RemlabVersion = "4.9.2102 DEV",

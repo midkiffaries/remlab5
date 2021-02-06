@@ -240,12 +240,19 @@ Cards Styling
     position: absolute;
     background-color: #fdfdfd;
     z-index: 10;
-    padding: 0 0.8em;
+    padding: 0.8em;
     font-size: 0.9em;
     display: none;
     opacity: 0;
     box-shadow: 0 1px 3px 2px rgba(0,0,0,0.1);
     transition: opacity 0.2s ease-in-out 0s;
+    min-height: 8em;
+    max-height: 16em;
+    overflow-y: scroll;
+}
+
+.card-help p {
+    margin: 0.3em 0
 }
 
 .card-help-show {
