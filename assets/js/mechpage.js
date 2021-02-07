@@ -20,7 +20,7 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="card width-${size} card-${id}">
         <header class="card-header">
             <h2>${title}</h2>
-            <button class="info-button" onclick="displayHelp('Help-${id}')"><img src="/assets/images/help.svg" alt="i" aria-label="Info"></button>
+            <button class="help-button" onclick="displayHelp('Help-${id}')"><img src="/assets/images/help.svg" alt="i" aria-label="Info"></button>
         </header>
         <div class="card-help" id="Help-${id}">
             <!--p><b>Help</b></p-->

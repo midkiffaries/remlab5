@@ -4,6 +4,8 @@ Default Page Style
 
 /* Variables */
 :root {
+    color-scheme: light dark;
+
     --base-gold: #eac600;
     --dark-gold: #ba9d00;
     --light-gold: #ffe55a;
@@ -63,7 +65,7 @@ textarea:hover,
 .stepper-container:hover {
     box-shadow: 0 0 1px 2px var(--lighter-gold);
     border-color: var(--base-gold);
-    transition: border-color 0.6s;
+    transition: border-color 0.3s, box-shadow 0.4s;
 }
 
 select:not([multiple]):not([size]) {
@@ -246,6 +248,7 @@ Cards Styling
     opacity: 0;
     box-shadow: 0 1px 3px 2px rgba(0,0,0,0.1);
     transition: opacity 0.2s ease-in-out 0s;
+    transform: scale(0,0);
     min-height: 8em;
     max-height: 16em;
     overflow-y: scroll;
@@ -256,8 +259,10 @@ Cards Styling
 }
 
 .card-help-show {
-    transition: opacity 0.2s ease-in-out 0s;
+    transition: opacity 0.2s ease-in-out 0s, transform 0.18s ease-in-out 0s;
     opacity: 1;
+    transform: scale(1,1);
+    transform-origin: top;
 }
 
 .card-body {
@@ -314,9 +319,9 @@ Cards Styling
 }
 
 
-/* Card Info Button */
+/* Card Help Button */
 
-.info-button {
+.help-button {
     position: absolute;
     top: 0.1em;
     right: 0.1em;
@@ -324,18 +329,18 @@ Cards Styling
     background: none;
 }
 
-.info-button img {
+.help-button img {
     width: 1.4em;
     opacity: 0.4;
     transition: all 0.3s;
 }
 
-.info-button:hover img {
+.help-button:hover img {
     opacity: 1;
     transform: scale(1.2);
 }
 
-.info-button:active img {
+.help-button:active img {
     transform: scale(0.9);
 }
 
@@ -452,7 +457,9 @@ Specific Card Styling
 }
 
 .list-weapons:hover {
-    border: 2px solid var(--base-gold);
+    box-shadow: 0 0 1px 2px var(--lighter-gold);
+    border-color: var(--base-gold);
+    transition: border-color 0.3s, box-shadow 0.4s;
 }
 
 .list-weapons::-webkit-scrollbar {
@@ -974,11 +981,7 @@ Radio and Checkbox style
 /************************
 Dark Mode
 *************************/
-/*
-:root {
-    color-scheme: light dark;
-}
-*/
+
 .dark-mode ::-moz-selection {
     color: #000;
     background-color: #ddd;
@@ -1014,7 +1017,8 @@ body.dark-mode,
     background-color: rgba(0,0,0,0.9);
 }
 
-.dark-mode .dialog-html-close {
+.dark-mode .dialog-html-close,
+.dark-mode .help-button img {
     filter: invert(100%);
 }
 

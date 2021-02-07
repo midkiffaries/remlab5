@@ -436,7 +436,7 @@ function listYear() {
     return opt;
 }
 
-// Display card id help info
+// Display card (id) help information pop out
 function displayHelp(id) {
     elID(id).style.display = "block";
     setTimeout(() => { 

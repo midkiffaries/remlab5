@@ -246,7 +246,9 @@
             margin: 0.3em 0.4em 0.8em 0;
         }
         .select-list:hover {
+            box-shadow: 0 0 1px 2px var(--lighter-gold);
             border-color: var(--base-gold);
+            transition: border-color 0.6s, box-shadow 0.4s;
         }
         .select-list li {
             list-style: none;
