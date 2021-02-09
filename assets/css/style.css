@@ -254,8 +254,13 @@ Cards Styling
     overflow-y: scroll;
 }
 
+.card-help h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
 .card-help p {
-    margin: 0.3em 0
+    margin: 0.3em 0;
 }
 
 .card-help-show {

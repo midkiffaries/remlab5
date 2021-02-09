@@ -10,7 +10,7 @@
         let inputAttrib = inputNum[i].getAttribute("type");
         
         // Custom charset for input[type="number"] and input[type="tel"]        
-        if (inputAttrib === "number" || inputAttrib === "tel") {
+        if (inputAttrib === "number") {
             // Accept only numbers and relative chars
             inputNum[i].onkeypress = () => event.charCode >= 40 && event.charCode <= 57;
         }

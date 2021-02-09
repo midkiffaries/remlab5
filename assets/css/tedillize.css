@@ -27,6 +27,7 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
+	touch-action: manipulation;
 	font-family:
 		system-ui,
 		-apple-system,
@@ -72,7 +73,7 @@ hr {
 }
 
 hr:not([size]) {
-	height: 0.1em;
+	height: 1px;
 }
 
 blockquote {
@@ -130,11 +131,6 @@ small {
 ins {
 	-webkit-text-decoration: underline dashed #aaa;
 	text-decoration: underline dashed #aaa;
-}
-
-u {
-	-webkit-text-decoration: underline solid #ccc;
-	text-decoration: underline solid #ccc;
 }
 
 abbr {
@@ -379,17 +375,6 @@ Interactive elements
 	outline: none;
 }
 
-[href],
-button,
-input,
-label,
-select,
-textarea,
-[role='button'],
-[tabindex] {
-	touch-action: manipulation;
-}
-
 [href] {
 	color: inherit;
 	background-color: transparent;
@@ -411,7 +396,6 @@ a:not([href]),
 	text-decoration: none;
 	font-weight: inherit;
 	color: inherit;
-	touch-action: none;
 }
 
 /* Details Element */
