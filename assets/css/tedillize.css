@@ -337,7 +337,6 @@ figure iframe {
 }
 
 figure a img {
-	cursor: -webkit-zoom-in;
 	cursor: zoom-in;
 }
 
@@ -379,7 +378,6 @@ Interactive elements
 	color: inherit;
 	background-color: transparent;
 	-webkit-tap-highlight-color: rgba(220,220,220,0.4);
-	-webkit-text-decoration-skip: ink;
 	text-decoration-skip: ink;
 }
 

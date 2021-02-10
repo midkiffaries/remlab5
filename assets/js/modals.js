@@ -64,6 +64,7 @@ const HelpModal = () => (`
 
 <h3>Browser Compatibility</h3>
 <p>The latest versions of the big four browsers (<i>Chrome, Edge, Firefox, &amp; Safari</i>) should work correctly with REMLAB. Older browsers may run into page formatting and compatibility complications.</p>
+
 <style>
 .helpModal figure {
     width: 24%;
