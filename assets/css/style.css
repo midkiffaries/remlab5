@@ -998,9 +998,10 @@ Dark Mode
 }    
 
 body.dark-mode,
-.dark-mode .dialog-body {
+.dark-mode .dialog-body,
+.dark-mode .card-help {
     color: #eee;
-    background-color: #222;
+    background-color: #222 !important;
     border-color: #555;
 }
 
@@ -1047,7 +1048,9 @@ body.dark-mode,
     color: #fff;
 }
 
-.dark-mode .button-gold {
+.dark-mode .button-gold,
+.dark-mode .check-button:checked + label, 
+.dark-mode .radio-button:checked + label {
     color: #333;
 }
 
