@@ -416,6 +416,7 @@ dialog {
 	border: solid;
 	padding: 1em;
 	background: #fff;
+	color: inherit;
 	will-change: auto;
 }
 
@@ -428,23 +429,12 @@ dialog:not([open]) {
 Form elements
 *********************/
 
-input:not(:focus):invalid {
-	color: #d00;
-}
-
-/* Input Placeholder Color */
-
-::-webkit-input-placeholder {
-	color: #888;
-}
-
-::-moz-placeholder {
-	color: #888;
-	opacity: 1;
-}
-
 ::placeholder {
 	color: #888;
+}
+
+input:not(:focus):invalid {
+	color: #d00;
 }
 
 [disabled],
@@ -815,7 +805,6 @@ Responsive elements
 		width: auto;
 	}
 }
-
 
 /* Printing */
 @media print {
