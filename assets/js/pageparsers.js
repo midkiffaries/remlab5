@@ -281,13 +281,13 @@
             width: 0.9em;
         }
         .select-list::-webkit-scrollbar-track {
-            background: #eee; 
+            background: rgba(0,0,0,0.05);
         }
         .select-list::-webkit-scrollbar-thumb {
             background: #888; 
         }
         .select-list::-webkit-scrollbar-thumb:hover {
-            background: var(--dark-gold); 
+            background: var(--base-gold); 
         }
         `);
         document.body.appendChild(st);

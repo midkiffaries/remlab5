@@ -254,8 +254,7 @@ function HtmlModal(JsVar, c) {
         opacity: 0;
     }
     .disable-scroll {
-        overflow: hidden;
-        height: auto;
+        /* overflow: hidden; */
     }
     @media (max-width: 812px) {
         .dialog-body {
