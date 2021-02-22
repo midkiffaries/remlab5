@@ -523,6 +523,7 @@ textarea {
 	resize: vertical;
 	vertical-align: middle;
 	-webkit-appearance: none;
+	overscroll-behavior-y: contain;
 }
 
 label {

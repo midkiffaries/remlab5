@@ -108,6 +108,7 @@ function ConfirmModal(text, action) {
         box-shadow: 0 14px 14px -7px rgba(0,0,0,0.8), 5px 5px 18px 5px rgba(0,0,0,0);
         border: 1px solid #eee;
         text-align: right;
+        overscroll-behavior-y: contain;
     }
     .dialog-confirm p {
         margin-top: 2px;
@@ -216,6 +217,7 @@ function HtmlModal(JsVar, c) {
         transition: transform 0.15s ease-in-out 0s;
         overflow-y: scroll;
         overflow-x: hidden;
+        overscroll-behavior-y: contain;
     }
     #HTML_Frame {
         margin-top: -2em;

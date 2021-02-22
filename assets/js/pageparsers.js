@@ -244,6 +244,7 @@
             height: 12em !important;
             padding: 0 0.3em;
             margin: 0.3em 0.4em 0.8em 0;
+            overscroll-behavior-y: contain;
         }
         .select-list:hover {
             box-shadow: 0 0 1px 2px var(--lighter-gold);
