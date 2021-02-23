@@ -86,6 +86,7 @@
             transition: max-height 0.2s ease-out;
             border-bottom: 1px solid #eee;
             will-change: auto;
+            overscroll-behavior-y: contain;
         }
         `);
         document.body.appendChild(st);
