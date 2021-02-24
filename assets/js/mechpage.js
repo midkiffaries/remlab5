@@ -60,7 +60,7 @@ const sEngine = new SectionPanel(
     <p><label>Walking <abbr>MP</abbr></label> <span class="stepper-container"><input type="number" id="stepWalking" class="stepper" value="${Mech.walkingMP}" min="1" max="16" step="1" readonly></span> Running <abbr>MP</abbr> <output for="stepWalking" id="outRunning">${Mech.runningMP}</output></p>
     <p><label>Type</label> <select id="selEngine" class="select" data-list="a_EngineType" disabled></select> <output id="outEngineRating">${Mech.engineBrand} ${Mech.engineRating}</output></p>
     <p><label>Legs</label> <input type="radio" name="selLegs" id="radioM1" class="radio-button" value="0" checked><label for="radioM1" role="button">2</label><input type="radio" name="selLegs" id="radioM2" class="radio-button" value="1"><label for="radioM2" role="button">4</label></p>
-    <p><label>Myomer</label> <select id="selSpecial" class="select" data-list="a_SpecialMovement" disabled></select></p>
+    <p><label>Myomer</label> <select id="selMyomer" class="select" data-list="a_MyomerType" disabled></select></p>
     `, 
     
     // help
@@ -532,6 +532,8 @@ const updateForm = id => {
     // Return data to form
     Mech.walkingMP = elID('stepWalking').value;
     Mech.engineType = elID('selEngine').value;
+    Mech.legs = document.forms[0].selLegs.value;
+    Mech.myomer = elID('selMyomer').value;
 
     // Post data to array
     elID('outRunning').value = Mech.runningMP;
@@ -818,7 +820,7 @@ function compactListCritsbyLoc(v) {
             // Check if item is a a weapon or a hardpoint
             if (w.tons > 0) {
                 // Weapon
-                li += `<li><button class="btn-remove" data-id="${w.id}" onclick="removeWeapon('${v}',${w.id})" aria-label="Delete weapon">✕</button> ${w.name}</li>`;
+                li += `<li><button class="btn-remove" data-id="${w.id}" onclick="removeWeapon('${v}',${w.id})" aria-label="Delete weapon">✕</button> ${w.name} <span class="spn-crits" title="Crits used">${w.crits}</span></li>`;
             }
         }
     }

@@ -153,7 +153,8 @@ const a_EngineType = [
     //'Fuel Cell'
 ];
 
-const a_SpecialMovement = [
+// Myomer type
+const a_MyomerType = [
     'Standard',
     'MASC',
     'TSM'
