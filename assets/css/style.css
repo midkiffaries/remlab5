@@ -6,7 +6,7 @@ Default Page Style
 :root {
     overscroll-behavior-y: contain;
 
-    color-scheme: light dark;
+    /* color-scheme: light dark; */
 
     --base-gold: #eac600;
     --dark-gold: #ba9d00;
@@ -162,6 +162,10 @@ body {
 
 .sidebar-input label {
     min-width: 3.8em;
+}
+
+.sidebar-input label[role="button"] {
+    min-width: 5.8em;
 }
 
 .sidebar-input small,
@@ -337,7 +341,6 @@ Cards Styling
 }
 
 .help-button img {
-    width: 1.4em;
     opacity: 0.4;
     transition: all 0.3s;
 }
@@ -1089,14 +1092,14 @@ Responsive elements
 *********************/
 
 /* Screen less than 1000px */
-@media only screen and (min-width: 951px) and (max-width: 1100px) {
+@media (min-width: 951px) and (max-width: 1100px) {
     .sidebar-input p label:first-of-type {
         display: none;
     }
 }
 
 /* Screen less than 950px */
-@media only screen and (min-width: 651px) and (max-width: 950px) {
+@media (min-width: 651px) and (max-width: 950px) {
     .page-header,
     .page-header-menu,
     .page-main {
@@ -1122,7 +1125,7 @@ Responsive elements
 }
 
 /* Phone (Portrait) and narrow screen */
-@media only screen and (max-width: 650px) {
+@media (max-width: 650px) {
     .page-header,
     .page-header-menu,
     .page-main,

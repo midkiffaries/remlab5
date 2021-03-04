@@ -5,7 +5,7 @@
 "use strict";
 
 // REMLAB version
-const RemlabVersion = "4.9.2102 DEV",
+const RemlabVersion = "4.9.2103 DEV",
     RemlabTitle = "REMLAB Web Mech Designer",
     RemlabShort = "REMLAB";
 
@@ -443,4 +443,12 @@ function displayHelp(id) {
     setTimeout(() => { 
         elID(id).classList.toggle('card-help-show');
     }, 200);
+}
+
+// Balance Armor checkbox - toggles "right" locations "disabled"
+function balanceArmor() {
+    const ba = document.getElementsByClassName("b-armor"), l = ba.length;
+    for (let i = 0; i < l; i++) {
+        ba[i].classList.toggle("disabled");
+    }
 }

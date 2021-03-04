@@ -20,7 +20,7 @@ const sectionTemplate = (id, title, size, body, help, footer) => (`
     <section class="card width-${size} card-${id}">
         <header class="card-header">
             <h2>${title}</h2>
-            <button class="help-button" onclick="displayHelp('Help-${id}')"><img src="/assets/images/help.svg" alt="i" aria-label="Info"></button>
+            <button class="help-button" onclick="displayHelp('Help-${id}')"><img src="/assets/images/help.svg" alt="Info" aria-label="Info" style="width:1.5em"></button>
         </header>
         <div class="card-help" id="Help-${id}">
             <h3>Help ★</h3>
@@ -186,7 +186,7 @@ const sArmor = new SectionPanel(
     `
     <p>
         <label>Type</label> <select id="selArmor" class="select" data-list="a_ArmorType" disabled></select> <label style="margin-left:0.8em">Armor Points</label> <output id="outArmorTotal">${Mech.armorTotal}</output>/<output id="outArmorTotalMax">${Mech.armorTotalMax}</output>
-        <input type="checkbox" id="chkBalance" checked><label for="chkBalance" style="margin-left:1em">Balance Armor</label>
+        <input type="checkbox" id="chkBalance" onchange="balanceArmor()" checked><label for="chkBalance" style="margin-left:1em">Balance Armor</label>
     </p> 
     
     <div class="col-3">
@@ -201,8 +201,8 @@ const sArmor = new SectionPanel(
                 Rear <span class="stepper-container"><input type="number" id="stepArmorLTR" class="stepper" value="${Mech.ALTR}" min="0" max="9" step="1" onchange="elID('stepArmorRTR').value=this.value" readonly></span> <output id="outMaxLT">${Mech.IST*2}</output></p> 
             <p><label>Center</label> <span class="stepper-container"><input type="number" id="stepArmorCT" class="stepper" value="${Mech.ACT}" min="0" max="${Mech.ICT*2}" step="1" readonly></span> 
                 Rear <span class="stepper-container"><input type="number" id="stepArmorCTR" class="stepper" value="${Mech.ACTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxCT">${Mech.ISC*2}</output></p> 
-            <p><label>Right</label> <span class="stepper-container" disabled><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
-                Rear <span class="stepper-container" disabled><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container b-armor disabled"><input type="number" id="stepArmorRT" class="stepper" value="${Mech.ART}" min="0" max="${Mech.IST*2}" step="1" readonly></span>
+                Rear <span class="stepper-container b-armor disabled"><input type="number" id="stepArmorRTR" class="stepper" value="${Mech.ARTR}" min="0" max="9" step="1" readonly></span> <output id="outMaxRT">${Mech.IST*2}</output></p> 
         </fieldset>
     </div>
 
@@ -210,13 +210,13 @@ const sArmor = new SectionPanel(
         <fieldset>
             <legend>Arms</legend>
             <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLA" class="stepper" value="${Mech.ALA}" min="0" max="${Mech.ISA*2}" step="1" onchange="elID('stepArmorRA').value=this.value" readonly></span> <output id="outMaxLA">${Mech.ISA*2}</output></p> 
-            <p><label>Right</label> <span class="stepper-container" disabled><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container b-armor disabled"><input type="number" id="stepArmorRA" class="stepper" value="${Mech.ARA}" min="0" max="${Mech.ISA*2}" step="1" readonly></span> <output id="outMaxRA">${Mech.ISA*2}</output></p> 
         </fieldset> 
 
         <fieldset>
             <legend>Legs</legend>
             <p><label>Left</label> <span class="stepper-container"><input type="number" id="stepArmorLL" class="stepper" value="${Mech.ALL}" min="0" max="${Mech.ISL*2}" step="1" onchange="elID('stepArmorRL').value=this.value" readonly></span> <output id="outMaxLL">${Mech.ISL*2}</output></p> 
-            <p><label>Right</label> <span class="stepper-container" disabled><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
+            <p><label>Right</label> <span class="stepper-container b-armor disabled"><input type="number" id="stepArmorRL" class="stepper" value="${Mech.ARL}" min="0" max="${Mech.ISL*2}" step="1" readonly></span> <output id="outMaxRL">${Mech.ISL*2}</output></p> 
         </fieldset> 
     </div>
 
@@ -471,7 +471,7 @@ const sideBarTotals = (`
     <div class="sidebar-print" role="menu">
         <p><button id="btnCreateRS" onclick="HtmlModal(RecordSheetModal,'recordsheetModal')" class="button-gold">Create Record Sheet</button></p>
         <p><button id="btnCreateTR" onclick="HtmlModal(TechReadoutModal,'techreadoutModal')" class="button-gold">Create Technical Readout</button></p>
-        <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Start Over</button></p-->
+        <!--p><button id="btnResetPage" onclick="ConfirmModal('Are you sure you want to start over?','document.forms[0].reset()')">Clear</button></p-->
     </div>
 `);
 
