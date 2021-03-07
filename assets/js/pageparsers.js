@@ -81,12 +81,13 @@
         .accordion > section {
             padding: 0 1em;
             max-height: 0;
-            overflow: hidden;
-            overflow-x: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
             transition: max-height 0.2s ease-out;
             border-bottom: 1px solid #eee;
             will-change: auto;
             overscroll-behavior-y: contain;
+            box-shadow: inset 0px -3px 10px #999;
         }
         `);
         document.body.appendChild(st);

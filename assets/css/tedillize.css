@@ -381,8 +381,6 @@ a:not([href]),
 [href='#'] {
 	pointer-events: none;
 	text-decoration: none;
-	font-weight: inherit;
-	color: inherit;
 }
 
 /* Details Element */
@@ -444,7 +442,6 @@ input:not(:focus):invalid {
 
 [readonly],
 button > *,
-[type='button'] > *,
 [role='button'] > * {
 	pointer-events: none;
 }
@@ -686,19 +683,15 @@ progress {
 	height: 1.2em;
 }
 
-[value] {
+::-webkit-progress-bar {
 	background-color: #eee;
 }
 
-[value]::-webkit-progress-bar {
-	background-color: #eee;
-}
-
-[value]::-webkit-progress-value {
+::-webkit-progress-value {
 	background-color: #777;
 }
 
-[value]::-moz-progress-bar {
+::-moz-progress-bar {
 	background-color: #777;
 }
 

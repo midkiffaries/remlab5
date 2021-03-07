@@ -515,7 +515,7 @@ Specific Card Styling
 }
 
 .list-weapons li .weapon-add:hover {
-	background: transparent no-repeat 95% 10% / 1em;
+	background: transparent no-repeat calc(100% - 7px) 10px / 1.1em;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M512 192H320V0H192v192H0v128h192v192h128V320h192z' fill='black'/%3E%3C/svg%3E");
     background-color: var(--light-gold);
     box-shadow: none;
@@ -624,11 +624,11 @@ p.location-crits {
 }
 
 .locations-list .btn-remove:hover {
-    background-color: #555;
+    background-color: #f33;
 }
 
 .locations-list .btn-remove:active {
-    background-color: #000;
+    background-color: #a00;
 }
 
 .locations-list .spn-crits {
