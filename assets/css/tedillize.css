@@ -19,7 +19,6 @@ Tedilize 2.0 - Normalization and Base Styling
 *::after {
 	text-decoration: inherit;
 	white-space: pre;
-	font-weight: 400;
 }
 
 html {
@@ -483,9 +482,8 @@ select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	text-overflow: ellipsis;
-	cursor: pointer;
 	overflow: hidden;
-	word-wrap: normal;
+	cursor: pointer;
 }
 
 select:not([multiple]):not([size]) {
