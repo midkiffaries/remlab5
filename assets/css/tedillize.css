@@ -19,6 +19,7 @@ Tedilize 2.0 - Normalization and Base Styling
 *::after {
 	text-decoration: inherit;
 	white-space: pre;
+	font-weight: 400;
 }
 
 html {
