@@ -591,6 +591,13 @@ legend + * {
 	-webkit-appearance: none;
 }
 
+/* Input Upload */
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
 /* Input Range */
 
 [type='range'] {

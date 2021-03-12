@@ -422,7 +422,7 @@ const sReadout = new SectionPanel(
     <p>
         <label>Year Introduced</label> <input id="txtYear" type="number" value="${Mech.year}" maxlength="4" placeholder="3025" pattern="[0-9]*" inputmode="numeric" style="width:5em" list="List-Year">
         <datalist id="List-Year">
-            ${listYear()}
+            ${listOptions(a_yearIntro)}
         </datalist> 
         <label style="margin-left:0.8em">Era</label> <select id="selEra" class="select" data-list="a_Era" data-value="${Mech.era}"></select>
     </p>
@@ -740,12 +740,6 @@ function compactWeaponsTable() {
     for (let i in weaponTable.weapon) {
         w = weaponTable.weapon[i];
 
-        //if (w.type == 2) {
-        //    li += (`
-        //        <li><hr></li>
-        //    `);
-        //}
-
         // Display everything but structure items (0) and only Basic ruleset (0)
         if (w.type > 0 && w.type < 7 && w.rules == Mech.rules) {
             // Generate each table row
@@ -888,9 +882,8 @@ function addWeapon(id) {
     for (let i = 0; i < btn.length; i++) {
 
         // Check if item id can fit in location
-        if (Mech[`crits_${arrLoc[i]}`] + w <= Mech[`maxcrits_${arrLoc[i]}`]) {
+        if (Mech[`crits_${arrLoc[i]}`] + w <= Mech[`maxcrits_${arrLoc[i]}`])
             btn[i].style.visibility = 'visible';
-        }
 
         btn[i].onclick = () => {
             Mech[`crits_${arrLoc[i]}`] += w; // Add crits

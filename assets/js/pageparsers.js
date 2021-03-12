@@ -10,26 +10,23 @@
         let inputAttrib = inputNum[i].getAttribute("type");
         
         // Custom charset for input[type="number"] and input[type="tel"]        
-        if (inputAttrib === "number") {
+        if (inputAttrib === "number")
             // Accept only numbers and relative chars
             inputNum[i].onkeypress = () => event.charCode >= 40 && event.charCode <= 57;
-        }
         
         // Change the value of the output[for] element based on the range element
         if (inputAttrib === "range") {
             inputNum[i].oninput = function() {
                 let out = this.nextElementSibling;
-                if (out.getElementsByTagName("output") && out.getAttribute("for") == this.getAttribute("id")) {
-                    out.value = this.value;          
-                }
+                if (out.getElementsByTagName("output") && out.getAttribute("for") == this.getAttribute("id"))
+                    out.value = this.value;
             }
         }
         
         // Enforce a "maxlength" on all input elements
         inputNum[i].onkeyup = function() {
-            if (this.value.length > this.maxLength && this.maxLength > 0) {
+            if (this.value.length > this.maxLength && this.maxLength > 0) 
                 this.value = this.value.slice(0,this.maxLength);
-            }
         }
     }
 }());
@@ -41,11 +38,8 @@
         acc[i].firstChild.nextSibling.onclick = function() {
             this.classList.toggle("active");
             let panel = this.nextSibling.nextSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            } 
+            if (panel.style.maxHeight) panel.style.maxHeight = null;
+            else panel.style.maxHeight = panel.scrollHeight + "px";
         }
     }
 
@@ -144,9 +138,6 @@
             if (parseInt(x.value) < parseInt(x.max)) {
                 x.value = parseInt(x.value) + parseInt(x.step);
                 el.dispatchEvent(new Event('change'));
-                //x.previousElementSibling.disabled = false;
-            } else {
-                //this.disabled = true;
             }
         };
 
@@ -318,11 +309,8 @@
         }
 
         // Set a default select value 
-        if (v) {
-            el.value = v;
-        } else {
-            el.value = 0;
-        }
+        if (v) el.value = v;
+        else el.value = 0;
     }
 }());
 
@@ -347,7 +335,7 @@ elID("selAffiliation").options[38].disabled = true;
                 target = e.target,
                 thsIndex = thsArray.indexOf(target);
 
-            rowArray.sort(function(a,b){
+            rowArray.sort(function(a, b){
                 let tdA = a.children[thsIndex].textContent,
                     tdB = b.children[thsIndex].textContent;
                 
@@ -356,13 +344,9 @@ elID("selAffiliation").options[38].disabled = true;
                     tdB = parseFloat(tdB);
                 }
 
-                if (tdA > tdB) {
-                    return 1;
-                } else if (tdA < tdB) {
-                    return -1;
-                } else {
-                    return 0;
-                }
+                if (tdA > tdB) return 1;
+                else if (tdA < tdB) return -1;
+                else return 0;
             });
 
             rowArray.forEach(function(row){

@@ -329,11 +329,8 @@ function closeModals(c) {
 		currentTheme = localStorage.getItem("theme");	
 	
 	// Get locally saved moode
-	if (currentTheme == 'dark') {
-        document.body.classList.toggle("dark-mode");
-	} else if (currentTheme == 'light') {
-        document.body.classList.toggle("light-mode");
-	}
+	if (currentTheme == 'dark') document.body.classList.toggle("dark-mode");
+	else if (currentTheme == 'light') document.body.classList.toggle("light-mode");
 	
 	// Set initial button title
 	buttonText = (document.body.classList.contains('dark-mode')) ? 'light':'dark';
@@ -408,13 +405,10 @@ const torsoArmorChk = (f,r,m) => ((f + r) >= m) ? {front:f, rear:r} : {front:m, 
 // Display distance range or damage range as Low-High
 function displayRange(l, h) {
     if (l == h - 1 || h <= 1 || l == 0) {
-        return zeroToDash(h);
+        return zeroToDash(h).toString();
     } else {
-        if (l == 1) {
-            return `${l}-${h}`;
-        } else {
-            return `${l+1}-${h}`;
-        }
+        if (l == 1) return `${l}-${h}`;
+        else return `${l+1}-${h}`;
     }
 }
 
@@ -425,15 +419,13 @@ function displayTicks(v, r) {
         if (i % r === 0 && i != 0) a += "<br/>\n";
         a += theCircle;
     }
-    return a;
+    return a.toString();
 }
 
-// List the year for the datalist element
-function listYear() {
+// Populate select or datalist elements from an array
+function listOptions(arr) {
     let opt;
-    a_yearIntro.forEach(e => {
-        opt += `<option value="${e}">`;
-    });
+    arr.forEach(e => { opt += `<option value="${e}">${e}</option>` });
     return opt;
 }
 

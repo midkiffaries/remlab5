@@ -32,6 +32,10 @@ const AboutModal = () => (`
 </ul>
 
 <style>
+.aboutModal h2 {
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+}
 .aboutModal figure {
     width: 24%;
     float: right;
@@ -63,9 +67,13 @@ const HelpModal = () => (`
 <p>Currently, there is no way to save Mechs in REMLAB. The only thing you can do is <code>Print/Save to a <abbr>PDF</abbr> file</code>, a feature most modern web browsers have built into them.</p>
 
 <h3>Browser Compatibility</h3>
-<p>The latest versions of the big four browsers (<i>Chrome, Edge, Firefox, &amp; Safari</i>) should work correctly with REMLAB. Older browsers may run into page formatting and compatibility complications.</p>
+<p>The latest versions of the big four browsers (<i>Chrome, Edge, Safari &amp; Firefox</i>) should work correctly with REMLAB. Older browsers may run into page formatting and compatibility complications.</p>
 
 <style>
+.helpModal h2 {
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+}
 .helpModal figure {
     width: 24%;
     float: right;
