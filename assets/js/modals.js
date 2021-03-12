@@ -34,7 +34,7 @@ const AboutModal = () => (`
 <style>
 .aboutModal h2 {
     font-weight: 500;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd;
 }
 .aboutModal figure {
     width: 24%;
