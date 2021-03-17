@@ -402,6 +402,9 @@ const displayDamage = (m, d) => (m > 0) ? `${m}-${d}` : d;
 // Check that torsos (f) front and (r) rear total armor is less than the (m) max
 const torsoArmorChk = (f,r,m) => ((f + r) >= m) ? {front:f, rear:r} : {front:m, rear:m};
 
+// Shorten a string - remove any characters that are not A-z or 0-9
+const getShortName = v => v.toString().replace(/[^A-z|0-9]/g, "");
+
 // Display distance range or damage range as Low-High
 function displayRange(l, h) {
     if (l == h - 1 || h <= 1 || l == 0) {

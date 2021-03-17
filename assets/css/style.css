@@ -662,6 +662,10 @@ p.location-crits {
     width: calc(82% - 7em);
 }
 
+.card-Warrior p [role="button"] {
+    min-width: 5.5em;
+}
+
 /* Quirks Card */
 
 .card-Quirks label {
