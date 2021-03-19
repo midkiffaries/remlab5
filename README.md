@@ -1,6 +1,6 @@
 <img src="assets/images/logo.svg" alt="REMLAB Web Mech Designer" width="450">
 
-#### Version 5.0 - In Development
+#### Version 5.0 - Currently in Development
 
 ### The new REMLAB development repository.
 
