@@ -497,7 +497,7 @@ elID("SectionsGrid").innerHTML = (
 );
 
 // Footer Info
-elID("AppVersion").textContent = RemlabVersion;
+elID("AppVersion").textContent = App.version;
 
 
 /************************

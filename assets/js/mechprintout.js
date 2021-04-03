@@ -441,7 +441,7 @@ const RecordSheetModal = () => {
 		</div>
 
 		<footer class="print-footer">
-			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${RemlabVersion}</span></a> on <time>${TodaysDate.getFullYear()}</time>. Please recycle this document.</p>
+			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${App.version}</span></a> on <time>${TodaysDate.getFullYear()}</time>. Please recycle this document.</p>
 		</footer>
 	</div>
 </div>
@@ -1150,7 +1150,7 @@ const TechReadoutModal = () => {
             </div>
         </div>
 		<footer class="print-footer">
-			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${RemlabVersion}</span></a> on <time>${TodaysDate.getFullYear()}</time>. Please recycle this document.</p>
+			<p>Created with <a href="https://github.com/midkiffaries/remlab5">REMLAB <span>${App.version}</span></a> on <time>${TodaysDate.getFullYear()}</time>. Please recycle this document.</p>
 		</footer>
     </div>
 </div>

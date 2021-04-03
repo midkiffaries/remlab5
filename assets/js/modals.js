@@ -8,8 +8,8 @@ document.getElementById('btnAbout').onclick = () => HtmlModal(AboutModal, 'about
 
 // About modal content
 const AboutModal = () => (`
-<h2>About REMLAB ${RemlabVersion}</h2>
-<figure><img src="assets/images/remlab-icon.svg" alt="Remlab Logo" loading="lazy"></figure>
+<h2>About REMLAB ${App.version}</h2>
+<figure><img src="assets/images/remlab-icon.svg" alt="Remlab Logo"></figure>
 <p>REMLAB Web Mech Designer is an online tool for creating <i>BattleTech&reg;</i> Mechs for use in the board game. REMLAB is written entirely in <i>JavaScript</i>.</p>
 
 <h3>Disclaimer</h3>
@@ -50,8 +50,8 @@ const AboutModal = () => (`
 
 // Help modal content
 const HelpModal = () => (`
-<h2>Help with REMLAB ${RemlabVersion}</h2>
-<figure><img src="assets/images/help.svg" alt="Help" loading="lazy"></figure>
+<h2>Help with REMLAB ${App.version}</h2>
+<figure><img src="assets/images/help.svg" alt="Help"></figure>
 <p>Below are some tips for using REMLAB. As a web app there may be some inconsistencies from one browser to the next especially when it comes to printing.</p>
 
 <h3>Printing</h3>

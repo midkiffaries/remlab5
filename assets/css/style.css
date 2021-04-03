@@ -101,12 +101,24 @@ dialog a:hover {
 /************************
 Page Layout
 *************************/
+/*
+.page-header { grid-area: menu; }
+.page-main { grid-area: main; }
+.page-footer { grid-area: footer; }
+
+body {
+    display: grid;
+    grid-template-areas: 
+        'menu main main main main'
+        'menu footer footer footer footer';
+    grid-gap: 0.5em;
+}
 
 body {
     background-color: #fbfcfc;
     overflow-y: scroll;
 }
-
+*/
 /* Page Header */
 
 .page-header {

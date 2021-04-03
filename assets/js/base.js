@@ -4,10 +4,12 @@
 
 "use strict";
 
-// REMLAB version
-const RemlabVersion = "4.9.2103 DEV",
-    RemlabTitle = "REMLAB Web Mech Designer",
-    RemlabShort = "REMLAB";
+// App Info
+const App = {
+    version: '4.9.2104 DEV',
+    title: 'REMLAB Web Mech Designer',
+    titleShort: 'REMLAB'
+};
 
 // Declare Global Variables and settings
 const HostName = window.location.host,
@@ -15,6 +17,9 @@ const HostName = window.location.host,
     PathName = window.location.pathname,
     HrefURL = `${PathName}${window.location.search}`,
     Locale = "en-US";
+
+// Get today's date
+const TodaysDate = new Date();
 
 // Keyup Events
 document.addEventListener("keyup", (e) => {
@@ -361,13 +366,10 @@ function closeModals(c) {
 **************************/
 
 // Format the title bar text based on unit type - useful for saving as PDF
-const changeAppTitle = v => (v) ? `${v} - ${RemlabShort}` : RemlabTitle;
+const changeAppTitle = v => (v) ? `${v} - ${App.titleShort}` : App.title;
 
 // The record sheet circle - hash &#9675; or ○
 const theCircle = "○";
-
-// Get today's date
-const TodaysDate = new Date();
 
 // Abbriviate document element ID
 const elID = v => document.getElementById(v);
