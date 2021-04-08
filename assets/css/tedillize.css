@@ -314,9 +314,7 @@ iframe {
 }
 
 img[src$='.gif'],
-img[src$='.svg'],
-canvas,
-svg {
+img[src$='.svg'] {
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;
 }
