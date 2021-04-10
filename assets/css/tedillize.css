@@ -585,7 +585,7 @@ legend + * {
 	-webkit-appearance: none;
 }
 
-/* Input Upload */
+/* Input File Upload */
 
 ::-webkit-file-upload-button {
 	-webkit-appearance: button;

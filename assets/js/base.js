@@ -5,11 +5,11 @@
 "use strict";
 
 // App Info
-const App = {
+const App = Object.freeze({
     version: '4.9.2104 DEV',
     title: 'REMLAB Web Mech Designer',
     titleShort: 'REMLAB'
-};
+});
 
 // Declare Global Variables and settings
 const HostName = window.location.host,

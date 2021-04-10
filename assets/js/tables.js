@@ -34,30 +34,30 @@ const a_SizeClass = [
 ];
 */
 // Btech Ruleset (aka Level)
-const a_RuleSet = [
+const a_RuleSet = Object.freeze([
     'Basic', // Level 1 (TL)
     'Standard', // Level 2 (TL)
     //'Standard (DA)', // Level 2 Dark Age (TL) 
     'Advanced', // Level 3
     'Experimental' // Level 3+
-];
+]);
 
 // Technology Base
-const a_TechBase = [
+const a_TechBase = Object.freeze([
     'Inner Sphere',
     'Clan'
-];
+]);
 
 // Mech Chassis
-const a_ChassisType = [
+const a_ChassisType = Object.freeze([
     'BattleMech',
     'IndustrialMech',
     'Land-Air Mech'
     //'OmniMech'
-];
+]);
 
 // Names for the types of Weapons
-const a_WeaponClass = [
+const a_WeaponClass = Object.freeze([
     'Hardpoints', // 0
     'Energy', // 1
     'Ballistic', // 2
@@ -68,20 +68,20 @@ const a_WeaponClass = [
     'Ammunition', // 7
     'Bombs', // 8
     'Other' // 9
-];
+]);
 
 // Weapon Tech Ratings
-const a_TechRating = {
+const a_TechRating = Object.freeze({
     a: 'Primitive',
     b: 'Low-Tech',
     c: 'Common Tech',
     d: 'High-Tech',
     e: 'Advanced',
     f: 'Hyper-Advanced'
-};
+});
 
 // Weapon Availability ratings
-const a_AvailabilityRating = {
+const a_AvailabilityRating = Object.freeze({
     a: 'Very Common',
     b: 'Common',
     c: 'Uncommon',
@@ -89,10 +89,10 @@ const a_AvailabilityRating = {
     e: 'Very Rare',
     f: 'Unique',
     x: 'Unavailable'
-};
+});
 
 // Armor types
-const a_ArmorType = [
+const a_ArmorType = Object.freeze([
     'Standard',
     'Ferro-Fibrous',
     'Light Ferro-Fibrous',
@@ -100,49 +100,49 @@ const a_ArmorType = [
     'Stealth',
     'Industrial',
     'Commercial'
-];
+]);
 
 // Internal Structure types
-const a_ISType = [
+const a_ISType = Object.freeze([
     'Standard',
     'Endo Steel'
-];
+]);
 
 // Gyro types
-const a_GyroType = [
+const a_GyroType = Object.freeze([
     'Standard',
     'Compact',
     'Heavy-duty',
     'Extra-Light'
-];
+]);
 
 // Cockpit types
-const a_CockpitType = [
+const a_CockpitType = Object.freeze([
     'Standard',
     'Small'
-];
+]);
 
 // Targeting System types
-const a_TargetType = [
+const a_TargetType = Object.freeze([
     'Standard',
     'Targeting Computer'
-];
+]);
 
 // Heatsink types
-const a_HSType = [
+const a_HSType = Object.freeze([
     'Single',
     'Double',
     'Compact'
-];
+]);
 
 // Jump Jets types
-const a_JJType = [
+const a_JJType = Object.freeze([
     'Standard',
     'Improved'
-];
+]);
 
 // Engine types
-const a_EngineType = [
+const a_EngineType = Object.freeze([
     'Fusion',
     'Fusion XL',
     'Fusion Light',
@@ -151,37 +151,37 @@ const a_EngineType = [
     //'Fusion XXL'
     //'Fission'
     //'Fuel Cell'
-];
+]);
 
 // Myomer type
-const a_MyomerType = [
+const a_MyomerType = Object.freeze([
     'Standard',
     'MASC',
     'TSM'
-];
+]);
 
 // Auto-Eject Modes
-const a_AutoEject = {
+const a_AutoEject = Object.freeze({
     false: 'Disabled',
     true: 'Enabled'
-};
+});
 
 // Warrior's Race
-const a_Race = [
+const a_Race = Object.freeze([
     'Human',
     'Clanner'
-];
+]);
 
 // Warrior's Experience
-const a_Experience = [
+const a_Experience = Object.freeze([
     'Green',
     'Regular',
     'Veteran',
     'Elite'
-];
+]);
 
 // Warrior Affiliation
-const a_Affiliation = [
+const a_Affiliation = Object.freeze([
     '(blank line)',
     'INNER SPHERE |————',
     'Capellan Confederation',
@@ -231,10 +231,10 @@ const a_Affiliation = [
     'Outlaw',
     'Gladiator',
     'Civilian'
-];
+]);
 
 // Design Quirk : Positive
-const a_DQPositive = [
+const a_DQPositive = Object.freeze([
     'Accurate Weapon',
     'Anti-Aircraft Targeting',
     'Battle Computer',
@@ -269,10 +269,10 @@ const a_DQPositive = [
     'Searchlight',
     'Stable',
     'Variable-Range Targeting'
-];
+]);
 
 // Design Quirk : Negative
-const a_DQNegative = [
+const a_DQNegative = Object.freeze([
     'Ammunition Feed Problem',
     'Bad Reputation',
     'Cooling System Flaws',
@@ -309,7 +309,7 @@ const a_DQNegative = [
     'Un-streamlined',
     'Weak Head Armor',
     'Weak Legs'
-];
+])
 
 // Factory name
 const a_Factory = [
@@ -624,7 +624,7 @@ const a_Manufacturer = [
 ];
 
 // Names for the Eras
-const a_Era = [
+const a_Era = Object.freeze([
     'Age of War', // 2398
     'Star League', // 2570
     'Succession Wars', // 2781
@@ -634,30 +634,30 @@ const a_Era = [
     'Republic', // 3081
     'Dark Age', // 3132
     'IlClan' // 3151
-];
+]);
 
 // Names for the Eras Simplified
-const a_EraSimplified = [
+const a_EraSimplified = Object.freeze([
     'Star League', // 2570-2780
     'Succession Wars', // 2781-3030
     'Clan Invasion', // 3049-3052
     'Dark Age' // 3132+
-];
+]);
 
 // Year introduced list
 const a_yearIntro = [2750, 3025, 3028, 3039, 3050, 3055, 3058, 3060, 3067, 3075, 3085, 3135, 3145, 3150];
 
 // Calc BV: Defence Factor
-const a_DefenceFac = [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7];
+const a_DefenceFac = Object.freeze([1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7]);
 
 // Calc BV: Target Modifier based on top speed
-const a_TargetMod = [0, 0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
+const a_TargetMod = Object.freeze([0, 0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]);
 
 // Calc BV: Speed Factor
-const a_SpeedFac = [0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63, 1.76, 1.89, 2.02, 2.16, 2.3, 2.44, 2.58, 2.72, 2.86, 3, 3.15, 3.29, 3.44, 3.59, 3.74, 4];
+const a_SpeedFac = Object.freeze([0.44, 0.54, 0.65, 0.77, 0.88, 1, 1.12, 1.24, 1.37, 1.5, 1.63, 1.76, 1.89, 2.02, 2.16, 2.3, 2.44, 2.58, 2.72, 2.86, 3, 3.15, 3.29, 3.44, 3.59, 3.74, 4]);
 
 // Teach Readout: Convert MP to KPH
-const mp2Kph = [0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 162, 172, 184, 194, 201, 216, 230, 248, 261, 275, 290, 305, 318, 329, 340, 351];
+const mp2Kph = Object.freeze([0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 162, 172, 184, 194, 201, 216, 230, 248, 261, 275, 290, 305, 318, 329, 340, 351]);
 
 
 /**************************
@@ -667,7 +667,7 @@ const mp2Kph = [0, 14, 21, 32, 43, 54, 64, 75, 86, 97, 108, 118, 129, 140, 151, 
 // JSON converter: https://csvjson.com/csv2json
 
 // Weapons and Equipment
-const tableArsenal = `
+const tableArsenal = Object.freeze(`
 {
     "weapon": [
         {
@@ -2346,10 +2346,10 @@ const tableArsenal = `
     }
     ]
 }
-`;
+`);
 
 // Engine Table
-const tableEngine = `
+const tableEngine = Object.freeze(`
 {
 "engine": [
     {
@@ -2854,10 +2854,10 @@ const tableEngine = `
     }
 ]
 }
-`;
+`);
 
 // Internal Structure Table
-const tableIS = `
+const tableIS = Object.freeze(`
 {
 "is": [
     {
@@ -3072,7 +3072,7 @@ const tableIS = `
     }
 ]
 }
-`;
+`);
 
 // Parse above JSON tables
 const weaponTable = JSON.parse(tableArsenal);
