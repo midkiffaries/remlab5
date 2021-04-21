@@ -801,22 +801,14 @@ Responsive elements
 
 /* Printing */
 @media print {
+	@page { margin: 2cm; }
+
 	*,
 	*::before,
 	*::after {
 		background-color: #fff;
 		color: #000;
 		text-shadow: none !important;
-		box-shadow: none !important;
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		page-break-after: avoid;
 	}
 
 	p,
@@ -826,14 +818,28 @@ Responsive elements
 		widows: 3;
 	}
 
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		page-break-after: avoid;
+		page-break-inside: avoid;
+	}
+
+	ul, 
+	ol, 
+	dl { 
+		page-break-before: avoid;
+	}
+
 	table,
 	tr,
-	li,
 	img,
 	pre,
 	nav,
 	blockquote,
-	fieldset,
 	figure,
 	video,
 	picture,
@@ -865,11 +871,12 @@ Responsive elements
 	}
 
 	[href] {
-		text-decoration: underline !important;
+		background: transparent;
+		text-decoration: underline;
 	}
 
-	main [href]::after {
-		content: " [" attr(href) "]";
+	main [href^='http']::after {
+		content: " <" attr(href) "> ";
 		font-size: 70%;
 	}
 }
