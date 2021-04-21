@@ -963,7 +963,7 @@ Radio and Checkbox style
 [type="checkbox"]:checked + label.switch::before {
     margin-left: 1.2em;
     background: #ddd;
-    transition: 0.2s;
+    transition-duration: 0.2s;
 }
 
 /* Checkbox and Radio Buttons */
@@ -971,22 +971,28 @@ Radio and Checkbox style
 .radio-button + label {
     margin: 0;
 	text-align: center;
-    background: #fff;
+    background: #eee;
     min-width: 3.6em;
     height: 2rem;
-    border-color: #999;
+    border-color: #ddd;
     transition: background 0.3s;
 }	
 
 .check-button:checked + label, 
 .radio-button:checked + label {
     background-color: var(--light-gold);
-    border-color: var(--dark-gold);
+    border-color: var(--light-gold);
 }
 
 .check-button + label:hover, 
 .radio-button + label:hover {
     background-color: var(--lighter-gold);
+    transition: background 0.3s;
+}
+
+.check-button + label:active, 
+.radio-button + label:active {
+    background-color: var(--base-gold);
 }
 
 .check-button + label::before, 
