@@ -633,7 +633,7 @@ const a_Era = Object.freeze([
     'Jihad', // 3068
     'Republic', // 3081
     'Dark Age', // 3132
-    'IlClan' // 3151
+    'ilClan' // 3151
 ]);
 
 // Names for the Eras Simplified

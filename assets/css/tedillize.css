@@ -57,11 +57,12 @@ main {
 	display: block;
 }
 
-header,
-footer {
+header::after,
+main::after,
+hr::after {
+	content: "";
 	clear: both;
 	display: table;
-	width: 100%;
 }
 
 hr {
