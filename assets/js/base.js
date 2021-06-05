@@ -35,10 +35,10 @@ document.addEventListener("keyup", (e) => {
 
 // Display Alert Modal Box -- text: displayed text | bgColor: background-color
 function AlertModal(text, bgColor) {
-    let dialog, st = document.createElement("style");
+    const dialog = document.createElement("dialog"), 
+        st = document.createElement("style");
 
     // Main dialog box
-    dialog = document.createElement("dialog");
     dialog.setAttribute("open", "open");
     dialog.setAttribute("class", "dialog-alert");
     dialog.setAttribute("role", "alertdialog");
@@ -72,9 +72,7 @@ function AlertModal(text, bgColor) {
     document.body.appendChild(dialog);
 
     // Display dialog
-    setTimeout(() => { 
-        dialog.classList.toggle("dialog-open") 
-    }, 100);
+    setTimeout(() => { dialog.classList.toggle("dialog-open") }, 100);
     setTimeout(() => { 
         dialog.classList.toggle("dialog-open"); 
         closeModals('dialog-alert') 
@@ -83,7 +81,7 @@ function AlertModal(text, bgColor) {
 
 // Display Confirmation Modal Box -- text: displayed text | action: Yes button's action/function
 function ConfirmModal(text, action) {
-    let aDialog = {
+    const aDialog = {
         style: document.createElement("style"),
         dialog: document.createElement("dialog"),
         div: document.createElement("div"),
@@ -177,7 +175,7 @@ function ConfirmModal(text, action) {
     // Display Dialog
     setTimeout(() => { 
         aDialog.dialog.classList.toggle("dialog-open") 
-    }, 150);
+    }, 140);
 }
 
 // Load an external JS document and display it in a modal window
@@ -235,7 +233,6 @@ function HtmlModal(JsVar, c) {
         right: 0;
         top: 0;
         border: none;
-        -webkit-text-stroke: 1px #000;
         filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
         background: no-repeat center center / 1.4em;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M30 24l-9-9 9-9-6-6-9 9-9-9-6 6 9 9-9 9 6 6 9-9 9 9z'/%3E%3C/svg%3E");

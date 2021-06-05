@@ -265,7 +265,7 @@ const sWeapons = new SectionPanel(
             <table class="table-weapons sortable">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>&nbsp;</th>
                         <th>Type</th>
                         <th>Heat</th>
                         <th>Damage</th>

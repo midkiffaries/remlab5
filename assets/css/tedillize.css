@@ -57,9 +57,15 @@ main {
 	display: block;
 }
 
+header,
+main,
+footer {
+	clear: both;
+}
+
 header::after,
 main::after,
-hr::after {
+footer::after {
 	content: "";
 	clear: both;
 	display: table;
@@ -326,12 +332,6 @@ a img {
 
 figure {
 	margin: 0 0 1rem;
-}
-
-figure img,
-figure video,
-figure iframe {
-	width: 100%;
 }
 
 figcaption {
@@ -783,7 +783,6 @@ Responsive elements
 		font-size: 0.96em;
 	}
 
-	nav,
 	header,
 	main,
 	footer,
@@ -792,8 +791,8 @@ Responsive elements
 	article,
 	iframe,
 	table {
-		width: 100%;
-		float: none;
+		width: 100% !important;
+		float: none !important;
 		position: relative;
 	}
 
