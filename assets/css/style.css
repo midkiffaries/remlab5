@@ -56,18 +56,18 @@ select:not([multiple]):not([size]),
 [role="listbox"],
 .stepper-container {
     background-color: var(--input-bg);
+    transition: border-color 0.3s, box-shadow 0.4s;
 }
 
 /* Input elements hover style */
-[type="text"]:hover,
-[type="number"]:hover,
 select:hover,
 textarea:hover,
+[type="text"]:hover,
+[type="number"]:hover,
 [role="button"]:hover,
 .stepper-container:hover {
     box-shadow: 0 0 1px 2px var(--lighter-gold);
     border-color: var(--base-gold);
-    transition: border-color 0.3s, box-shadow 0.4s;
 }
 
 select:not([multiple]):not([size]) {
@@ -476,12 +476,12 @@ Specific Card Styling
     border: 2px solid #bbb;
     margin: 0.4em 0;
     background-color: rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s, box-shadow 0.4s;
 }
 
 .list-weapons:hover {
     box-shadow: 0 0 1px 2px var(--lighter-gold);
     border-color: var(--base-gold);
-    transition: border-color 0.3s, box-shadow 0.4s;
 }
 
 .list-weapons::-webkit-scrollbar {
@@ -782,14 +782,20 @@ body.dark-mode .light-switch {
 
 /* Range style */
 
+::-webkit-slider-thumb {
+	transition: box-shadow 0.2s;
+}
+
 ::-webkit-slider-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-	transition: box-shadow 0.2s;
+}
+
+::-moz-range-thumb {
+    transition: box-shadow 0.2s;
 }
 
 ::-moz-range-thumb:hover {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-    transition: box-shadow 0.2s;
 }
 
 
@@ -903,12 +909,12 @@ Radio and Checkbox style
     background-color: #fff;
 	border: 2px solid #666;
     vertical-align: -0.2rem;
+    transition: box-shadow 0.2s;
 }
 
 [type="radio"] + label:hover::before,
 [type="checkbox"] + label:hover::before {
 	box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-	transition: box-shadow 0.2s;
 }
 
 [type="radio"] + label::before {
@@ -987,7 +993,6 @@ Radio and Checkbox style
 .check-button + label:hover, 
 .radio-button + label:hover {
     background-color: var(--lighter-gold);
-    transition: background 0.3s;
 }
 
 .check-button + label:active, 

@@ -73,7 +73,8 @@ footer::after {
 
 hr {
 	margin: 1rem 0;
-	background-color: #999;
+	background-color: currentColor;
+	opacity: 0.25;
 	border: 0;
 	clear: both;
 }
@@ -256,24 +257,18 @@ code,
 kbd,
 samp,
 pre {
-	unicode-bidi: bidi-override;
 	direction: ltr;
+	unicode-bidi: bidi-override;
 	white-space: pre-wrap;
 	font-size: 1em;
 	font-family:
-		ui-monospace,
 		SFMono-Regular,
+		Menlo,
+		Monaco,
 		Consolas,
 		'Roboto Mono',
 		'Liberation Mono',
-		Menlo,
 		monospace;
-}
-
-code {
-	background: #ddd;
-	padding: 0.1rem 0.2rem;
-	border-radius: 0.3rem;
 }
 
 kbd {
@@ -589,6 +584,10 @@ legend + * {
 }
 
 /* Input File Upload */
+
+::file-selector-button {
+	font: inherit;
+}
 
 ::-webkit-file-upload-button {
 	-webkit-appearance: button;
