@@ -3,11 +3,6 @@
 Tedilize 2.0 - Normalization and Base Styling 
 *********************************************/
 
-:root {
-	-moz-tab-size: 4;
-	tab-size: 4;
-}
-
 *,
 *::before,
 *::after {
@@ -28,6 +23,9 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
 	touch-action: manipulation;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	tab-size: 4;
 	font-family:
 		system-ui,
 		-apple-system,
@@ -50,7 +48,6 @@ body {
 	font-size: 1rem;
 	margin: 0;
 	min-height: 100%;
-	line-height: 1.5;
 }
 
 main {
@@ -61,14 +58,6 @@ header,
 main,
 footer {
 	clear: both;
-}
-
-header::after,
-main::after,
-footer::after {
-	content: "";
-	clear: both;
-	display: table;
 }
 
 hr {
@@ -94,11 +83,15 @@ address {
 	line-height: inherit;
 }
 
-template,
-[hidden] {
-	display: none;
+/* clearfix */
+header::after,
+main::after,
+footer::after,
+figure::after {
+	content: "";
+	clear: both;
+	display: table;
 }
-
 
 /*********************
 Inline elements
@@ -111,7 +104,7 @@ strong {
 
 sub,
 sup {
-	font-size: 0.75em;
+	font-size: 75%;
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
@@ -132,20 +125,19 @@ mark {
 }
 
 small {
-	font-size: 0.875em;
+	font-size: 80%;
 }
 
 ins {
-	-webkit-text-decoration: underline dashed #aaa;
-	text-decoration: underline dashed #aaa;
+	-webkit-text-decoration: underline dashed currentColor;
+	text-decoration: underline dashed currentColor;
 }
 
 abbr {
 	speak-as: spell-out;
 }
 
-abbr[title],
-abbr[aria-label] {
+abbr[title] {
 	-webkit-text-decoration: underline dotted;
 	text-decoration: underline dotted;
 	cursor: help;
@@ -204,8 +196,6 @@ Tables
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	width: 100%;
-	caption-side: top;
 	text-indent: 0;
 }
 
@@ -217,7 +207,6 @@ th {
 	text-overflow: ellipsis;
 	vertical-align: text-top;
 	font-variant-numeric: tabular-nums;
-	font-feature-settings: "tnum";
 }
 
 caption {
@@ -272,7 +261,7 @@ pre {
 }
 
 kbd {
-	background: #ddd;
+	background-color: #ddd;
 	padding: 0.2rem 0.4rem;
 	border-radius: 0.2rem;
 	border-bottom: 1px solid #aaa;
@@ -315,8 +304,7 @@ iframe {
 	image-rendering: auto;
 }
 
-img[src$='.gif'],
-img[src$='.svg'] {
+img[src$='.gif'] {
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;
 }
@@ -326,7 +314,8 @@ a img {
 }
 
 figure {
-	margin: 0 0 1rem;
+	margin: 0 0 0.1rem;
+	display: inline-block;
 }
 
 figcaption {
@@ -373,15 +362,11 @@ a:not([href]),
 	text-decoration: none;
 }
 
-/* Details Element */
+/* Details/Summary Element */
 
 summary {
 	cursor: pointer;
 	display: list-item;
-}
-
-details {
-	display: block;
 }
 
 /* Dialog Element */
@@ -402,7 +387,7 @@ dialog {
 	z-index: 9999;
 	border: solid;
 	padding: 1em;
-	background: #fff;
+	background-color: #fff;
 	color: inherit;
 	will-change: auto;
 }
@@ -530,7 +515,7 @@ output {
 
 fieldset {
 	padding: 0 0.5em 0.5em;
-	border: 1px solid #bbb;
+	border: 1px solid currentColor;
 }
 
 legend {
@@ -710,8 +695,7 @@ Accessibility
 	cursor: pointer;
 }
 
-[aria-disabled='true'],
-[disabled] {
+[aria-disabled='true'] {
 	cursor: not-allowed;
 }
 
@@ -726,7 +710,7 @@ Accessibility
 
 
 /*********************
-Browser Hacks
+Firefox Hacks
 *********************/
 
 ::-moz-focus-inner {
@@ -755,6 +739,7 @@ Responsive elements
 		transition-delay: 0s !important;
 		transition-duration: 0s !important;
 	}
+	
 	html {
 		scroll-behavior: auto !important;
 	}
@@ -786,8 +771,6 @@ Responsive elements
 	main,
 	footer,
 	aside,
-	section,
-	article,
 	iframe,
 	table {
 		width: 100% !important;
@@ -877,7 +860,7 @@ Responsive elements
 	}
 
 	main [href^='http']::after {
-		content: " <" attr(href) "> ";
+		content: " [" attr(href) "] ";
 		font-size: 70%;
 	}
 }
