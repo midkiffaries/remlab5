@@ -331,7 +331,7 @@ const RecordSheetModal = () => {
 				</div>
 			</div>
 
-			<aside class="print-rightside">
+			<div class="print-rightside">
 				<div class="print-data">
 					<h3>Mech Data</h3>
 					<p><b class="dotted">${Mech.type}</b></p>
@@ -383,7 +383,7 @@ const RecordSheetModal = () => {
 						${generateHeatScale()}
 					</table>
 				</div>
-			</aside>
+			</div>
 		</div>
 
 		<div class="print-bottom">

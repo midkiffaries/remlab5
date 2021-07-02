@@ -1188,6 +1188,11 @@ Responsive elements
 
 /* Printing */
 @media print {
+    * {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+    
     .page-header,
     .page-main,
     .page-header-menu {

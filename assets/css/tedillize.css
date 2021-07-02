@@ -34,7 +34,8 @@ html {
 		'Liberation Sans',
 		sans-serif,
 		'Apple Color Emoji',
-		'Segoe UI Emoji';
+		'Segoe UI Emoji',
+		'Noto Color Emoji';
 }
 
 
@@ -43,7 +44,7 @@ Document
 *********************/
 
 body {
-	background-color: #fefefe;
+	background-color: #fdfdfd;
 	color: #111;
 	font-size: 1rem;
 	margin: 0;
@@ -62,6 +63,7 @@ footer {
 
 hr {
 	margin: 1rem 0;
+	color: inherit;
 	background-color: currentColor;
 	opacity: 0.25;
 	border: 0;
@@ -197,13 +199,15 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	text-indent: 0;
+	width: 100%;
 }
 
 td,
 th {
 	padding: 0.15em 0.5em 0.15em;
 	line-height: 1.15;
-	text-align: left;
+	text-align: inherit;
+	text-align: -webkit-match-parent;
 	text-overflow: ellipsis;
 	vertical-align: text-top;
 	font-variant-numeric: tabular-nums;
@@ -228,7 +232,7 @@ dt {
 }
 
 dd {
-	margin-left: 2em;
+	margin-left: 1rem;
 }
 
 nav ol,
@@ -407,6 +411,10 @@ Form elements
 
 input:not(:focus):invalid {
 	color: #d00;
+}
+
+[hidden] {
+	display: none !important;
 }
 
 [disabled],
@@ -785,7 +793,7 @@ Responsive elements
 
 /* Printing */
 @media print {
-	@page { margin: 2cm; }
+	@page { margin: 1cm; }
 
 	*,
 	*::before,
@@ -797,7 +805,8 @@ Responsive elements
 
 	p,
 	h2,
-	h3 {
+	h3,
+	h4 {
 		orphans: 3;
 		widows: 3;
 	}
@@ -823,6 +832,7 @@ Responsive elements
 	img,
 	pre,
 	nav,
+	svg,
 	blockquote,
 	figure,
 	video,
@@ -836,12 +846,12 @@ Responsive elements
 		max-width: 100%;
 	}
 
-	hr:not([size='0']) {
-		border-bottom: 2px solid #666;
-	}
-
 	thead {
 		display: table-header-group;
+	}
+
+	hr:not([size='0']) {
+		border-bottom: 2px solid #666;
 	}
 
 	pre {
