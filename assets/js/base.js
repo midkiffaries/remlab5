@@ -6,7 +6,7 @@
 
 // App Info
 const App = Object.freeze({
-    version: '4.9.2105 DEV',
+    version: '4.9.2107 DEV',
     title: 'REMLAB Web Mech Designer',
     titleShort: 'REMLAB'
 });
