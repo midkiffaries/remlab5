@@ -23,7 +23,6 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
 	touch-action: manipulation;
-	line-height: 1.5;
 	-moz-tab-size: 4;
 	tab-size: 4;
 	font-family:
@@ -47,6 +46,7 @@ body {
 	background-color: #fdfdfd;
 	color: #111;
 	font-size: 1rem;
+	line-height: 1.5;
 	margin: 0;
 	min-height: 100%;
 }
@@ -122,7 +122,6 @@ sup {
 
 mark {
 	background-color: #ff3;
-	border-radius: 0.2em;
 	padding: 0.2em;
 }
 
@@ -131,7 +130,6 @@ small {
 }
 
 ins {
-	-webkit-text-decoration: underline dashed currentColor;
 	text-decoration: underline dashed currentColor;
 }
 
@@ -140,7 +138,6 @@ abbr {
 }
 
 abbr[title] {
-	-webkit-text-decoration: underline dotted;
 	text-decoration: underline dotted;
 	cursor: help;
 	border-bottom: none;
@@ -158,21 +155,20 @@ h4,
 h5,
 h6 {
 	line-height: 1.2;
-	margin-bottom: 0.4rem;
+	margin-bottom: 0.5rem;
 	font-weight: 400;
 }
 
 h1 {
-	font-size: 2.4rem;
-	margin: 0.67em 0;
+	font-size: 2.5rem;
 }
 
 h2 {
-	font-size: 2rem;
+	font-size: 2.1rem;
 }
 
 h3 {
-	font-size: 1.7rem;
+	font-size: 1.75rem;
 	font-weight: 600;
 }
 
@@ -181,12 +177,12 @@ h4 {
 }
 
 h5 {
-	font-size: 1.2rem;
+	font-size: 1.25rem;
 	font-weight: 500;
 }
 
 h6 {
-	font-size: 1rem;
+	font-size: 1.1rem;
 	font-weight: 600;
 }
 
@@ -214,7 +210,7 @@ th {
 }
 
 caption {
-	padding: 0.75rem;
+	padding: 0.5rem;
 }
 
 
@@ -232,7 +228,7 @@ dt {
 }
 
 dd {
-	margin-left: 1rem;
+	margin-left: 2rem;
 }
 
 nav ol,
@@ -266,7 +262,7 @@ pre {
 
 kbd {
 	background-color: #ddd;
-	padding: 0.2rem 0.4rem;
+	padding: 0.1rem 0.4rem;
 	border-radius: 0.2rem;
 	border-bottom: 1px solid #aaa;
 	white-space: nowrap;
@@ -284,7 +280,6 @@ pre code {
 	color: inherit;
 	word-break: normal;
 	display: inline-block;
-	padding: 0.8rem;
 }
 
 a > code {
@@ -305,7 +300,6 @@ iframe {
 	vertical-align: middle;
 	border: none;
 	object-fit: cover;
-	image-rendering: auto;
 }
 
 img[src$='.gif'] {
@@ -359,9 +353,7 @@ Interactive elements
 	text-decoration: none;
 }
 
-a:not([href]),
-[href=''],
-[href='#'] {
+a:not([href]) {
 	pointer-events: none;
 	text-decoration: none;
 }
@@ -636,11 +628,9 @@ legend + * {
 meter {
 	height: 1.5em;
 	border: 1px solid #bbb;
-	background: #eee;
 }
 
 ::-webkit-meter-bar {
-	background: #eee;
 	border-radius: 0;
 	height: 1.35em;
 }
@@ -800,7 +790,7 @@ Responsive elements
 	*::after {
 		background-color: #fff;
 		color: #000;
-		text-shadow: none !important;
+		text-shadow: none;
 	}
 
 	p,
@@ -828,7 +818,6 @@ Responsive elements
 	}
 
 	table,
-	tr,
 	img,
 	pre,
 	nav,
