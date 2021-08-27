@@ -393,6 +393,7 @@ Specific Card Styling
 
 .card-Armor fieldset {
     margin-bottom: 0.3em;
+    border-color: #ccc;
 }
 
 .card-Armor .col-3:last-of-type {
@@ -1031,6 +1032,14 @@ body.dark-mode,
     color: #eee;
     background-color: #222 !important;
     border-color: #555;
+}
+
+.dark-mode ::-moz-selection {
+	color: #000;
+}
+
+.dark-mode ::selection {
+	color: #000;
 }
 
 .dark-mode textarea,

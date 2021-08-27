@@ -208,6 +208,11 @@ const WeaponInfoModal = (id) => {
     color: #666;
 }
 
+.wi-body abbr {
+    text-decoration: none;
+    opacity: 0.6;
+}
+
 .wi-body table caption {
     font-size: 1.3em;
     padding: 0;
