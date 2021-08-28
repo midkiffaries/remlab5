@@ -732,6 +732,14 @@ Firefox Hacks
 Responsive elements
 *********************/
 
+/* Work around for Phones with a 'notch' */
+@media only screen and (orientation: landscape) {
+	body {
+        padding-left: min(0vmin, env(safe-area-inset-left));
+        padding-right: min(0vmin, env(safe-area-inset-right));
+	}
+}
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
 	*,
