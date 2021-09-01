@@ -21,6 +21,11 @@ Default Page Style
     --card-border: rgba(200,202,202,0.4);
 }
 
+html {
+    font-family: 'Quicksand', sans-serif;
+    font-display: swap;
+}
+
 @font-face {
     font-family: 'icons';
     src: 
@@ -82,6 +87,7 @@ select:not([multiple]):not([size]) {
     border-color: var(--dark-gold);
     background-color: var(--pale-gold) !important;
     caret-color: var(--dark-gold);
+    transition: all 0.5s;
 }
 
 :focus::-webkit-input-placeholder {
@@ -1138,6 +1144,10 @@ Responsive elements
         margin: 0;
     }
 
+    .card-header h2 {
+        font-size: 1.7em;
+    }
+
     .sidebar-totals {
         float: left;
         width: 49%;
@@ -1166,6 +1176,10 @@ Responsive elements
 
     .page-title {
         margin: 0;
+    }
+
+    .card-header h2 {
+        font-size: 1.6em;
     }
 
     .card-footer,
