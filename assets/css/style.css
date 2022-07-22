@@ -225,6 +225,8 @@ body {
     float: right;
     width: 75vw;
     clear: both;
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 .page-footer a:hover {
@@ -234,11 +236,6 @@ body {
 
 .page-footer a:hover::before {
     opacity: 0.9;
-}
-
-.page-footer {
-    text-align: center;
-    margin-bottom: 1em;
 }
 
 .social-links {
