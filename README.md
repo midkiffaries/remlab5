@@ -1,5 +1,14 @@
 <img src="assets/images/logo.svg" alt="REMLAB Web Mech Designer" width="450">
 
+
+[![Generic badge](https://img.shields.io/github/v/release/midkiffaries/remlab5?include_prereleases&style=for-the-badge)](https://github.com/midkiffaries/remlab5/releases/)
+![GitHub](https://img.shields.io/github/license/midkiffaries/remlab5?color=blue&style=for-the-badge)
+
+[![Generic badge](https://img.shields.io/badge/Language-javascript-red.svg)](https://github.com/midkiffaries/remlab5/search?l=javascript)
+[![GitHub last commit](https://img.shields.io/github/last-commit/midkiffaries/m20T1)](https://github.com/midkiffaries/remlab5/commits)
+[![GitHub issues](https://img.shields.io/github/issues/midkiffaries/m20T1)](https://github.com/midkiffaries/remlab5/issues)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/midkiffaries/remlab5)
+
 #### Version 5.0 - Currently in Development
 
 ### The new REMLAB development repository.

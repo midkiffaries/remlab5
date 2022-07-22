@@ -15,11 +15,10 @@
 <meta name="apple-mobile-web-app-title" content="REMLAB">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="white">
-<link rel="manifest" href="https://remlab.netlify.app/assets/icons/manifest.json">
+<link rel="manifest" href="https://remlab.netlify.app/assets/icons/site.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://github.com/midkiffaries/remlab5">
 <meta property="og:title" content="REMLAB Web Mech Designer">
@@ -33,9 +32,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/tedillize.css">
-<link rel="stylesheet" href="/assets/css/layout.css">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/tedillize.css" type="text/css" media="all">
+<link rel="stylesheet" href="/assets/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/assets/css/style.css" type="text/css" media="all">
 </head>
 
 <body class="body" onload="updateForm()">
@@ -46,11 +45,11 @@
 <form id="frmMain" name="form" onchange="updateForm()" onsubmit="event.preventDefault()">
 
     <!-- Header / Side Bar -->
-    <header class="page-header" id="Header">
+    <header class="page-header" id="Header" role="banner">
         <h1 class="page-title"><img src="assets/images/logo.svg" alt="REMLAB Web Mech Designer"></h1>
 
         <!-- Side Bar -->
-        <aside class="page-sidebar" id="SideBar"></aside>
+        <aside class="page-sidebar" id="SideBar" role="complementary"></aside>
 
         <!-- Side Bar Menu -->
         <nav class="page-header-menu">
@@ -64,7 +63,7 @@
     </header>
 
     <!-- Page Content -->
-    <main class="page-main">
+    <main class="page-main" role="main">
         <noscript><h3>Attention: REMLAB requires JavaScript enabled in your browser to function.</h3></noscript>
 
         <!-- Main Grid -->

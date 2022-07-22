@@ -16,12 +16,15 @@ Tedilize 2.0 - Normalization and Base Styling
 	white-space: pre;
 }
 
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
 html {
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	scroll-behavior: smooth;
 	touch-action: manipulation;
 	-moz-tab-size: 4;
 	tab-size: 4;
@@ -43,22 +46,12 @@ Document
 *********************/
 
 body {
-	background-color: #fff;
+	background-color: #fefefe;
 	color: #111;
 	font-size: 1rem;
 	line-height: 1.5;
 	margin: 0;
 	min-height: 100%;
-}
-
-main {
-	display: block;
-}
-
-header,
-main,
-footer {
-	clear: both;
 }
 
 hr {
@@ -205,7 +198,7 @@ table {
 
 td,
 th {
-	padding: 0.15em 0.5em 0.15em;
+	padding: 0.15em 0.5em;
 	line-height: 1.15;
 	text-align: inherit;
 	text-align: -webkit-match-parent;
@@ -738,8 +731,8 @@ Responsive elements
 /* Work around for Phones with a 'notch' */
 @supports(padding:max(0px)) {
 	body {
-        padding-left: min(0vmin, env(safe-area-inset-left));
-        padding-right: min(0vmin, env(safe-area-inset-right));
+		padding-left: min(0vmin, env(safe-area-inset-left));
+		padding-right: min(0vmin, env(safe-area-inset-right));
 	}
 }
 
@@ -748,15 +741,13 @@ Responsive elements
 	*,
 	*::before,
 	*::after {
-		animation-delay: -1ms !important;
-		animation-duration: 1ms !important;
+		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
-		background-attachment: initial !important;
-		transition-delay: 0s !important;
-		transition-duration: 0s !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 	
-	html {
+	html:focus-within {
 		scroll-behavior: auto !important;
 	}
 }
@@ -809,6 +800,7 @@ Responsive elements
 	hr,
 	mark {
 		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
 		color-adjust: exact;
 	}
 
@@ -843,12 +835,7 @@ Responsive elements
 		content: " (" attr(title) ")";
 	}
 
-	[href] {
+	main [href] {
 		text-decoration: underline;
-	}
-
-	main [href^='http']::after {
-		content: " [" attr(href) "]";
-		font-size: 65%;
 	}
 }
