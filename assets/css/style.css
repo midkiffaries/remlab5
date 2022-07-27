@@ -314,6 +314,7 @@ Cards Styling
 }
 
 .card-footer {
+    clear: both;
     background-color: rgba(0,0,0,0.05);
     padding: 0.3em 0.4em;
     color: #444;
