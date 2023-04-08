@@ -25,7 +25,7 @@ const AboutModal = () => (`
 <p>For the fourth version, I chose to go back to the drawing board and I rewrote the entire codebase from scratch, back in <time>2017</time>. In doing so, I moved from <abbr>PHP</abbr> to JavaScript for the main logic and an <abbr>XML</abbr> database. This version was never entirely complete, but it did mostly work correctly.</p>
 
 <h3>References &amp; Resources</h3>
-<ul>
+<ul role="list">
     <li><a href="https://www.battletech.com" target="_blank">Official BattleTech Site</a></li>
     <li><a href="https://www.sarna.net" target="_blank">Sarna BattleTechWiki</a></li>
     <li><a href="https://docs.google.com/document/d/12ynqpNhOIcBqit8aGiwcOVje6Hscs9Ns5KAVNdJCw04/edit?usp=sharing" target="_blank">REMLAB development document on Google Docs</a></li>
@@ -57,7 +57,7 @@ const HelpModal = () => (`
 <h3>Printing</h3>
 <p>Printing results will vary somewhat from browser-to-browser.</p>
 <p>Tips to improve printing results:</p>
-<ol>
+<ol role="list">
     <li>Cut margin down as much as possible, 0.5in (1.3cm) should be good.</li>
     <li>Disable the <code>header</code> and <code>footer</code> information.</li>
     <li>Turn on <code>Print Backgrounds</code>, this is not that important.</li>
