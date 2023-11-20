@@ -14,10 +14,7 @@ Tedilize 2.0 - Normalization and Base Styling
 *::after {
 	text-decoration: inherit;
 	white-space: pre;
-}
-
-html:focus-within {
-	scroll-behavior: smooth;
+	line-height: 1;
 }
 
 html {
@@ -40,6 +37,10 @@ html {
 		'Noto Color Emoji';
 }
 
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
 
 /*********************
 Document
@@ -58,7 +59,6 @@ hr {
 	margin: 1rem 0;
 	color: inherit;
 	background-color: currentColor;
-	opacity: 0.9;
 	border: 0;
 	clear: both;
 }
@@ -83,7 +83,7 @@ p {
 	widows: 3;
 }
 
-/* clearfix */
+/* Clearfix */
 header::after,
 main::after,
 footer::after,
@@ -92,6 +92,7 @@ figure::after {
 	clear: both;
 	display: table;
 }
+
 
 /*********************
 Inline elements
@@ -120,7 +121,7 @@ sup {
 
 mark {
 	background-color: #ff3;
-	padding: 0.2em;
+	padding: 0.1em;
 }
 
 small {
@@ -133,8 +134,8 @@ ins {
 }
 
 abbr[title] {
-	-webkit-text-decoration: underline dotted;
-	text-decoration: underline dotted;
+	-webkit-text-decoration: underline dotted currentColor;
+	text-decoration: underline dotted currentColor;
 	cursor: help;
 	border-bottom: none;
 }
@@ -150,8 +151,8 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: 1.2;
-	margin-bottom: 0.5rem;
+	line-height: 1;
+	margin: 1.2rem auto 0.5rem;
 	font-weight: 400;
 	page-break-after: avoid;
 	page-break-inside: avoid;
@@ -167,7 +168,7 @@ h2 {
 
 h3 {
 	font-size: 1.75rem;
-	font-weight: 600;
+	font-weight: bolder;
 }
 
 h4 {
@@ -176,12 +177,12 @@ h4 {
 
 h5 {
 	font-size: 1.25rem;
-	font-weight: 500;
+	font-weight: bold;
 }
 
 h6 {
 	font-size: 1.1rem;
-	font-weight: 600;
+	font-weight: bolder;
 }
 
 
@@ -223,7 +224,7 @@ ol {
 }
 
 dt {
-	font-weight: 700;
+	font-weight: bolder;
 }
 
 dd {
@@ -300,6 +301,7 @@ iframe {
 	vertical-align: middle;
 	border: none;
 	object-fit: cover;
+	margin: 0;
 }
 
 img[src$='.gif'] {
@@ -435,8 +437,6 @@ textarea,
 	background: inherit;
 }
 
-[role='button'],
-[role='textbox'],
 [role='listbox'],
 button,
 input,
@@ -465,22 +465,21 @@ select:not([multiple]):not([size]) {
 	background-position: 100% 50%;
 	background-size: 1em;
 	background-repeat: no-repeat;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22'><path d='M6.6 18l4.5-4.6 2 2L6.6 22 0 15.4l2-2zm0-14L2 8.6l-2-2L6.6 0 13 6.6l-2 2z' fill='dimgray'/></svg>");
 }
 
 button,
-[role='button'],
 [type='button'],
 [type='reset'],
 [type='submit'] {
 	background-color: #eee;
 	overflow: visible;
 	cursor: pointer;
-	white-space: nowrap;
 	-webkit-appearance: none;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	user-select: none;
+	text-wrap: balance;
 }
 
 [type='checkbox'],
@@ -702,8 +701,8 @@ Firefox Hacks
 Responsive elements
 *********************/
 
-/* Work around for Phones with a 'notch' */
-@supports(padding:max(0px)) {
+/* Work around for Phones with a notch */
+@supports (padding:max(0px)) {
 	body {
 		padding-left: min(0vmin, env(safe-area-inset-left));
 		padding-right: min(0vmin, env(safe-area-inset-right));
@@ -760,9 +759,9 @@ Responsive elements
 	}
 }
 
-/* Printing */
+/* Print Friendly */
 @media print {
-	@page { margin: 1cm; }
+	@page { margin: 2cm; }
 
 	*,
 	*::before,
@@ -775,7 +774,6 @@ Responsive elements
 	mark {
 		-webkit-print-color-adjust: exact;
 		print-color-adjust: exact;
-		color-adjust: exact;
 	}
 
 	table,
@@ -784,6 +782,7 @@ Responsive elements
 	nav,
 	menu,
 	svg,
+	iframe,
 	blockquote,
 	figure,
 	video,
@@ -810,7 +809,9 @@ Responsive elements
 		content: " (" attr(title) ")";
 	}
 
-	main [href] {
+	a[href] {
+		background: transparent;
 		text-decoration: underline;
+		page-break-inside: avoid;
 	}
 }
