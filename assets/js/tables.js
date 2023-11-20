@@ -35,7 +35,7 @@ const a_SizeClass = [
 */
 // Btech Ruleset (aka Level)
 const a_RuleSet = Object.freeze([
-    'Basic', // Level 1 (TL)
+    'Introductory', // Level 1 (TL)
     'Standard', // Level 2 (TL)
     //'Standard (DA)', // Level 2 Dark Age (TL) 
     'Advanced', // Level 3
@@ -54,6 +54,18 @@ const a_ChassisType = Object.freeze([
     'IndustrialMech',
     'Land-Air Mech'
     //'OmniMech'
+]);
+
+// Defined Mech Roles
+const a_MechRole = Object.freeze([
+    'Striker',
+    'Scout',
+    'Sniper',
+    'Missile Boat',
+    'Skirmisher',
+    'Juggernaut',
+    'Ambusher',
+    'Brawler'
 ]);
 
 // Names for the types of Weapons

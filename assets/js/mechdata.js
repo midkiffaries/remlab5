@@ -10,6 +10,7 @@ const Mech = {
 	chassis: 0,
 	techbase: 0,
 	rules: 0,
+	role: 0,
 	
 	// Movement
 	walkingMP: 1,
