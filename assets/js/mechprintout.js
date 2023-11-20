@@ -1020,6 +1020,10 @@ const TechReadoutModal = () => {
                         <td colspan="2">${a_Era[Mech.era]} (${Mech.year})</td>
                     </tr>
                     <tr>
+                        <td>Role:</td>
+                        <td colspan="2">${a_MechRole[Mech.role]}</td>
+                    </tr>
+                    <tr>
                         <td>Tonnage:</td>
                         <td colspan="2">${Mech.mass}</td>
                     </tr>

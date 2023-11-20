@@ -427,7 +427,7 @@ function displayTicks(v, r) {
 
 // Populate select or datalist elements from an array
 function listOptions(arr) {
-    let opt;
+    let opt = '';
     arr.forEach(e => { opt += `<option value="${e}">${e}</option>` });
     return opt;
 }

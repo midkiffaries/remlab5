@@ -425,6 +425,7 @@ const sReadout = new SectionPanel(
             ${listOptions(a_yearIntro)}
         </datalist> 
         <label style="margin-left:0.8em">Era</label> <select id="selEra" class="select" data-list="a_Era" data-value="${Mech.era}"></select>
+        <label style="margin-left:0.8em">Role</label> <select id="selMechRole" class="select" data-list="a_MechRole" data-value="${Mech.role}"></select>
     </p>
     <div class="col-2">
         <p><label>Overview</label> <textarea id="txtOverview" placeholder="(A brief summary of the this particular Mech)">${Mech.overviewTR}</textarea></p>
@@ -670,6 +671,7 @@ const updateForm = id => {
     // Get data from form
     Mech.year = elID('txtYear').value;
     Mech.era = elID('selEra').value;
+    Mech.role = elID('selMechRole').value;
     Mech.overviewTR = elID('txtOverview').value;
     Mech.capabilitiesTR = elID('txtCapabilities').value;
     Mech.historyTR = elID('txtHistory').value;
