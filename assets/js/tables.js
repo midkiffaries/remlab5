@@ -58,14 +58,15 @@ const a_ChassisType = Object.freeze([
 
 // Defined Mech Roles
 const a_MechRole = Object.freeze([
-    'Striker',
-    'Scout',
-    'Sniper',
-    'Missile Boat',
-    'Skirmisher',
-    'Juggernaut',
+    'Undefined',
     'Ambusher',
-    'Brawler'
+    'Brawler',
+    'Juggernaut',
+    'Missile Boat',
+    'Scout',
+    'Skirmisher',
+    'Sniper',
+    'Striker'
 ]);
 
 // Names for the types of Weapons
